@@ -1,0 +1,53 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Zefir
+Scalex: -1.0
+Scaley: 1.0
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Casting
+Ani Chant: Idle
+Ani Spell: Casting
+Ani Item: Casting
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Short Breath Attack
+Attack B - Tail Slash
+Attack C - Extended Breath Attack
+Damage 
+Idle
+
+Sample Action Squence:
+Short Breath Attack
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<whole action>
+motion Attack A: user
+wait: 30
+animation 126: target
+wait: 15
+animation 64: target
+action effect
+</whole action>

@@ -1,0 +1,53 @@
+<Attack animation: 4>
+<DragonBone Settings>
+Battler: IceDemonAura
+Scalex: -1.0
+Scaley: 1.0
+Width: 200
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack D
+Ani Skill: Attack E
+Ani Chant: Idle
+Ani Spell: Attack E
+Ani Item: Attack D
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Frosty slash
+Attack B - Frozen thrash
+Attack C - Ice piercer
+Attack D - Icey shot
+Attack E - Ice Break Blast
+Damage
+Idle
+
+<whole action>
+move user: FORWARD, 100, 24
+motion Attack E: user
+wait: 16
+animation 71: target
+wait: 16
+action effect
+move targets: FORWARD, -10, 3
+wait: 60
+move user: return, 25
+wait: 20
+</whole action>
+

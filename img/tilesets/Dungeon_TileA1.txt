@@ -1,0 +1,19 @@
+Water|水場
+Lava|溶岩
+Lotus Pads (Flowers)|蓮の葉（花）
+Rock|岩
+Water (Ice Cave)|水場(氷洞窟)
+Waterfall (Ice Cave)|滝(氷洞窟)
+Water C (Snow Cave)|水場C(雪洞窟)
+Whirlpool|渦
+Lava|溶岩
+Waterfall (Stone Wall)|滝（石壁）
+Water (Crystal)|水場（水晶）
+Waterfall (Stone Wall)|滝（石壁）
+Poison Swamp|毒の沼
+Dead Trees|枯れ木
+Sewer Water|下水道
+Waterfall (Stone Wall)|滝（石壁）
+
+
+

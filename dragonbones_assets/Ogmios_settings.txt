@@ -1,0 +1,52 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Ogmios
+Scalex: -1.0
+Scaley: 1.0
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Thrust Attack
+Attack B - Slash Attack 
+Attack C - Spell Attack
+Idle
+Damage
+
+Sample Action Sequence:
+<whole action>
+</whole action>
+
+<target action>
+wait: 10
+motion Attack A: user
+wait: 30
+animation 5: target
+animation 2: target
+action effect
+wait: 20
+move user: return, 10
+</target action>

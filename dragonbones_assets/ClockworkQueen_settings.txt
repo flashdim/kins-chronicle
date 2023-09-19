@@ -1,0 +1,51 @@
+<Attack animation: 12>
+<DragonBone Settings>
+Battler: ClockworkQueen
+Scalex: -1.0
+Scaley: 1.0
+Width: 120
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack D
+Ani Missile: Attack B
+Ani Skill: Attack C
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Precise Kick
+Attack B - Time revolution
+Attack C - Bow strike
+Attack D - Time pierce
+Damage
+Idle
+
+Sample Action Sequence:
+<target action>
+move user: targets, front, 10, offset x -600
+motion Attack C: user
+wait: 50
+animation 77: target
+animation 8: target
+action effect
+move user: return, 10
+wait: 10
+</target action>
+

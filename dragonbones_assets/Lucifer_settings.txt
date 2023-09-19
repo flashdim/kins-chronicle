@@ -1,0 +1,56 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Lucifer
+Scalex: -1.2
+Scaley: 1.2
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Quick Arrow Spear Ranged Attack
+Attack B - Regular Arrow Spear Ranged Attack
+Attack C - Heavy/extended charge Arrow Spear Ranged Attack
+Attack D - Spear Cleave
+Attack E - Spear Double Attack
+Attack F - Spear Triple Attack
+Attack G - Spear Slash Attack
+Attack H - Spear Spin Attack 
+Damage
+Idle
+
+Sample Action Sequence:
+<target action>
+move user: targets, front, 10, offset x -600
+wait: 10
+motion Attack A: user
+wait: 40
+animation 67: target
+animation 8: target
+action effect
+wait: 40
+move user: return, 10
+</target action>
+

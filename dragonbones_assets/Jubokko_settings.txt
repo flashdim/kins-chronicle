@@ -1,0 +1,51 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Jubokko
+Scalex: -0.25
+Scaley: 0.25
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Attack
+Ani Skill: Skill
+Ani Chant: Idle
+Ani Spell: Skill
+Ani Item: Skill
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack
+Damage
+Idle
+Skill
+Skill B
+Skill C
+Skill D
+
+
+--Sample Action Sequence--
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Skill B: user
+wait: 30
+animation 18: target
+action effect
+wait: 15
+</target action>

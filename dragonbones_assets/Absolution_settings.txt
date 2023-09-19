@@ -1,0 +1,38 @@
+<whole action>
+move user: targets, front, 10, offset x -200
+</whole action>
+
+<target action>
+wait: 10
+motion Attack A: user
+wait: 40
+animation 7: target
+animation 8: target
+action effect
+wait: 50
+move user: return, 10
+</target action>
+
+Available Motions:
+Attack A - Left Claw Crush
+Attack B - Double Claw Crush
+Attack C - Stinger Attack
+Attack D - Fierce Attack 
+Damage
+Idle
+
+Sample Action Sequence:
+<whole action>
+move user: targets, front, 10, offset x -200
+</whole action>
+
+<target action>
+wait: 10
+motion Attack A: user
+wait: 40
+animation 7: target
+animation 8: target
+action effect
+wait: 50
+move user: return, 10
+</target action>

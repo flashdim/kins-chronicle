@@ -1,0 +1,40 @@
+<Dragonbones Battler Settings>
+ Battler: megalodile
+
+ Scale X: -1.0
+ Scale Y: 1.0
+
+ Height: 0
+
+ Time Scale: 1.0
+
+ Motion Walk: Idle
+ Motion Wait: Idle
+ Motion Chant: Idle
+ Motion Guard: Idle
+ Motion Damage: Damage
+ Motion Evade: Idle
+ Motion Thrust: Attack A
+ Motion Swing: Attack B
+ Motion Missile: Attack C
+ Motion Skill: Attack A
+ Motion Spell: Attack A
+ Motion Item: Attack A
+ Motion Escape: Idle
+ Motion Victory: Attack A
+ Motion Dying: Idle
+ Motion Abnormal: Idle
+ Motion Sleep: Attack A
+ Motion Dead: Damage
+</Dragonbones Battler Settings>
+
+
+Available Motions:
+Attack A
+Attack B
+Attack C
+Damage
+Idle
+
+
+Create Action sequences to tweak timing and effects of available motions as established by the VisuStella Dragonbones Union Plugin!

@@ -1,0 +1,55 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: ShaccadDestroyer
+Scalex: -0.7
+Scaley: 0.7
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Upper Spear Attack
+Attack B - Dual Spear Stab
+Attack C - Lower Spear Attack
+Attack D - Impaling Attack
+Attack E - Double Impaling Attack
+Damage 
+Idle
+
+Sample Action Sequence:
+Reding Spear
+<whole action>
+</whole action>
+
+<target action>
+wait: 10
+motion Attack A: user
+wait: 25
+animation 3: target
+animation 67: target
+action effect
+wait: 40
+move user: return, 10
+</target action>

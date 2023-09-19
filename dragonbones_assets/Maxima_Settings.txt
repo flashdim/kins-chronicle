@@ -1,0 +1,31 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Maxima-- Enemy Settings (copy any enemy as a base)
+---------------------
+<Attack animation: 12>
+<DragonBone Settings>
+Battler: Maxima
+Scalex: -0.6
+Scaley: 0.6
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Attack
+Ani Skill: Attack
+Ani Chant: Attack
+Ani Spell: Attack
+Ani Item: Attack
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle Weak
+Ani Sleep: Idle Weak
+Ani Dying: Idle Weak
+Ani Dead: Idle
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>

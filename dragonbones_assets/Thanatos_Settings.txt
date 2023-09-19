@@ -1,0 +1,27 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Thanatos
+Scalex: -0.8
+Scaley: 0.8
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Skill
+Ani Skill: Skill
+Ani Chant: Skill
+Ani Spell: Skill
+Ani Item: Skill
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle Weak
+Ani Sleep: Idle Weak
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>

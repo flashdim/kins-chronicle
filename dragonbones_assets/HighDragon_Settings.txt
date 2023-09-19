@@ -1,0 +1,94 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- HighDragon-- Enemy Settings (copy any enemy as a base)
+---------------------
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: HighDragon
+Scalex: -0.8
+Scaley: 0.8
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Skill
+Ani Skill: Skill
+Ani Chant: Attack
+Ani Spell: Skill
+Ani Item: Attack
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Weak Idle
+Ani Sleep:  Weak Idle
+Ani Dying:  Weak Idle
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+<AI Level: 100>
+<AI Priority>
+Always: Skill 27
+Always: Skill 26
+</AI Priority>
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- HighDragon-- Attack Settings (copy '#20 Attack' as a base)
+(name it Attack)
+---------------------
+<Target Action>
+motion evade: user
+move user: targets, front, 20
+wait for movement
+motion swing: user
+wait: 25
+action animation
+wait: 5
+shake screen: 3, 9, 5
+action effect
+death break
+wait: 30
+</target Action>
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- HighDragon-- Skill Settings (use Neutral All 2 as animation)
+(name it Energy Core)
+---------------------
+<cooldown: 5>
+<setup action>
+display action
+wait: 5
+hide battle hud
+</setup action>
+
+<Target Action>
+motion spell: user
+wait: 30
+se: Monster4
+action animation: target
+wait: 10
+action effect: target
+wait: 10
+action effect: target
+wait: 10
+action effect: target
+wait: 9
+action effect: target
+wait: 8
+action effect: target
+wait: 7
+action effect: target
+death break
+clear battle log
+wait: 20
+perform finish
+</Target Action>
+
+<follow action>
+show battle hud
+</follow action>
+ 

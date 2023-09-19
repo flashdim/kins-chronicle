@@ -1,0 +1,55 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: MechaSnake
+Scalex: -1.0
+Scaley: 1.0
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack A
+Ani Thrust: Attack B
+Ani Missile: Attack C
+Ani Skill: Attack B
+Ani Chant: Attack A
+Ani Spell: Attack B
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Avaialble Motions:
+Attack A - Tail Slash
+Attack B - Tail Stab
+Attack C - Mouth Laser
+Attack D - Mouth Stab
+Damage
+Idle
+
+Base action sequence(Tweak as needed):
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack A: user
+wait: 30
+animation 18: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

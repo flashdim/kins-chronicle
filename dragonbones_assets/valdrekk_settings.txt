@@ -1,0 +1,38 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Valdrekk
+Scalex: -0.8
+Scaley: 0.8
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+AVailable Motions:
+Attack A - Fire ball Spit
+Attack B - Extended Fire Ball Spit
+Attack C - Flame Spit Variant
+Attack D - Claw Attack
+Damage
+Idle

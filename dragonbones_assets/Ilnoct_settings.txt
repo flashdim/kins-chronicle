@@ -1,0 +1,110 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Ilnoct
+Scalex: -0.6
+Scaley: 0.6
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Violent Pull
+Ani Swing: Left hand Skill
+Ani Thrust: Fist Smash
+Ani Missile: Right Hand Skill
+Ani Skill: Right Hand Skill
+Ani Chant: Idle
+Ani Spell: Right Hand Skill
+Ani Item: Left hand Skill
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+***Sample Action Sequences***
+*Fist Smash*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Fist Smash: user
+wait: 30
+animation 20: target
+animation 107: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+*Left Hand Skill*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Left Hand Skill: user
+wait: 30
+animation 101: target
+animation 15: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+*Right Hand Skill*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Right Hand Skill: user
+wait: 45
+animation 103: target
+wait: 30
+action effect
+wait: 10
+action effect
+wait: 10
+action effect
+wait: 10
+action effect
+wait: 10
+action effect
+wait: 10
+action effect
+</target action>
+
+*Violent Pull*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Violent Pull: user
+wait: 30
+animation 58: target
+animation 15: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

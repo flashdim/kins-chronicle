@@ -1,0 +1,32 @@
+﻿Ground (Dirt Cave)|床（土洞窟）
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Grass)|床D（草地）
+Ground (Grass)|床D（草地）
+Broken Tile Floor|壊れたタイルの床
+Road Edging|縁石
+Table|テーブル
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Stone)|床（石）
+Ground (Ice Cave)|床（氷洞窟）
+Ground (Ice Cave)|床（氷洞窟）
+Ground (Ice, Cobblestones)|床（氷・石畳）
+Ground (Ice)|床（氷）
+Moss|苔
+Ground (Rock Cave)|床（岩洞窟）
+Ground (Rock Cave)|床（岩洞窟）
+Ground (Rock Cave, Grass)|床（岩洞窟・草）
+Ground (Rock Cave)|床（岩洞窟）
+Hole (Rock Cave)|穴（岩洞窟）
+Ground (Rock Cave, Road Edging)|床（岩洞窟・縁石）
+Road Edging (Snow)|縁石（雪）
+Rug|じゅうたん
+Ground (Crystal)|床（水晶）
+Ground (Crystal)|床（水晶）
+Ground (Crystal)|床（水晶）
+Ground (Crystal)|床（水晶）
+Hole (Tile Floor)|穴（タイルの床）
+Hole (Wood Floor)|穴（木の床）
+Hole (Wood Floor)|穴（木の床）
+Rug|じゅうたん

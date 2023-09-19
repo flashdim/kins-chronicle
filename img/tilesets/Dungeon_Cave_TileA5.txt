@@ -1,0 +1,128 @@
+﻿Darkness|暗闇
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Grass)|床（草）
+Ground (Gravel)|床（砂利）
+Hole (Dirt Cave)|穴（土洞窟）
+Ground (Dirt Cave)|床（土洞窟）
+Ground (Dirt Cave)|床（土洞窟）
+Transparent|透明
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Stairs (Wood)|階段（木製）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ground (Dirt Cave)|床（土洞窟）
+Ledge (Dirt)|段差（土）
+Ledge (Stone)|段差（石）
+Ledge (Stone)|段差（石）
+Ledge (Stone)|段差（石）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Dirt)|段差（土）
+Ledge (Stone)|段差（石）
+Ground (Stone)|床（石）
+Ledge (Stone)|段差（石）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Ledge (Stone)|段差（石）
+Ledge (Stone)|段差（石）
+Ledge (Stone)|段差（石）
+Stairs (Stone)|階段（石）
+Stairs (Stone)|階段（石）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Ledge (Stone)|段差（石）
+Stairs (Stone)|階段（石）
+Stairs (Stone)|階段（石）
+Stairs (Stone)|階段（石）
+Stairs (Stone)|階段（石）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Hollow (Dirt)|窪み（土）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Horizontal Rail (Wood)|横ハシゴ（木製）
+Vertical Rail (Wood)|縦ハシゴ（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Ground (Wood)|床（木製）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Wood)|壁（木製）
+Wall (Wood)|壁（木製）
+Wall (Wood)|壁（木製）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Wood)|壁（木製）
+Wall (Wood)|壁（木製）
+Wall (Wood)|壁（木製）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Dirt Cave)|穴（土洞窟）
+Hole (Snow)|穴（雪）
+Hole (Snow)|穴（雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Stairs (Dirt, Snow)|階段（土・雪）
+Slope (Snow)|坂（雪）
+Slope (Snow)|坂（雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Stairs (Dirt, Snow)|階段（土・雪）
+Slope (Snow)|坂（雪）
+Slope (Snow)|坂（雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Ledge (Dirt, Snow)|段差（土・雪）
+Stairs (Dirt, Snow)|階段（土・雪）
+Stairs (Dirt, Snow)|階段（土・雪）
+Stairs (Dirt, Snow)|階段（土・雪）
+Slope (Snow)|坂（雪）
+Slope (Snow)|坂（雪）

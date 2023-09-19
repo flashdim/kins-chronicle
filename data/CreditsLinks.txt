@@ -1,0 +1,161 @@
+Text that appears outside of the block tags
+will not display in the credits scene
+
+<block:-1,-1,10,10,offbot,left,UI_Credits>
+\OutlineColor[16]\OutlineWidth[4]\c[7]\{\{\{\{KIN'S
+\OutlineColor[16]\OutlineWidth[4]\c[7]\{\{\{\{ CHRONICLE
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Production and 
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Development
+by
+Seth "flashdim" Manrow
+flashdim@gmail.com
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Story Consulting
+by
+\{Brent Fisher
+https://www.brentfisher.net/
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Original Music
+by
+\{Jeremy Palmer
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Monster Art and Animation
+by
+\{Ækashics Librarium
+http://www.akashics.moe
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Additional Artwork
+<b>Additional Tarot & 
+Steam Trading Card Art</b>
+by
+\{Craig Fisher
+https://ibispress.org/
+
+<b>Equipment & Armor</b>
+by 
+\{Alexander Zagorulko 
+https://www.instagram.com/a_ravlik/
+
+<b>Icons</b>
+by
+\{Caz Wolf
+http://cazwolf.itch.io/
+
+<b>Zodiac wheel</b>
+by 
+\{FreePik
+http://www.freepik.com/
+
+<b>Controller Layout Images</b>
+by
+\{Alphathon\} - Xbox Controller
+https://commons.wikimedia.org/wiki/User:Alphathon
+\{Tokyoship\} - Playstation Controller
+https://commons.wikimedia.org/wiki/User:Tokyoship
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Plugins and Artwork
+\{(C){{2021}} VisuStella™
+http://www.visustella.com/
+
+VisuStellaMZ Plugin Family
+VisuStella™: Armory Axe and Staff
+VisuStella™: Armory Bow and Club
+VisuStella™: Armory Katana and Katar
+VisuStella™: Armory Sword and Spear
+VisuStella™: Atelier Potions and Tonics
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Additional Plugins
+
+\{MZ3D by CutieVirus
+https://cutievirus.itch.io/
+
+\{HUD Maker Ultra by SumRndmDde
+http://sumrndm.site/
+
+\{rabbitMap by poorrabbit
+https://poorrabbit.itch.io/
+
+End Phase Triggers, Magic Circles
+and Title Screen Particles by
+\{HimeWorks
+https://himeworks.com/
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Additional Plugins
+
+\{Battle HUD by Moghunter
+https://mogplugins.wordpress.com/
+
+\{CycloneSteam by Hudell
+https://github.com/Hudell/
+
+\{GreenWorks by Greenheart Games Pty. Ltd.
+https://github.com/greenheartgames/
+
+\{Skill Type Listing code by MALIKI79
+https://forums.rpgmakerweb.com/index.php?members/maliki79.231/
+
+\{Mano Input Config by Sigureya
+https://github.com/Sigureya/RPGmakerMZ
+
+</block>
+
+<block:-1,0,10,10,100,left>
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Credits Scene 
+by 
+\{Galv
+https://www.patreon.com/Galv
+
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Streaming Stars
+Ap0calypticCheese @ http://twitch.tv/Ap0calypticCheese
+eckoray @ http://twitch.tv/eckoray
+Mana @ https://www.youtube.com/c/manasp
+TheElectricMindset @ http://twitch.tv/theelectricmindset
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Alpha Test All-Stars
+eckoray
+Havoc
+Interested Person
+Jrad
+Onts 
+Sasiah
+Syrel
+WispyMouse
+willsama974
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Special Thanks
+Omerta138
+AveSharia
+JSkrillz
+XxEpic12xX
+Aurora Hearts @ https://aurora-hearts.itch.io/
+</block>
+
+<block:600,0,10,10,420,left>
+\{\{AND PLAYERS
+\{\{ LIKE YOU
+</block>
+
+<block:6000,0,10,10,800,center>
+\c[2]RPG Maker MZ Engine and Artwork by
+Degica Games
+https://www.degicagames.com/
+</block>

@@ -1,0 +1,111 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Garm
+Scalex: -0.7
+Scaley: 0.7
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack D
+Ani Skill: Attack A
+Ani Chant: Attack A
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A
+Attack B
+Attack C
+Attack D
+Damage
+Idle
+
+*Sample Action Sequences*
+*Attack A*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack A: user
+wait: 30
+animation 18: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+*Attack B*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack B: user
+wait: 30
+animation 67: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+*Attack C*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack C: user
+wait: 15
+animation 8: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+*Attack D*
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack D: user
+wait: 45
+animation 34: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

@@ -1,0 +1,37 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Tantalus
+Scalex: -0.55
+Scaley: 0.55
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack Slash
+Ani Swing: Fierce Slash
+Ani Thrust: Attack Thrust
+Ani Missile: Shield Throw
+Ani Skill: Shield Charge
+Ani Chant: Idle
+Ani Spell: Shield Charge
+Ani Item: Attack Slash
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Retreat
+
+Replace Sprite
+</DragonBone Settings>
+
+
+Available Motions:
+Attack Slash
+Attack thrust
+Damage
+Fierce Slash
+Idle
+Shield Charge
+Shield Throw

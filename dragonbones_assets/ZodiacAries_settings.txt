@@ -1,0 +1,68 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ZodiacAries -- Animations
+---------------------
+Idle, IdleWeak, Attack, Skill, Damage
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ZodiacAries -- Enemy Settings
+---------------------
+<DragonBone Settings>
+Battler: ZodiacAries
+Scalex: -0.6
+Scaley: 0.6
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Skill
+Ani Thrust: Attack
+Ani Missile: Skill
+Ani Skill: Skill
+Ani Chant: Idle
+Ani Spell: Skill
+Ani Item: Idle
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: IdleWeak
+Ani Sleep: IdleWeak
+Ani Victory: Idle
+Ani Escape: IdleWeak
+Ani Dead: IdleWeak
+
+Replace Sprite
+</DragonBone Settings>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ZodiacAries -- Recommended Attack Action Sequence
+animation [A] - pierce animation (e.g. RTP-pierce fire)
+---------------------
+<target action>
+motion attack: user
+wait: 28
+move user: targets, BASE, 20
+face user: target
+wait: 8
+animation [A]: target
+action effect
+wait: 16
+</target action>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ZodiacAries -- Recommended Skill Action Sequence
+(offset requires Action Sequence Pack 2 Version 1.12)
+animation [A] - spell animation (e.g. RTP-fire one 1)
+---------------------
+<target action>
+move user: targets, FRONT BASE, 20, auto offset x -70
+wait: 10
+motion skill: user
+wait: 40
+animation [A]: target
+action effect
+wait for animation
+</target action>
+---------------------

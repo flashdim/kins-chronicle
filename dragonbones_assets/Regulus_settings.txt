@@ -1,0 +1,146 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Legendary Knight Regulus -- Animations
+---------------------
+Idle, IdleWeak, Attack, Skill, Skill2, Ultimate, Damage
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Legendary Knight Regulus -- Enemy Settings
+---------------------
+<DragonBone Height: 310>
+<No Breathing>
+<DragonBone Settings>
+Battler: Regulus
+Scalex: -1
+Scaley: 1
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Skill
+Ani Missile: Skill2
+Ani Skill: Ultimate
+Ani Chant: Skill2
+Ani Spell: Skill2
+Ani Item: Idle
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: IdleWeak
+Ani Sleep: IdleWeak
+Ani Victory: Idle
+Ani Escape: IdleWeak
+Ani Dead: IdleWeak
+
+Replace Sprite
+</DragonBone Settings>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Legendary Knight Regulus -- Recommended Attack Action Sequence
+(offset requires Action Sequence Pack 2 Version 1.12)
+animation [A] - slash animation (e.g. RTP-Slash Effect)
+---------------------
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion attack: user
+wait: 30
+animation [A]: target
+action effect
+wait: 15
+</target action>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Legendary Knight Regulus -- Recommended Skill Action Sequence
+(offset requires Action Sequence Pack 2 Version 1.12)
+animation [A] - pierce animation (e.g. RTP-Pierce Effect)
+---------------------
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -250
+wait: 10
+motion thrust: user
+wait: 25
+animation [A]: target
+action effect
+move target: targets, BASE, 10, auto offset x +70
+face target: forward
+wait: 17
+animation [A]: target
+action effect
+wait: 25
+</target action>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Legendary Knight Regulus -- Recommended Skill 2 (buff) Action Sequence
+animation [A] - Powerup animation (e.g. RTP-Powerup 2)
+---------------------
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: forward, 48, 20
+motion chant: user
+wait: 15
+animation [A]: user
+action effect
+wait: 55
+</target action>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Legendary Knight Regulus -- Recommended Ultimate Action Sequence
+(offset requires Action Sequence Pack 2 Version 1.12)
+animation [A] - pierce animation (e.g. RTP-Pierce Effect)
+animation [B] - pierce/physical pull animation (e.g. RTP-Pierce Effect/edited Sweep)
+animation [C] - slash animation (e.g. RTP-Slash Effect)
+---------------------
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -280
+wait: 12
+motion Skill: user
+wait: 52
+animation [A]: target
+action effect
+move target: targets, BASE, 19, auto offset x +210 offset y -200
+face target: forward
+wait: 20
+move target: targets, BASE, 10, auto offset x -80 offset y -40
+face target: forward
+animation [B]: target
+action effect
+wait: 10
+move target: targets, BASE, 10, auto offset x -110 offset y +10
+face target: forward
+wait: 10
+move target: targets, BASE, 16, auto offset x -90 offset y +50
+face target: forward
+wait: 16
+animation [C]: target
+action effect
+wait: 3
+move target: HOME, 4
+face target: forward
+wait: 5
+</target action>
+---------------------

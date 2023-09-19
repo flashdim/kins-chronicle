@@ -1,0 +1,54 @@
+<Show Level>
+<Static Level: 20>
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Wolfbull
+Scalex: -1.0
+Scaley: 1.0
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Horn Attack 
+Attack B - Power Up
+Attack C - Power Up B
+Attack D - Ranged Attack
+Damage
+Idle
+
+Sample Action Sequence:
+<whole action>
+</whole action>
+
+<target action>
+wait: 10
+motion Attack D: user
+wait: 35
+animation 67: target
+action effect
+add state 13: target
+wait: 40
+</target action>

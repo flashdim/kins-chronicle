@@ -1,0 +1,56 @@
+<DragonBone Settings>
+Battler: RunicStoneGolem
+Scalex: -0.8
+Scaley: 0.8
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack E
+Ani Skill: Attack D
+Ani Chant: Idle
+Ani Spell: Idle
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+***Avaialble Motions***
+Attack A - Casts a ranged spell
+Attack B - Slashes with one sword
+Attack C - Thrusts with all blades
+Attack D - Slashes with all blades
+Attack E - Casts a ranged spell
+Damage
+Idle
+
+***Sample Action Sequence****
+***replace -motion- with action from Available motions pool***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack A: user
+wait: 45
+animation 66: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

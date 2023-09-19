@@ -1,0 +1,56 @@
+<Attack animation: 12>
+<DragonBone Settings>
+Battler: RoyalGuardsmen
+Scalex: -1.0
+Scaley: 1.0
+Width: 300
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Spear lunge
+Attack B - Axe swing
+Attack C - Bow shot
+Attack D - Team rush
+Damage
+Idle
+
+Sample Action Sequence:
+<whole action>
+move user: targets, FRONT BASE, 10, offset x -200
+motion Attack D: user
+wait: 38
+animation 7: target
+action effect
+wait: 2
+animation 12: target
+action effect
+wait: 1
+animation 2: target
+action effect
+wait: 40
+move user: return, 10
+wait: 10
+</whole action>

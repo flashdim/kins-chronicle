@@ -1,0 +1,1168 @@
+//=============================================================================
+// VisuStella MZ - Visual State Effects
+// VisuMZ_3_VisualStateEffects.js
+//=============================================================================
+
+var Imported = Imported || {};
+Imported.VisuMZ_3_VisualStateEffects = true;
+
+var VisuMZ = VisuMZ || {};
+VisuMZ.VisualStateEffects = VisuMZ.VisualStateEffects || {};
+VisuMZ.VisualStateEffects.version = 1.13;
+
+//=============================================================================
+ /*:
+ * @target MZ
+ * @plugindesc [RPG Maker MZ] [Tier 3] [Version 1.13] [VisualStateEffects]
+ * @author VisuStella
+ * @url http://www.yanfly.moe/wiki/Visual_State_Effects_VisuStella_MZ
+ * @base VisuMZ_0_CoreEngine
+ * @base VisuMZ_1_BattleCore
+ * @base VisuMZ_1_SkillsStatesCore
+ * @orderAfter VisuMZ_1_BattleCore
+ * @orderAfter VisuMZ_1_SkillsStatesCore
+ *
+ * @help
+ * ============================================================================
+ * Introduction
+ * ============================================================================
+ *
+ * States, buffs, and debuffs are amongst one of the most important aspects of
+ * the battle system. Therefore, relaying proper information to the player is
+ * extremely important. RPG Maker MZ does relay information to the player about
+ * the various states and effects, but it is far from perfect. This plugin
+ * allows you to add more detail and visual effects regarding states to relay
+ * proper data.
+ *
+ * Features include all (but not limited to) the following:
+ * 
+ * * Choose to display State Overlays and State Icons over actors and enemies.
+ * * Create text popups for Buffs, Debuffs, and States along with full control
+ *   over their color, flash, and flash duration.
+ * * Play animations upon receiving or removing Buffs, Debuffs, and States.
+ * * States can have repeating animations.
+ * * States can change the tone of a sprite.
+ * * States can freeze a sprite in place.
+ * * States can adjust the opacity of a battler to make them semi-transparent.
+ * * Hovering effects that can be visibly applied to trait objects.
+ *
+ * ============================================================================
+ * Requirements
+ * ============================================================================
+ *
+ * This plugin is made for RPG Maker MZ. This will not work in other iterations
+ * of RPG Maker.
+ *
+ * ------ Required Plugin List ------
+ *
+ * - VisuMZ_0_CoreEngine
+ * - VisuMZ_1_BattleCore
+ * - VisuMZ_1_SkillsStatesCore
+ *
+ * This plugin requires the above listed plugins to be installed inside your
+ * game's Plugin Manager list in order to work. You cannot start your game with
+ * this plugin enabled without the listed plugins.
+ *
+ * ------ Tier 3 ------
+ *
+ * This plugin is a Tier 3 plugin. Place it under other plugins of lower tier
+ * value on your Plugin Manager list (ie: 0, 1, 2, 3, 4, 5). This is to ensure
+ * that your plugins will have the best compatibility with the rest of the
+ * VisuStella MZ library.
+ *
+ * ============================================================================
+ * Major Changes
+ * ============================================================================
+ *
+ * This plugin adds some new hard-coded features to RPG Maker MZ's functions.
+ * The following is a list of them.
+ *
+ * ---
+ *
+ * State Motion Index and State Overlay Index
+ * 
+ * - The original RPG Maker MZ functions have been overwritten because they
+ * only display the motions and overlays of the highest priority state even if
+ * it does not have any motions while lower priority states with motions and
+ * overlays will be hidden.
+ * 
+ * - The changed code will now take the highest priority state motion index (or
+ * a custom one defined by a notetag) and the highest priority state overlay
+ * index to show those instead.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Notetags
+ * ============================================================================
+ *
+ * The following are notetags that have been added through this plugin. These
+ * notetags will not work with your game if this plugin is OFF or not present.
+ *
+ * === State-Related Notetags ===
+ * 
+ * The following notetags are made for states.
+ * 
+ * ---
+ * 
+ * <Hide State Popup>
+ *
+ * - Used for: State Notetags
+ * - Don't display any of the popups for this state.
+ * 
+ * ---
+ * 
+ * <State Popup>
+ *  text color: c
+ *  flash color: r, g, b, a
+ *  flash duration: d
+ * </State Popup>
+ *
+ * - Used for: State Notetags
+ * - Changes the settings of the state popup from the defaults declared by the
+ *   Plugin Parameters. Each of the settings are optional. If the lines do not
+ *   appear in the notetag, then the default values from the Plugin Parameters
+ *   will be used instead.
+ * - Replace 'c' #rrggbb for custom colors or insert a regular number for text
+ *   colors from the Window Skin.
+ * - Replace 'r', 'g', 'b', 'a' with number values ranging from 0 to 255 for
+ *   'red', 'green', 'blue', and 'alpha' to determine the flash color.
+ * - Replace 'd' with a number representing the amount of frames you want the
+ *   flash duration to last for.
+ * 
+ * Examples:
+ * 
+ * <State Popup>
+ *  text color: 3
+ * </State Popup>
+ * 
+ * <State Popup>
+ *  text color: #abcdef
+ *  flash color: 255, 255, 0, 160
+ * </State Popup>
+ * 
+ * <State Popup>
+ *  flash color: 0, 255, 255, 160
+ *  flash duration: 90
+ * </State Popup>
+ * 
+ * <State Popup>
+ *  flash duration: 777
+ * </State Popup>
+ * 
+ * ---
+ * 
+ * <Add Animation: x>
+ *
+ * - Used for: State Notetags
+ * - Determines the battle animation to play when the state is applied.
+ * - Replace 'x' with a number representing the ID of the animation you wish
+ *   to play when the state is added.
+ * - This does not work for states without icons nor the death state.
+ * 
+ * ---
+ * 
+ * <Erase Animation: x>
+ *
+ * - Used for: State Notetags
+ * - Determines the battle animation to play when the state is removed.
+ * - Replace 'x' with a number representing the ID of the animation you wish
+ *   to play when the state is removed.
+ * - This does not work for states without icons nor the death state.
+ * 
+ * ---
+ * 
+ * <Repeat Animation: x>
+ *
+ * - Used for: State Notetags
+ * - Determines the battle animation to play in intervals when the battler is
+ *   affected by it.
+ * - Replace 'x' with a number representing the ID of the animation you wish
+ *   to play on repeat while the battler is affected by the state.
+ * - The battler will cycle through the various repeating state animations
+ *   available through states.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * - WARNING: Abusing Repeat Animations can jeopardize game performance.
+ * 
+ * ---
+ * 
+ * <Repeat Animation Cycle: x>
+ *
+ * - Used for: State Notetags
+ * - Determines the cycle/duration of this specific state's repeating animation
+ *   if you do not wish to use the plugin parameter's default setting.
+ * - Replace 'x' with the number of frames you wish to play this animation for
+ *   before moving onto the next animation.
+ * - WARNING: Lower numbers can jeopardize game performance.
+ * 
+ * ---
+ * 
+ * <State Motion: Walk>
+ * <State Motion: Wait>
+ * <State Motion: Chant>
+ * <State Motion: Guard>
+ * <State Motion: Damage>
+ * <State Motion: Evade>
+ * <State Motion: Thrust>
+ * <State Motion: Swing>
+ * <State Motion: Missile>
+ * <State Motion: Skill>
+ * <State Motion: Spell>
+ * <State Motion: Item>
+ * <State Motion: Escape>
+ * <State Motion: Victory>
+ * <State Motion: Dying>
+ * <State Motion: Abnormal>
+ * <State Motion: Sleep>
+ * <State Motion: Dead>
+ *
+ * - Used for: State Notetags
+ * - Lets you determine what kind of state motion to play when the battler is
+ *   affected by the state.
+ * - The battler will only play the highest priority state motion.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * ---
+ * 
+ * <State Motion Lock>
+ * 
+ * - Used for: State Notetags
+ * - If an actor or animated sideview enemy is affected by a state that has
+ *   this notetag, their animation will be locked in place while this state
+ *   is in effect.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * ---
+ * 
+ * <State Tone: red, green, blue, gray>
+ *
+ * - Used for: State Notetags
+ * - Tints the battler with a tone determined by the state.
+ * - Replace 'red', 'green', 'blue' with a value between -255 and 255.
+ * - Replace 'gray' with a value between 0 and 255.
+ * - If a battler has multiple states with tones, then the state with the
+ *   highest priority value is applied to the battler.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * ---
+ * 
+ * <Visual Opacity: x>
+ * <Visual Opacity: x%>
+ * 
+ * - Used for: State Notetags
+ * - When a battler is affected by this state, change the opacity of their main
+ *   battler sprite to 'x' or 'x%'.
+ * - Replace 'x' with a number from 0 to 255 representing the opacity level.
+ * - Replace 'x%' with a percentage from 0% to 100% representing the opacity.
+ * - This does NOT affect UI elements like the HP Gauges, State Icons, or their
+ *   positioning markers such as the battler's shadow as this is only to used
+ *   to represent a change in their opacity through a state.
+ * - To change the whole battler's opacity including everything from the UI
+ *   elements, State Icons, etc., use the Action Sequence Plugin Command to
+ *   visually alter the whole opacity level instead.
+ * - The Visual Opacity level will compound with the opacity level adjusted by
+ *   the Action Sequence Plugin Command. Keep this in mind when using both of
+ *   them together.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * ---
+ * 
+ * <Visual Rainbow: +x>
+ * <Visual Rainbow: -x>
+ * 
+ * - Used for: State Notetags
+ * - When a battler is affected by this state, the battler has a colorful
+ *   rainbow shifting effect.
+ * - Replace 'x' with a number representing how fast the colors shift for the
+ *   battler. Higher numbers are faster. Lower numbers are slower.
+ * - This does NOT affect UI elements like the HP Gauges, State Icons, or their
+ *   positioning markers such as the battler's shadow as this is only to used
+ *   to represent a change in their opacity through a state.
+ * - The Visual Rainbow shift will be stacked on top of any battlers/enemies
+ *   that already have a hue change.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * ---
+ *
+ * === Hover-Related Notetags ===
+ * 
+ * ---
+ * 
+ * <Visual Hover Effect>
+ *  Base: x
+ *  Speed: y
+ *  Rate: z
+ *  Death: case
+ * </Visual Hover Effect>
+ *
+ * - Used for: Actor, Class, Weapon, Armor, Enemy, State Notetags
+ * - Creates a hover effect when tied to a trait object.
+ * - The 'base' value determines the minimum height above the ground for the
+ *   hover effect. Replace 'x' with a number representing the pixel height.
+ * - The 'speed' value determines the flat adjustment towards the wobbling
+ *   change. Replace 'y' with a number representing the speed. Lower values
+ *   move faster while higher values move slower.
+ * - The 'rate' determines the fluctuation rate when the hover effect bobbles
+ *   up and down. Replace 'z' with a number representing the fluctuation rate.
+ * - The 'death' scenario lets you decide if you want the hovering battler to
+ *   remain hovering if they're dead or fall down to the floor. Replace 'case'
+ *   with 'Hover' or 'Floor'.
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * Example:
+ * 
+ * <Visual Hover Effect>
+ *  Base: 100
+ *  Speed: 20
+ *  Rate: 5.0
+ *  Death: floor
+ * </Visual Hover Effect>
+ * 
+ * ---
+ *
+ * === Breathing-Related Notetags ===
+ * 
+ * The following notetags are purely EXPERIMENTAL. There is a high likelihood
+ * of unintended graphical glitches when using them. Use them at your own risk.
+ * 
+ * ---
+ * 
+ * <Visual Breathing Effect>
+ *  Speed: x
+ *  Speed X: x
+ *  Speed Y: x
+ *  
+ *  Rate: x.y
+ *  Rate X: x.y
+ *  Rate Y: x.y
+ * 
+ *  HP Link: On
+ *  HP Link: Off
+ * </Visual Breathing Effect>
+ * 
+ * - Used for: Actor, Class, Weapon, Armor, Enemy, State Notetags
+ * - Creates a hover effect when tied to a trait object.
+ * - The 'speed' value determines how long each cycle is.
+ *   - When using 'Speed', this will apply to both 'Speed X' and 'Speed Y'
+ *   - 'Speed X' refers to the horizontal breathing cycle
+ *   - 'Speed Y' refers to the vertical breathing cycle
+ *   - If not declared, both will default to a value of '10'
+ * - The 'rate' value determines how exaggerated the breathing distortion looks
+ *   for the affected target.
+ *   - When using 'Rate', this will apply to both 'Rate X' and 'Rate Y
+ *   - 'Rate X' refers to horizontal breathing distortion effect
+ *   - 'Rate Y' refers to vertical breathing distortion effect
+ *   - If not declared, 'Rate X' will default to 0.000 and 'Rate Y' to 0.020.
+ * - HP Link refers to the breathing speed relative to the target's HP rate
+ *   where the lower the rate, the slower the speed becomes.
+ *   - 'On' means it's enabled.
+ *   - 'Off' means it's disabled.
+ *   - If not declared, this will default to 'OFF'
+ * - NOTE: Using this with Passive State Conditions will make this effect
+ *   update at the next battler refresh cycle. This is due to the effect
+ *   being cached in order to prevent lag and overloading the engine.
+ * 
+ * Examples:
+ * 
+ * <Visual Breathing Effect>
+ *  Speed: 10
+ *  Rate Y: 0.050
+ *  HP Link: On
+ * </Visual Breathing Effect>
+ * 
+ * <Visual Breathing Effect>
+ *  Speed X: 15
+ *  Speed Y: 10
+ *  Rate X: 0.01
+ *  Rate Y: 0.050
+ * </Visual Breathing Effect>
+ * 
+ * ---
+ * 
+ * <No Breathing>
+ * 
+ * - Used for: Actor, Class, Weapon, Armor, Enemy, State Notetags
+ * - Removes any breathing effects for the affected target.
+ * 
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: General Settings
+ * ============================================================================
+ *
+ * General settings for Visual State Effects.
+ *
+ * ---
+ *
+ * Actors
+ * 
+ *   Show State Overlay?:
+ *   - Show state overlays over an actor's head?
+ * 
+ *   Show State Icons?:
+ *   - Show state icons over an actor's head?
+ *
+ * ---
+ *
+ * Enemies
+ * 
+ *   Show State Overlay?:
+ *   - Show state overlays over an enemy's head?
+ * 
+ *   Show State Icons?:
+ *   - Show state icons over an enemy's head?
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Buff/Debuff Settings Settings
+ * ============================================================================
+ *
+ * Buff/Debuff settings for Visual State Effects.
+ *
+ * ---
+ *
+ * Popups
+ * 
+ *   Show Popups?:
+ *   - Show Buff/Debuff Popups when applied?
+ * 
+ *     Buff Format:
+ *     - How do you want the buff text to appear?
+ *     - %1 - Parameter Name
+ * 
+ *       Text Color:
+ *       - Use #rrggbb for custom colors or regular numbers for text colors
+ *         from the Window Skin.
+ * 
+ *       Flash Color:
+ *       - Adjust the popup's flash color.
+ *       - Format: [red, green, blue, alpha]
+ * 
+ *       Flash Duration:
+ *       - What is the frame duration of the flash effect?
+ * 
+ *     Debuff Format:
+ *     - How do you want the debuff text to appear?
+ *     - %1 - Parameter Name
+ * 
+ *       Text Color:
+ *       - Use #rrggbb for custom colors or regular numbers for text colors
+ *         from the Window Skin.
+ * 
+ *       Flash Color:
+ *       - Adjust the popup's flash color.
+ *       - Format: [red, green, blue, alpha]
+ * 
+ *       Flash Duration:
+ *       - What is the frame duration of the flash effect?
+ * 
+ * ---
+ * 
+ * Animations
+ * 
+ *   Show Animations?:
+ *   - Show Buff/Debuff Animations when applied?
+ * 
+ *     Mirror Animations?:
+ *     - Mirror animations for buffs/debuffs?
+ * 
+ *     Mute Animations?:
+ *     - Mute animations for buffs/debuffs?
+ * 
+ * ---
+ * 
+ * Buff Animations
+ * 
+ *   MaxHP Buff:
+ *   MaxMP Buff:
+ *   ATK Buff:
+ *   DEF Buff:
+ *   MAT Buff:
+ *   MDF Buff:
+ *   AGI Buff:
+ *   LUK Buff:
+ *   - Animation played when applying specific Buffs.
+ * 
+ * Debuff Animations
+ * 
+ *   MaxHP Debuff:
+ *   MaxMP Debuff:
+ *   ATK Debuff:
+ *   DEF Debuff:
+ *   MAT Debuff:
+ *   MDF Debuff:
+ *   AGI Debuff:
+ *   LUK Debuff:
+ *   - Animation played when applying specific Debuff.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: State Settings
+ * ============================================================================
+ *
+ * Default State settings for Visual State Effects.
+ *
+ * ---
+ *
+ * Popups
+ * 
+ *   Show Popups?:
+ *   - Show States Popups when applied and removed?
+ * 
+ *     Add State Format:
+ *     - How do you want added states to appear?
+ *     - %1 - State Name
+ * 
+ *     Erase State Format:
+ *     - How do you want erased states to appear?
+ *     - %1 - State Name
+ * 
+ *     Default Text Color:
+ *     - Use #rrggbb for custom colors or regular numbers for text colors from
+ *       the Window Skin.
+ * 
+ *       Match Turn Count?:
+ *       - Match turn count color by default?
+ * 
+ *     Flash Color:
+ *     - Adjust the popup's default flash color.
+ *     - Format: [red, green, blue, alpha]
+ * 
+ *       Flash Duration:
+ *       - What is the frame duration of the default flash effect?
+ *
+ * ---
+ *
+ * State Animations
+ * 
+ *   Add/Erase Animations
+ * 
+ *     Mirror Animations?:
+ *     - Mirror animations for states?
+ * 
+ *     Mute Animations?:
+ *     - Mute animations for states?
+ * 
+ *   Repeating Animations
+ * 
+ *     Cycle Time:
+ *     - The amount of frames to wait before each animation cycle.
+ *     - WARNING: Lower numbers can jeopardize game performance.
+ * 
+ *     Mirror Animations?:
+ *     - Mirror repeating animations for states by default?
+ * 
+ *     Mute Animations?:
+ *     - Mute repeating animations for states by default?
+ *
+ * ---
+ *
+ * ============================================================================
+ * Terms of Use
+ * ============================================================================
+ *
+ * 1. These plugins may be used in free or commercial games provided that they
+ * have been acquired through legitimate means at VisuStella.com and/or any
+ * other official approved VisuStella sources. Exceptions and special
+ * circumstances that may prohibit usage will be listed on VisuStella.com.
+ * 
+ * 2. All of the listed coders found in the Credits section of this plugin must
+ * be given credit in your games or credited as a collective under the name:
+ * "VisuStella".
+ * 
+ * 3. You may edit the source code to suit your needs, so long as you do not
+ * claim the source code belongs to you. VisuStella also does not take
+ * responsibility for the plugin if any changes have been made to the plugin's
+ * code, nor does VisuStella take responsibility for user-provided custom code
+ * used for custom control effects including advanced JavaScript notetags
+ * and/or plugin parameters that allow custom JavaScript code.
+ * 
+ * 4. You may NOT redistribute these plugins nor take code from this plugin to
+ * use as your own. These plugins and their code are only to be downloaded from
+ * VisuStella.com and other official/approved VisuStella sources. A list of
+ * official/approved sources can also be found on VisuStella.com.
+ *
+ * 5. VisuStella is not responsible for problems found in your game due to
+ * unintended usage, incompatibility problems with plugins outside of the
+ * VisuStella MZ library, plugin versions that aren't up to date, nor
+ * responsible for the proper working of compatibility patches made by any
+ * third parties. VisuStella is not responsible for errors caused by any
+ * user-provided custom code used for custom control effects including advanced
+ * JavaScript notetags and/or plugin parameters that allow JavaScript code.
+ *
+ * 6. If a compatibility patch needs to be made through a third party that is
+ * unaffiliated with VisuStella that involves using code from the VisuStella MZ
+ * library, contact must be made with a member from VisuStella and have it
+ * approved. The patch would be placed on VisuStella.com as a free download
+ * to the public. Such patches cannot be sold for monetary gain, including
+ * commissions, crowdfunding, and/or donations.
+ * 
+ * 7. If this VisuStella MZ plugin is a paid product, all project team members
+ * must purchase their own individual copies of the paid product if they are to
+ * use it. Usage includes working on related game mechanics, managing related
+ * code, and/or using related Plugin Commands and features. Redistribution of
+ * the plugin and/or its code to other members of the team is NOT allowed
+ * unless they own the plugin itself as that conflicts with Article 4.
+ * 
+ * 8. Any extensions and/or addendums made to this plugin's Terms of Use can be
+ * found on VisuStella.com and must be followed.
+ *
+ * ============================================================================
+ * Credits
+ * ============================================================================
+ * 
+ * If you are using this plugin, credit the following people in your game:
+ * 
+ * Team VisuStella
+ * * Yanfly
+ * * Arisu
+ * * Olivia
+ * * Irina
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ * 
+ * Version 1.13: June 18, 2021
+ * * Bug Fixes!
+ * ** Repeating animations no longer play on invisible enemies or dead enemies
+ *    through passive state effects. Fix made by Arisu.
+ * 
+ * Version 1.12: June 11, 2021
+ * * Documentation Update!
+ * ** Added warnings for the following notetags by Irina:
+ * *** <Repeat Animation: x>
+ * *** <State Motion: x>
+ * *** <State Motion Lock>
+ * *** <Visual Opacity: x>
+ * *** <Visual Rainbow: +/-x>
+ * *** <Visual Hover Effect>
+ * *** <Visual Breathing Effect>
+ * **** NOTE: Using this with Passive State Conditions will make this effect
+ *      update at the next battler refresh cycle. This is due to the effect
+ *      being cached in order to prevent lag and overloading the engine.
+ * 
+ * Version 1.11: May 21, 2021
+ * * Documentation Update!
+ * ** Help file updated for new features.
+ * * New Features!
+ * ** New notetags added by Irina:
+ * *** <Visual Breathing Effect>
+ * *** <No Breathing>
+ * **** Enables/disables breathing effects for your actors and/or enemies.
+ *      Refer to the documentation for more details on how to set it up.
+ * **** These are EXPERIMENTAL notetags. This means that these effects have the
+ *      possibility of creating graphical glitches when used. Use at your own
+ *      risk as these are not perfected features.
+ * 
+ * Version 1.10: January 1, 2021
+ * * Documentation Update!
+ * ** Help file updated for new features.
+ * * New Features!
+ * ** New notetags added by Yanfly.
+ * *** <Visual Rainbow: +x> and <Visual Rainbow: -x>
+ * 
+ * Version 1.09: December 25, 2020
+ * * Documentation Update!
+ * ** Help file updated for new features.
+ * * New Features!
+ * ** New notetags added by Yanfly.
+ * *** <Visual Opacity: x> and <Visual Opacity: x%>
+ * 
+ * Version 1.08: December 18, 2020
+ * * Bug Fixes!
+ * ** RPG Maker MV animations will no longer crash for unplayable sound
+ *    effects. Requires updated Core Engine. Fix made by Yanfly.
+ * 
+ * Version 1.07: November 22, 2020
+ * * Bug Fixes!
+ * ** <State Motion: x> now works for sideview enemies. Keep in mind the state
+ *    motion does not apply to the active battler during the Input phase. Fix
+ *    made by Yanfly.
+ * 
+ * Version 1.06: November 8, 2020
+ * * Bug Fixes!
+ * ** <Add Animation: x> and <Erase Animation: x> notetags now work properly.
+ *    Fix by Arisu.
+ * 
+ * Version 1.05: November 1, 2020
+ * * Feature Update!
+ * ** Upon dying, state removal popups are no longer shown to prevent massive
+ *    clutter of the screen. Update by Irina.
+ * 
+ * Version 1.04: October 25, 2020
+ * * Bug Fixes!
+ * ** Zooming in should no longer display faint outlines around state sprites.
+ *    Fix made by Arisu.
+ * * Compatibility Update
+ * ** Added compatibility with the Battle Core's new <Battler Sprite Grounded>
+ *    notetag. Added by Irina.
+ * 
+ * Version 1.03: October 11, 2020
+ * * Bug Fixes!
+ * ** Motion Locked Battlers at the start of battle no longer show their entire
+ *    sprite sheet. Fix made by Arisu.
+ * 
+ * Version 1.02: September 13, 2020
+ * * Compatibility Update
+ * ** Added compatibility with Battle Core's newest update for the new
+ *    distortion effects.
+ * 
+ * Version 1.01: September 6, 2020
+ * * Compatibility Update
+ * ** Added compatibility with Battle Core's newest update for the
+ *    <Battle UI Offset: +x, +y> notetags. Update made by Yanfly.
+ *
+ * Version 1.00: September 2, 2020
+ * * Finished Plugin!
+ *
+ * ============================================================================
+ * End of Helpfile
+ * ============================================================================
+ *
+ * @ ==========================================================================
+ * @ Plugin Parameters
+ * @ ==========================================================================
+ *
+ * @param BreakHead
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param VisualStateEffects
+ * @default Plugin Parameters
+ *
+ * @param ATTENTION
+ * @default READ THE HELP FILE
+ *
+ * @param BreakSettings
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param General:struct
+ * @text General Settings
+ * @type struct<General>
+ * @desc General settings for Visual State Effects.
+ * @default {"Actors":"","ActorOverlay:eval":"true","ActorStateIcon:eval":"true","Enemies":"","EnemyOverlay:eval":"true","EnemyStateIcon:eval":"true"}
+ *
+ * @param BuffDebuff:struct
+ * @text Buff/Debuff Settings
+ * @type struct<BuffDebuff>
+ * @desc Buff/Debuff settings for Visual State Effects.
+ * @default {"ShowPopups:eval":"true","BuffPopupFmt:str":"%1▲","BuffTextColor:str":"24","BuffFlashColor:eval":"[0, 255, 0, 160]","BuffFlashDuration:num":"60","DebuffPopupFmt:str":"%1▼","DebuffTextColor:str":"27","DebuffFlashColor:eval":"[255, 0, 0, 160]","DebuffFlashDuration:num":"60","ShowAnimations:eval":"true","AnimationMirror:eval":"false","AnimationMute:eval":"false","BuffAnimations":"","Buff0Animation:num":"52","Buff1Animation:num":"53","Buff2Animation:num":"52","Buff3Animation:num":"52","Buff4Animation:num":"53","Buff5Animation:num":"53","Buff6Animation:num":"51","Buff7Animation:num":"51","DebuffAnimations":"","Debuff0Animation:num":"55","Debuff1Animation:num":"56","Debuff2Animation:num":"55","Debuff3Animation:num":"55","Debuff4Animation:num":"56","Debuff5Animation:num":"56","Debuff6Animation:num":"54","Debuff7Animation:num":"54"}
+ *
+ * @param State:struct
+ * @text State Defaults
+ * @type struct<State>
+ * @desc Default State settings for Visual State Effects.
+ * @default {"ShowPopups:eval":"true","AddPopupFmt:str":"+%1","ErasePopupFmt:str":"-%1","TextColor:str":"0","MatchTurnCountColor:eval":"true","FlashColor:eval":"[0, 0, 0, 0]","FlashDuration:num":"60","StateAnimations":"","AddEraseAnimations":"","AnimationMirror:eval":"false","AnimationMute:eval":"false","RepeatingAnimations":"","CycleTime:num":"300","RepeatMirror:eval":"false","RepeatMute:eval":"true"}
+ *
+ * @param BreakEnd1
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param End Of
+ * @default Plugin Parameters
+ *
+ * @param BreakEnd2
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * General Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~General:
+ *
+ * @param Actors
+ *
+ * @param ActorOverlay:eval
+ * @text Show State Overlay?
+ * @parent Actors
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show state overlays over an actor's head?
+ * @default true
+ *
+ * @param ActorStateIcon:eval
+ * @text Show State Icons?
+ * @parent Actors
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show state icons over an actor's head?
+ * @default true
+ *
+ * @param Enemies
+ *
+ * @param EnemyOverlay:eval
+ * @text Show State Overlay?
+ * @parent Enemies
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show state overlays over an enemy's head?
+ * @default true
+ *
+ * @param EnemyStateIcon:eval
+ * @text Show State Icons?
+ * @parent Enemies
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show state icons over an enemy's head?
+ * @default true
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Buff/Debuff Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~BuffDebuff:
+ *
+ * @param ShowPopups:eval
+ * @text Show Popups?
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show Buff/Debuff Popups when applied?
+ * @default true
+ *
+ * @param BuffPopupFmt:str
+ * @text Buff Format
+ * @parent ShowPopups:eval
+ * @desc How do you want the buff text to appear?
+ * %1 - Parameter Name
+ * @default %1▲
+ *
+ * @param BuffTextColor:str
+ * @text Text Color
+ * @parent BuffPopupFmt:str
+ * @desc Use #rrggbb for custom colors or regular numbers
+ * for text colors from the Window Skin.
+ * @default 24
+ *
+ * @param BuffFlashColor:eval
+ * @text Flash Color
+ * @parent BuffPopupFmt:str
+ * @desc Adjust the popup's flash color.
+ * Format: [red, green, blue, alpha]
+ * @default [0, 255, 0, 160]
+ * 
+ * @param BuffFlashDuration:num
+ * @text Flash Duration
+ * @parent BuffPopupFmt:str
+ * @type Number
+ * @desc What is the frame duration of the flash effect?
+ * @default 60
+ *
+ * @param DebuffPopupFmt:str
+ * @text Debuff Format
+ * @parent ShowPopups:eval
+ * @desc How do you want the debuff text to appear?
+ * %1 - Parameter Name
+ * @default %1▼
+ *
+ * @param DebuffTextColor:str
+ * @text Text Color
+ * @parent DebuffPopupFmt:str
+ * @desc Use #rrggbb for custom colors or regular numbers
+ * for text colors from the Window Skin.
+ * @default 27
+ *
+ * @param DebuffFlashColor:eval
+ * @text Flash Color
+ * @parent DebuffPopupFmt:str
+ * @desc Adjust the popup's flash color.
+ * Format: [red, green, blue, alpha]
+ * @default [255, 0, 0, 160]
+ * 
+ * @param DebuffFlashDuration:num
+ * @text Flash Duration
+ * @parent DebuffPopupFmt:str
+ * @type Number
+ * @desc What is the frame duration of the flash effect?
+ * @default 60
+ *
+ * @param ShowAnimations:eval
+ * @text Show Animations?
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show Buff/Debuff Animations when applied?
+ * @default true
+ *
+ * @param AnimationMirror:eval
+ * @text Mirror Animations?
+ * @parent ShowAnimations:eval
+ * @type boolean
+ * @on Mirror
+ * @off Don't
+ * @desc Mirror animations for buffs/debuffs?
+ * @default false
+ *
+ * @param AnimationMute:eval
+ * @text Mute Animations?
+ * @parent ShowAnimations:eval
+ * @type boolean
+ * @on Mute
+ * @off Don't
+ * @desc Mute animations for buffs/debuffs?
+ * @default false
+ * 
+ * @param BuffAnimations
+ * @text Buff Animations
+ * @parent ShowAnimations:eval
+ *
+ * @param Buff0Animation:num
+ * @text MaxHP Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying MaxHP Buffs.
+ * @default 52
+ *
+ * @param Buff1Animation:num
+ * @text MaxMP Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying MaxMP Buffs.
+ * @default 53
+ *
+ * @param Buff2Animation:num
+ * @text ATK Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying ATK Buffs.
+ * @default 52
+ *
+ * @param Buff3Animation:num
+ * @text DEF Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying DEF Buffs.
+ * @default 52
+ *
+ * @param Buff4Animation:num
+ * @text MAT Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying MAT Buffs.
+ * @default 53
+ *
+ * @param Buff5Animation:num
+ * @text MDF Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying MDF Buffs.
+ * @default 53
+ *
+ * @param Buff6Animation:num
+ * @text AGI Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying AGI Buffs.
+ * @default 51
+ *
+ * @param Buff7Animation:num
+ * @text LUK Buff
+ * @parent BuffAnimations
+ * @type animation
+ * @desc Animation played when applying LUK Buffs.
+ * @default 51
+ * 
+ * @param DebuffAnimations
+ * @text Debuff Animations
+ * @parent ShowAnimations:eval
+ *
+ * @param Debuff0Animation:num
+ * @text MaxHP Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying MaxHP Debuffs.
+ * @default 55
+ *
+ * @param Debuff1Animation:num
+ * @text MaxMP Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying MaxMP Debuffs.
+ * @default 56
+ *
+ * @param Debuff2Animation:num
+ * @text ATK Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying ATK Debuffs.
+ * @default 55
+ *
+ * @param Debuff3Animation:num
+ * @text DEF Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying DEF Debuffs.
+ * @default 55
+ *
+ * @param Debuff4Animation:num
+ * @text MAT Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying MAT Debuffs.
+ * @default 56
+ *
+ * @param Debuff5Animation:num
+ * @text MDF Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying MDF Debuffs.
+ * @default 56
+ *
+ * @param Debuff6Animation:num
+ * @text AGI Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying AGI Debuffs.
+ * @default 54
+ *
+ * @param Debuff7Animation:num
+ * @text LUK Debuff
+ * @parent DebuffAnimations
+ * @type animation
+ * @desc Animation played when applying LUK Debuffs.
+ * @default 54
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * State Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~State:
+ *
+ * @param ShowPopups:eval
+ * @text Show Popups?
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show States Popups when applied and removed?
+ * @default true
+ *
+ * @param AddPopupFmt:str
+ * @text Add State Format
+ * @parent ShowPopups:eval
+ * @desc How do you want added states to appear?
+ * %1 - State Name
+ * @default +%1
+ *
+ * @param ErasePopupFmt:str
+ * @text Erase State Format
+ * @parent ShowPopups:eval
+ * @desc How do you want erased states to appear?
+ * %1 - State Name
+ * @default -%1
+ *
+ * @param TextColor:str
+ * @text Default Text Color
+ * @parent ShowPopups:eval
+ * @desc Use #rrggbb for custom colors or regular numbers
+ * for text colors from the Window Skin.
+ * @default 0
+ *
+ * @param MatchTurnCountColor:eval
+ * @text Match Turn Count?
+ * @parent TextColor:str
+ * @type boolean
+ * @on Match
+ * @off Don't
+ * @desc Match turn count color by default?
+ * @default true
+ *
+ * @param FlashColor:eval
+ * @text Flash Color
+ * @parent ShowPopups:eval
+ * @desc Adjust the popup's default flash color.
+ * Format: [red, green, blue, alpha]
+ * @default [0, 0, 0, 0]
+ * 
+ * @param FlashDuration:num
+ * @text Flash Duration
+ * @parent FlashColor:eval
+ * @type Number
+ * @desc What is the frame duration of the default flash effect?
+ * @default 60
+ * 
+ * @param StateAnimations
+ * @text State Animations
+ * 
+ * @param AddEraseAnimations
+ * @text Add/Erase Animations
+ * @parent StateAnimations
+ *
+ * @param AnimationMirror:eval
+ * @text Mirror Animations?
+ * @parent AddEraseAnimations
+ * @type boolean
+ * @on Mirror
+ * @off Don't
+ * @desc Mirror animations for states?
+ * @default false
+ *
+ * @param AnimationMute:eval
+ * @text Mute Animations?
+ * @parent AddEraseAnimations
+ * @type boolean
+ * @on Mute
+ * @off Don't
+ * @desc Mute animations for states?
+ * @default false
+ * 
+ * @param RepeatingAnimations
+ * @text Repeating Animations
+ * @parent StateAnimations
+ *
+ * @param CycleTime:num
+ * @text Cycle Time
+ * @parent RepeatingAnimations
+ * @type number
+ * @min 1
+ * @desc The amount of frames to wait before each animation cycle.
+ * WARNING: Lower numbers can jeopardize game performance.
+ * @default 300
+ *
+ * @param RepeatMirror:eval
+ * @text Mirror Animations?
+ * @parent RepeatingAnimations
+ * @type boolean
+ * @on Mirror
+ * @off Don't
+ * @desc Mirror repeating animations for states by default?
+ * @default false
+ *
+ * @param RepeatMute:eval
+ * @text Mute Animations?
+ * @parent RepeatingAnimations
+ * @type boolean
+ * @on Mute
+ * @off Don't
+ * @desc Mute repeating animations for states by default?
+ * @default true
+ *
+ */
+//=============================================================================
+
+const _0x177d=['setHue','_visualStateAnimationRepeatDuration','oNCcZ','stateOverlayIndex','smooth','FlashColor','setupIconTextPopup','battler','tgcYB','cSgkC','randomInt','onAddState','gOgEI','addChild','%1TextColor','Settings','Game_Battler_onRemoveState','updateDistortionOpacity','jiMKe','MvCts','hBBbY','Game_BattlerBase_die','VisualStateEffects','push','updateVisualStateEffects','Sprite_Actor_createStateSprite','visualStateTone','checkCacheKey','isEnemy','_dragonbonesSpriteContainer','length','name','refresh','initMembers','%1\x20is\x20incorrectly\x20placed\x20on\x20the\x20plugin\x20list.\x0aIt\x20is\x20a\x20Tier\x20%2\x20plugin\x20placed\x20over\x20other\x20Tier\x20%3\x20plugins.\x0aPlease\x20reorder\x20the\x20plugin\x20list\x20from\x20smallest\x20to\x20largest\x20tier\x20numbers.','noBreathing','updateRepeatingVisualStateAnimation','NcwlU','Pmbsk','Buff','RtpSz','vjbRY','initVisualStateEffects','updateVisualStateEffectsOverlay','BNJSL','EInkp','RepeatMute','overlay','_battler','isSceneBattle','stateColor','RepeatMirror','requestFauxAnimation','CycleTime','hoverData','%1%2Animation','_actor','vvCVZ','opacity','deathStateId','_hoverMinimum','ActorStateIcon','juWGb','applyBreathingScaleY','prototype','1576041YeJAmL','applyBreathingCalculations','clamp','Sprite_Battler_extraPositionY','%1PopupFmt','ZFkXk','ARRAYNUM','NNDXD','visible','VisuMZ_0_CoreEngine','1497337yyRAoW','frameCount','gtcuy','setupStateAnimation','width','hpLinked','speedX','Sprite_Battler_mainSpriteScaleY','FlashDuration','ActorOverlay','Upuyp','call','General','description','setBattler','visualRepeatingStateAnimation','ConvertParams','cos','visualRepeatingStateAniCycle','ShowPopups','battleUIOffsetX','FUNC','breathing','Add','isInputting','Game_BattlerBase_increaseBuff','rHlOw','ARRAYJSON','visualStateToneTargetSprite','getStateMotionIndex','bind','getVisualRepeatingStateAnimationCycle','flashDuration','_customStateMotion','Sprite_Actor_update','hasSvBattler','visualStateRainbow','updateFrame','_die_bypass_visualStateEffects','setColorTone','traitObjects','ARRAYEVAL','split','createVisualHoveringData','Game_BattlerBase_initMembers','_svBattlerSprite','BuffDebuff','floor','rateX','uDbbp','2713jVeUqc','base','zSGbb','_hue','exit','11103HASFPi','mainSpriteScaleY','hoverHeight','itjZc','states','Game_BattlerBase_refresh','setup','XWsRM','1sJbbXH','initVisualHoverEffect','stateMotionIndex','255803vUqVRN','Sprite_Battler_initMembers','STR','timeScale','GKWah','Debuff','bitmap','stateMotionLock','_stateSprite','_stateIconSprite','isActing','map','breathingData','ARRAYSTR','createVisualStateRainbow','TextColor','scale','_stateMotionLocked','includes','updateVisualStateEffectsIcons','hVDNM','isBattlerGrounded','ICON_BUFF_START','Sprite_Actor_refreshMotion','IconSet','height','createVisualRepeatingStateAnimation','speed','Sprite_Enemy_setBattler','Sprite_Actor_updateFrame','decreaseBuff','flashColor','State','createStateIconSprite','parse','round','FTXad','STRUCT','getStateOverlayIndex','refreshMotion','toUpperCase','345sNEJef','loadSystem','LaQVx','KTxZK','_mainSprite','isActor','getVisualStateTone','ISouW','_hoverRand','random','TOnDE','1HDiWaz','battleUIOffsetY','%1FlashColor','ShowAnimations','ARRAYSTRUCT','hJBAi','_visualStateAnimationIndex','updateVisualStateTone','hwNcb','max','EwwMk','_dragonbones','textColor','update','Sprite_Enemy_createStateIconSprite','sDjeb','rateY','tobEL','constructor','createStateSprite','isStateAffected','hpRate','speedY','hover','min','Game_BattlerBase_decreaseBuff','format','Game_Battler_onAddState','visualBattlerOpacity','setupVisualStateEffectsPopup','updateOpacity','_cache','extraPositionY','107196QWghum','1xbxurI','note','die','Sprite_SvEnemy_refreshMotion','%1FlashDuration','match','startMotion','Sprite_Battler_updateDragonbonesTimeScale','Sprite_Battler_mainSpriteScaleX','iconIndex','getStateMotionLock','oEESO','isAlive','jlTbN','VisuMZ_1_BattleCore','sJRmT','_distortionSprite','createVisualBreathingData','isSpriteVisible','AnimationMirror','motion','Sprite_Battler_updateOpacity','487MbOzjT','BqCmV','rate','ZgyCZ','TDovL','sZvNr','applyBreathingScaleX','filter','onRemoveState','increaseBuff','customizeStatePopup','trim','setupVisualStateEffect','some','AnimationMute','Sprite_Enemy_update','createVisualStateTone','1438154HHdPoj','MatchTurnCountColor','Erase','%1\x20is\x20missing\x20a\x20required\x20plugin.\x0aPlease\x20install\x20%2\x20into\x20the\x20Plugin\x20Manager.','PlYei','updateVisualStateRainbow','umXmp','_breathingRand','uOyoA','animation','setupVisualBuffDebuffEffect','parameters','addLoadListener','NUM','byXGS','jkqFI'];const _0x15744c=_0xa6b1;function _0xa6b1(_0x319842,_0x188d0d){return _0xa6b1=function(_0x177dc4,_0xa6b1f3){_0x177dc4=_0x177dc4-0x9d;let _0x10fab8=_0x177d[_0x177dc4];return _0x10fab8;},_0xa6b1(_0x319842,_0x188d0d);}(function(_0x531ed4,_0x712511){const _0x5d1348=_0xa6b1;while(!![]){try{const _0x234322=-parseInt(_0x5d1348(0xc5))*-parseInt(_0x5d1348(0xc2))+-parseInt(_0x5d1348(0x142))+-parseInt(_0x5d1348(0xf9))*parseInt(_0x5d1348(0x193))+parseInt(_0x5d1348(0x11b))*-parseInt(_0x5d1348(0x11a))+-parseInt(_0x5d1348(0x19d))+-parseInt(_0x5d1348(0xb5))*-parseInt(_0x5d1348(0x131))+parseInt(_0x5d1348(0xee))*parseInt(_0x5d1348(0xba));if(_0x234322===_0x712511)break;else _0x531ed4['push'](_0x531ed4['shift']());}catch(_0x5cf651){_0x531ed4['push'](_0x531ed4['shift']());}}}(_0x177d,0xc0969));var label=_0x15744c(0x168),tier=tier||0x0,dependencies=[_0x15744c(0x19c),_0x15744c(0x129),'VisuMZ_1_SkillsStatesCore'],pluginData=$plugins[_0x15744c(0x138)](function(_0xc5b88d){const _0x5b977b=_0x15744c;return _0xc5b88d['status']&&_0xc5b88d[_0x5b977b(0x1aa)][_0x5b977b(0xd7)]('['+label+']');})[0x0];VisuMZ[label][_0x15744c(0x161)]=VisuMZ[label][_0x15744c(0x161)]||{},VisuMZ[_0x15744c(0x1ad)]=function(_0x1f885f,_0x5bd9aa){const _0x5a87fd=_0x15744c;for(const _0xbca08e in _0x5bd9aa){if(_0xbca08e[_0x5a87fd(0x120)](/(.*):(.*)/i)){if(_0x5a87fd(0x128)===_0x5a87fd(0x190))_0x24b44d[_0x5a87fd(0xe4)][_0x5a87fd(0x169)](0x0);else{const _0x4121da=String(RegExp['$1']),_0x37aa15=String(RegExp['$2'])[_0x5a87fd(0xed)]()['trim']();let _0x5609cb,_0x33e1b4,_0x26ed35;switch(_0x37aa15){case _0x5a87fd(0x14f):_0x5609cb=_0x5bd9aa[_0xbca08e]!==''?Number(_0x5bd9aa[_0xbca08e]):0x0;break;case _0x5a87fd(0x199):_0x33e1b4=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):[],_0x5609cb=_0x33e1b4['map'](_0x1d9eda=>Number(_0x1d9eda));break;case'EVAL':_0x5609cb=_0x5bd9aa[_0xbca08e]!==''?eval(_0x5bd9aa[_0xbca08e]):null;break;case _0x5a87fd(0xac):_0x33e1b4=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):[],_0x5609cb=_0x33e1b4[_0x5a87fd(0xd0)](_0x31bf0d=>eval(_0x31bf0d));break;case'JSON':_0x5609cb=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):'';break;case _0x5a87fd(0x9e):_0x33e1b4=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):[],_0x5609cb=_0x33e1b4['map'](_0x2e9001=>JSON[_0x5a87fd(0xe7)](_0x2e9001));break;case _0x5a87fd(0x1b2):_0x5609cb=_0x5bd9aa[_0xbca08e]!==''?new Function(JSON['parse'](_0x5bd9aa[_0xbca08e])):new Function('return\x200');break;case'ARRAYFUNC':_0x33e1b4=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):[],_0x5609cb=_0x33e1b4[_0x5a87fd(0xd0)](_0x2c3826=>new Function(JSON[_0x5a87fd(0xe7)](_0x2c3826)));break;case _0x5a87fd(0xc7):_0x5609cb=_0x5bd9aa[_0xbca08e]!==''?String(_0x5bd9aa[_0xbca08e]):'';break;case _0x5a87fd(0xd2):_0x33e1b4=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):[],_0x5609cb=_0x33e1b4[_0x5a87fd(0xd0)](_0x3f5b39=>String(_0x3f5b39));break;case _0x5a87fd(0xea):_0x26ed35=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):{},_0x5609cb=VisuMZ[_0x5a87fd(0x1ad)]({},_0x26ed35);break;case _0x5a87fd(0xfd):_0x33e1b4=_0x5bd9aa[_0xbca08e]!==''?JSON[_0x5a87fd(0xe7)](_0x5bd9aa[_0xbca08e]):[],_0x5609cb=_0x33e1b4[_0x5a87fd(0xd0)](_0x41dadd=>VisuMZ[_0x5a87fd(0x1ad)]({},JSON[_0x5a87fd(0xe7)](_0x41dadd)));break;default:continue;}_0x1f885f[_0x4121da]=_0x5609cb;}}}return _0x1f885f;},(_0x16601c=>{const _0x2d0bfd=_0x15744c,_0x3425b0=_0x16601c[_0x2d0bfd(0x171)];for(const _0x2fe5e5 of dependencies){if('moyrz'!==_0x2d0bfd(0x17e)){if(!Imported[_0x2fe5e5]){if(_0x2d0bfd(0x18b)!==_0x2d0bfd(0x18b)){if(!_0x1c3980[_0x2d0bfd(0x1b5)]()&&!_0x2fe90f[_0x2d0bfd(0xcf)]())return this[_0x2d0bfd(0x121)](_0x48f27d[_0x2d0bfd(0xa4)]);}else{alert(_0x2d0bfd(0x145)[_0x2d0bfd(0x113)](_0x3425b0,_0x2fe5e5)),SceneManager[_0x2d0bfd(0xb9)]();break;}}}else{const _0x136b2f=_0x2d0bfd(0xc4);if(this[_0x2d0bfd(0x16d)](_0x136b2f))return this[_0x2d0bfd(0x118)][_0x136b2f];return this[_0x2d0bfd(0x118)][_0x136b2f]=this[_0x2d0bfd(0xa0)](),this[_0x2d0bfd(0x118)][_0x136b2f];}}const _0x470445=_0x16601c[_0x2d0bfd(0x1aa)];if(_0x470445[_0x2d0bfd(0x120)](/\[Version[ ](.*?)\]/i)){const _0xe9030c=Number(RegExp['$1']);_0xe9030c!==VisuMZ[label]['version']&&(alert('%1\x27s\x20version\x20does\x20not\x20match\x20plugin\x27s.\x20Please\x20update\x20it\x20in\x20the\x20Plugin\x20Manager.'[_0x2d0bfd(0x113)](_0x3425b0,_0xe9030c)),SceneManager['exit']());}if(_0x470445['match'](/\[Tier[ ](\d+)\]/i)){const _0x565324=Number(RegExp['$1']);_0x565324<tier?(alert('%1\x20is\x20incorrectly\x20placed\x20on\x20the\x20plugin\x20list.\x0aIt\x20is\x20a\x20Tier\x20%2\x20plugin\x20placed\x20over\x20other\x20Tier\x20%3\x20plugins.\x0aPlease\x20reorder\x20the\x20plugin\x20list\x20from\x20smallest\x20to\x20largest\x20tier\x20numbers.'[_0x2d0bfd(0x113)](_0x3425b0,_0x565324,tier)),SceneManager[_0x2d0bfd(0xb9)]()):_0x2d0bfd(0x150)!==_0x2d0bfd(0xfe)?tier=Math['max'](_0x565324,tier):_0x2653f7[_0x2d0bfd(0x10f)]=_0x459f95(_0x5c979f['$1'])||0x0;}VisuMZ[_0x2d0bfd(0x1ad)](VisuMZ[label]['Settings'],_0x16601c[_0x2d0bfd(0x14d)]);})(pluginData),VisuMZ[_0x15744c(0x168)][_0x15744c(0xaf)]=Game_BattlerBase['prototype'][_0x15744c(0x173)],Game_BattlerBase['prototype']['initMembers']=function(){const _0x26a3bb=_0x15744c;this[_0x26a3bb(0x118)]={},VisuMZ[_0x26a3bb(0x168)]['Game_BattlerBase_initMembers'][_0x26a3bb(0x1a8)](this);},VisuMZ[_0x15744c(0x168)][_0x15744c(0xbf)]=Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x172)],Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x172)]=function(){const _0x5a193d=_0x15744c;this[_0x5a193d(0x118)]={},VisuMZ['VisualStateEffects']['Game_BattlerBase_refresh'][_0x5a193d(0x1a8)](this);},Game_BattlerBase[_0x15744c(0x192)]['checkCacheKey']=function(_0x321ea3){const _0x19a99c=_0x15744c;return this[_0x19a99c(0x118)]=this[_0x19a99c(0x118)]||{},this[_0x19a99c(0x118)][_0x321ea3]!==undefined;},VisuMZ[_0x15744c(0x168)][_0x15744c(0x1b6)]=Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x13a)],Game_BattlerBase[_0x15744c(0x192)]['increaseBuff']=function(_0x58a701){const _0x5f72c2=_0x15744c;VisuMZ[_0x5f72c2(0x168)]['Game_BattlerBase_increaseBuff']['call'](this,_0x58a701),this['setupVisualBuffDebuffEffect'](_0x58a701,!![]);},VisuMZ['VisualStateEffects'][_0x15744c(0x112)]=Game_BattlerBase['prototype'][_0x15744c(0xe3)],Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0xe3)]=function(_0x27e141){const _0x3c3ab7=_0x15744c;VisuMZ[_0x3c3ab7(0x168)]['Game_BattlerBase_decreaseBuff']['call'](this,_0x27e141),this[_0x3c3ab7(0x14c)](_0x27e141,![]);},Game_BattlerBase[_0x15744c(0x192)]['setupVisualBuffDebuffEffect']=function(_0x14bbd9,_0x26a891){const _0xa88f73=_0x15744c;if(!SceneManager[_0xa88f73(0x183)]())return;if(!this[_0xa88f73(0x159)]())return;const _0x52aaee=VisuMZ[_0xa88f73(0x168)][_0xa88f73(0x161)][_0xa88f73(0xb1)],_0x5b293d=_0x26a891?_0xa88f73(0x179):'Debuff';_0x52aaee[_0xa88f73(0x1b0)]&&this[_0xa88f73(0x159)]()['setupBuffDebuffPopup'](_0x14bbd9,_0x26a891);if(_0x52aaee[_0xa88f73(0xfc)]){if(_0xa88f73(0xbd)===_0xa88f73(0x9d)){let _0x2a6f40=this[_0xa88f73(0x12b)]['_hue']+_0x13b825;_0x2a6f40%=0x168,this['_distortionSprite']['setHue'](_0x2a6f40);}else{const _0x2b2194=[this],_0x329cdb=_0x52aaee[_0xa88f73(0x189)['format'](_0x5b293d,_0x14bbd9)]||0x0,_0x54518f=_0x52aaee['AnimationMirror'],_0x23ad23=_0x52aaee[_0xa88f73(0x13f)];$gameTemp[_0xa88f73(0x186)](_0x2b2194,_0x329cdb,_0x54518f,_0x23ad23);}}},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x13d)]=function(_0x1fc549,_0x378e83){const _0x5a7509=_0x15744c;if(!SceneManager[_0x5a7509(0x183)]())return;if(_0x1fc549===this[_0x5a7509(0x18d)]())return;if(_0x378e83&&!this[_0x5a7509(0x10d)](_0x1fc549))return;if(!_0x378e83&&this['isStateAffected'](_0x1fc549))return;if(!this[_0x5a7509(0x159)]())return;const _0x5852c2=VisuMZ[_0x5a7509(0x168)][_0x5a7509(0x161)][_0x5a7509(0xe5)],_0x44f961=$dataStates[_0x1fc549];if(!_0x44f961)return;_0x5852c2[_0x5a7509(0x1b0)]&&!_0x44f961[_0x5a7509(0x11c)][_0x5a7509(0x120)](/<HIDE STATE POPUP>/i)&&this[_0x5a7509(0x159)]()[_0x5a7509(0x116)](_0x1fc549,_0x378e83),VisuMZ[_0x5a7509(0x168)]['setupStateAnimation'](this,_0x44f961,_0x378e83);},VisuMZ[_0x15744c(0x168)][_0x15744c(0x1a0)]=function(_0x96def9,_0x5d5ea8,_0x498cfb){const _0x245e78=_0x15744c,_0x48667f=VisuMZ[_0x245e78(0x168)][_0x245e78(0x161)]['State'],_0x1da4a9=_0x48667f[_0x245e78(0x12e)],_0x54e8f4=_0x48667f['AnimationMute'],_0x4a9637=_0x5d5ea8[_0x245e78(0x11c)];if(_0x498cfb&&_0x4a9637[_0x245e78(0x120)](/(?:ADD|APPLY) ANIMATION:[ ](\d+)/i)){const _0x2cd897=Number(RegExp['$1']);$gameTemp['requestFauxAnimation']([_0x96def9],_0x2cd897,_0x1da4a9,_0x54e8f4);}if(!_0x498cfb&&_0x4a9637[_0x245e78(0x120)](/(?:ERASE|REMOVE) ANIMATION:[ ](\d+)/i)){if(_0x245e78(0x15e)!==_0x245e78(0x15e))this['_stateMotionLocked']=![];else{const _0x151aed=Number(RegExp['$1']);$gameTemp['requestFauxAnimation']([_0x96def9],_0x151aed,_0x1da4a9,_0x54e8f4);}}},Game_BattlerBase[_0x15744c(0x192)]['getVisualRepeatingStateAnimation']=function(){const _0x397ce8=_0x15744c,_0x51e0e6=_0x397ce8(0x1ac);if(this[_0x397ce8(0x16d)](_0x51e0e6))return this['_cache'][_0x51e0e6];return this[_0x397ce8(0x118)][_0x51e0e6]=this[_0x397ce8(0xdf)](),this[_0x397ce8(0x118)][_0x51e0e6];},Game_BattlerBase['prototype'][_0x15744c(0xdf)]=function(){const _0x2c2ea6=_0x15744c;let _0x1fce2a=[];for(const _0x5c34fa of this[_0x2c2ea6(0xbe)]()){if(!_0x5c34fa)continue;_0x5c34fa[_0x2c2ea6(0x11c)]['match'](/<(?:REPEAT|REPEATING|CYCLE|STATE) ANIMATION:[ ](\d+)>/i)&&_0x1fce2a[_0x2c2ea6(0x169)](Number(RegExp['$1'])||0x0);}return _0x1fce2a;},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0xa2)]=function(){const _0x13797a=_0x15744c,_0x42fbe4=_0x13797a(0x1af);if(this['checkCacheKey'](_0x42fbe4))return this[_0x13797a(0x118)][_0x42fbe4];return this[_0x13797a(0x118)][_0x42fbe4]=this['createVisualRepeatingStateAnimationCycle'](),this[_0x13797a(0x118)][_0x42fbe4];},Game_BattlerBase[_0x15744c(0x192)]['createVisualRepeatingStateAnimationCycle']=function(){const _0x5f553e=_0x15744c;let _0x5104fe=[];for(const _0x5bae95 of this['states']()){if(!_0x5bae95)continue;_0x5bae95[_0x5f553e(0x11c)][_0x5f553e(0x120)](/<(?:REPEAT|REPEATING|CYCLE|STATE) ANIMATION CYCLE:[ ](\d+)>/i)?_0x5104fe['push'](Number(RegExp['$1'])||0x0):'fhRoR'===_0x5f553e(0xf8)?this[_0x5f553e(0x12b)][_0x5f553e(0x18c)]=_0x5355f0['max'](this['_distortionSprite'][_0x5f553e(0x18c)]-_0x4125cb,_0x2c49ce):_0x5104fe[_0x5f553e(0x169)](VisuMZ[_0x5f553e(0x168)][_0x5f553e(0x161)]['State'][_0x5f553e(0x187)]);}return _0x5104fe;},Game_BattlerBase['prototype'][_0x15744c(0xc4)]=function(){const _0x3cef22=_0x15744c,_0x36739d=_0x3cef22(0xc4);if(this[_0x3cef22(0x16d)](_0x36739d))return this['_cache'][_0x36739d];return this[_0x3cef22(0x118)][_0x36739d]=this[_0x3cef22(0xa0)](),this['_cache'][_0x36739d];},Game_BattlerBase[_0x15744c(0x192)]['getStateMotionIndex']=function(){const _0x19128c=_0x15744c,_0x26bffd=this[_0x19128c(0xbe)]();for(const _0x234db4 of _0x26bffd){if(_0x19128c(0x148)!==_0x19128c(0x148)){if(this[_0x19128c(0x10b)]!==_0x42b4da)return;this[_0x19128c(0xce)]=new _0x344b3e(),this[_0x19128c(0x15f)](this[_0x19128c(0xce)]),this[_0x19128c(0xce)][_0x19128c(0xcb)][_0x19128c(0x156)]=![];}else{if(!_0x234db4)continue;if(_0x234db4[_0x19128c(0x11c)][_0x19128c(0x120)](/<STATE MOTION:[ ](.*)>/i))return this[_0x19128c(0xa4)]=String(RegExp['$1'])['toLowerCase']()['trim'](),0x4;else{if(_0x234db4['motion']!==0x0)return _0x234db4[_0x19128c(0x12f)];}}}return 0x0;},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0xcc)]=function(){const _0x3d8989=_0x15744c,_0x56dd8e=_0x3d8989(0xcc);if(this[_0x3d8989(0x16d)](_0x56dd8e))return this[_0x3d8989(0x118)][_0x56dd8e];return this[_0x3d8989(0x118)][_0x56dd8e]=this[_0x3d8989(0x125)](),this[_0x3d8989(0x118)][_0x56dd8e];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x125)]=function(){const _0x588f81=_0x15744c,_0x4ee37c=this[_0x588f81(0xbe)]();for(const _0x43f78f of _0x4ee37c){if(_0x588f81(0x12a)==='sJRmT'){if(!_0x43f78f)continue;if(_0x43f78f[_0x588f81(0x11c)][_0x588f81(0x120)](/<STATE MOTION (?:LOCK|LOCKED)>/i))return!![];}else{const _0x36343a=_0x2f5365(_0x381c5b['$1'])*0.01;return _0x2f3e['round'](_0x36343a*0xff)[_0x588f81(0x195)](0x0,0xff);}}return![];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x155)]=function(){const _0x92c593=_0x15744c,_0x311f58=_0x92c593(0x155);if(this[_0x92c593(0x16d)](_0x311f58))return this['_cache'][_0x311f58];return this[_0x92c593(0x118)][_0x311f58]=this[_0x92c593(0xeb)](),this['_cache'][_0x311f58];},Game_BattlerBase[_0x15744c(0x192)]['getStateOverlayIndex']=function(){const _0x4ac291=_0x15744c,_0x419030=this[_0x4ac291(0xbe)]();for(const _0x32908c of _0x419030){if(_0x4ac291(0xb4)!==_0x4ac291(0xb4))this['_visualStateAnimationRepeatDuration']=0x0,this[_0x4ac291(0xff)]=0x0;else{if(!_0x32908c)continue;if(_0x32908c['overlay']!==0x0)return _0x32908c[_0x4ac291(0x181)];}}return 0x0;},Game_BattlerBase['prototype'][_0x15744c(0xf4)]=function(){const _0x38de35=_0x15744c,_0x5c3348=_0x38de35(0x16c);if(this['checkCacheKey'](_0x5c3348))return this[_0x38de35(0x118)][_0x5c3348];return this[_0x38de35(0x118)][_0x5c3348]=this[_0x38de35(0x141)](),this[_0x38de35(0x118)][_0x5c3348];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x141)]=function(){const _0x31e222=_0x15744c;for(const _0x53b852 of this[_0x31e222(0xbe)]()){if(_0x31e222(0x178)!==_0x31e222(0x177)){if(!_0x53b852)continue;if(_0x53b852[_0x31e222(0x11c)][_0x31e222(0x120)](/<STATE TONE:[ ](.*)>/i)){if(_0x31e222(0x101)===_0x31e222(0x101)){let _0x1148cf=String(RegExp['$1'])[_0x31e222(0x13c)]()['split'](',')[_0x31e222(0xd0)](_0x182185=>Number(_0x182185)||0x0);while(_0x1148cf[_0x31e222(0x170)]<0x4)_0x1148cf['push'](0x0);return _0x1148cf[0x0]=_0x1148cf[0x0][_0x31e222(0x195)](-0xff,0xff),_0x1148cf[0x1]=_0x1148cf[0x1]['clamp'](-0xff,0xff),_0x1148cf[0x2]=_0x1148cf[0x2]['clamp'](-0xff,0xff),_0x1148cf[0x3]=_0x1148cf[0x3][_0x31e222(0x195)](0x0,0xff),_0x1148cf;}else _0x448c0e[_0x31e222(0xa3)]=_0x3ee0a0(_0x58d0c4['$1']);}}else this[_0x31e222(0x12b)][_0x31e222(0x18c)]=_0x1d33f6[_0x31e222(0x111)](this[_0x31e222(0x12b)]['opacity']+_0x150640,_0x4bff3d);}return[0x0,0x0,0x0,0x0];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x188)]=function(){const _0x39398a=_0x15744c,_0x3ed16b=_0x39398a(0x188);if(this[_0x39398a(0x16d)](_0x3ed16b))return this[_0x39398a(0x118)][_0x3ed16b];return this[_0x39398a(0x118)][_0x3ed16b]=this[_0x39398a(0xae)](),this['_cache'][_0x3ed16b];},Game_BattlerBase['prototype'][_0x15744c(0xae)]=function(){const _0x33210e=_0x15744c,_0x11a728=/<VISUAL (?:HOVER|FLOAT) EFFECT>\s*([\s\S]*)\s*<\/VISUAL (?:HOVER|FLOAT) EFFECT>/i,_0x2a4dae={'hover':![],'base':0x64,'speed':0x14,'rate':0x5,'deathHover':![]};for(const _0x675255 of this[_0x33210e(0xab)]()){if(_0x33210e(0x135)===_0x33210e(0xd9))this[_0x33210e(0xce)]?_0x1fa078['y']=this[_0x33210e(0xce)]['y']+_0x319c67[_0x33210e(0xde)]:_0x118bc4['y']=-this[_0x33210e(0xde)]+_0x25d982['height'];else{if(!_0x675255)continue;if(_0x675255[_0x33210e(0x11c)]['match'](_0x11a728)){if(_0x33210e(0x10a)!==_0x33210e(0xc1)){_0x2a4dae[_0x33210e(0x110)]=!![];const _0x19418b=String(RegExp['$1']);_0x19418b[_0x33210e(0x120)](/BASE:[ ](.*)/i)&&(_0x2a4dae[_0x33210e(0xb6)]=Number(RegExp['$1'])||0x0);_0x19418b[_0x33210e(0x120)](/SPEED:[ ](.*)/i)&&(_0x2a4dae[_0x33210e(0xe0)]=Number(RegExp['$1'])||0x0);_0x19418b[_0x33210e(0x120)](/RATE:[ ](.*)/i)&&(_0x2a4dae[_0x33210e(0x133)]=Number(RegExp['$1'])||0x0);if(_0x19418b[_0x33210e(0x120)](/DEATH: HOVER/i))_0x2a4dae['deathHover']=!![];else{if(_0x19418b[_0x33210e(0x120)](/DEATH: FLOOR/i)){if(_0x33210e(0x165)===_0x33210e(0x19f))return!![];else _0x2a4dae['deathHover']=![];}}break;}else this['_cache']={},_0xb93ae1['VisualStateEffects'][_0x33210e(0xaf)][_0x33210e(0x1a8)](this);}}}return _0x2a4dae;},Game_BattlerBase['prototype'][_0x15744c(0x175)]=function(){const _0x457e94=_0x15744c,_0x5993ca='noBreathing';if(this[_0x457e94(0x16d)](_0x5993ca))return this[_0x457e94(0x118)][_0x5993ca];const _0x1c0fdc=this['traitObjects']();return this[_0x457e94(0x118)][_0x5993ca]=_0x1c0fdc[_0x457e94(0x13e)](_0x2372de=>_0x2372de&&_0x2372de['note'][_0x457e94(0x120)](/<NO (?:BREATH|BREATHING)>/i)),this[_0x457e94(0x118)][_0x5993ca];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0xd1)]=function(){const _0x1bf204=_0x15744c,_0xea90a8='breathingData';if(this[_0x1bf204(0x16d)](_0xea90a8))return this['_cache'][_0xea90a8];return this[_0x1bf204(0x118)][_0xea90a8]=this[_0x1bf204(0x12c)](),this['_cache'][_0xea90a8];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x12c)]=function(){const _0x3f4468=_0x15744c,_0x524584=/<VISUAL (?:BREATH|BREATHING) EFFECT>\s*([\s\S]*)\s*<\/VISUAL (?:BREATH|BREATHING) EFFECT>/i,_0x41743a={'breathing':![],'speedX':0xa,'speedY':0xa,'rateX':0x0,'rateY':0.02,'hpLinked':![]};for(const _0x51a98a of this[_0x3f4468(0xab)]()){if(!_0x51a98a)continue;if(_0x51a98a[_0x3f4468(0x11c)][_0x3f4468(0x120)](_0x524584)){if('ZgyCZ'!==_0x3f4468(0x134))_0x59b62c['VisualStateEffects']['Sprite_Enemy_update'][_0x3f4468(0x1a8)](this),this['updateVisualStateEffects']();else{_0x41743a['breathing']=!![];const _0x3a5913=String(RegExp['$1']);if(_0x3a5913[_0x3f4468(0x120)](/SPEED:[ ](.*)/i)){if(_0x3f4468(0xe9)===_0x3f4468(0x17f)){const _0x18b967=_0x26e889(_0x3962d6['$1']);_0x1891ec[_0x3f4468(0x186)]([_0x1ec49b],_0x18b967,_0x10d6d4,_0x24d2cf);}else _0x41743a[_0x3f4468(0x1a3)]=Number(RegExp['$1'])||0x0,_0x41743a[_0x3f4468(0x10f)]=Number(RegExp['$1'])||0x0;}if(_0x3a5913[_0x3f4468(0x120)](/(?:SPEEDX|SPEED X):[ ](.*)/i)){if(_0x3f4468(0xc9)===_0x3f4468(0xc9))_0x41743a[_0x3f4468(0x1a3)]=Number(RegExp['$1'])||0x0;else{let _0x2e7c4b=_0x13690d[_0x3f4468(0x168)][_0x3f4468(0x123)][_0x3f4468(0x1a8)](this);return _0x2e7c4b+=this['applyBreathingScaleX'](),_0x2e7c4b;}}_0x3a5913[_0x3f4468(0x120)](/(?:SPEEDY|SPEED Y):[ ](.*)/i)&&(_0x41743a[_0x3f4468(0x10f)]=Number(RegExp['$1'])||0x0);_0x3a5913[_0x3f4468(0x120)](/RATE:[ ](.*)/i)&&(_0x3f4468(0xf5)!==_0x3f4468(0x166)?(_0x41743a[_0x3f4468(0xb3)]=Number(RegExp['$1'])||0x0,_0x41743a[_0x3f4468(0x109)]=Number(RegExp['$1'])||0x0):(this[_0x3f4468(0x118)]={},_0x10e3d7[_0x3f4468(0x168)][_0x3f4468(0xbf)][_0x3f4468(0x1a8)](this)));_0x3a5913[_0x3f4468(0x120)](/(?:RATEX|RATE X):[ ](.*)/i)&&(_0x41743a[_0x3f4468(0xb3)]=Number(RegExp['$1'])||0x0);_0x3a5913[_0x3f4468(0x120)](/(?:RATEY|RATE Y):[ ](.*)/i)&&(_0x41743a[_0x3f4468(0x109)]=Number(RegExp['$1'])||0x0);if(_0x3a5913[_0x3f4468(0x120)](/(?:HPLINK|HP LINK|HPLINKED|HP LINKED): ON/i))_0x41743a[_0x3f4468(0x1a2)]=!![];else{if(_0x3a5913[_0x3f4468(0x120)](/(?:HPLINK|HP LINK|HPLINKED|HP LINKED): OFF/i)){if(_0x3f4468(0x1a7)===_0x3f4468(0x15b)){this[_0x3f4468(0x153)]--;return;}else _0x41743a[_0x3f4468(0x1a2)]=![];}}break;}}}return _0x41743a;},VisuMZ[_0x15744c(0x168)][_0x15744c(0x114)]=Game_Battler['prototype']['onAddState'],Game_Battler[_0x15744c(0x192)][_0x15744c(0x15d)]=function(_0x56e024){const _0x175fd7=_0x15744c;VisuMZ[_0x175fd7(0x168)]['Game_Battler_onAddState']['call'](this,_0x56e024),this[_0x175fd7(0x13d)](_0x56e024,!![]);},VisuMZ[_0x15744c(0x168)]['Game_BattlerBase_die']=Game_BattlerBase[_0x15744c(0x192)]['die'],Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0x11d)]=function(){const _0x1f3a0f=_0x15744c;this['_die_bypass_visualStateEffects']=!![],VisuMZ[_0x1f3a0f(0x168)][_0x1f3a0f(0x167)]['call'](this),this['_die_bypass_visualStateEffects']=undefined;},VisuMZ[_0x15744c(0x168)][_0x15744c(0x162)]=Game_Battler[_0x15744c(0x192)][_0x15744c(0x139)],Game_Battler[_0x15744c(0x192)][_0x15744c(0x139)]=function(_0x16bdb0){const _0x48818c=_0x15744c;if(!this[_0x48818c(0xa9)])this[_0x48818c(0x13d)](_0x16bdb0,![]);VisuMZ[_0x48818c(0x168)]['Game_Battler_onRemoveState'][_0x48818c(0x1a8)](this,_0x16bdb0);},VisuMZ['VisualStateEffects'][_0x15744c(0xc6)]=Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x173)],Sprite_Battler['prototype'][_0x15744c(0x173)]=function(){const _0x15be7f=_0x15744c;VisuMZ['VisualStateEffects']['Sprite_Battler_initMembers']['call'](this),this[_0x15be7f(0x17c)](),this[_0x15be7f(0xc3)]();},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x17c)]=function(){const _0x7f7712=_0x15744c;this['_visualStateAnimationRepeatDuration']=0x0,this[_0x7f7712(0xff)]=0x0;},Sprite_Battler[_0x15744c(0x192)]['setupBuffDebuffPopup']=function(_0x51bdd3,_0x5ebf7d){const _0x184cf6=_0x15744c,_0x17ed88=VisuMZ['VisualStateEffects']['Settings'][_0x184cf6(0xb1)],_0x4c852a=_0x5ebf7d?'Buff':_0x184cf6(0xca),_0x104418=_0x5ebf7d?Game_BattlerBase[_0x184cf6(0xdb)]:Game_BattlerBase['ICON_DEBUFF_START'],_0x53925b=_0x104418+_0x51bdd3,_0x2274e0=TextManager['param'](_0x51bdd3),_0x2d0026=_0x17ed88[_0x184cf6(0x197)['format'](_0x4c852a)];if(_0x2d0026['length']<=0x0)return;let _0x221b27=_0x2d0026[_0x184cf6(0x113)](_0x2274e0);const _0x144bcc={'textColor':_0x17ed88[_0x184cf6(0x160)[_0x184cf6(0x113)](_0x4c852a)]||0x0,'flashColor':_0x17ed88[_0x184cf6(0xfb)[_0x184cf6(0x113)](_0x4c852a)]||[0x0,0x0,0x0,0x0],'flashDuration':_0x17ed88[_0x184cf6(0x11f)[_0x184cf6(0x113)](_0x4c852a)]||0x0},_0x5cfa40=ImageManager[_0x184cf6(0xef)]('IconSet');_0x5cfa40[_0x184cf6(0x14e)](this[_0x184cf6(0x158)][_0x184cf6(0xa1)](this,_0x53925b,_0x221b27,_0x144bcc));},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x116)]=function(_0xda44d8,_0x31693c){const _0x10c39e=_0x15744c,_0xf778e4=VisuMZ[_0x10c39e(0x168)][_0x10c39e(0x161)]['State'],_0x5fe4dd=$dataStates[_0xda44d8];if(!_0x5fe4dd)return;const _0xabf453=_0x31693c?'Add':_0x10c39e(0x144),_0x452ad1=_0x5fe4dd['iconIndex'];if(_0x452ad1<=0x0)return;const _0x975029=_0xf778e4[_0x10c39e(0x197)[_0x10c39e(0x113)](_0xabf453)];if(_0x975029[_0x10c39e(0x170)]<=0x0)return;let _0x5d3420=_0x975029['format'](_0x5fe4dd['name']);const _0x771cc8={'textColor':_0xf778e4[_0x10c39e(0xd4)]||0x0,'flashColor':_0xf778e4[_0x10c39e(0x157)]||[0x0,0x0,0x0,0x0],'flashDuration':_0xf778e4[_0x10c39e(0x1a5)]||0x0};if(_0xf778e4[_0x10c39e(0x143)]){if(_0x10c39e(0x132)===_0x10c39e(0x132))_0x771cc8['textColor']=ColorManager['stateColor'](_0x5fe4dd);else{if(!this['_dragonbones'])return;this['_battler'][_0x10c39e(0xcc)]()?this[_0x10c39e(0x104)]['animation'][_0x10c39e(0xc8)]=0x0:_0x1b09c4[_0x10c39e(0x168)]['Sprite_Battler_updateDragonbonesTimeScale']['call'](this);}}VisuMZ[_0x10c39e(0x168)]['customizeStatePopup'](_0x5fe4dd,_0x771cc8);const _0x4e31fa=ImageManager[_0x10c39e(0xef)](_0x10c39e(0xdd));_0x4e31fa['addLoadListener'](this[_0x10c39e(0x158)][_0x10c39e(0xa1)](this,_0x452ad1,_0x5d3420,_0x771cc8));},VisuMZ[_0x15744c(0x168)][_0x15744c(0x13b)]=function(_0x48ee68,_0x385b17){const _0x5bfe0c=_0x15744c,_0x3e34bb=_0x48ee68['note'];if(_0x3e34bb[_0x5bfe0c(0x120)](/<STATE POPUP>\s*([\s\S]*)\s*<\/STATE POPUP>/i)){const _0x15d026=String(RegExp['$1'])[_0x5bfe0c(0x13c)]()['split'](/[\r\n]+/);for(const _0x2daee5 of _0x15d026){if('qPmeC'===_0x5bfe0c(0x108))_0x55d719[_0x5bfe0c(0x133)]=_0x4aac72(_0x5536c8['$1'])||0x0;else{_0x2daee5[_0x5bfe0c(0x120)](/(?:TEXT COLOR|TEXTCOLOR):[ ](.*)/i)&&(_0x385b17[_0x5bfe0c(0x105)]=String(RegExp['$1'])[_0x5bfe0c(0x13c)]());if(_0x2daee5[_0x5bfe0c(0x120)](/(?:FLASH COLOR|FLASHCOLOR):[ ](.*)/i)){_0x385b17['flashColor']=String(RegExp['$1'])['trim']()[_0x5bfe0c(0xad)](',')[_0x5bfe0c(0xd0)](_0x18b058=>Number(_0x18b058));while(_0x385b17['flashColor'][_0x5bfe0c(0x170)]<=0x4){_0x385b17[_0x5bfe0c(0xe4)]['push'](0x0);};_0x385b17[_0x5bfe0c(0xa3)]=_0x385b17[_0x5bfe0c(0xa3)]||0x1;}_0x2daee5[_0x5bfe0c(0x120)](/(?:FLASH DURATION|FLASHDURATION):[ ](\d+)/i)&&(_0x385b17['flashDuration']=Number(RegExp['$1']));}}}},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x176)]=function(){const _0x14b85e=_0x15744c;if(!this['_battler'])return;if(!this[_0x14b85e(0x182)][_0x14b85e(0x12d)]())return;if(!this[_0x14b85e(0x182)]['isAppeared']())return;if(!this[_0x14b85e(0x182)][_0x14b85e(0x127)]())return;if(this[_0x14b85e(0x153)]>0x0){if('spGKt'!=='spGKt')_0x3e1ca9=_0x59e936['max'](_0x39ba76,_0x38a8f6);else{this[_0x14b85e(0x153)]--;return;}}const _0x31d1a7=this['_battler']['getVisualRepeatingStateAnimation'](),_0x166e8c=this[_0x14b85e(0x182)][_0x14b85e(0xa2)]();if(_0x31d1a7[_0x14b85e(0x170)]<=0x0)return;this[_0x14b85e(0xff)]>=_0x31d1a7[_0x14b85e(0x170)]&&(this[_0x14b85e(0xff)]=0x0);const _0x359cb7=_0x31d1a7[this[_0x14b85e(0xff)]],_0x580700=VisuMZ['VisualStateEffects'][_0x14b85e(0x161)]['State'],_0x492828=[this[_0x14b85e(0x182)]],_0x20d921=_0x580700[_0x14b85e(0x185)],_0x1256e5=_0x580700[_0x14b85e(0x180)];$gameTemp[_0x14b85e(0x186)](_0x492828,_0x359cb7,_0x20d921,_0x1256e5);const _0x135882=_0x166e8c[this['_visualStateAnimationIndex']]||_0x580700['CycleTime'];this['_visualStateAnimationRepeatDuration']=_0x135882,this[_0x14b85e(0xff)]++;},Sprite_Battler['prototype'][_0x15744c(0x16a)]=function(){const _0x8890fb=_0x15744c;this[_0x8890fb(0xce)]&&this['updateVisualStateEffectsIcons'](),this[_0x8890fb(0xcd)]&&('hYDid'!==_0x8890fb(0xf0)?this[_0x8890fb(0x17d)]():(_0x55f276['x']=0x0,this[_0x8890fb(0x182)][_0x8890fb(0x1b1)]&&(_0x5d7ddc['x']+=this[_0x8890fb(0x182)][_0x8890fb(0x1b1)]()),_0x417f8c['y']=-_0x7b4f9[_0x8890fb(0xe8)]((this[_0x8890fb(0xde)]+0x28)*0.9),_0x295691['y']<0x14-this['y']&&(_0x246083['y']=0x14-this['y']),this[_0x8890fb(0x182)][_0x8890fb(0xfa)]&&(_0x5dd4eb['y']+=this[_0x8890fb(0x182)][_0x8890fb(0xfa)]()))),this[_0x8890fb(0x176)](),this[_0x8890fb(0x100)](),this[_0x8890fb(0x147)]();},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0xd8)]=function(){const _0x12630f=_0x15744c;if(!this[_0x12630f(0x182)])return;const _0x15c74b=VisuMZ[_0x12630f(0x168)][_0x12630f(0x161)][_0x12630f(0x1a9)],_0x2c65bb=this['_stateIconSprite'];_0x2c65bb[_0x12630f(0x19b)]=this[_0x12630f(0x182)][_0x12630f(0xf3)]()?_0x15c74b[_0x12630f(0x18f)]:_0x15c74b['EnemyStateIcon'],this[_0x12630f(0x182)]['isActor']()&&(_0x2c65bb['x']=0x0,this[_0x12630f(0x182)][_0x12630f(0x1b1)]&&('DQWUG'==='vhlgL'?this[_0x12630f(0x17d)]():_0x2c65bb['x']+=this[_0x12630f(0x182)]['battleUIOffsetX']()),_0x2c65bb['y']=-Math[_0x12630f(0xe8)]((this['height']+0x28)*0.9),_0x2c65bb['y']<0x14-this['y']&&(_0x2c65bb['y']=0x14-this['y']),this['_battler']['battleUIOffsetY']&&(_0x2c65bb['y']+=this[_0x12630f(0x182)][_0x12630f(0xfa)]()));},Sprite_Battler['prototype'][_0x15744c(0x17d)]=function(){const _0x47e88f=_0x15744c;if(!this['_battler'])return;const _0x56e38d=VisuMZ[_0x47e88f(0x168)][_0x47e88f(0x161)][_0x47e88f(0x1a9)],_0x163fc1=this['_stateSprite'];_0x163fc1['visible']=this[_0x47e88f(0x182)]['isActor']()?_0x56e38d[_0x47e88f(0x1a6)]:_0x56e38d['EnemyOverlay'];if(this[_0x47e88f(0xb0)]){if(_0x47e88f(0x19a)===_0x47e88f(0x19a))this[_0x47e88f(0xb0)][_0x47e88f(0xcd)][_0x47e88f(0x19b)]=![];else return this[_0x47e88f(0x118)]=this['_cache']||{},this['_cache'][_0x536226]!==_0x403ac6;}if(this[_0x47e88f(0x182)][_0x47e88f(0x16e)]()&&!this[_0x47e88f(0x182)][_0x47e88f(0xa6)]()){if(_0x47e88f(0x164)!==_0x47e88f(0x164)){const _0x3b27cf=_0x15416a[_0x47e88f(0x168)][_0x47e88f(0x161)][_0x47e88f(0xe5)],_0x595870=_0x245b50[_0x585253];if(!_0x595870)return;const _0x563eca=_0xdd6ac7?_0x47e88f(0x1b4):_0x47e88f(0x144),_0x15d7b1=_0x595870[_0x47e88f(0x124)];if(_0x15d7b1<=0x0)return;const _0x5c0100=_0x3b27cf[_0x47e88f(0x197)[_0x47e88f(0x113)](_0x563eca)];if(_0x5c0100[_0x47e88f(0x170)]<=0x0)return;let _0x5e0620=_0x5c0100[_0x47e88f(0x113)](_0x595870['name']);const _0x1c1ada={'textColor':_0x3b27cf['TextColor']||0x0,'flashColor':_0x3b27cf['FlashColor']||[0x0,0x0,0x0,0x0],'flashDuration':_0x3b27cf['FlashDuration']||0x0};_0x3b27cf[_0x47e88f(0x143)]&&(_0x1c1ada[_0x47e88f(0x105)]=_0x114a2f[_0x47e88f(0x184)](_0x595870));_0x2a7631[_0x47e88f(0x168)][_0x47e88f(0x13b)](_0x595870,_0x1c1ada);const _0x34adc4=_0x32b1f0[_0x47e88f(0xef)](_0x47e88f(0xdd));_0x34adc4[_0x47e88f(0x14e)](this[_0x47e88f(0x158)][_0x47e88f(0xa1)](this,_0x15d7b1,_0x5e0620,_0x1c1ada));}else this[_0x47e88f(0xce)]?'sZvNr'!==_0x47e88f(0x136)?_0x11f80a['rateX']=_0x37e87c(_0x92fad['$1'])||0x0:_0x163fc1['y']=this[_0x47e88f(0xce)]['y']+_0x163fc1[_0x47e88f(0xde)]:_0x163fc1['y']=-this[_0x47e88f(0xde)]+_0x163fc1['height'];};},Sprite_Battler['prototype']['updateVisualStateTone']=function(){const _0x466a52=_0x15744c;if(!this[_0x466a52(0x182)])return;const _0x1610c2=this[_0x466a52(0x9f)](),_0x580c9a=this[_0x466a52(0x182)][_0x466a52(0xf4)]();_0x1610c2&&_0x1610c2[_0x466a52(0xaa)](_0x580c9a),this[_0x466a52(0x16f)]&&this[_0x466a52(0x16f)][_0x466a52(0xaa)](_0x580c9a);},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x9f)]=function(){const _0x18007d=_0x15744c;return this[_0x18007d(0xf2)]||this;},VisuMZ[_0x15744c(0x168)][_0x15744c(0x122)]=Sprite_Battler['prototype']['updateDragonbonesTimeScale'],Sprite_Battler[_0x15744c(0x192)]['updateDragonbonesTimeScale']=function(){const _0x2fa83c=_0x15744c;if(!this['_dragonbones'])return;this[_0x2fa83c(0x182)][_0x2fa83c(0xcc)]()?this[_0x2fa83c(0x104)][_0x2fa83c(0x14b)]['timeScale']=0x0:VisuMZ[_0x2fa83c(0x168)][_0x2fa83c(0x122)][_0x2fa83c(0x1a8)](this);},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0xc3)]=function(){this['_hoverMinimum']=-0x1;},VisuMZ[_0x15744c(0x168)][_0x15744c(0x196)]=Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x119)],Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x119)]=function(){const _0x5e9aa1=_0x15744c;let _0x27c8e1=VisuMZ[_0x5e9aa1(0x168)]['Sprite_Battler_extraPositionY']['call'](this);return _0x27c8e1-=Math[_0x5e9aa1(0xb2)](this[_0x5e9aa1(0xbc)]()),_0x27c8e1;},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0xbc)]=function(){const _0x5dc0f7=_0x15744c;if(this['constructor']===Sprite_SvEnemy)return 0x0;if(!this['_battler'])return 0x0;if(this[_0x5dc0f7(0x182)][_0x5dc0f7(0xda)]&&this[_0x5dc0f7(0x182)][_0x5dc0f7(0xda)]())return 0x0;const _0x2db70d=this[_0x5dc0f7(0x182)][_0x5dc0f7(0x188)]();let _0x5f3cc2=0x0;this[_0x5dc0f7(0xf6)]=this[_0x5dc0f7(0xf6)]||Math['floor'](Math[_0x5dc0f7(0xf7)]()*0x2710);const _0x507a3c=Graphics[_0x5dc0f7(0x19e)]+this[_0x5dc0f7(0xf6)],_0x1db16e=_0x2db70d[_0x5dc0f7(0xe0)],_0xcc641c=_0x2db70d[_0x5dc0f7(0x133)];let _0x2aa761=_0x2db70d[_0x5dc0f7(0x110)];if(_0x2aa761&&this[_0x5dc0f7(0x182)]['isDead']())_0x2aa761=_0x2db70d['deathHover'];if(_0x2aa761){_0x5f3cc2+=Math[_0x5dc0f7(0x1ae)](_0x507a3c/(_0x1db16e||0x1))*_0xcc641c,_0x5f3cc2+=_0x2db70d[_0x5dc0f7(0xb6)];if(this[_0x5dc0f7(0x18e)]<0x0)this['_hoverMinimum']=_0x5f3cc2;const _0x5cf48d=this['_hoverMinimum']+_0x1db16e/Math[_0x5dc0f7(0x102)](0x1,_0xcc641c**1.5);this[_0x5dc0f7(0x18e)]=Math['min'](_0x5cf48d,_0x5f3cc2);}else{if('KTxZK'!==_0x5dc0f7(0xf1))_0x5b1f1e[_0x5dc0f7(0x169)](_0x217028['VisualStateEffects'][_0x5dc0f7(0x161)][_0x5dc0f7(0xe5)][_0x5dc0f7(0x187)]);else{const _0x13eab1=this[_0x5dc0f7(0x18e)]-_0x1db16e/Math[_0x5dc0f7(0x102)](0x1,_0xcc641c/0x2);this[_0x5dc0f7(0x18e)]=Math[_0x5dc0f7(0x102)](_0x13eab1,0x0);}}return Math['max'](0x0,this['_hoverMinimum']);},VisuMZ['VisualStateEffects'][_0x15744c(0x130)]=Sprite_Battler['prototype'][_0x15744c(0x117)],Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x117)]=function(){const _0x233e2f=_0x15744c;VisuMZ[_0x233e2f(0x168)]['Sprite_Battler_updateOpacity'][_0x233e2f(0x1a8)](this),this[_0x233e2f(0x163)]();},Sprite_Battler[_0x15744c(0x192)]['updateDistortionOpacity']=function(){const _0x27bdde=_0x15744c;if(!this[_0x27bdde(0x12b)])return;if(!this[_0x27bdde(0x182)])return;if(this[_0x27bdde(0x10b)]===Sprite_SvEnemy)return;const _0x36db61=this[_0x27bdde(0x182)][_0x27bdde(0x115)]();if(this[_0x27bdde(0x12b)][_0x27bdde(0x18c)]!==_0x36db61){const _0x3835b7=0x8;this[_0x27bdde(0x12b)]['opacity']>_0x36db61?this['_distortionSprite'][_0x27bdde(0x18c)]=Math[_0x27bdde(0x102)](this['_distortionSprite'][_0x27bdde(0x18c)]-_0x3835b7,_0x36db61):_0x27bdde(0x103)!==_0x27bdde(0x103)?_0x9f41e8['y']=this[_0x27bdde(0xce)]['y']+_0x2d9d9c['height']:this['_distortionSprite'][_0x27bdde(0x18c)]=Math[_0x27bdde(0x111)](this[_0x27bdde(0x12b)]['opacity']+_0x3835b7,_0x36db61);}},Game_BattlerBase[_0x15744c(0x192)]['visualBattlerOpacity']=function(){const _0x4df59e=_0x15744c,_0x4d01a1=_0x4df59e(0x115);if(this[_0x4df59e(0x16d)](_0x4d01a1))return this[_0x4df59e(0x118)][_0x4d01a1];return this[_0x4df59e(0x118)][_0x4d01a1]=this['createVisualBattlerOpacity'](),this[_0x4df59e(0x118)][_0x4d01a1];},Game_BattlerBase[_0x15744c(0x192)]['createVisualBattlerOpacity']=function(){const _0x32ad98=_0x15744c;for(const _0x20760f of this[_0x32ad98(0xbe)]()){if(_0x32ad98(0x198)==='oEIOq')_0x5be2c8(_0x32ad98(0x174)[_0x32ad98(0x113)](_0x406282,_0x11456c,_0xa29c29)),_0x38b703['exit']();else{if(!_0x20760f)continue;if(_0x20760f[_0x32ad98(0x11c)][_0x32ad98(0x120)](/<VISUAL OPACITY:[ ](\d+)([%％])>/i)){if(_0x32ad98(0x151)===_0x32ad98(0x17b))return _0x6e912f(_0x15142a['$1']);else{const _0x42680b=Number(RegExp['$1'])*0.01;return Math[_0x32ad98(0xe8)](_0x42680b*0xff)[_0x32ad98(0x195)](0x0,0xff);}}if(_0x20760f[_0x32ad98(0x11c)][_0x32ad98(0x120)](/<VISUAL OPACITY:[ ](\d+)>/i)){if(_0x32ad98(0xb7)!==_0x32ad98(0x126))return Number(RegExp['$1'])[_0x32ad98(0x195)](0x0,0xff);else{const _0x22d747=this[_0x32ad98(0x18a)];if(!_0x22d747)return;const _0x4b9639=_0x22d747[_0x32ad98(0xc4)]();if(_0x4b9639>=0x4){if(!_0x22d747[_0x32ad98(0x1b5)]()&&!_0x22d747[_0x32ad98(0xcf)]())return this[_0x32ad98(0x121)](_0x22d747[_0x32ad98(0xa4)]);}_0x423a69[_0x32ad98(0x168)][_0x32ad98(0xdc)][_0x32ad98(0x1a8)](this);}}}}return 0xff;},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x147)]=function(){const _0x509c41=_0x15744c;if(!this[_0x509c41(0x182)])return;const _0x33dec9=this[_0x509c41(0x182)][_0x509c41(0xa7)]();if(_0x33dec9===0x0&&this[_0x509c41(0x12b)]['_hue']!==0x0)this[_0x509c41(0x12b)]['setHue'](0x0);else{if(_0x509c41(0x15a)!=='tgcYB'){const _0x42c5e7='breathingData';if(this[_0x509c41(0x16d)](_0x42c5e7))return this[_0x509c41(0x118)][_0x42c5e7];return this[_0x509c41(0x118)][_0x42c5e7]=this[_0x509c41(0x12c)](),this[_0x509c41(0x118)][_0x42c5e7];}else{let _0x3f42d=this[_0x509c41(0x12b)][_0x509c41(0xb8)]+_0x33dec9;_0x3f42d%=0x168,this[_0x509c41(0x12b)][_0x509c41(0x152)](_0x3f42d);}}},Game_BattlerBase['prototype']['visualStateRainbow']=function(){const _0x24dc58=_0x15744c,_0x3805ff=_0x24dc58(0xa7);if(this[_0x24dc58(0x16d)](_0x3805ff))return this[_0x24dc58(0x118)][_0x3805ff];return this['_cache'][_0x3805ff]=this[_0x24dc58(0xd3)](),this[_0x24dc58(0x118)][_0x3805ff];},Game_BattlerBase[_0x15744c(0x192)][_0x15744c(0xd3)]=function(){const _0x4604ee=_0x15744c;for(const _0x346b8d of this[_0x4604ee(0xbe)]()){if(!_0x346b8d)continue;if(_0x346b8d[_0x4604ee(0x11c)][_0x4604ee(0x120)](/<VISUAL RAINBOW:[ ]([\+\-]\d+)>/i))return Number(RegExp['$1']);}return 0x0;},VisuMZ['VisualStateEffects']['Sprite_Battler_mainSpriteScaleX']=Sprite_Battler['prototype']['mainSpriteScaleX'],Sprite_Battler[_0x15744c(0x192)]['mainSpriteScaleX']=function(){const _0x2d07b5=_0x15744c;let _0x58ba29=VisuMZ[_0x2d07b5(0x168)]['Sprite_Battler_mainSpriteScaleX'][_0x2d07b5(0x1a8)](this);return _0x58ba29+=this['applyBreathingScaleX'](),_0x58ba29;},VisuMZ['VisualStateEffects']['Sprite_Battler_mainSpriteScaleY']=Sprite_Battler[_0x15744c(0x192)][_0x15744c(0xbb)],Sprite_Battler[_0x15744c(0x192)][_0x15744c(0xbb)]=function(){const _0x46a84e=_0x15744c;let _0x2ce3c9=VisuMZ[_0x46a84e(0x168)][_0x46a84e(0x1a4)]['call'](this);return _0x2ce3c9+=this[_0x46a84e(0x191)](),_0x2ce3c9;},Sprite_Battler[_0x15744c(0x192)][_0x15744c(0x137)]=function(){const _0x135ee2=_0x15744c;if(!this['_battler'])return 0x0;if(this[_0x135ee2(0x182)][_0x135ee2(0x175)]())return 0x0;const _0xc06b97=this[_0x135ee2(0x182)][_0x135ee2(0xd1)]();if(!_0xc06b97)return 0x0;if(!_0xc06b97[_0x135ee2(0x1b3)])return 0x0;let _0x1d0bbb=this[_0x135ee2(0x194)](_0xc06b97,_0xc06b97[_0x135ee2(0x1a3)],_0xc06b97[_0x135ee2(0xb3)]);const _0x529944=this[_0x135ee2(0x12b)][_0x135ee2(0xd5)]['x']>0x0?0x1:-0x1;return _0x1d0bbb*_0x529944;},Sprite_Battler['prototype'][_0x15744c(0x191)]=function(){const _0x1fcc6c=_0x15744c;if(!this[_0x1fcc6c(0x182)])return 0x0;if(this[_0x1fcc6c(0x182)][_0x1fcc6c(0x175)]())return 0x0;const _0x49b0a3=this['_battler'][_0x1fcc6c(0xd1)]();if(!_0x49b0a3)return 0x0;if(!_0x49b0a3['breathing'])return 0x0;let _0x44dd07=this[_0x1fcc6c(0x194)](_0x49b0a3,_0x49b0a3[_0x1fcc6c(0x10f)],_0x49b0a3[_0x1fcc6c(0x109)]);return _0x44dd07;},Sprite_Battler['prototype'][_0x15744c(0x194)]=function(_0x1f2dc3,_0x20ea7c,_0xd204e3){const _0x4a8e40=_0x15744c;this[_0x4a8e40(0x149)]=this[_0x4a8e40(0x149)]??Math[_0x4a8e40(0x15c)](0x2710);let _0x3a19d2=Graphics['frameCount']+this[_0x4a8e40(0x149)];if(_0x1f2dc3[_0x4a8e40(0x1a2)]){if(_0x4a8e40(0x14a)!==_0x4a8e40(0x146))_0x20ea7c/=this[_0x4a8e40(0x182)][_0x4a8e40(0x10e)]();else{let _0x300eda=_0x2d6290(_0x59a01e['$1'])[_0x4a8e40(0x13c)]()[_0x4a8e40(0xad)](',')[_0x4a8e40(0xd0)](_0x1131e7=>_0x129905(_0x1131e7)||0x0);while(_0x300eda[_0x4a8e40(0x170)]<0x4)_0x300eda['push'](0x0);return _0x300eda[0x0]=_0x300eda[0x0][_0x4a8e40(0x195)](-0xff,0xff),_0x300eda[0x1]=_0x300eda[0x1][_0x4a8e40(0x195)](-0xff,0xff),_0x300eda[0x2]=_0x300eda[0x2][_0x4a8e40(0x195)](-0xff,0xff),_0x300eda[0x3]=_0x300eda[0x3]['clamp'](0x0,0xff),_0x300eda;}}return Math[_0x4a8e40(0x1ae)](_0x3a19d2/_0x20ea7c)*_0xd204e3;},VisuMZ[_0x15744c(0x168)][_0x15744c(0x16b)]=Sprite_Actor[_0x15744c(0x192)][_0x15744c(0x10c)],Sprite_Actor[_0x15744c(0x192)][_0x15744c(0x10c)]=function(){const _0x32cd7f=_0x15744c;VisuMZ['VisualStateEffects'][_0x32cd7f(0x16b)][_0x32cd7f(0x1a8)](this),this[_0x32cd7f(0xe6)]();},Sprite_Actor[_0x15744c(0x192)]['createStateIconSprite']=function(){const _0x2c7ac6=_0x15744c;if(this[_0x2c7ac6(0x10b)]!==Sprite_Actor)return;this[_0x2c7ac6(0xce)]=new Sprite_StateIcon(),this['addChild'](this['_stateIconSprite']),this['_stateIconSprite']['bitmap'][_0x2c7ac6(0x156)]=![];},VisuMZ[_0x15744c(0x168)][_0x15744c(0xdc)]=Sprite_Actor[_0x15744c(0x192)]['refreshMotion'],Sprite_Actor[_0x15744c(0x192)]['refreshMotion']=function(){const _0x324360=_0x15744c,_0x3bd85e=this[_0x324360(0x18a)];if(!_0x3bd85e)return;const _0x4981fb=_0x3bd85e[_0x324360(0xc4)]();if(_0x4981fb>=0x4){if(_0x324360(0x17a)!=='RtpSz')_0xe52cad[_0x324360(0x1a3)]=_0xa4e8aa(_0x4483ae['$1'])||0x0,_0x18f876[_0x324360(0x10f)]=_0x7fb645(_0x49c490['$1'])||0x0;else{if(!_0x3bd85e[_0x324360(0x1b5)]()&&!_0x3bd85e[_0x324360(0xcf)]())return this[_0x324360(0x121)](_0x3bd85e[_0x324360(0xa4)]);}}VisuMZ['VisualStateEffects'][_0x324360(0xdc)]['call'](this);},VisuMZ[_0x15744c(0x168)]['Sprite_SvEnemy_refreshMotion']=Sprite_SvEnemy[_0x15744c(0x192)][_0x15744c(0xec)],Sprite_SvEnemy['prototype'][_0x15744c(0xec)]=function(){const _0x13f1b1=_0x15744c,_0x2a6b94=this[_0x13f1b1(0x18a)];if(!_0x2a6b94)return;const _0x3a8e3d=_0x2a6b94[_0x13f1b1(0xc4)]();if(_0x3a8e3d>=0x4){if(!_0x2a6b94[_0x13f1b1(0x1b5)]()&&!_0x2a6b94[_0x13f1b1(0xcf)]()){if(_0x13f1b1(0x154)===_0x13f1b1(0x154))return this[_0x13f1b1(0x121)](_0x2a6b94[_0x13f1b1(0xa4)]);else{const _0x42eb38='hoverData';if(this['checkCacheKey'](_0x42eb38))return this[_0x13f1b1(0x118)][_0x42eb38];return this[_0x13f1b1(0x118)][_0x42eb38]=this[_0x13f1b1(0xae)](),this[_0x13f1b1(0x118)][_0x42eb38];}}}VisuMZ[_0x13f1b1(0x168)][_0x13f1b1(0x11e)][_0x13f1b1(0x1a8)](this);},VisuMZ[_0x15744c(0x168)]['Sprite_Actor_setBattler']=Sprite_Actor['prototype'][_0x15744c(0x1ab)],Sprite_Actor[_0x15744c(0x192)][_0x15744c(0x1ab)]=function(_0x5d0ce4){const _0xc1d633=_0x15744c;VisuMZ['VisualStateEffects']['Sprite_Actor_setBattler'][_0xc1d633(0x1a8)](this,_0x5d0ce4);if(this['_stateIconSprite'])this[_0xc1d633(0xce)]['setup'](_0x5d0ce4);},VisuMZ[_0x15744c(0x168)][_0x15744c(0xa5)]=Sprite_Actor[_0x15744c(0x192)][_0x15744c(0x106)],Sprite_Actor[_0x15744c(0x192)]['update']=function(){const _0x2f2597=_0x15744c;VisuMZ[_0x2f2597(0x168)][_0x2f2597(0xa5)][_0x2f2597(0x1a8)](this),this[_0x2f2597(0x16a)]();},VisuMZ['VisualStateEffects'][_0x15744c(0xe2)]=Sprite_Actor[_0x15744c(0x192)][_0x15744c(0xa8)],Sprite_Actor[_0x15744c(0x192)]['updateFrame']=function(){const _0x205b23=_0x15744c;if(this[_0x205b23(0x182)][_0x205b23(0xcc)]()&&this[_0x205b23(0xf2)]&&this['_mainSprite'][_0x205b23(0xcb)]){if(this['_stateMotionLocked'])return;this[_0x205b23(0xd6)]=this[_0x205b23(0xf2)]['_frame'][_0x205b23(0x1a1)]>0x0;}else this[_0x205b23(0xd6)]=![];VisuMZ[_0x205b23(0x168)][_0x205b23(0xe2)][_0x205b23(0x1a8)](this);},VisuMZ[_0x15744c(0x168)][_0x15744c(0x107)]=Sprite_Enemy[_0x15744c(0x192)][_0x15744c(0xe6)],Sprite_Enemy[_0x15744c(0x192)][_0x15744c(0xe6)]=function(){const _0x580a5a=_0x15744c;this['createStateSprite'](),VisuMZ['VisualStateEffects'][_0x580a5a(0x107)][_0x580a5a(0x1a8)](this);},Sprite_Enemy['prototype']['createStateSprite']=function(){const _0x18a81d=_0x15744c;this[_0x18a81d(0xcd)]=new Sprite_StateOverlay(),this[_0x18a81d(0x15f)](this['_stateSprite']);},VisuMZ[_0x15744c(0x168)][_0x15744c(0xe1)]=Sprite_Enemy[_0x15744c(0x192)][_0x15744c(0x1ab)],Sprite_Enemy[_0x15744c(0x192)][_0x15744c(0x1ab)]=function(_0x381d97){const _0x1e40ab=_0x15744c;VisuMZ[_0x1e40ab(0x168)][_0x1e40ab(0xe1)]['call'](this,_0x381d97);if(this[_0x1e40ab(0xcd)])this['_stateSprite'][_0x1e40ab(0xc0)](_0x381d97);},VisuMZ[_0x15744c(0x168)]['Sprite_Enemy_update']=Sprite_Enemy[_0x15744c(0x192)][_0x15744c(0x106)],Sprite_Enemy[_0x15744c(0x192)]['update']=function(){const _0x1a4ba4=_0x15744c;VisuMZ['VisualStateEffects'][_0x1a4ba4(0x140)][_0x1a4ba4(0x1a8)](this),this[_0x1a4ba4(0x16a)]();};

@@ -1,0 +1,64 @@
+<DragonBone Settings>
+Battler: OriginatorAzathoth
+Scalex: -1.0
+Scaley: 1.0
+Width: 150
+Height: 120
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack C
+Ani Skill: Skill A
+Ani Chant: Casting
+Ani Spell: Skill B
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Victory
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Tentacle Thrust
+Attack B - Tentacle Grind
+Attack C - Tentacle Slam
+Attack D - Single Tentacle Slam
+Attack E - Spit Attack
+Attack F - Devour Attack
+Damage
+Idle
+
+Refer to showcase video attached to release post to preview these motions!
+
+Sample Action Sequence:
+Replace and adjust the motion name as required!
+
+<Setup Action>
+display action
+immortal: targets, true
+</Setup Action>
+
+<target action>
+move user: targets, front base, 25, offset x -110
+motion Attack A: user
+wait: 29
+action animation: target
+action effect
+wait: 40
+</target action>
+
+
+<Finish Action>
+immortal: targets, false
+</Finish Action>
+

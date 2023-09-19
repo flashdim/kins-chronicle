@@ -1,0 +1,31 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Carnivorous Plant-- Enemy Settings (copy any enemy as a base)
+---------------------
+<Attack animation: 12>
+<DragonBone Settings>
+Battler: cPlant
+Scalex: -1.0
+Scaley: 1.0
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Skill
+Ani Skill: Skill
+Ani Chant: Attack
+Ani Spell: Skill
+Ani Item: Skill
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: IdleWeak
+Ani Sleep: IdleWeak
+Ani Dying: IdleWeak
+Ani Dead: Idle
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>

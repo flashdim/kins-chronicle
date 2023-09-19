@@ -1,0 +1,50 @@
+<Attack animation: 12>
+<DragonBone Settings>
+Battler: RADIANCEeldritchknight
+Scalex: -1.0
+Scaley: 1.0
+Width: 200
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack C
+Ani Swing: Attack C
+Ani Thrust: Attack D
+Ani Missile: Attack A
+Ani Skill: Attack B
+Ani Chant: Idle
+Ani Spell: Attack B
+Ani Item: Attack C
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Quick shot
+Attack B - Skill shot
+Attack C - Eldritch swing
+Attack D - Eldritch stab
+Damage
+Idle
+
+<target action>
+move user: FORWARD, 50, 20
+motion Attack B: user
+wait: 42
+animation 111: target
+action effect
+move targets: FORWARD, -10, 3
+move user: return, 10
+wait: 10
+</target action>
+

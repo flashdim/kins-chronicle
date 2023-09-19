@@ -1,0 +1,52 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Aphrodite
+Scalex: -1.2
+Scaley: 1.2
+Width: 350
+Height: 351
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Skill A
+Ani Swing: Skill A
+Ani Thrust: Skill B
+Ani Missile: Skill A
+Ani Skill: Skill A
+Ani Chant: Idle
+Ani Spell: Idle
+Ani Item: Skill A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Quick Spell
+Attack B - Kiss 
+Attack C - Hand Wave
+Attack D - Strong Spel
+Damage
+Idle
+
+Sample Action Sequence:
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack A: user
+wait: 20
+animation 62: target
+action effect
+wait: 45
+</target action>

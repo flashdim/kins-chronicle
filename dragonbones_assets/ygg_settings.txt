@@ -1,0 +1,52 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: ygg
+Scalex: -1.0
+Scaley: 1.0
+Width: 150
+Height: 415
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Casting
+Ani Chant: Idle
+Ani Spell: Casting
+Ani Item: Casting
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Quick Spell
+Attack B - Slash Attack
+Attack C - Thrust Attack
+Attack D - Extended Spell
+Damage
+Idle
+
+Sample Action Sequence:
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+animation 119: user
+motion Attack A: user
+wait: 60
+animation 86: all opponents
+action effect: all opponents
+</target action>

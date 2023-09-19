@@ -1,0 +1,78 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Harbinger
+Scalex: -0.75
+Scaley: 0.75
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Casting
+Ani Chant: Idle
+Ani Spell: Casting
+Ani Item: Casting
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Sample Action Sequences:
+Fate's Severance
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+animation 119: user
+move user: targets, front, 15, auto offset x -200
+wait: 6
+motion Attack B: user
+wait: 30
+animation 124: user
+wait: 10
+animation 125: target
+action effect
+</target action>
+
+Temporal Rend
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<whole action>
+motion Attack A: user
+wait: 30
+animation 126: target
+wait: 15
+animation 64: target
+action effect
+</whole action>
+
+Sunder Of Time
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack C: user
+wait: 30
+animation 109: target
+wait: 45
+action effect: all opponents
+</target action>

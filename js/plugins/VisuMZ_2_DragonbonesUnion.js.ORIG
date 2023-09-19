@@ -1,0 +1,2502 @@
+//=============================================================================
+// VisuStella MZ - Dragonbones Union
+// VisuMZ_2_DragonbonesUnion.js
+//=============================================================================
+
+var Imported = Imported || {};
+Imported.VisuMZ_2_DragonbonesUnion = true;
+
+var VisuMZ = VisuMZ || {};
+VisuMZ.DragonbonesUnion = VisuMZ.DragonbonesUnion || {};
+VisuMZ.DragonbonesUnion.version = 1.14;
+
+//=============================================================================
+ /*:
+ * @target MZ
+ * @plugindesc [RPG Maker MZ] [Tier 2] [Version 1.14] [DragonbonesUnion]
+ * @author VisuStella
+ * @url http://www.yanfly.moe/wiki/Dragonbones_Union_VisuStella_MZ
+ * @base Public_0_Dragonbones
+ * @orderAfter VisuMZ_0_CoreEngine
+ * @orderAfter Public_0_Dragonbones
+ *
+ * @help
+ * ============================================================================
+ * Introduction
+ * ============================================================================
+ *
+ * DragonBones allows your games to use skeletal animation, a type of computer
+ * animation in which a character (or object) is represented by skins/textures
+ * and a digital set of interconnected bones (called the skeleton). Using a set
+ * of instructions, the game will create animations based off these skins,
+ * skeletons, and instructions to create beautifully smooth and light-weight
+ * movements.
+ *
+ * This plugin gives you such control over various facets of your game: the
+ * battle system, event pictures, and map sprites for characters. Various
+ * plugin commands, notetags, and comment tags are added through this plugin to
+ * give you as much control as you need over Dragonbones from the RPG Maker MZ
+ * editor itself.
+ *
+ * The version of Dragonbones used for this plugin is 5.7.002b.
+ * More information can be found at http://dragonbones.com/
+ *
+ * Features include all (but not limited to) the following:
+ * 
+ * - Adds Dragonbones support to RPG Maker MZ.
+ * - Dragonbones armatures can be used as battler sprites.
+ * - Dragonbones armatures can be attached to event pictures.
+ * - Dragonbones armatures can be inserted into the map as character sprites.
+ * - A variety of Plugin Parameters, Notetags, and Plugin Commands to control
+ *   the Dragonbones armatures and their animations.
+ *
+ * ============================================================================
+ * Requirements
+ * ============================================================================
+ *
+ * This plugin is made for RPG Maker MZ. This will not work in other iterations
+ * of RPG Maker.
+ *
+ * ------ Required Plugin List ------
+ *
+ * - Dragonbones*
+ *
+ * *Note* You can download this library from the below URL or from the
+ * Dragonbones Union product page. Install it as a Tier 0 plugin.
+ *
+ * URL: https://www.npmjs.com/package/pixi5-dragonbones/v/5.7.0-2b
+ *
+ * ------ Tier 2 ------
+ *
+ * This plugin is a Tier 2 plugin. Place it under other plugins of lower tier
+ * value on your Plugin Manager list (ie: 0, 1, 2, 3, 4, 5). This is to ensure
+ * that your plugins will have the best compatibility with the rest of the
+ * VisuStella MZ library.
+ *
+ * ============================================================================
+ * Dragonbones Naming
+ * ============================================================================
+ *
+ * If you are trying to set up a Dragonbones armature through notetags, Plugin
+ * Commands, etc., and are getting the error message "Cannot Read property
+ * 'parent' of null", then most likely, the incorrect Dragonbones armature name
+ * is being used.
+ *
+ * ---
+ * 
+ * To find the Proper Name:
+ * 
+ * 1. Open up the Dragonbones armature in the Dragonbones editor.
+ * 
+ * ---
+ * 
+ * 2. Open the armature's Properties.
+ * 
+ * ---
+ * 
+ * 3. Look at what the "Name:" field lists. This is the name to use with the
+ *    Dragonbones Union plugin.
+ * 
+ * ---
+ *
+ * ============================================================================
+ * Dragonbones Armature Behaviors
+ * ============================================================================
+ *
+ * Dragonbones armatures have certain behaviors when used with battlers,
+ * pictures, and/or map sprites.
+ *
+ * ---
+ *
+ * 1. When a Dragonbones armature is loaded, it will play the 'idle' animation
+ *    or whatever is set inside the Plugin Parameters => General Settings =>
+ *    Loaded Animation field upon loading. Make your Dragonbones armatures with
+ *    this in mind. At other times, the 'idle' animation will be used as a base
+ *    defaulting animation.
+ *
+ * ---
+ *
+ * 2. The Dragonbones armature will always be anchored at the X, Y coordinates
+ *    of the target. This X, Y coordinate point will be where the root/pivot
+ *    point of the Dragonbones armature will be located.
+ *
+ * ---
+ *
+ * 3. The properties used by a sprite (ie the opacity, scale, rotation, and
+ *    tint) will also be shared and/or amplified with the Dragonbones armature.
+ *    The exception to this will be Blend Modes aren't supported.
+ *
+ * ---
+ *
+ * ============================================================================
+ * IMPORTANT!! Dragonbones Armatures as Map Sprites
+ * ============================================================================
+ *
+ * If you plan on using Dragonbones armatures as map sprites, please keep in
+ * mind that there will be certain limitations and properties regarding them,
+ * which will be listed below:
+ *
+ * ---
+ *
+ * 1. Try not to use more than 99 vertices for meshes. The reason behind this
+ *    is because the Dragonbones armature is added as a sprite to the game's
+ *    Tilemap. Any and all sprites added to the Tilemap have some restrictions
+ *    placed on them as per Pixi JS's design. The Dragonbones armatures are no
+ *    exception to this.
+ *
+ *    If the number of vertices exceeds 99, strange things will occur to the
+ *    Dragonbones armature that are outside of this plugin's control. While it
+ *    won't stop the plugin from functioning properly, expected behaviors may
+ *    happen due to the threshold.
+ *
+ * ---
+ *
+ * 2. When using Dragonbones armatures that are too tall or wide, they may clip
+ *    into the tile layer above or to the side due to how the Tilemap works.
+ *    Things that you would see happen would include clipping into the tops of
+ *    trees and structures.
+ *
+ * ---
+ *
+ * 3. Certain motions will request specific animations from the Dragonbones
+ *    armature. If the animations exist, it will play those motions. If they
+ *    don't, the motions may request a different animation down the line. The
+ *    request orders are as follows:
+ *
+ *    Jumping:
+ *    - jump, walk, idle
+ *
+ *    Rope (Climbing) (Requires: VisuMZ_1_EventsMoveCore):
+ *    - ropeclimb, ladderclimb, walk, ropeidle, ladderidle, idle
+ *
+ *    Rope (Idle) (Requires: VisuMZ_1_EventsMoveCore):
+ *    - ropeidle, ladderidle, idle
+ *
+ *    Ladder (Climbing):
+ *    - ladderclimb, walk, ladderidle, idle
+ *
+ *    Ladder (Idle):
+ *    - ladderidle, idle
+ *
+ *    Dashing:
+ *    - dash, walk, idle
+ *
+ *    Walking:
+ *    - walk, idle
+ *
+ *    Idle:
+ *    - idle
+ *
+ *    Name the animations for the Dragonbones armature as such to make the most
+ *    out of the motion priority lists.
+ *
+ * ---
+ *
+ * 4. You can add directional animations for your Dragonbones armature motion
+ *    animations. To do so, add a number after the animation's name like such:
+ *    walk2, walk4, walk6, walk8. These numbers are based off the NumPad
+ *    directions to determine which way to face:
+ *
+ *    7 8 9
+ *    4   6
+ *    1 2 3
+ *
+ *    These numbers are added onto the priority system listed in #3 above, too.
+ *    Diagonal directions also become split and added multiple times for better
+ *    streamlining, with a priority given to the horizontal direction before
+ *    the vertical direction. For example, dashing becomes the following:
+ *
+ *    Dashing (Upper Left):
+ *    - dash7, dash4, dash8, dash,
+ *      walk7, walk4, walk8, walk,
+ *      idle7, idle4, idle8, idle
+ *
+ *    Dashing (Right):
+ *    - dash6, dash,
+ *      walk6, walk,
+ *      idle6, idle
+ *
+ * ---
+ *
+ * 5. When a Dragonbones armature is moving, it will animate slower or faster
+ *    depending on the character's current movement speed. At speed
+ *    '4: Normal', it will animation 4x faster than what's seen in Dragonbones.
+ *    At speed '6: x4 Faster', it will animate 6x faster while '1: x8 Slower'
+ *    will be at x1 speed seen in Dragonbones. In other words, the speed
+ *    animated is equal to the number written on the left of the
+ *    movement speed.
+ *
+ *    When dashing, that multiplier increases by 1 in order to match movement
+ *    speeds and the Dragonbones armature will do the same to follow.
+ *
+ * ---
+ *
+ * You will need to create your Dragonbones armatures with these 5 key rules in
+ * mind in order to make the armatures animate smoothly within your game.
+ *
+ * ============================================================================
+ * VisuStella MZ Compatibility
+ * ============================================================================
+ *
+ * While this plugin is compatible with the majority of the VisuStella MZ
+ * plugin library, it is not compatible with specific plugins or specific
+ * features. This section will highlight the main plugins/features that will
+ * not be compatible with this plugin or put focus on how the make certain
+ * features compatible.
+ *
+ * ---
+ *
+ * VisuMZ_3_StateTooltips
+ *
+ * If you are using a Dragonbones Battler and want to apply a state tooltip to
+ * it, the access area of the battler will be based on the hitbox size you
+ * declare for the Dragonbones Battler with notetags. This is because all
+ * Dragonbones battlers do not have innate automatically calculated hitbox
+ * sizes as a result of their dynamically animated nature.
+ * 
+ * Please refer to the notetag section of the Dragonbones Union plugin for
+ * Dragonbones Battler hitboxes to learn how to apply hitbox sizes.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Notetags
+ * ============================================================================
+ *
+ * The following are notetags that have been added through this plugin. These
+ * notetags will not work with your game if this plugin is OFF or not present.
+ *
+ * ---
+ *
+ * === Dragonbones Battler Notetags ===
+ *
+ * The following notetags are to be assigned to either actors and/or enemies.
+ * An assigned actor/enemy will have their original sprite hidden from view in
+ * favor of the Dragonbones armature to be displayed. Use these notetags to
+ * declare various settings for your Dragonbones armatures.
+ *
+ * ---
+ *
+ * <Dragonbones Battler: filename>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - Sets the DragonBones associated with this actor/enemy to be 'filename'.
+ * - The name will be associated with the assets used.
+ * - It will be used to check for associated filenames that end with _ske.json,
+ *   _tex.json, and _tex.png.
+ * - The listed assets must be found in the assigned assets folder.
+ *
+ * Examples:
+ *
+ * <Dragonbones Battler: Demon>
+ * <Dragonbones Battler: DragonBoy>
+ * <Dragonbones Battler: Swordsman>
+ * <Dragonbones Battler: Ubbie>
+ *
+ * ---
+ *
+ * <Dragonbones Battler Scale: x, y>
+ *
+ * <Dragonbones Battler Scale X: x>
+ * <Dragonbones Battler Scale Y: x>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - Sets the base scale for the Dragonbones associated with this actor/enemy.
+ *   This is for those instances where a Dragonbones armature is too large or
+ *   small and needs to be scaled down/up.
+ * - This scale will be amplified by the actor/enemy's sprite's scale value.
+ * - Use the 1st notetag to assign values to both Scale X and Scale Y.
+ * - Use the 2nd/3rd notetags to assign Scale X and Y values separately.
+ * - Use negative values to flip the Dragonbones armature around.
+ *
+ * Examples:
+ * 
+ * <Dragonbones Battler Scale: -0.3, 0.3>
+ *
+ * <Dragonbones Battler Scale X: -0.3>
+ * <Dragonbones Battler Scale Y: 0.3>
+ *
+ * ---
+ *
+ * <Dragonbones Battler Offset: x, y>
+ *
+ * <Dragonbones Battler Offset X: x>
+ * <Dragonbones Battler Offset Y: x>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - When a Dragonbones armature is attached to an actor/enemy's sprite, it
+ *   will always be attached at the root point assigned within the Dragonbones
+ *   data. If a Dragonbones armature has a root point that does not fit well
+ *   with your battler sprite, you can offset it using these notetags.
+ * - Replace 'x' and 'y' with number values representing how many pixels you
+ *   want to offset the Dragonbones armature by.
+ * - Use the 1st notetag to assign values to both Offset X and Offset Y.
+ * - Use the 2nd/3rd notetags to assign Offset X and Y values separately.
+ * - Use negative values to offset to the left (X) or up (Y) directions.
+ *
+ * Examples:
+ *
+ * <Dragonbones Battler Offset: -10, 5>
+ *
+ * <Dragonbones Battler Offset X: -10>
+ * <Dragonbones Battler Offset Y: 5>
+ *
+ * ---
+ *
+ * <Dragonbones Battler Size: width, height>
+ *
+ * <Dragonbones Battler Width: x>
+ * <Dragonbones Battler Height: x>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - Dragonbones armatures have no standard width or height. This makes it
+ *   problematic when trying to calculate the sprite's width/height for Action
+ *   Sequences and the like. These notetags allow you to assign a width and
+ *   height value to the sprite, despite the fact the Dragonbones armatures
+ *   have no such thing.
+ * - Replace 'width', 'height', or 'x' with number values representing the
+ *   dimension values in pixels.
+ * - Use the 1st notetag to assign values to both Width and Height.
+ * - Use the 2nd/3rd notetags to assign Width and Height values separately.
+ * - If these notetags aren't used, then use the values defined by default in
+ *   Plugin Parameters => Battler Settings => Default => Width/Height.
+ *
+ * Examples:
+ *
+ * <Dragonbones Battler Size: 50, 100>
+ *
+ * <Dragonbones Battler Width: 50>
+ * <Dragonbones Battler Height: 100>
+ *
+ * ---
+ *
+ * <Dragonbones Battler Time Scale: x>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - Lets you adjust the time scale for the Dragonbones armature.
+ * - Replace 'x' with a number value depicting how fast the armature should
+ *   animate.
+ *   - 1.0 is the default value.
+ *   - Higher numbers animate faster.
+ *   - Lower numbers animate slower.
+ *   - If a number is too small, it may not animate at all.
+ *
+ * Example:
+ *
+ * <Dragonbones Battler Time Scale: 1.5>
+ *
+ * ---
+ *
+ * <Dragonbones Battler Motion Walk: animation>
+ * <Dragonbones Battler Motion Wait: animation>
+ * <Dragonbones Battler Motion Chant: animation>
+ * <Dragonbones Battler Motion Guard: animation>
+ * <Dragonbones Battler Motion Damage: animation>
+ * <Dragonbones Battler Motion Evade: animation>
+ * <Dragonbones Battler Motion Thrust: animation>
+ * <Dragonbones Battler Motion Swing: animation>
+ * <Dragonbones Battler Motion Missile: animation>
+ * <Dragonbones Battler Motion Skill: animation>
+ * <Dragonbones Battler Motion Spell: animation>
+ * <Dragonbones Battler Motion Item: animation>
+ * <Dragonbones Battler Motion Escape: animation>
+ * <Dragonbones Battler Motion Victory: animation>
+ * <Dragonbones Battler Motion Dying: animation>
+ * <Dragonbones Battler Motion Abnormal: animation>
+ * <Dragonbones Battler Motion Sleep: animation>
+ * <Dragonbones Battler Motion Dead: animation>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - Use these notetags to assign Dragonbones animations to play when the
+ *   actor/enemy sprite is supposed to play such a motion.
+ * - Replace 'animation' with the name of the Dragonbones animation.
+ * - If this notetag is not used, when such a motion is rquested, it will
+ *   default to attempting to play the animation name equal to the motion.
+ * - Animation names do not need to be case sensitive.
+ * - If no animation is found, then no animation will be played.
+ *
+ * Examples:
+ *
+ * <Dragonbones Battler Motion Wait: idle>
+ * <Dragonbones Battler Motion Swing: attack>
+ * <Dragonbones Battler Motion Thrust: attack>
+ * <Dragonbones Battler Motion Missle: attack>
+ * <Dragonbones Battler Motion Skill: special>
+ * <Dragonbones Battler Motion Spell: special>
+ * <Dragonbones Battler Motion Dead: defeated>
+ *
+ * ---
+ *
+ * <Dragonbones Battler Settings>
+ *  Battler: filename
+ *  
+ *  Scale: x, y
+ *
+ *  Scale X: x
+ *  Scale Y: x
+ *
+ *  Offset: x, y
+ *
+ *  Offset X: x
+ *  Offset Y: x
+ *
+ *  Size: width, height
+ *
+ *  Width: x
+ *  Height: x
+ *
+ *  Time Scale: x
+ *
+ *  Motion Walk: animation
+ *  Motion Wait: animation
+ *  Motion Chant: animation
+ *  Motion Guard: animation
+ *  Motion Damage: animation
+ *  Motion Evade: animation
+ *  Motion Thrust: animation
+ *  Motion Swing: animation
+ *  Motion Missile: animation
+ *  Motion Skill: animation
+ *  Motion Spell: animation
+ *  Motion Item: animation
+ *  Motion Escape: animation
+ *  Motion Victory: animation
+ *  Motion Dying: animation
+ *  Motion Abnormal: animation
+ *  Motion Sleep: animation
+ *  Motion Dead: animation
+ * </Dragonbones Battler Settings>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - The above notetag allows to wrap up all the information you'd like to
+ *   set for Dragonbones battler armatures needed inside a single notetag
+ *   container.
+ * - The settings are the same as the notetags listed above it.
+ * - You may remove the settings you don't wish to change.
+ * - The only necessary data is the 'Battler: filename' line.
+ *
+ * Example:
+ *
+ * <Dragonbones Battler Settings>
+ *  Battler: Demon
+ *  
+ *  Scale: 0.3, 0.3
+ *
+ *  Size: 80, 80
+ *
+ *  Motion Wait: idle
+ *  Motion Damage: hit
+ *  Motion Swing: attack
+ *  Motion Thrust: attack
+ *  Motion Missile: attack
+ *  Motion Skill: special
+ *  Motion spell: special
+ *  Motion Dead: defeated
+ * </Dragonbones Battler Settings>
+ *
+ * ---
+ *
+ * === Dragonbones Map Sprite Notetags & Comment Tags ===
+ *
+ * You can also use Dragonbones armatures as map sprites. When used, any of the
+ * original sprites before will become invisible and will be replaced with the
+ * Dragonbones armature.
+ *
+ * These notetags can be used for actors and events. In the case of events,
+ * both notetags and comment tags can be used to determine what settings to use
+ * for the Dragonbones armatures.
+ *
+ * Be cautious when using Comment Tags for event pages since comments contain a
+ * maximum line count of 6.
+ *
+ * ---
+ *
+ * <Dragonbones Sprite: filename>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Sets the DragonBones associated with this map sprite to be 'filename'.
+ * - The name will be associated with the assets used.
+ * - It will be used to check for associated filenames that end with _ske.json,
+ *   _tex.json, and _tex.png.
+ * - The listed assets must be found in the assigned assets folder.
+ *
+ * Examples:
+ *
+ * <Dragonbones Sprite: Demon>
+ * <Dragonbones Sprite: DragonBoy>
+ * <Dragonbones Sprite: Swordsman>
+ * <Dragonbones Sprite: Ubbie>
+ *
+ * ---
+ *
+ * <Dragonbones Sprite Scale: x, y>
+ *
+ * <Dragonbones Sprite Scale X: x>
+ * <Dragonbones Sprite Scale Y: x>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Sets the base scale for the Dragonbones associated with this map sprite.
+ *   This is for those instances where a Dragonbones armature is too large or
+ *   small and needs to be scaled down/up.
+ * - This scale will be amplified by the character's sprite's scale value.
+ * - Use the 1st notetag to assign values to both Scale X and Scale Y.
+ * - Use the 2nd/3rd notetags to assign Scale X and Y values separately.
+ * - Use negative values to flip the Dragonbones armature around.
+ *
+ * Examples:
+ * 
+ * <Dragonbones Sprite Scale: -0.3, 0.3>
+ *
+ * <Dragonbones Sprite Scale X: -0.3>
+ * <Dragonbones Sprite Scale Y: 0.3>
+ *
+ * ---
+ *
+ * <Dragonbones Sprite Offset: x, y>
+ *
+ * <Dragonbones Sprite Offset X: x>
+ * <Dragonbones Sprite Offset Y: x>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - When a Dragonbones armature is attached to an character's map sprite, it
+ *   will always be attached at the root point assigned within the Dragonbones
+ *   data. If a Dragonbones armature has a root point that does not fit well
+ *   with your battler sprite, you can offset it using these notetags.
+ * - Replace 'x' and 'y' with number values representing how many pixels you
+ *   want to offset the Dragonbones armature by.
+ * - Use the 1st notetag to assign values to both Offset X and Offset Y.
+ * - Use the 2nd/3rd notetags to assign Offset X and Y values separately.
+ * - Use negative values to offset to the left (X) or up (Y) directions.
+ *
+ * Examples:
+ *
+ * <Dragonbones Sprite Offset: -10, 5>
+ *
+ * <Dragonbones Sprite Offset X: -10>
+ * <Dragonbones Sprite Offset Y: 5>
+ *
+ * ---
+ *
+ * <Dragonbones Sprite Time Scale: x>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Lets you adjust the time scale for the Dragonbones armature.
+ * - Replace 'x' with a number value depicting how fast the armature should
+ *   animate.
+ *   - 1.0 is the default value.
+ *   - Higher numbers animate faster.
+ *   - Lower numbers animate slower.
+ *   - If a number is too small, it may not animate at all.
+ *
+ * Example:
+ *
+ * <Dragonbones Sprite Time Scale: 1.5>
+ *
+ * ---
+ * 
+ * <Dragonbones Sprite Walk Rate: x>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Lets you adjust the animation speed for the Dragonbones armature only
+ *   when it is walking.
+ * - Replace 'x' with a number value depicting how fast the armature should
+ *   animate.
+ *   - 1.0 is the default value.
+ *   - Higher numbers animate faster.
+ *   - Lower numbers animate slower.
+ *   - If a number is too small, it may not animate at all.
+ * - If used with the <Dragonbones Sprite Time Scale: x>, the speed will stack
+ *   multiplicatively.
+ *
+ * Example:
+ *
+ * <Dragonbones Sprite Walk Rate: 1.5>
+ * 
+ * ---
+ * 
+ * <Dragonbones Sprite Dash Rate: x>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Lets you adjust the animation speed for the Dragonbones armature only
+ *   when it is dashing.
+ * - Replace 'x' with a number value depicting how fast the armature should
+ *   animate.
+ *   - 1.0 is the default value.
+ *   - Higher numbers animate faster.
+ *   - Lower numbers animate slower.
+ *   - If a number is too small, it may not animate at all.
+ * - If used with the <Dragonbones Sprite Time Scale: x>, the speed will stack
+ *   multiplicatively.
+ *
+ * Example:
+ *
+ * <Dragonbones Sprite Dash Rate: 1.5>
+ * 
+ * ---
+ *
+ * <Dragonbones Sprite Size: width, height>
+ *
+ * <Dragonbones Sprite Width: x>
+ * <Dragonbones Sprite Height: x>
+ *
+ * - Used for: Actor, Enemy Notetags
+ * - Dragonbones armatures have no standard width or height. This makes it
+ *   problematic when trying to calculate the sprite's width/height for various
+ *   plugins that use it. These notetags allow you to assign a width and
+ *   height value to the sprite, despite the fact the Dragonbones armatures
+ *   have no such thing.
+ * - Replace 'width', 'height', or 'x' with number values representing the
+ *   dimension values in pixels.
+ * - Use the 1st notetag to assign values to both Width and Height.
+ * - Use the 2nd/3rd notetags to assign Width and Height values separately.
+ * - If these notetags aren't used, then use the values defined by default in
+ *   the Plugin Parameters.
+ *
+ * Examples:
+ *
+ * <Dragonbones Sprite Size: 48, 64>
+ *
+ * <Dragonbones Sprite Width: 48>
+ * <Dragonbones Sprite Height: 64>
+ *
+ * ---
+ *
+ * <Dragonbones Sprite Flip Left>
+ * <Dragonbones Sprite Flip Right>
+ *
+ * <Dragonbones Sprite No Flip Left>
+ * <Dragonbones Sprite No Flip Right>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Lets the map sprite know to flip itself when facing either the left/right
+ *   directions in order to reuse animations.
+ * - The 'No' variants will prevent flipping from occuring.
+ * - These notetags will override settings applied in the Plugin Parameters.
+ *
+ * ---
+ *
+ * <Dragonbones Sprite Motion Idle: animation>
+ * <Dragonbones Sprite Motion Walk: animation>
+ * <Dragonbones Sprite Motion Dash: animation>
+ * <Dragonbones Sprite Motion Jump: animation>
+ * <Dragonbones Sprite Motion LadderIdle: animation>
+ * <Dragonbones Sprite Motion LadderClimb: animation>
+ * <Dragonbones Sprite Motion RopeIdle: animation>
+ * <Dragonbones Sprite Motion RopeClimb: animation>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - Lets you set specific animations different from the ones listed in the
+ *   Plugin Parameters for specific motions.
+ * - Replace 'animation' with the name of the Dragonbones animation.
+ * - If this notetag is not used, when such a motion is rquested, it will
+ *   default to attempting to play the animation name equal to the motion.
+ * - Animation names do not need to be case sensitive.
+ * - If no animation is found, then no animation will be played.
+ *
+ * Example:
+ *
+ * <Dragonbones Sprite Motion Idle: stand>
+ * <Dragonbones Sprite Motion Walk: move>
+ * <Dragonbones Sprite Motion Dash: run>
+ * <Dragonbones Sprite Motion Jump: hop>
+ *
+ * ---
+ *
+ * <Dragonbones Sprite Settings>
+ *  Filename: filename
+ *
+ *  Scale: x, y
+ *
+ *  Scale X: x
+ *  Scale Y: x
+ *
+ *  Offset: x, y
+ *
+ *  Offset X: x
+ *  Offset Y: x
+ *
+ *  Time Scale: x
+ * 
+ *  Walk Rate: x
+ *  Dash Rate: x
+ *
+ *  Width: x
+ *  Height: x
+ *
+ *  Flip Left
+ *  Flip Right
+ *
+ *  No Flip Left
+ *  No Flip Right
+ *
+ *  Motion Idle: animation
+ *  Motion Walk: animation
+ *  Motion Dash: animation
+ *  Motion Jump: animation
+ *  Motion LadderIdle: animation
+ *  Motion LadderClimb: animation
+ *  Motion RopeIdle: animation
+ *  Motion RopeClimb: animation
+ * </Dragonbones Sprite Settings>
+ *
+ * - Used for: Actor, Event Notetags and Event Page Comment Tags
+ * - The above notetag allows to wrap up all the information you'd like to
+ *   set for Dragonbones battler armatures needed inside a single notetag
+ *   container.
+ * - The settings are the same as the notetags listed above it.
+ * - You may remove the settings you don't wish to change.
+ * - The only necessary data is the 'Filename: filename' line.
+ *
+ * Example:
+ *
+ * <Dragonbones Sprite Settings>
+ *  Filename: Ubbie
+ *
+ *  Scale: 0.1, 0.1
+ *
+ *  Flip Right
+ *
+ *  Motion Idle: stand
+ *  Motion Walk: walk
+ * </Dragonbones Sprite Settings>
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Commands
+ * ============================================================================
+ *
+ * The following are Plugin Commands that come with this plugin. They can be
+ * accessed through the Plugin Command event command.
+ *
+ * ---
+ * 
+ * === Battler Plugin Commands ===
+ * 
+ * ---
+ *
+ * Battler: Actor Change Settings
+ * - Change target actor's Dragonbones armature settings for battle.
+ *
+ *   Actor ID:
+ *   - Select which Actor ID to affect.
+ *
+ *     Filename:
+ *     - Change the armature's filename.
+ *
+ *     Offset X:
+ *     - Change the armature's Offset X value.
+ *
+ *     Offset Y:
+ *     - Change the armature's Offset Y value.
+ *
+ *     Scale X:
+ *     - Change the armature's Scale X value.
+ * 
+ *     Scale Y:
+ *     - Change the armature's Scale Y value.
+ *
+ *     Time Scale:
+ *     - Change the armature's Time Scale value.
+ *
+ *     Width:
+ *     - Change the battler width size.
+ *
+ *     Height:
+ *     - Change the battler height size.
+ *
+ *   Motion Settings:
+ *
+ *     Walk:
+ *     Wait:
+ *     Chant:
+ *     Guard:
+ *     Damage:
+ *     Evade:
+ *     Thrust:
+ *     Swing:
+ *     Missile:
+ *     Skill:
+ *     Spell:
+ *     Item:
+ *     Escape:
+ *     Victory:
+ *     Dying:
+ *     Abnormal:
+ *     Sleep:
+ *     Dead:
+ *     - Change the animation used for this motion.
+ *
+ * ---
+ * 
+ * === Map Sprite Plugin Commands ===
+ * 
+ * ---
+ *
+ * Map Sprite: Actor Change Settings
+ * - Change target actor's Dragonbones armature settings for map sprites.
+ *
+ *   Actor ID:
+ *   - Select which Actor ID to affect.
+ *
+ *     Filename:
+ *     - Change the armature's filename.
+ *
+ *     Offset X:
+ *     - Change the armature's Offset X value.
+ *
+ *     Offset Y:
+ *     - Change the armature's Offset Y value.
+ *
+ *     Scale X:
+ *     - Change the armature's Scale X value.
+ * 
+ *     Scale Y:
+ *     - Change the armature's Scale Y value.
+ *
+ *     Time Scale:
+ *     - Change the armature's Time Scale value.
+ * 
+ *       Walk Rate:
+ *       - Change the armature's walk animation rate.
+ * 
+ *       Dash Rate:
+ *       - Change the armature's dash animation rate.
+ *
+ *     Width:
+ *     - Change the battler width size.
+ *
+ *     Height:
+ *     - Change the battler height size.
+ *
+ *   Flip Settings:
+ *
+ *     Flip Left?:
+ *     Flip Right:
+ *     - Flip the scale x value when facing left/right-ward directions?
+ *
+ *   Motion Settings:
+ *
+ *     Idle:
+ *     Walk:
+ *     Dash:
+ *     Jump:
+ *     Ladder (Idle):
+ *     Ladder (Climb):
+ *     Rope (Idle):
+ *     Rope (Climb):
+ *     - Base rope climbing animation name used.
+ *
+ * ---
+ *
+ * Map Sprite: Actor Play Animation
+ * - Target actor plays a custom Dragonbones animation.
+ *
+ *   Actor ID:
+ *   - Select which Actor ID to affect.
+ *
+ *   Play Animation:
+ *   - Play this animation.
+ *
+ * NOTE: An alternative to this is to put the following code inside of a
+ *       Movement Route's script call:
+ *
+ *       this.dragonbonesAnimation = "AnimationName";
+ *
+ *       Replace 'AnimationName' (keep the quotes) with the name of the
+ *       Dragonbones animation.
+ *
+ * ---
+ *
+ * Map Sprite: Actor Stop Animation
+ * - Stops a target actor's custom Dragonbones animation.
+ *
+ *   Actor ID:
+ *   - Select which Actor ID to affect.
+ *
+ * ---
+ *
+ * Map Sprite: Event Play Animation
+ * - Target event plays a custom Dragonbones animation.
+ *
+ *   Event ID:
+ *   - Select which Event ID to affect.
+ *
+ *   Play Animation:
+ *   - Play this animation.
+ *
+ * ---
+ *
+ * Map Sprite: Event Stop Animation
+ * - Stops a target event's custom Dragonbones animation.
+ *
+ *   Event ID:
+ *   - Select which Event ID to affect.
+ *
+ * ---
+ *
+ * Map Sprite: Follower Play Animation
+ * - Target follower plays a custom Dragonbones animation.
+ *
+ *   Follower Index:
+ *   - Select which Follower Index to affect.
+ *
+ *   Play Animation:
+ *   - Play this animation.
+ *
+ * ---
+ *
+ * Map Sprite: Follower Stop Animation
+ * - Stops a target follower's custom Dragonbones animation.
+ *
+ *   Follower ID:
+ *   - Select which Follower Index to affect.
+ *
+ * ---
+ *
+ * Map Sprite: Player Play Animation
+ * - Player plays a custom Dragonbones animation.
+ *
+ *   Play Animation:
+ *   - Play this animation.
+ *
+ * ---
+ *
+ * Map Sprite: Player Stop Animation
+ * - Stops player's custom Dragonbones animation.
+ *
+ * ---
+ * 
+ * === Picture Plugin Commands ===
+ * 
+ * ---
+ *
+ * Picture: Dragonbones Setup
+ * - Setup a Dragonbones armature for a picture.
+ *
+ *   Picture ID:
+ *   - Select which Picture ID(s) to give a Dragonbones armature.
+ *
+ *   Armature Filename:
+ *   - What is the armature's filename?
+ *
+ *   Play Animation:
+ *   - Play this animation once it starts.
+ *
+ *   Offset: X:
+ *   - Default X offset value for this Dragonbones armature.
+ *
+ *   Offset: Y:
+ *   - Default Y offset value for this Dragonbones armature.
+ *
+ *   Scale: X:
+ *   - Default X scaling for this Dragonbones armature.
+ *   - This will be amplified by the picture's scaling value.
+ *
+ *   Scale: Y:
+ *   - Default Y scaling for this Dragonbones armature.
+ *   - This will be amplified by the picture's scaling value.
+ *
+ *   Time Scale:
+ *   - Default time scale for this Dragonbones armature.
+ *   - Higher values play faster. Lower values play slower.
+ *
+ * ---
+ *
+ * Picture: Play Dragonbones Animation
+ * - Make an existing Dragonbones armature attached to a picture play
+ *   an animation.
+ *
+ *   Picture ID:
+ *   - Select which Picture ID to modify.
+ *
+ *   Play Animation:
+ *   - Play this animation.
+ *
+ * ---
+ *
+ * Picture: Offset Dragonbones
+ * - Offset the X, Y attachment point of the Dragonbones armature.
+ *
+ *   Picture ID:
+ *   - Select which Picture ID to modify.
+ *
+ *   Offset: X:
+ *   - X offset value for this Dragonbones armature.
+ *
+ *   Offset: Y:
+ *   - Y offset value for this Dragonbones armature.
+ *
+ * ---
+ *
+ * Picture: Scale Dragonbones
+ * - Change the scaling values of the Dragonbones armature.
+ *
+ *   Picture ID:
+ *   - Select which Picture ID to modify.
+ *
+ *   Scale: X:
+ *   - X scaling for this Dragonbones armature.
+ *   - This will be amplified by the picture's scaling value.
+ *
+ *   Scale: Y:
+ *   - Y scaling for this Dragonbones armature.
+ *   - This will be amplified by the picture's scaling value.
+ *
+ * ---
+ *
+ * Picture: Time Scale Dragonbones
+ * - Change the speed at which Dragonbones animations play.
+ *
+ *   Picture ID:
+ *   - Select which Picture ID to modify.
+ *
+ *   Time Scale:
+ *   - Time scale for this Dragonbones armature.
+ *   - Higher values play faster. Lower values play slower.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: General Settings
+ * ============================================================================
+ *
+ * These are the general settings that apply to all uses of Dragonbones through
+ * this plugin. While the majority of these can remain unchanged, for those who
+ * wish to customize the nature of the plugin to their liking can do so through
+ * these Plugin Parameters.
+ *
+ * ---
+ *
+ * Assets Path
+ * - The filepath to the directory that houses all the Dragonbone files.
+ *
+ * ---
+ *
+ * Defaults
+ * 
+ *   Loaded Animation:
+ *   - The default animation to play once a Dragonbones armature is loaded.
+ * 
+ *   Looping Animations:
+ *   - Force these animations to become looping animations even if they don't
+ *     loop in Dragonbones.
+ *
+ * ---
+ *
+ * Skeletal Data
+ * Texture Data
+ * Texture Asset
+ * 
+ *   Key:
+ *   - Key used to determine where needed data is stored.
+ * 
+ *   Extension:
+ *   - Extension used to determine which files contain needed data.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Battler Settings
+ * ============================================================================
+ *
+ * Actor and Enemy sprites can have Dragonbones armatures attached to them as
+ * sprites. Use these settings to make the Dragonbones armatures fit your needs
+ * in battle.
+ *
+ * ---
+ *
+ * Default Settings
+ * 
+ *   Offset: X:
+ *   - Default X offset for battler sprites.
+ * 
+ *   Offset: Y:
+ *   - Default Y offset for battler sprites.
+ * 
+ *   Scale: X:
+ *   - Default scale for X used by Dragonbones battlers.
+ * 
+ *     Flip for Actors?:
+ *     Flip for Enemies?:
+ *     - Flip the scale x value into negative automatically for all actors
+ *       or enemies?
+ * 
+ *   Scale: Y:
+ *   - Default scale for Y used by Dragonbones battlers.
+ * 
+ *   Width:
+ *   - Treat battler sprites as if they have this width.
+ *   - Used for Action Sequences.
+ * 
+ *   Height:
+ *   - Treat battler sprites as if they have this height.
+ *   - Used for Action Sequences.
+ *
+ * ---
+ * 
+ * Idle Bypass
+ * 
+ *   List:
+ *   - This is a list of animations that will not return back to the idle
+ *     animation after completion.
+ *   - Remove them if you want them to revert back to the idle animation
+ *     after completion.
+ *   - Add to the list if you want animations to stay in their final frame.
+ * 
+ * ---
+ *
+ * Default Motions
+ * 
+ *   Walk:
+ *   Wait:
+ *   Chant:
+ *   Guard:
+ *   Damage:
+ *   Evade:
+ *   Thrust:
+ *   Swing:
+ *   Missile:
+ *   Skill:
+ *   Spell:
+ *   Item:
+ *   Escape:
+ *   Victory:
+ *   Dying:
+ *   Abnormal:
+ *   Sleep:
+ *   Dead:
+ *   - Play this Dragonbones animation whenever this motion is requested
+ *     by default.
+ *   - Used for Action Sequences.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Map Sprite Settings
+ * ============================================================================
+ *
+ * These Plugin Parameter settings adjust the default configurations for any
+ * map sprite that's using a Dragonbones armature. These settings can be
+ * overwritten on per a sprite basis using notetags and comment tags, too.
+ *
+ * ---
+ *
+ * Defaults
+ * 
+ *   Offset: X:
+ *   - Default X offset for map sprites.
+ * 
+ *   Offset: Y:
+ *   - Default Y offset for map sprites.
+ * 
+ *   Scale: X:
+ *   - Default scale for X used by Dragonbones map sprites.
+ * 
+ *     Flip Left?:
+ *     Flip Right?:
+ *     - Flip the scale x value when facing left/right-ward directions?
+ * 
+ *   Scale: Y:
+ *   - Default scale for Y used by Dragonbones map sprites.
+ * 
+ *   Time Scale:
+ *   - The rate at which animations play.
+ *   - Higher numbers go faster.
+ * 
+ *   Width:
+ *   - Treat map sprites as if they have this width.
+ *   - Used for various plugins.
+ * 
+ *   Height:
+ *   - Treat map sprites as if they have this height.
+ *   - Used for various plugins.
+ *
+ * ---
+ *
+ * Motion Settings
+ * 
+ *   Idle:
+ *   Walk:
+ *   Dash:
+ *   Jump:
+ *   Ladder (Idle):
+ *   Ladder (Climb):
+ *   Rope (Idle):
+ *   Rope (Climb):
+ *   - Base walk animation name used.
+ * 
+ *   Walk Timer:
+ *   - Number of frames to count as walking so that an idle animation isn't
+ *     immediately forced upon stopping.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Experimental Settings
+ * ============================================================================
+ *
+ * These settings are experimental and have not been tested extensively yet.
+ *
+ * ---
+ *
+ * Experimental Settings
+ * 
+ *   Enemy Stances:
+ *   - Enemies can use stance motions for idling such as chanting,
+ *     guarding, etc.
+ *   - Requires VisuMZ_1_BattleCore!
+ *   - This is not available normally since animations are not available for
+ *     enemies with the base RPG Maker MZ core scripts.
+ *   - Disable this to use the default animation flow for enemies.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Terms of Use
+ * ============================================================================
+ *
+ * 1. These plugins may be used in free or commercial games provided that they
+ * have been acquired through legitimate means at VisuStella.com and/or any
+ * other official approved VisuStella sources. Exceptions and special
+ * circumstances that may prohibit usage will be listed on VisuStella.com.
+ * 
+ * 2. All of the listed coders found in the Credits section of this plugin must
+ * be given credit in your games or credited as a collective under the name:
+ * "VisuStella".
+ * 
+ * 3. You may edit the source code to suit your needs, so long as you do not
+ * claim the source code belongs to you. VisuStella also does not take
+ * responsibility for the plugin if any changes have been made to the plugin's
+ * code, nor does VisuStella take responsibility for user-provided custom code
+ * used for custom control effects including advanced JavaScript notetags
+ * and/or plugin parameters that allow custom JavaScript code.
+ * 
+ * 4. You may NOT redistribute these plugins nor take code from this plugin to
+ * use as your own. These plugins and their code are only to be downloaded from
+ * VisuStella.com and other official/approved VisuStella sources. A list of
+ * official/approved sources can also be found on VisuStella.com.
+ *
+ * 5. VisuStella is not responsible for problems found in your game due to
+ * unintended usage, incompatibility problems with plugins outside of the
+ * VisuStella MZ library, plugin versions that aren't up to date, nor
+ * responsible for the proper working of compatibility patches made by any
+ * third parties. VisuStella is not responsible for errors caused by any
+ * user-provided custom code used for custom control effects including advanced
+ * JavaScript notetags and/or plugin parameters that allow JavaScript code.
+ *
+ * 6. If a compatibility patch needs to be made through a third party that is
+ * unaffiliated with VisuStella that involves using code from the VisuStella MZ
+ * library, contact must be made with a member from VisuStella and have it
+ * approved. The patch would be placed on VisuStella.com as a free download
+ * to the public. Such patches cannot be sold for monetary gain, including
+ * commissions, crowdfunding, and/or donations.
+ * 
+ * 7. If this VisuStella MZ plugin is a paid product, all project team members
+ * must purchase their own individual copies of the paid product if they are to
+ * use it. Usage includes working on related game mechanics, managing related
+ * code, and/or using related Plugin Commands and features. Redistribution of
+ * the plugin and/or its code to other members of the team is NOT allowed
+ * unless they own the plugin itself as that conflicts with Article 4.
+ * 
+ * 8. Any extensions and/or addendums made to this plugin's Terms of Use can be
+ * found on VisuStella.com and must be followed.
+ *
+ * ============================================================================
+ * Credits
+ * ============================================================================
+ * 
+ * If you are using this plugin, credit the following people in your game:
+ * 
+ * Team VisuStella
+ *
+ * * Yanfly
+ * * Arisu
+ * * Olivia
+ * * Irina
+ *
+ * Special Thanks To
+ * 
+ * * Green Kel
+ * * Ækashics
+ * * Swift Illusion
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ * 
+ * Version 1.14: April 2, 2021
+ * * Documentation Update!
+ * ** Added "VisuStella MZ Compatibility" section for detailed compatibility
+ *    explanations with the VisuMZ_3_StateTooltips plugin.
+ * 
+ * Version 1.13: March 19, 2021
+ * * Documentation Update!
+ * ** Help file updated for new features.
+ * * New Features!
+ * ** New Plugin Parameter added by Yanfly:
+ * *** Plugin Parameters > Experimental: Enemy Stances
+ * **** Allows enemies to utilize stance motions for idling such as chanting,
+ *      guarding, etc.
+ * **** Requires VisuMZ_1_BattleCore!
+ * **** This is not available normally since animations are not available for
+ *      enemies with the base RPG Maker MZ core scripts.
+ * **** Disable this to use the default animation flow for enemies.
+ * 
+ * Version 1.12: February 19, 2021
+ * * Bug Fixes!
+ * ** Fixed a bug that would cause a crash upon teleporting with an altering
+ *    Dragonbones armature load without a base sprite. Fix made by Irina.
+ * 
+ * Version 1.11: February 12, 2021
+ * * Bug Fixes!
+ * ** Fixed a bug involving the changing of a Dragonbones battler in-battle to
+ *    prevent multiple instances being added at once. Fix made by Irina.
+ * 
+ * Version 1.10: January 22, 2021
+ * * Bug Fixes!
+ * ** Upon changing map sprites, Dragonbones characters would become skewed.
+ *    This should no longer happen.
+ * * Documentation Update!
+ * ** Updated help file for new features.
+ * * New Features!
+ * ** Map Sprite: Actor Change Settings new Plugin Command parameters
+ * *** "Walk Rate" and "Dash Rate" modifiers added.
+ * 
+ * Version 1.09: November 29, 2020
+ * * Bug Fixes!
+ * ** Dragonbones height for actors is no longer affected by frame divisibility
+ *    for SV Actors to skew the positions of height data. Fix made by Arisu.
+ * 
+ * Version 1.08: November 15, 2020
+ * * Documentation Update!
+ * ** Updated help file for new features.
+ * * New Features!
+ * ** Two new notetags have been added for map sprites by Irina.
+ * *** <Dragonbones Sprite Walk Rate: x>
+ * *** <Dragonbones Sprite Dash Rate: x>
+ * **** These two new notetags allow you to animate specific Dragonbones
+ *      animations at a different speed when walking or dashing. These speed
+ *      multipliers will stack multiplicatively with the time scale.
+ * 
+ * Version 1.07: October 25, 2020
+ * * Bug Fixes!
+ * ** Dead animations for actors no longer keep looping upon motion refreshes.
+ *    Fix made by Irina.
+ * * Documentation Update!
+ * ** Updated help file for new features.
+ * * New Features!
+ * ** New plugin parameter added by Irina.
+ * *** Plugin Parameters > Battler Settings > Idle Bypass > List
+ * **** This is a list of animations that will not return back to the idle
+ *      animation after completion. Remove them if you want them to revert back
+ *      to the idle animation after completion. Add to the list if you want
+ *      animations to stay in their final frame.
+ * 
+ * Version 1.06: October 18, 2020
+ * * Bug Fixes!
+ * ** Enemies with Dragonbones battlers transforming into other enemies with
+ *    Dragonbones battlers will now attach the sprites properly. Fix by Yanfly.
+ * ** Enemies with Dragonbones battlers transforming into enemies without them
+ *    will now remove the non-transformed bitmap.
+ * * Documentation Update!
+ * ** Added the 'Dragonbones Naming' section.
+ * 
+ * Version 1.05: October 4, 2020
+ * * Bug Fixes!
+ * ** Selected Dragonbones battlers will no longer leave behind a residual
+ *    blink effect. Fix made by Irina.
+ * ** There should be no more crashes from map events that have been previously
+ *    deleted but not cleared from the map event list. Fix made by Irina.
+ * 
+ * Version 1.04: September 20, 2020
+ * * Bug Fixes!
+ * ** Hidden enemies with Dragonbones should be invisible at the start of
+ *    battle. Fix made by Yanfly.
+ * 
+ * Version 1.03: September 13, 2020
+ * * Compatibility Update!
+ * ** Added compatibility with the new Battle Core v1.04 features!
+ * 
+ * Version 1.02: September 6, 2020
+ * * Bug Fixes!
+ * ** Previously, a Dragonbones battler does not show the blinking indicator if
+ *    the battler is a selected target. This is now fixed. Fix made by Yanfly.
+ * ** Prevents a crash now if no bitmap is detected for the main sprite.
+ * 
+ * Version 1.01: August 30, 2020
+ * * Bug Fixes!
+ * ** Erasing a picture no longer causes a crash when changing scenes. Fix made
+ *    by Yanfly.
+ * * Compatibility Update
+ * ** Added compatibility for VisuStella MZ's Visual State Effects.
+ *
+ * Version 1.00: August 24, 2020
+ * * Finished Plugin!
+ *
+ * ============================================================================
+ * End of Helpfile
+ * ============================================================================
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command Battler_ActorChange
+ * @text Battler: Actor Change Settings
+ * @desc Change target actor's Dragonbones armature settings for battle.
+ *
+ * @arg ActorID:num
+ * @text Actor ID
+ * @type actor
+ * @desc Select which Actor ID to affect.
+ * @default 1
+ *
+ * @arg Filename:str
+ * @text Filename
+ * @parent ActorID:num
+ * @desc Change the armature's filename.
+ * @default name
+ *
+ * @arg OffsetX:eval
+ * @text Offset X
+ * @parent ActorID:num
+ * @desc Change the armature's Offset X value.
+ * @default 0
+ *
+ * @arg OffsetY:eval
+ * @text Offset Y
+ * @parent ActorID:num
+ * @desc Change the armature's Offset Y value.
+ * @default 0
+ *
+ * @arg ScaleX:eval
+ * @text Scale X
+ * @parent ActorID:num
+ * @desc Change the armature's Scale X value.
+ * @default 1.0
+ *
+ * @arg ScaleY:eval
+ * @text Scale Y
+ * @parent ActorID:num
+ * @desc Change the armature's Scale Y value.
+ * @default 1.0
+ *
+ * @arg TimeScale:eval
+ * @text Time Scale
+ * @parent ActorID:num
+ * @desc Change the armature's Time Scale value.
+ * @default 1.0
+ *
+ * @arg Width:eval
+ * @text Width
+ * @parent ActorID:num
+ * @desc Change the battler width size.
+ * @default 64
+ *
+ * @arg Height:eval
+ * @text Height
+ * @parent ActorID:num
+ * @desc Change the battler height size.
+ * @default 64
+ *
+ * @arg DefaultMotions
+ * @text Motion Settings
+ *
+ * @arg MotionWalk:str
+ * @text Walk
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default walk
+ *
+ * @arg MotionWait:str
+ * @text Wait
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default wait
+ *
+ * @arg MotionChant:str
+ * @text Chant
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default chant
+ *
+ * @arg MotionGuard:str
+ * @text Guard
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default guard
+ *
+ * @arg MotionDamage:str
+ * @text Damage
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default damage
+ *
+ * @arg MotionEvade:str
+ * @text Evade
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default evade
+ *
+ * @arg MotionThrust:str
+ * @text Thrust
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default thrust
+ *
+ * @arg MotionSwing:str
+ * @text Swing
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default swing
+ *
+ * @arg MotionMissile:str
+ * @text Missile
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default missile
+ *
+ * @arg MotionSkill:str
+ * @text Skill
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default skill
+ *
+ * @arg MotionSpell:str
+ * @text Spell
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default spell
+ *
+ * @arg MotionItem:str
+ * @text Item
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default item
+ *
+ * @arg MotionEscape:str
+ * @text Escape
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default escape
+ *
+ * @arg MotionVictory:str
+ * @text Victory
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default victory
+ *
+ * @arg MotionDying:str
+ * @text Dying
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default dying
+ *
+ * @arg MotionAbnormal:str
+ * @text Abnormal
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default abnormal
+ *
+ * @arg MotionSleep:str
+ * @text Sleep
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default sleep
+ *
+ * @arg MotionDead:str
+ * @text Dead
+ * @parent DefaultMotions
+ * @desc Change the animation used for this motion.
+ * @default dead
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_ActorChange
+ * @text Map Sprite: Actor Change Settings
+ * @desc Change target actor's Dragonbones armature settings for map sprites.
+ *
+ * @arg ActorID:num
+ * @text Actor ID
+ * @type actor
+ * @desc Select which Actor ID to affect.
+ * @default 1
+ *
+ * @arg Filename:str
+ * @text Filename
+ * @parent ActorID:num
+ * @desc Change the armature's filename.
+ * @default name
+ *
+ * @arg OffsetX:eval
+ * @text Offset X
+ * @parent ActorID:num
+ * @desc Change the armature's Offset X value.
+ * @default 0
+ *
+ * @arg OffsetY:eval
+ * @text Offset Y
+ * @parent ActorID:num
+ * @desc Change the armature's Offset Y value.
+ * @default 0
+ *
+ * @arg ScaleX:eval
+ * @text Scale X
+ * @parent ActorID:num
+ * @desc Change the armature's Scale X value.
+ * @default 0.5
+ *
+ * @arg ScaleY:eval
+ * @text Scale Y
+ * @parent ActorID:num
+ * @desc Change the armature's Scale Y value.
+ * @default 0.5
+ *
+ * @arg TimeScale:eval
+ * @text Time Scale
+ * @parent ActorID:num
+ * @desc Change the armature's Time Scale value.
+ * @default 1.0
+ *
+ * @arg WalkRate:eval
+ * @text Walk Rate
+ * @parent TimeScale:eval
+ * @desc Change the armature's walk animation rate.
+ * @default 1.0
+ *
+ * @arg DashRate:eval
+ * @text Dash Rate
+ * @parent TimeScale:eval
+ * @desc Change the armature's dash animation rate.
+ * @default 1.0
+ *
+ * @arg Width:eval
+ * @text Width
+ * @parent ActorID:num
+ * @desc Change the armature's width value.
+ * @default 48
+ *
+ * @arg Height:eval
+ * @text Height
+ * @parent ActorID:num
+ * @desc Change the armature's height.
+ * @default 48
+ *
+ * @arg FlipSettings
+ * @text Flip Settings
+ *
+ * @arg FlipLeft:eval
+ * @text Flip Left?
+ * @parent FlipSettings
+ * @type boolean
+ * @on Flip
+ * @off Normal
+ * @desc Flip the scale x value when facing left-ward directions?
+ * @default false
+ *
+ * @arg FlipRight:eval
+ * @text Flip Right?
+ * @parent FlipSettings
+ * @type boolean
+ * @on Flip
+ * @off Normal
+ * @desc Flip the scale x value when facing right-ward directions?
+ * animation is found?
+ * @default false
+ *
+ * @arg Animations
+ * @text Motion Settings
+ *
+ * @arg Idle:str
+ * @text Idle
+ * @parent Animations
+ * @desc Base idle animation name used.
+ * @default idle
+ *
+ * @arg Walk:str
+ * @text Walk
+ * @parent Animations
+ * @desc Base walk animation name used.
+ * @default walk
+ *
+ * @arg Dash:str
+ * @text Dash
+ * @parent Animations
+ * @desc Base dash animation name used.
+ * @default dash
+ *
+ * @arg Jump:str
+ * @text Jump
+ * @parent Animations
+ * @desc Base jump animation name used.
+ * @default jump
+ *
+ * @arg LadderIdle:str
+ * @text Ladder (Idle)
+ * @parent Animations
+ * @desc Base ladder idle animation name used.
+ * @default ladderidle
+ *
+ * @arg LadderClimb:str
+ * @text Ladder (Climb)
+ * @parent Animations
+ * @desc Base ladder climbing animation name used.
+ * @default ladderclimb
+ *
+ * @arg RopeIdle:str
+ * @text Rope (Idle)
+ * @parent Animations
+ * @desc Base rope idle animation name used.
+ * @default ropeidle
+ *
+ * @arg RopeClimb:str
+ * @text Rope (Climb)
+ * @parent Animations
+ * @desc Base rope climbing animation name used.
+ * @default ropecllmb
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_ActorAnimationPlay
+ * @text Map Sprite: Actor Play Animation
+ * @desc Target actor plays a custom Dragonbones animation.
+ *
+ * @arg ActorID:num
+ * @text Actor ID
+ * @type actor
+ * @desc Select which Actor ID to affect.
+ * @default 1
+ *
+ * @arg Animation:str
+ * @text Play Animation
+ * @desc Play this animation.
+ * @default Idle
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_ActorAnimationStop
+ * @text Map Sprite: Actor Stop Animation
+ * @desc Stops a target actor's custom Dragonbones animation.
+ *
+ * @arg ActorID:num
+ * @text Actor ID
+ * @type actor
+ * @desc Select which Actor ID to affect.
+ * @default 1
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_EventAnimationPlay
+ * @text Map Sprite: Event Play Animation
+ * @desc Target event plays a custom Dragonbones animation.
+ *
+ * @arg EventID:eval
+ * @text Event ID
+ * @desc Select which Event ID to affect.
+ * @default 1
+ *
+ * @arg Animation:str
+ * @text Play Animation
+ * @desc Play this animation.
+ * @default Idle
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_EventAnimationStop
+ * @text Map Sprite: Event Stop Animation
+ * @desc Stops a target event's custom Dragonbones animation.
+ *
+ * @arg EventID:eval
+ * @text Event ID
+ * @desc Select which Event ID to affect.
+ * @default 1
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_FollowerAnimationPlay
+ * @text Map Sprite: Follower Play Animation
+ * @desc Target follower plays a custom Dragonbones animation.
+ *
+ * @arg FollowerIndex:eval
+ * @text Follower Index
+ * @desc Select which Follower Index to affect.
+ * @default 0
+ *
+ * @arg Animation:str
+ * @text Play Animation
+ * @desc Play this animation.
+ * @default Idle
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_FollowerAnimationStop
+ * @text Map Sprite: Follower Stop Animation
+ * @desc Stops a target follower's custom Dragonbones animation.
+ *
+ * @arg FollowerIndex:eval
+ * @text Follower ID
+ * @desc Select which Follower Index to affect.
+ * @default 0
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_PlayerAnimationPlay
+ * @text Map Sprite: Player Play Animation
+ * @desc Player plays a custom Dragonbones animation.
+ *
+ * @arg Animation:str
+ * @text Play Animation
+ * @desc Play this animation.
+ * @default Idle
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command MapSprite_PlayerAnimationStop
+ * @text Map Sprite: Player Stop Animation
+ * @desc Stops player's custom Dragonbones animation.
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command Picture_SetupDragonbones
+ * @text Picture: Dragonbones Setup
+ * @desc Setup a Dragonbones armature for a picture.
+ *
+ * @arg PictureID:eval
+ * @text Picture ID
+ * @type number
+ * @min 1
+ * @max 100
+ * @desc Select which Picture ID(s) to give a Dragonbones armature.
+ * @default 1
+ *
+ * @arg Filename:str
+ * @text Armature Filename
+ * @desc What is the armature's filename?
+ * @default Untitled
+ *
+ * @arg Animation:str
+ * @text Play Animation
+ * @desc Play this animation once it starts.
+ * @default Idle
+ *
+ * @arg OffsetX:eval
+ * @text Offset: X
+ * @desc Default X offset value for this Dragonbones armature.
+ * @default 0
+ *
+ * @arg OffsetY:eval
+ * @text Offset: Y
+ * @desc Default Y offset value for this Dragonbones armature.
+ * @default 0
+ *
+ * @arg ScaleX:eval
+ * @text Scale: X
+ * @desc Default X scaling for this Dragonbones armature.
+ * This will be amplified by the picture's scaling value.
+ * @default 1.0
+ *
+ * @arg ScaleY:eval
+ * @text Scale: Y
+ * @desc Default Y scaling for this Dragonbones armature.
+ * This will be amplified by the picture's scaling value.
+ * @default 1.0
+ *
+ * @arg TimeScale:eval
+ * @text Time Scale
+ * @desc Default time scale for this Dragonbones armature.
+ * Higher values play faster. Lower values play slower.
+ * @default 1.0
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command Picture_DragonbonesAnimation
+ * @text Picture: Play Dragonbones Animation
+ * @desc Make an existing Dragonbones armature attached to a picture play an animation.
+ *
+ * @arg PictureID:eval
+ * @text Picture ID
+ * @type number
+ * @min 1
+ * @max 100
+ * @desc Select which Picture ID to modify.
+ * @default 1
+ *
+ * @arg Animation:str
+ * @text Play Animation
+ * @desc Play this animation.
+ * @default Idle
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command Picture_DragonbonesOffset
+ * @text Picture: Offset Dragonbones
+ * @desc Offset the X, Y attachment point of the Dragonbones armature.
+ *
+ * @arg PictureID:eval
+ * @text Picture ID
+ * @type number
+ * @min 1
+ * @max 100
+ * @desc Select which Picture ID to modify.
+ * @default 1
+ *
+ * @arg OffsetX:eval
+ * @text Offset: X
+ * @desc X offset value for this Dragonbones armature.
+ * @default 0
+ *
+ * @arg OffsetY:eval
+ * @text Offset: Y
+ * @desc Y offset value for this Dragonbones armature.
+ * @default 0
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command Picture_ScaleDragonbones
+ * @text Picture: Scale Dragonbones
+ * @desc Change the scaling values of the Dragonbones armature.
+ *
+ * @arg PictureID:eval
+ * @text Picture ID
+ * @type number
+ * @min 1
+ * @max 100
+ * @desc Select which Picture ID to modify.
+ * @default 1
+ *
+ * @arg ScaleX:eval
+ * @text Scale: X
+ * @desc X scaling for this Dragonbones armature.
+ * This will be amplified by the picture's scaling value.
+ * @default 1.0
+ *
+ * @arg ScaleY:eval
+ * @text Scale: Y
+ * @desc Y scaling for this Dragonbones armature.
+ * This will be amplified by the picture's scaling value.
+ * @default 1.0
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command Picture_TimeScaleDragonbones
+ * @text Picture: Time Scale Dragonbones
+ * @desc Change the speed at which Dragonbones animations play.
+ *
+ * @arg PictureID:eval
+ * @text Picture ID
+ * @type number
+ * @min 1
+ * @max 100
+ * @desc Select which Picture ID to modify.
+ * @default 1
+ *
+ * @arg TimeScale:eval
+ * @text Time Scale
+ * @desc Default time scale for this Dragonbones armature.
+ * Higher values play faster. Lower values play slower.
+ * @default 1.0
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @ ==========================================================================
+ * @ Plugin Parameters
+ * @ ==========================================================================
+ *
+ * @param BreakHead
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param DragonbonesUnion
+ * @default Plugin Parameters
+ *
+ * @param ATTENTION
+ * @default READ THE HELP FILE
+ *
+ * @param BreakSettings
+ * @text --------------------------
+ * @default ----------------------------------
+ * 
+ * @param Main
+ * @text Main Settings
+ *
+ * @param AssetsPath:str
+ * @text Assets Path
+ * @parent Main
+ * @desc The filepath to the directory that houses all the Dragonbone files.
+ * @default ./dragonbones_assets/
+ *
+ * @param General:struct
+ * @text General Settings
+ * @parent Main
+ * @type struct<General>
+ * @desc A set of general settings pertaining to all uses of Dragonbones.
+ * @default {"Defaults":"","LoadAnimation:str":"idle","LoopingAnimations:arraystr":"[\"idle\",\"walk\",\"wait\",\"chant\",\"guard\",\"dying\",\"abnormal\",\"sleep\",\"dash\",\"ladderidle\",\"ladderclimb\",\"ropeidle\",\"ropeclimb\"]","SkeletalData":"","SkeKey:str":"dbData","SkeExt:str":"_ske.json","TextureData":"","TexKey:str":"texData","TexExt:str":"_tex.json","TextureAsset":"","TxaKey:str":"texAsset","TxaExt:str":"_tex.png"}
+ *
+ * @param Battler:struct
+ * @text Battler Settings
+ * @parent Main
+ * @type struct<Battler>
+ * @desc A set of general settings pertaining to Dragonbones battlers.
+ * @default {"Defaults":"","OffsetX:num":"0","OffsetY:num":"0","ScaleX:num":"1.0","FlipActors:eval":"false","FlipEnemies:eval":"false","ScaleY:num":"1.0","TimeScale:num":"1.0","Width:num":"64","Height:num":"64","IdleBypass":"","IdleBypassList:arraystr":"[\"dead\",\"escape\",\"victory\"]","DefaultMotions":"","MotionWalk:str":"walk","MotionWait:str":"wait","MotionChant:str":"chant","MotionGuard:str":"guard","MotionDamage:str":"damage","MotionEvade:str":"evade","MotionThrust:str":"thrust","MotionSwing:str":"swing","MotionMissile:str":"missile","MotionSkill:str":"skill","MotionSpell:str":"spell","MotionItem:str":"item","MotionEscape:str":"escape","MotionVictory:str":"victory","MotionDying:str":"dying","MotionAbnormal:str":"abnormal","MotionSleep:str":"sleep","MotionDead:str":"dead"}
+ *
+ * @param MapSprite:struct
+ * @text Map Sprite Settings
+ * @parent Main
+ * @type struct<MapSprite>
+ * @desc A set of general settings pertaining to Dragonbones map sprites.
+ * @default {"Defaults":"","OffsetX:num":"0","OffsetY:num":"0","ScaleX:num":"0.5","FlipLeft:eval":"false","FlipRight:eval":"false","ScaleY:num":"0.5","TimeScale:num":"1.0","Width:num":"48","Height:num":"48","Animations":"","Idle:str":"idle","Walk:str":"walk","WalkTimer:num":"2","Dash:str":"dash","Jump:str":"jump","LadderIdle:str":"ladderidle","LadderClimb:str":"ladderclimb","RopeIdle:str":"ropeidle","RopeClimb:str":"ropecllmb"}
+ * 
+ * @param Experimental
+ * 
+ * @param EnemyStances:eval
+ * @text Enemy Stances
+ * @parent Experimental
+ * @type boolean
+ * @on Enable Stances
+ * @off No Stances
+ * @desc Enemies can use stance motions for idling such as
+ * chanting, guarding, etc. Requires VisuMZ_1_BattleCore!
+ * @default false
+ *
+ * @param BreakEnd1
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param End Of
+ * @default Plugin Parameters
+ *
+ * @param BreakEnd2
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * General Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~General:
+ *
+ * @param Defaults
+ *
+ * @param LoadAnimation:str
+ * @text Loaded Animation
+ * @parent Defaults
+ * @desc The default animation to play once a Dragonbones armature is loaded.
+ * @default idle
+ *
+ * @param LoopingAnimations:arraystr
+ * @text Looping Animations
+ * @parent Defaults
+ * @type string[]
+ * @desc Force these animations to become looping animations even if they don't loop in Dragonbones.
+ * @default ["idle","walk","wait","chant","guard","dying","abnormal","sleep","dash","ladderidle","ladderclimb","ropeidle","ropeclimb"]
+ *
+ * @param SkeletalData
+ * @text Skeletal Data
+ *
+ * @param SkeKey:str
+ * @text Key
+ * @parent SkeletalData
+ * @desc Key used to determine where skeletal data is stored.
+ * @default dbData
+ *
+ * @param SkeExt:str
+ * @text Extension
+ * @parent SkeletalData
+ * @desc Extension used to determine which files contain skeletal data.
+ * @default _ske.json
+ *
+ * @param TextureData
+ * @text Texture Data
+ *
+ * @param TexKey:str
+ * @text Key
+ * @parent TextureData
+ * @desc Key used to determine where texture data is stored.
+ * @default texData
+ *
+ * @param TexExt:str
+ * @text Extension
+ * @parent TextureData
+ * @desc Extension used to determine which files contain texture data.
+ * @default _tex.json
+ *
+ * @param TextureAsset
+ * @text Texture Asset
+ *
+ * @param TxaKey:str
+ * @text Key
+ * @parent TextureAsset
+ * @desc Key used to determine where texture assets are stored.
+ * @default texAsset
+ *
+ * @param TxaExt:str
+ * @text Extension
+ * @parent TextureAsset
+ * @desc Extension used to determine which files contain texture assets.
+ * @default _tex.png
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Battler Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~Battler:
+ *
+ * @param Defaults
+ * @text Default Settings
+ *
+ * @param OffsetX:num
+ * @text Offset: X
+ * @parent Defaults
+ * @desc Default X offset for battler sprites.
+ * @default 0
+ *
+ * @param OffsetY:num
+ * @text Offset: Y
+ * @parent Defaults
+ * @desc Default Y offset for battler sprites.
+ * @default 0
+ *
+ * @param ScaleX:num
+ * @text Scale: X
+ * @parent Defaults
+ * @desc Default scale for X used by Dragonbones battlers.
+ * @default 1.0
+ *
+ * @param FlipActors:eval
+ * @text Flip for Actors?
+ * @parent ScaleX:num
+ * @type boolean
+ * @on Flip
+ * @off Normal
+ * @desc Flip the scale x value into negative automatically for all actors?
+ * @default false
+ *
+ * @param FlipEnemies:eval
+ * @text Flip for Enemies?
+ * @parent ScaleX:num
+ * @type boolean
+ * @on Flip
+ * @off Normal
+ * @desc Flip the scale x value into negative automatically for all enemies?
+ * @default false
+ *
+ * @param ScaleY:num
+ * @text Scale: Y
+ * @parent Defaults
+ * @desc Default scale for Y used by Dragonbones battlers.
+ * @default 1.0
+ *
+ * @param TimeScale:num
+ * @text Time Scale
+ * @parent Defaults
+ * @desc The rate at which animations play.
+ * Higher numbers go faster.
+ * @default 1.0
+ *
+ * @param Width:num
+ * @text Width
+ * @parent Defaults
+ * @desc Treat battler sprites as if they have this width.
+ * Used for Action Sequences.
+ * @default 64
+ *
+ * @param Height:num
+ * @text Height
+ * @parent Defaults
+ * @desc Treat battler sprites as if they have this height.
+ * Used for Action Sequences.
+ * @default 64
+ *
+ * @param IdleBypass
+ * @text Idle Bypass
+ *
+ * @param IdleBypassList:arraystr
+ * @text List
+ * @parent IdleBypass
+ * @type combo[]
+ * @option swing
+ * @option thrust
+ * @option missile
+ * @option walk
+ * @option wait
+ * @option chant
+ * @option guard
+ * @option damage
+ * @option evade
+ * @option skill
+ * @option spell
+ * @option item
+ * @option escape
+ * @option victory
+ * @option dying
+ * @option abnormal
+ * @option sleep
+ * @option dead
+ * @desc This is a list of animations that will not return back to the idle animation after completion.
+ * @default ["dead","escape","victory"]
+ *
+ * @param DefaultMotions
+ * @text Default Motions
+ *
+ * @param MotionWalk:str
+ * @text Walk
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default walk
+ *
+ * @param MotionWait:str
+ * @text Wait
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default wait
+ *
+ * @param MotionChant:str
+ * @text Chant
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default chant
+ *
+ * @param MotionGuard:str
+ * @text Guard
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default guard
+ *
+ * @param MotionDamage:str
+ * @text Damage
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default damage
+ *
+ * @param MotionEvade:str
+ * @text Evade
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default evade
+ *
+ * @param MotionThrust:str
+ * @text Thrust
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default thrust
+ *
+ * @param MotionSwing:str
+ * @text Swing
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default swing
+ *
+ * @param MotionMissile:str
+ * @text Missile
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default missile
+ *
+ * @param MotionSkill:str
+ * @text Skill
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default skill
+ *
+ * @param MotionSpell:str
+ * @text Spell
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default spell
+ *
+ * @param MotionItem:str
+ * @text Item
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default item
+ *
+ * @param MotionEscape:str
+ * @text Escape
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default escape
+ *
+ * @param MotionVictory:str
+ * @text Victory
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default victory
+ *
+ * @param MotionDying:str
+ * @text Dying
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default dying
+ *
+ * @param MotionAbnormal:str
+ * @text Abnormal
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default abnormal
+ *
+ * @param MotionSleep:str
+ * @text Sleep
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default sleep
+ *
+ * @param MotionDead:str
+ * @text Dead
+ * @parent DefaultMotions
+ * @desc Play this Dragonbones animation whenever this motion
+ * is requested by default. Used for Action Sequences.
+ * @default dead
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Map Sprite Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~MapSprite:
+ *
+ * @param Defaults
+ * @text Default Settings
+ *
+ * @param OffsetX:num
+ * @text Offset: X
+ * @parent Defaults
+ * @desc Default X offset for map sprites.
+ * @default 0
+ *
+ * @param OffsetY:num
+ * @text Offset: Y
+ * @parent Defaults
+ * @desc Default Y offset for map sprites.
+ * @default 0
+ *
+ * @param ScaleX:num
+ * @text Scale: X
+ * @parent Defaults
+ * @desc Default scale for X used by Dragonbones map sprites.
+ * @default 0.5
+ *
+ * @param FlipLeft:eval
+ * @text Flip Left?
+ * @parent ScaleX:num
+ * @type boolean
+ * @on Flip
+ * @off Normal
+ * @desc Flip the scale x value when facing left-ward directions?
+ * @default false
+ *
+ * @param FlipRight:eval
+ * @text Flip Right?
+ * @parent ScaleX:num
+ * @type boolean
+ * @on Flip
+ * @off Normal
+ * @desc Flip the scale x value when facing right-ward directions?
+ * animation is found?
+ * @default false
+ *
+ * @param ScaleY:num
+ * @text Scale: Y
+ * @parent Defaults
+ * @desc Default scale for Y used by Dragonbones map sprites.
+ * @default 0.5
+ *
+ * @param TimeScale:num
+ * @text Time Scale
+ * @parent Defaults
+ * @desc The rate at which animations play.
+ * Higher numbers go faster.
+ * @default 1.0
+ *
+ * @param Width:num
+ * @text Width
+ * @parent Defaults
+ * @desc Treat map sprites as if they have this width.
+ * Used for various plugins.
+ * @default 48
+ *
+ * @param Height:num
+ * @text Height
+ * @parent Defaults
+ * @desc Treat map sprites as if they have this height.
+ * Used for various plugins.
+ * @default 48
+ *
+ * @param Animations
+ * @text Motion Settings
+ *
+ * @param Idle:str
+ * @text Idle
+ * @parent Animations
+ * @desc Base idle animation name used.
+ * @default idle
+ *
+ * @param Walk:str
+ * @text Walk
+ * @parent Animations
+ * @desc Base walk animation name used.
+ * @default walk
+ *
+ * @param WalkTimer:num
+ * @text Walk Timer
+ * @parent Walk:str
+ * @desc Number of frames to count as walking so that an idle animation isn't immediately forced upon stopping.
+ * @default 2
+ *
+ * @param Dash:str
+ * @text Dash
+ * @parent Animations
+ * @desc Base dash animation name used.
+ * @default dash
+ *
+ * @param Jump:str
+ * @text Jump
+ * @parent Animations
+ * @desc Base jump animation name used.
+ * @default jump
+ *
+ * @param LadderIdle:str
+ * @text Ladder (Idle)
+ * @parent Animations
+ * @desc Base ladder idle animation name used.
+ * @default ladderidle
+ *
+ * @param LadderClimb:str
+ * @text Ladder (Climb)
+ * @parent Animations
+ * @desc Base ladder climbing animation name used.
+ * @default ladderclimb
+ *
+ * @param RopeIdle:str
+ * @text Rope (Idle)
+ * @parent Animations
+ * @desc Base rope idle animation name used.
+ * @default ropeidle
+ *
+ * @param RopeClimb:str
+ * @text Rope (Climb)
+ * @parent Animations
+ * @desc Base rope climbing animation name used.
+ * @default ropecllmb
+ *
+ */
+//=============================================================================
+
+const _0x2934=['%1\x20is\x20incorrectly\x20placed\x20on\x20the\x20plugin\x20list.\x0aIt\x20is\x20a\x20Tier\x20%2\x20plugin\x20placed\x20over\x20other\x20Tier\x20%3\x20plugins.\x0aPlease\x20reorder\x20the\x20plugin\x20list\x20from\x20smallest\x20to\x20largest\x20tier\x20numbers.','%1\x27s\x20version\x20does\x20not\x20match\x20plugin\x27s.\x20Please\x20update\x20it\x20in\x20the\x20Plugin\x20Manager.','Game_Event_setupPageSettings','length','LoadedFilenames','ScaleY','factory','isItem','_stateSprite','createBaseDragonbonesSprite','MapSprite_EventAnimationPlay','Picture_SetupDragonbones','makeDeepCopy','max','opacity','dragonbonesData','scale','initialize','clearPageSettings','onLoadDragonbones','trim','performAttack','performActionMotions','Game_Enemy_performAction','LoadAnimation','dispose','battler','battleAniSpeed','_dragonbonesAnimation','timeScale','updateDragonbonesSelection','Sprite_Enemy_initMembers','runQueuedCallbacks','dragonbonesAnimation','direction','188FYSgiU','69HvBUfY','bind','_playTestFastMode','MotionEvade','filename','flipRight','MotionEscape','item','match','test','_dragonbonesSpriteData','Picture_ScaleDragonbones','Sprite_Actor_updateFrame','refresh','attack','PixiFactory','ActorID','Game_Enemy_transform','CallbackQueue','eventId','TexExt','isOnLadder','picture','isSceneMap','ropeidle','MotionSpell','initDragonbonesData','addChild','isSceneBattle','guard','Game_Picture_initialize','setupDragonbonesDataCommentTags','isHidden','Sprite_Character_updateCharacterFrame','idle','Filename','toUpperCase','setFrame','Sprite_Character_updateBitmap','motion','isGuardWaiting','chant','ARRAYNUM','isCompleted','update','1449dqFPvv','sleep','updateDragonbones','ropeclimb','command357','_lastPluginCommandInterpreter','parseTextureAtlasData','Game_Battler_requestMotion','VisuMZ_1_BattleCore','Game_Enemy_performDamage','MotionSwing','stateMotionIndex','Game_CharacterBase_update','event','Sprite_Enemy_refreshMotion','_dragonbonesFilename','loadComplete','PictureID','Scene_Battle_terminate','currentDragonbonesAnimation','data','processLoad','Game_Enemy_performCollapse','MapSprite','Game_Event_clearPageSettings','NUM','isJumping','bitmap','setup','requestMotion','IdleBypassList','isEnemy','testLoaded','findTargetSprite','ARRAYFUNC','Battler','Game_Follower_refresh','isDying','index','MotionItem','MotionSkill','code','texture','shift','MotionDamage','status','isInputting','_battler','scaleY','load','isMoving','includes','dash','updateDragonbonesTimeScale','visible','_dragonbonesName','LoadQueue','initMembersDragonbonesUnion','performCollapseDragonbonesUnion','isDashing','Jump','STR','Game_Actor_performAttack','WalkTimer','RopeIdle','Game_Actor_setup','setupDragonbonesDataNotetags','scaleX','LadderClimb','updateDragonbonesProperties','wait','MotionWalk','description','name','4523FYxIgW','width','updateDragonbonesUnion','erasePictureDragonbonesUnion','updateDragonbonesAnimation','performDamageDragonbonesUnion','Game_Event_refresh','addDragonbonesChild','updateBitmap','getLastPluginCommandInterpreter','round','MotionGuard','isAlive','LadderIdle','prototype','updateDragonbonesArmature','realMoveSpeed','parseDragonBonesData','VisuMZ_1_OptionsCore','height','startMotion','spell','setupDragonbonesData','MotionSleep','performActionDragonbonesUnion','ARRAYEVAL','isActor','hasDragonbonesBattler','OffsetY','Settings','ConvertParams','_baseDragonbonesSprite','_enemyId','skill','Game_Battler_requestMotionRefresh','Sprite_Picture_initialize','Game_Screen_erasePicture','_dragonbonesBattlerData','ARRAYSTR','Battler_ActorChange','WalkRate','concat','Walk','Animation','ladderidle','initMembers','hasDragonbones','animation','TexKey','FlipEnemies','MotionMissile','MotionChant','leader','TxaKey','MotionDying','add','Game_Actor_performAction','_pictureContainer','STRUCT','checkDragonbonesStringTags','setupPageSettings','ScaleX','ladderclimb','_dragonbonesSpriteContainer','Sprite_Actor_startMotion','prepareNextLoadArmature','_shadowSprite','setupDragonbones','_dragonbonesMoveTimer','_battleAniSpeedLooping','Idle','children','_dragonbonesFlipDirection','dragonbonesSpriteData','RopeClimb','showPicture','updateFrameDragonbonesUnion','offsetX','Game_Player_refresh','MotionWait','dragonbonesFlip','Loader','736787YVpEYm','once','loadArmature','Sprite_Enemy_setBattler','removeChild','findPictureSprite','Sprite_Actor_initMembers','push','find','refreshMotion','Height','Picture_DragonbonesAnimation','version','terminate','page','Picture_DragonbonesOffset','transform','General','call','follower','206ZLsIOD','updateShadowDragonbonesUnion','registerCommand','MapSprite_PlayerAnimationPlay','Game_Actor_performCollapse','isActing','Game_Interpreter_PluginCommand','FUNC','Game_Enemy_setup','isChanting','SkeKey','_spriteset','TxaExt','playTimes','_mainSprite','623525JAMwAB','dead','FlipLeft','Width','Picture_TimeScaleDragonbones','note','VisuMZ_0_CoreEngine','followers','addDragonbonesAnimationDirections','MapSprite_FollowerAnimationStop','defineProperty','Dragonbones','format','buildArmatureDisplay','DragonbonesUnion','abnormal','performCollapse','addChildAt','enemy','shared','performDamage','updateFrame','disposeDragonbones','parse','Sprite_Enemy_updateBitmap','flipLeft','isGuard','attachSpritesToDistortionSprite','403XMRtJl','escape','ARRAYJSON','type','EnemyStances','setBattler','constructor','updateCharacterFrameDragonbonesUnion','list','EVAL','TimeScale','_dragonbones','play','createArmature','animationNames','isSkill','playDragonbonesMotion','requestDragonbonesAnimation','lastAnimationName','_weaponSprite','battlerSprites','dying','performAction','animations','FlipActors','_scene','DashRate','exit','isAttack','erasePicture','Dash','loadNextArmature','FollowerIndex','3187YdwTXc','map','_character','updateShadow','toLowerCase','offsetY','parameters','walkRate','jump','MotionVictory','OffsetX','playDragonbonesAnimation','DefaultAnimation','playDragonbonesIdleAnimation','updateCharacterFrame','Sprite_Picture_update','lastFileName','Game_Actor_performDamage','ARRAYSTRUCT','MotionAbnormal','walk','dashRate','3429oYuWtS','_playtestF7Looping','EventID','_dragonbonesData','612382McCnHn','createDefaultPicture','isUndecided','actor','Sprite_Actor_updateBitmap'];const _0x421f=function(_0x19ce92,_0xbff014){_0x19ce92=_0x19ce92-0x199;let _0x29348b=_0x2934[_0x19ce92];return _0x29348b;};const _0x318430=_0x421f;(function(_0x73a7e7,_0x5b0764){const _0x35f1ac=_0x421f;while(!![]){try{const _0x4ab40f=parseInt(_0x35f1ac(0x1a0))*parseInt(_0x35f1ac(0x217))+parseInt(_0x35f1ac(0x19f))*-parseInt(_0x35f1ac(0x2c9))+-parseInt(_0x35f1ac(0x28c))+parseInt(_0x35f1ac(0x27d))*parseInt(_0x35f1ac(0x1cd))+-parseInt(_0x35f1ac(0x2e3))+parseInt(_0x35f1ac(0x2df))*parseInt(_0x35f1ac(0x2a8))+parseInt(_0x35f1ac(0x269));if(_0x4ab40f===_0x5b0764)break;else _0x73a7e7['push'](_0x73a7e7['shift']());}catch(_0x183f97){_0x73a7e7['push'](_0x73a7e7['shift']());}}}(_0x2934,0xda4f0));var label=_0x318430(0x29a),tier=tier||0x0,dependencies=[_0x318430(0x297)],pluginData=$plugins['filter'](function(_0x5bb601){const _0x2a0205=_0x318430;return _0x5bb601[_0x2a0205(0x1fa)]&&_0x5bb601[_0x2a0205(0x215)][_0x2a0205(0x200)]('['+label+']');})[0x0];VisuMZ[label]['Settings']=VisuMZ[label][_0x318430(0x234)]||{},VisuMZ[_0x318430(0x235)]=function(_0x143647,_0x59cdc1){const _0x58a25b=_0x318430;for(const _0x46161c in _0x59cdc1){if(_0x46161c[_0x58a25b(0x1a8)](/(.*):(.*)/i)){const _0x26497a=String(RegExp['$1']),_0xc1ca98=String(RegExp['$2'])[_0x58a25b(0x1c4)]()[_0x58a25b(0x2fc)]();let _0x27a3d3,_0x2b1ffc,_0xa91824;switch(_0xc1ca98){case _0x58a25b(0x1e6):_0x27a3d3=_0x59cdc1[_0x46161c]!==''?Number(_0x59cdc1[_0x46161c]):0x0;break;case _0x58a25b(0x1ca):_0x2b1ffc=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):[],_0x27a3d3=_0x2b1ffc[_0x58a25b(0x2ca)](_0x3062d2=>Number(_0x3062d2));break;case _0x58a25b(0x2b1):_0x27a3d3=_0x59cdc1[_0x46161c]!==''?eval(_0x59cdc1[_0x46161c]):null;break;case _0x58a25b(0x230):_0x2b1ffc=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):[],_0x27a3d3=_0x2b1ffc[_0x58a25b(0x2ca)](_0x5316a0=>eval(_0x5316a0));break;case'JSON':_0x27a3d3=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):'';break;case _0x58a25b(0x2aa):_0x2b1ffc=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):[],_0x27a3d3=_0x2b1ffc['map'](_0x109e4e=>JSON[_0x58a25b(0x2a3)](_0x109e4e));break;case _0x58a25b(0x284):_0x27a3d3=_0x59cdc1[_0x46161c]!==''?new Function(JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c])):new Function('return\x200');break;case _0x58a25b(0x1ef):_0x2b1ffc=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):[],_0x27a3d3=_0x2b1ffc[_0x58a25b(0x2ca)](_0xe62c19=>new Function(JSON[_0x58a25b(0x2a3)](_0xe62c19)));break;case _0x58a25b(0x20a):_0x27a3d3=_0x59cdc1[_0x46161c]!==''?String(_0x59cdc1[_0x46161c]):'';break;case _0x58a25b(0x23d):_0x2b1ffc=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):[],_0x27a3d3=_0x2b1ffc[_0x58a25b(0x2ca)](_0xa760ed=>String(_0xa760ed));break;case _0x58a25b(0x251):_0xa91824=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):{},_0x27a3d3=VisuMZ[_0x58a25b(0x235)]({},_0xa91824);break;case _0x58a25b(0x2db):_0x2b1ffc=_0x59cdc1[_0x46161c]!==''?JSON[_0x58a25b(0x2a3)](_0x59cdc1[_0x46161c]):[],_0x27a3d3=_0x2b1ffc[_0x58a25b(0x2ca)](_0x3e458e=>VisuMZ[_0x58a25b(0x235)]({},JSON[_0x58a25b(0x2a3)](_0x3e458e)));break;default:continue;}_0x143647[_0x26497a]=_0x27a3d3;}}return _0x143647;},(_0x475b2d=>{const _0xece611=_0x318430,_0x44aa18=_0x475b2d['name'];for(const _0x2701db of dependencies){if(!Imported[_0x2701db]){alert('%1\x20is\x20missing\x20a\x20required\x20plugin.\x0aPlease\x20install\x20%2\x20into\x20the\x20Plugin\x20Manager.'[_0xece611(0x298)](_0x44aa18,_0x2701db)),SceneManager[_0xece611(0x2c3)]();break;}}const _0x940709=_0x475b2d['description'];if(_0x940709['match'](/\[Version[ ](.*?)\]/i)){const _0xcaffe2=Number(RegExp['$1']);_0xcaffe2!==VisuMZ[label][_0xece611(0x275)]&&(alert(_0xece611(0x2e9)[_0xece611(0x298)](_0x44aa18,_0xcaffe2)),SceneManager[_0xece611(0x2c3)]());}if(_0x940709[_0xece611(0x1a8)](/\[Tier[ ](\d+)\]/i)){const _0x4a2660=Number(RegExp['$1']);_0x4a2660<tier?(alert(_0xece611(0x2e8)[_0xece611(0x298)](_0x44aa18,_0x4a2660,tier)),SceneManager[_0xece611(0x2c3)]()):tier=Math[_0xece611(0x2f5)](_0x4a2660,tier);}VisuMZ[_0xece611(0x235)](VisuMZ[label][_0xece611(0x234)],_0x475b2d[_0xece611(0x2cf)]);})(pluginData);function DragonbonesManager(){throw new Error('This\x20is\x20a\x20static\x20class');}DragonbonesManager['AssetsPath']=VisuMZ[_0x318430(0x29a)][_0x318430(0x234)]['AssetsPath'],DragonbonesManager[_0x318430(0x2d5)]=VisuMZ[_0x318430(0x29a)]['Settings'][_0x318430(0x27a)][_0x318430(0x300)],DragonbonesManager[_0x318430(0x2ec)]=[],DragonbonesManager[_0x318430(0x205)]=[],DragonbonesManager[_0x318430(0x1b2)]=[],DragonbonesManager[_0x318430(0x1a9)]=function(_0x3670b4,_0x32b946,_0x13ce77,_0xffb947){const _0x57f25c=_0x318430;if(!_0x13ce77)_0x13ce77=SceneManager[_0x57f25c(0x2c1)];if(!_0xffb947)_0xffb947='testArmature';if(_0x13ce77[_0xffb947]){const _0x3f0924=_0x13ce77[_0xffb947];_0x3f0924&&(_0x13ce77['removeChild'](_0x3f0924),_0x3f0924[_0x57f25c(0x301)]());}this[_0x57f25c(0x26b)](_0x3670b4,DragonbonesManager[_0x57f25c(0x1ed)]['bind'](this,_0x3670b4,_0x32b946,_0x13ce77,_0xffb947));},DragonbonesManager[_0x318430(0x1ed)]=function(_0x23a190,_0xde6b5d,_0x59392e,_0x414922){const _0x2d4c76=_0x318430,_0x208b78=this[_0x2d4c76(0x2b5)](_0x23a190);_0x208b78&&(_0x59392e[_0x2d4c76(0x1bb)](_0x208b78),_0x208b78['x']=Graphics['width']/0x2,_0x208b78['y']=Graphics[_0x2d4c76(0x22a)]*0x3/0x4,_0xde6b5d=_0xde6b5d||DragonbonesManager[_0x2d4c76(0x2d5)],_0xde6b5d=_0xde6b5d[_0x2d4c76(0x2cd)](),_0x208b78[_0x2d4c76(0x246)][_0x2d4c76(0x2bf)][_0xde6b5d]&&_0x208b78['animation'][_0x2d4c76(0x2b4)](_0xde6b5d)),_0x59392e[_0x414922]=_0x208b78;},DragonbonesManager[_0x318430(0x2b5)]=function(_0x543e51){const _0xe4bbe2=_0x318430,_0x3b0d15=dragonBones['PixiFactory'][_0xe4bbe2(0x2ee)][_0xe4bbe2(0x299)](_0x543e51);if(!_0x3b0d15)return null;for(const _0x18432a in _0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)]){if(_0x18432a[_0xe4bbe2(0x2cd)]()===_0x18432a)continue;_0x3b0d15[_0xe4bbe2(0x246)]['animations'][_0x18432a['toLowerCase']()]=_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)][_0x18432a],delete _0x3b0d15['animation'][_0xe4bbe2(0x2bf)][_0x18432a];}for(let _0x1d51d4=0x0;_0x1d51d4<_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2b6)][_0xe4bbe2(0x2eb)];_0x1d51d4++){_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2b6)][_0x1d51d4]=_0x3b0d15['animation'][_0xe4bbe2(0x2b6)][_0x1d51d4]['toLowerCase']();}const _0x248381=VisuMZ[_0xe4bbe2(0x29a)]['Settings']['General']['LoopingAnimations'];for(let _0x5cbd14 of _0x248381){_0x5cbd14=_0x5cbd14['toLowerCase']()['trim']();_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)][_0x5cbd14]&&(_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)][_0x5cbd14][_0xe4bbe2(0x28a)]=0x0);for(let _0x311ae0=0x1;_0x311ae0<=0x9;_0x311ae0++){const _0x459d02=_0x5cbd14+_0x311ae0;_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)][_0x459d02]&&(_0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)][_0x459d02][_0xe4bbe2(0x28a)]=0x0);}}return _0x3b0d15[_0xe4bbe2(0x246)][_0xe4bbe2(0x2bf)][DragonbonesManager[_0xe4bbe2(0x2d5)]]&&_0x3b0d15[_0xe4bbe2(0x246)]['play'](DragonbonesManager[_0xe4bbe2(0x2d5)]),_0x3b0d15;},DragonbonesManager['loadArmature']=function(_0x52decb,_0x55b3d4){const _0x141915=_0x318430;_0x52decb=_0x52decb['trim'](),DragonbonesManager['LoadQueue'][_0x141915(0x270)](_0x52decb),DragonbonesManager[_0x141915(0x1b2)]['push'](_0x55b3d4);const _0x6f9260=PIXI['Loader'][_0x141915(0x29f)];!_0x6f9260['loading']&&this[_0x141915(0x2c7)]();},DragonbonesManager['loadNextArmature']=function(){const _0x140264=_0x318430;DragonbonesManager[_0x140264(0x205)][_0x140264(0x2eb)]>0x0?this[_0x140264(0x258)]():this[_0x140264(0x19c)]();},DragonbonesManager[_0x318430(0x258)]=function(){const _0x3529b1=_0x318430,_0x3f164b=DragonbonesManager['LoadQueue'][_0x3529b1(0x1f8)]();if(this[_0x3529b1(0x2ec)][_0x3529b1(0x200)](_0x3f164b))this['loadNextArmature']();else!this[_0x3529b1(0x2ec)][_0x3529b1(0x200)](_0x3f164b)&&this[_0x3529b1(0x1e2)](_0x3f164b);},DragonbonesManager[_0x318430(0x1e2)]=function(_0x46587b){const _0x2f02c8=_0x318430;this[_0x2f02c8(0x2ec)][_0x2f02c8(0x270)](_0x46587b),this[_0x2f02c8(0x2d9)]=_0x46587b;const _0x42dbb6=VisuMZ[_0x2f02c8(0x29a)][_0x2f02c8(0x234)][_0x2f02c8(0x27a)],_0x2901d3=DragonbonesManager['AssetsPath'],_0x142d47=PIXI[_0x2f02c8(0x268)][_0x2f02c8(0x29f)];_0x142d47['add'](_0x46587b+_0x42dbb6[_0x2f02c8(0x287)],_0x2901d3+_0x46587b+_0x42dbb6['SkeExt']),_0x142d47[_0x2f02c8(0x24e)](_0x46587b+_0x42dbb6[_0x2f02c8(0x247)],_0x2901d3+_0x46587b+_0x42dbb6[_0x2f02c8(0x1b4)]),_0x142d47[_0x2f02c8(0x24e)](_0x46587b+_0x42dbb6[_0x2f02c8(0x24c)],_0x2901d3+_0x46587b+_0x42dbb6[_0x2f02c8(0x289)]),_0x142d47[_0x2f02c8(0x26a)]('complete',DragonbonesManager['loadComplete'],this),_0x142d47[_0x2f02c8(0x1fe)]();},DragonbonesManager[_0x318430(0x1dd)]=function(_0x3d64d3,_0x731074){const _0x4f36db=_0x318430,_0x1d5124=VisuMZ['DragonbonesUnion'][_0x4f36db(0x234)][_0x4f36db(0x27a)],_0x1ea5a9=this[_0x4f36db(0x2d9)],_0x1b76f6=dragonBones[_0x4f36db(0x1af)][_0x4f36db(0x2ee)];_0x1b76f6[_0x4f36db(0x228)](_0x731074[_0x1ea5a9+_0x1d5124['SkeKey']][_0x4f36db(0x1e1)]),_0x1b76f6[_0x4f36db(0x1d3)](_0x731074[_0x1ea5a9+_0x1d5124[_0x4f36db(0x247)]][_0x4f36db(0x1e1)],_0x731074[_0x1ea5a9+_0x1d5124[_0x4f36db(0x24c)]][_0x4f36db(0x1f7)]),this['loadNextArmature']();},DragonbonesManager[_0x318430(0x19c)]=function(){const _0x5aba8f=_0x318430;while(DragonbonesManager[_0x5aba8f(0x1b2)][_0x5aba8f(0x2eb)]>0x0){const _0x1fa079=DragonbonesManager[_0x5aba8f(0x1b2)][_0x5aba8f(0x1f8)]();if(_0x1fa079)_0x1fa079(this);}},PluginManager[_0x318430(0x27f)](pluginData['name'],_0x318430(0x23e),_0x3341bd=>{const _0x29e81b=_0x318430;if(!$gameMap)return;VisuMZ['ConvertParams'](_0x3341bd,_0x3341bd);const _0x2f61b6=$gameActors[_0x29e81b(0x2e6)](_0x3341bd['ActorID']);if(!_0x2f61b6)return;_0x2f61b6[_0x29e81b(0x23c)]={'battler':_0x3341bd[_0x29e81b(0x1c3)],'scaleX':_0x3341bd[_0x29e81b(0x254)],'scaleY':_0x3341bd[_0x29e81b(0x2ed)],'offsetX':_0x3341bd[_0x29e81b(0x2d3)],'offsetY':_0x3341bd['OffsetY'],'timeScale':_0x3341bd[_0x29e81b(0x2b2)],'width':_0x3341bd[_0x29e81b(0x28f)],'height':_0x3341bd[_0x29e81b(0x273)],'motion':{'walk':_0x3341bd[_0x29e81b(0x214)],'wait':_0x3341bd['MotionWait'],'chant':_0x3341bd[_0x29e81b(0x24a)],'guard':_0x3341bd[_0x29e81b(0x222)],'damage':_0x3341bd['MotionDamage'],'evade':_0x3341bd[_0x29e81b(0x1a3)],'thrust':_0x3341bd['MotionThrust'],'swing':_0x3341bd[_0x29e81b(0x1d7)],'missile':_0x3341bd['MotionMissile'],'skill':_0x3341bd['MotionSkill'],'spell':_0x3341bd[_0x29e81b(0x1b9)],'item':_0x3341bd[_0x29e81b(0x1f4)],'escape':_0x3341bd[_0x29e81b(0x1a6)],'victory':_0x3341bd[_0x29e81b(0x2d2)],'dying':_0x3341bd[_0x29e81b(0x24d)],'abnormal':_0x3341bd[_0x29e81b(0x2dc)],'sleep':_0x3341bd[_0x29e81b(0x22e)],'dead':_0x3341bd['MotionDead']}};}),SceneManager[_0x318430(0x1bc)]=function(){const _0x32de67=_0x318430;return this[_0x32de67(0x2c1)]&&this[_0x32de67(0x2c1)][_0x32de67(0x2ae)]===Scene_Battle;},SceneManager[_0x318430(0x1b7)]=function(){const _0x39364c=_0x318430;return this['_scene']&&this[_0x39364c(0x2c1)][_0x39364c(0x2ae)]===Scene_Map;},Game_BattlerBase[_0x318430(0x225)][_0x318430(0x302)]=function(){const _0x628b90=_0x318430;if(!SceneManager[_0x628b90(0x1bc)]())return null;if(!SceneManager[_0x628b90(0x2c1)][_0x628b90(0x288)])return null;return SceneManager[_0x628b90(0x2c1)]['_spriteset'][_0x628b90(0x1ee)](this);},Game_BattlerBase['prototype']['initDragonbonesData']=function(){const _0x1f71d0=_0x318430,_0x2e1c3f=VisuMZ[_0x1f71d0(0x29a)][_0x1f71d0(0x234)][_0x1f71d0(0x1f0)];this[_0x1f71d0(0x23c)]={'battler':'','scaleX':_0x2e1c3f['ScaleX'],'scaleY':_0x2e1c3f[_0x1f71d0(0x2ed)],'width':_0x2e1c3f['Width'],'height':_0x2e1c3f[_0x1f71d0(0x273)],'offsetX':_0x2e1c3f[_0x1f71d0(0x2d3)],'offsetY':_0x2e1c3f[_0x1f71d0(0x233)],'timeScale':_0x2e1c3f['TimeScale'],'motion':{'walk':_0x2e1c3f['MotionWalk'],'wait':_0x2e1c3f[_0x1f71d0(0x266)],'chant':_0x2e1c3f[_0x1f71d0(0x24a)],'guard':_0x2e1c3f[_0x1f71d0(0x222)],'damage':_0x2e1c3f[_0x1f71d0(0x1f9)],'evade':_0x2e1c3f[_0x1f71d0(0x1a3)],'thrust':_0x2e1c3f['MotionThrust'],'swing':_0x2e1c3f[_0x1f71d0(0x1d7)],'missile':_0x2e1c3f[_0x1f71d0(0x249)],'skill':_0x2e1c3f[_0x1f71d0(0x1f5)],'spell':_0x2e1c3f[_0x1f71d0(0x1b9)],'item':_0x2e1c3f[_0x1f71d0(0x1f4)],'escape':_0x2e1c3f[_0x1f71d0(0x1a6)],'victory':_0x2e1c3f[_0x1f71d0(0x2d2)],'dying':_0x2e1c3f['MotionDying'],'abnormal':_0x2e1c3f['MotionAbnormal'],'sleep':_0x2e1c3f['MotionSleep'],'dead':_0x2e1c3f['MotionDead']}};if(_0x2e1c3f[_0x1f71d0(0x2c0)]&&this[_0x1f71d0(0x231)]())this['_dragonbonesBattlerData'][_0x1f71d0(0x210)]*=-0x1;if(_0x2e1c3f[_0x1f71d0(0x248)]&&this[_0x1f71d0(0x1ec)]())this['_dragonbonesBattlerData'][_0x1f71d0(0x210)]*=-0x1;},Game_BattlerBase[_0x318430(0x225)]['setupDragonbonesData']=function(){const _0x1554cf=_0x318430,_0x514c37=VisuMZ[_0x1554cf(0x29a)][_0x1554cf(0x234)][_0x1554cf(0x1f0)],_0x58b5f5=(this['isActor']()?this['actor']():this[_0x1554cf(0x29e)]())['note'],_0x1937df=this['dragonbonesData']();_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:BATTLER|SKIN|NAME):[ ]*(.*)>/i)&&(_0x1937df[_0x1554cf(0x302)]=String(RegExp['$1'])[_0x1554cf(0x2fc)]());_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER):[ ]*(.*)>/i)&&(_0x1937df['battler']=String(RegExp['$1'])[_0x1554cf(0x2fc)]());_0x58b5f5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ]SCALE:[ ](.*),[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x210)]=Number(RegExp['$1']),_0x1937df['scaleY']=Number(RegExp['$2']));_0x58b5f5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:SCALEX|SCALE X):[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x210)]=Number(RegExp['$1']));_0x58b5f5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ]SCALEY:[ ](.*)>/i)&&(_0x1937df['scaleY']=Number(RegExp['$1']));_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ]OFFSET:[ ](.*),[ ](.*)>/i)&&(_0x1937df['offsetX']=Number(RegExp['$1']),_0x1937df[_0x1554cf(0x2ce)]=Number(RegExp['$2']));_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:OFFSETX|OFFSET X):[ ](.*)>/i)&&(_0x1937df['offsetX']=Number(RegExp['$1']));_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:OFFSETY|OFFSET Y):[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x2ce)]=Number(RegExp['$1']));_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:TIMESCALE|TIME SCALE):[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x199)]=Number(RegExp['$1']));_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ]SIZE:[ ](.*),[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x218)]=Number(RegExp['$1']),_0x1937df[_0x1554cf(0x22a)]=Number(RegExp['$2']));_0x58b5f5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ]WIDTH:[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x218)]=Number(RegExp['$1']));_0x58b5f5['match'](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ]HEIGHT:[ ](.*)>/i)&&(_0x1937df[_0x1554cf(0x22a)]=Number(RegExp['$1']));const _0xc0d089=_0x58b5f5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:ANI|MOTION)[ ](.*):[ ](.*)>/gi);if(_0xc0d089)for(const _0x5a4bb5 of _0xc0d089){_0x5a4bb5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER)[ ](?:ANI|MOTION)[ ](.*):[ ](.*)>/i);const _0x32682a=String(RegExp['$1'])['toLowerCase']()[_0x1554cf(0x2fc)](),_0x48859d=String(RegExp['$2'])[_0x1554cf(0x2fc)]();_0x1937df[_0x1554cf(0x1c7)][_0x32682a]=_0x48859d;}if(_0x58b5f5[_0x1554cf(0x1a8)](/<(?:DB|DRAGONBONE|DRAGONBONES|DRAGONBONES BATTLER) (?:SETTINGS|SETTING)>\s*([\s\S]*)\s*<\/(?:DB|DRAGONBONE|DRAGONBONES BATTLER) (?:SETTINGS|SETTING)>/i)){const _0x5913f0=String(RegExp['$1']);_0x5913f0[_0x1554cf(0x1a8)](/(?:BATTLER|SKIN|NAME|FILENAME):[ ]*(.*)/i)&&(_0x1937df[_0x1554cf(0x302)]=String(RegExp['$1'])[_0x1554cf(0x2fc)]());_0x5913f0[_0x1554cf(0x1a8)](/SCALE:[ ](.*),[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x210)]=Number(RegExp['$1']),_0x1937df[_0x1554cf(0x1fd)]=Number(RegExp['$2']));_0x5913f0[_0x1554cf(0x1a8)](/(?:SCALEX|SCALE X):[ ](.*)/i)&&(_0x1937df['scaleX']=Number(RegExp['$1']));_0x5913f0[_0x1554cf(0x1a8)](/(?:SCALEY|SCALE Y):[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x1fd)]=Number(RegExp['$1']));_0x5913f0[_0x1554cf(0x1a8)](/OFFSET:[ ](.*),[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x264)]=Number(RegExp['$1']),_0x1937df[_0x1554cf(0x2ce)]=Number(RegExp['$2']));_0x5913f0['match'](/(?:OFFSETX|OFFSET X):[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x264)]=Number(RegExp['$1']));_0x5913f0['match'](/(?:OFFSETY|OFFSET Y):[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x2ce)]=Number(RegExp['$1']));_0x5913f0[_0x1554cf(0x1a8)](/(?:TIMESCALE|TIME SCALE):[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x199)]=Number(RegExp['$1']));_0x5913f0['match'](/SIZE:[ ](.*),[ ](.*)/i)&&(_0x1937df['width']=Number(RegExp['$1']),_0x1937df[_0x1554cf(0x22a)]=Number(RegExp['$2']));_0x5913f0[_0x1554cf(0x1a8)](/WIDTH:[ ](.*)/i)&&(_0x1937df['width']=Number(RegExp['$1']));_0x5913f0[_0x1554cf(0x1a8)](/HEIGHT:[ ](.*)/i)&&(_0x1937df[_0x1554cf(0x22a)]=Number(RegExp['$1']));const _0x4e2676=_0x5913f0[_0x1554cf(0x1a8)](/(?:ANI|MOTION)[ ](.*):[ ](.*)/gi);if(_0x4e2676)for(const _0x2564b0 of _0x4e2676){_0x2564b0[_0x1554cf(0x1a8)](/(?:ANI|MOTION)[ ](.*):[ ](.*)/i);const _0x48dd05=String(RegExp['$1'])[_0x1554cf(0x2cd)]()[_0x1554cf(0x2fc)](),_0x41c675=String(RegExp['$2'])[_0x1554cf(0x2fc)]();_0x1937df['motion'][_0x48dd05]=_0x41c675;}}if(_0x514c37[_0x1554cf(0x2c0)]&&this['isActor']())_0x1937df[_0x1554cf(0x210)]*=-0x1;if(_0x514c37[_0x1554cf(0x248)]&&this[_0x1554cf(0x1ec)]())_0x1937df[_0x1554cf(0x210)]*=-0x1;},Game_BattlerBase[_0x318430(0x225)]['dragonbonesData']=function(){const _0xf881d9=_0x318430;if(this[_0xf881d9(0x23c)]!==undefined)return this['_dragonbonesBattlerData'];return this['initDragonbonesData'](),this['setupDragonbonesData'](),this['_dragonbonesBattlerData'];},Game_BattlerBase['prototype'][_0x318430(0x232)]=function(){const _0x4765e7=_0x318430;return this[_0x4765e7(0x302)]()&&this[_0x4765e7(0x2f7)]()[_0x4765e7(0x302)]!=='';},VisuMZ['DragonbonesUnion'][_0x318430(0x1d4)]=Game_Battler[_0x318430(0x225)][_0x318430(0x1ea)],Game_Battler['prototype'][_0x318430(0x1ea)]=function(_0x1c8e19){const _0x4d5d43=_0x318430;VisuMZ[_0x4d5d43(0x29a)]['Game_Battler_requestMotion']['call'](this,_0x1c8e19),this[_0x4d5d43(0x232)]()&&this['battler']()[_0x4d5d43(0x2b8)](_0x1c8e19);},VisuMZ[_0x318430(0x29a)][_0x318430(0x239)]=Game_Battler[_0x318430(0x225)]['requestMotionRefresh'],Game_Battler[_0x318430(0x225)]['requestMotionRefresh']=function(){const _0xf4f240=_0x318430;VisuMZ[_0xf4f240(0x29a)]['Game_Battler_requestMotionRefresh']['call'](this),this[_0xf4f240(0x232)]()&&this[_0xf4f240(0x302)]()[_0xf4f240(0x2d6)]();},Game_Battler[_0x318430(0x225)]['requestDragonbonesAnimation']=function(_0x47eb50){const _0x81e910=_0x318430;this[_0x81e910(0x232)]()&&this['battler']()['playDragonbonesAnimation'](_0x47eb50);},Game_Battler[_0x318430(0x225)][_0x318430(0x21c)]=function(){const _0x3365bf=_0x318430;if(!this[_0x3365bf(0x232)]())return;this[_0x3365bf(0x1ea)]('damage');},Game_Battler[_0x318430(0x225)][_0x318430(0x207)]=function(){const _0x59d32a=_0x318430;if(!this['hasDragonbonesBattler']())return;this[_0x59d32a(0x1ea)](_0x59d32a(0x28d));},VisuMZ[_0x318430(0x29a)][_0x318430(0x20e)]=Game_Actor[_0x318430(0x225)][_0x318430(0x1e9)],Game_Actor[_0x318430(0x225)][_0x318430(0x1e9)]=function(_0x3b849a){const _0x1dd6f0=_0x318430;VisuMZ[_0x1dd6f0(0x29a)][_0x1dd6f0(0x20e)][_0x1dd6f0(0x27b)](this,_0x3b849a),this[_0x1dd6f0(0x1ba)](),this['setupDragonbonesData']();},VisuMZ[_0x318430(0x29a)][_0x318430(0x24f)]=Game_Actor[_0x318430(0x225)]['performAction'],Game_Actor[_0x318430(0x225)][_0x318430(0x2be)]=function(_0x583f29){const _0x1bdded=_0x318430;this['requestDragonbonesAnimation'](_0x1bdded(0x1ae)),VisuMZ[_0x1bdded(0x29a)][_0x1bdded(0x24f)][_0x1bdded(0x27b)](this,_0x583f29);},VisuMZ[_0x318430(0x29a)]['Game_Actor_performAttack']=Game_Actor['prototype'][_0x318430(0x2fd)],Game_Actor['prototype']['performAttack']=function(){const _0x119d0c=_0x318430;this[_0x119d0c(0x2b9)]('attack'),VisuMZ[_0x119d0c(0x29a)][_0x119d0c(0x20b)][_0x119d0c(0x27b)](this);},VisuMZ[_0x318430(0x29a)][_0x318430(0x2da)]=Game_Actor[_0x318430(0x225)]['performDamage'],Game_Actor[_0x318430(0x225)]['performDamage']=function(){const _0x4cfe4a=_0x318430;VisuMZ[_0x4cfe4a(0x29a)][_0x4cfe4a(0x2da)][_0x4cfe4a(0x27b)](this),this[_0x4cfe4a(0x21c)]();},VisuMZ[_0x318430(0x29a)]['Game_Actor_performCollapse']=Game_Actor[_0x318430(0x225)][_0x318430(0x29c)],Game_Actor[_0x318430(0x225)][_0x318430(0x29c)]=function(){const _0x4c237b=_0x318430;VisuMZ[_0x4c237b(0x29a)][_0x4c237b(0x281)][_0x4c237b(0x27b)](this),this[_0x4c237b(0x207)]();},VisuMZ[_0x318430(0x29a)][_0x318430(0x285)]=Game_Enemy['prototype'][_0x318430(0x1e9)],Game_Enemy[_0x318430(0x225)][_0x318430(0x1e9)]=function(_0xb45e40,_0x58afd7,_0x536950){const _0x204137=_0x318430;VisuMZ[_0x204137(0x29a)]['Game_Enemy_setup'][_0x204137(0x27b)](this,_0xb45e40,_0x58afd7,_0x536950),this[_0x204137(0x1ba)](),this[_0x204137(0x22d)]();},VisuMZ[_0x318430(0x29a)][_0x318430(0x1b1)]=Game_Enemy[_0x318430(0x225)]['transform'],Game_Enemy[_0x318430(0x225)][_0x318430(0x279)]=function(_0xf92459){const _0x105e1c=_0x318430,_0x4b201e=this[_0x105e1c(0x237)];VisuMZ[_0x105e1c(0x29a)][_0x105e1c(0x1b1)][_0x105e1c(0x27b)](this,_0xf92459),this[_0x105e1c(0x237)]!==_0x4b201e&&(this[_0x105e1c(0x1ba)](),this[_0x105e1c(0x22d)]());},VisuMZ[_0x318430(0x29a)]['Game_Enemy_performAction']=Game_Enemy[_0x318430(0x225)]['performAction'],Game_Enemy[_0x318430(0x225)][_0x318430(0x2be)]=function(_0x558267){const _0x5cf008=_0x318430;VisuMZ['DragonbonesUnion'][_0x5cf008(0x2ff)][_0x5cf008(0x27b)](this,_0x558267),this[_0x5cf008(0x22f)](_0x558267);},Game_Enemy[_0x318430(0x225)][_0x318430(0x22f)]=function(_0x5c976a){const _0x437763=_0x318430;if(!this[_0x437763(0x232)]())return;this[_0x437763(0x2b9)](_0x437763(0x1ae));if(Imported[_0x437763(0x1d5)])return this[_0x437763(0x2fe)](_0x5c976a);if(_0x5c976a[_0x437763(0x2c4)]())this[_0x437763(0x2b9)](_0x437763(0x1ae));else{if(_0x5c976a['isGuard']())this[_0x437763(0x1ea)](_0x437763(0x1bd));else{if(_0x5c976a['isMagicSkill']())this[_0x437763(0x1ea)](_0x437763(0x22c));else{if(_0x5c976a[_0x437763(0x2b7)]())_0x5c976a[_0x437763(0x1a7)]()['damage'][_0x437763(0x2ab)]>0x0?this[_0x437763(0x2b9)](_0x437763(0x1ae)):this['requestMotion'](_0x437763(0x238));else _0x5c976a[_0x437763(0x2ef)]()&&this['requestMotion'](_0x437763(0x1a7));}}}},VisuMZ[_0x318430(0x29a)]['Game_Enemy_performDamage']=Game_Enemy[_0x318430(0x225)][_0x318430(0x2a0)],Game_Enemy[_0x318430(0x225)][_0x318430(0x2a0)]=function(){const _0xbcf16b=_0x318430;VisuMZ[_0xbcf16b(0x29a)][_0xbcf16b(0x1d6)][_0xbcf16b(0x27b)](this),this[_0xbcf16b(0x21c)]();},VisuMZ[_0x318430(0x29a)][_0x318430(0x1e3)]=Game_Enemy['prototype'][_0x318430(0x29c)],Game_Enemy['prototype'][_0x318430(0x29c)]=function(){const _0x484e74=_0x318430;VisuMZ[_0x484e74(0x29a)][_0x484e74(0x1e3)][_0x484e74(0x27b)](this),this[_0x484e74(0x207)]();},VisuMZ[_0x318430(0x29a)]['Scene_Battle_terminate']=Scene_Battle[_0x318430(0x225)][_0x318430(0x276)],Scene_Battle[_0x318430(0x225)]['terminate']=function(){const _0x440139=_0x318430;this[_0x440139(0x288)][_0x440139(0x2a2)](),VisuMZ[_0x440139(0x29a)][_0x440139(0x1df)][_0x440139(0x27b)](this);},Sprite_Battler['prototype']['initMembersDragonbonesUnion']=function(){const _0x56c3e4=_0x318430;this['_dragonbones']=null,this[_0x56c3e4(0x204)]='';},Sprite_Battler[_0x318430(0x225)][_0x318430(0x25a)]=function(){const _0x4834d5=_0x318430;this[_0x4834d5(0x2a2)]();const _0x31a7d0=this['_battler'][_0x4834d5(0x2f7)]();this[_0x4834d5(0x204)]=_0x31a7d0[_0x4834d5(0x302)],armatureName=_0x31a7d0[_0x4834d5(0x302)],DragonbonesManager[_0x4834d5(0x26b)](armatureName,this[_0x4834d5(0x2fb)][_0x4834d5(0x1a1)](this)),this[_0x4834d5(0x1e8)]=new Bitmap(_0x31a7d0[_0x4834d5(0x218)],_0x31a7d0[_0x4834d5(0x22a)]),this[_0x4834d5(0x28b)]&&(this[_0x4834d5(0x28b)][_0x4834d5(0x1e8)]=new Bitmap(_0x31a7d0[_0x4834d5(0x218)],_0x31a7d0[_0x4834d5(0x22a)]));},Sprite_Battler[_0x318430(0x225)][_0x318430(0x2a2)]=function(){const _0x12a5ad=_0x318430;this[_0x12a5ad(0x2b3)]&&(this[_0x12a5ad(0x256)]&&this['_dragonbonesSpriteContainer']['removeChild'](this['_dragonbones']),this[_0x12a5ad(0x26d)](this[_0x12a5ad(0x2b3)]),this['_dragonbones']['dispose'](),delete this['_dragonbones'],delete this[_0x12a5ad(0x204)]);},Sprite_Battler[_0x318430(0x225)][_0x318430(0x2fb)]=function(){const _0x4db5cd=_0x318430,_0x145a29=this[_0x4db5cd(0x1fc)]['dragonbonesData']();this[_0x4db5cd(0x2b3)]=DragonbonesManager['createArmature'](_0x145a29[_0x4db5cd(0x302)]),!this['_dragonbonesSpriteContainer']&&(this[_0x4db5cd(0x256)]=new Sprite(),this[_0x4db5cd(0x256)][_0x4db5cd(0x1bb)](this[_0x4db5cd(0x2b3)])),this[_0x4db5cd(0x29d)](this['_dragonbonesSpriteContainer'],0x0),this['attachSpritesToDistortionSprite']&&(this[_0x4db5cd(0x2a7)](),this[_0x4db5cd(0x256)][_0x4db5cd(0x1bb)](this[_0x4db5cd(0x2b3)])),this[_0x4db5cd(0x2d6)](),this[_0x4db5cd(0x2b3)]['x']=_0x145a29[_0x4db5cd(0x264)],this[_0x4db5cd(0x2b3)]['y']=_0x145a29['offsetY'],this['_dragonbones'][_0x4db5cd(0x2f8)]['x']=_0x145a29[_0x4db5cd(0x210)],this['_dragonbones'][_0x4db5cd(0x2f8)]['y']=_0x145a29[_0x4db5cd(0x1fd)],this[_0x4db5cd(0x1fc)]&&this[_0x4db5cd(0x1fc)][_0x4db5cd(0x1c0)]()&&(this[_0x4db5cd(0x2f6)]=0x0);},Sprite_Battler[_0x318430(0x225)][_0x318430(0x2b8)]=function(_0x3f7170){const _0x211baa=_0x318430;if(!this['_dragonbones'])return;const _0x23f761=this['_battler'][_0x211baa(0x2f7)]();if(_0x23f761[_0x211baa(0x1c7)][_0x3f7170]){const _0x38c4a7=_0x23f761[_0x211baa(0x1c7)][_0x3f7170];this['playDragonbonesAnimation'](_0x38c4a7);}},Sprite_Battler[_0x318430(0x225)][_0x318430(0x2d4)]=function(_0x3800f2){const _0x2e3869=_0x318430;_0x3800f2=_0x3800f2[_0x2e3869(0x2cd)]();if(!this[_0x2e3869(0x2b3)])return;const _0x1b65a1=this['_dragonbones']['animation'];if(_0x1b65a1['animations'][_0x3800f2]){const _0x341f61=_0x1b65a1[_0x2e3869(0x2ba)],_0x5ac9dd=[_0x2e3869(0x1c2),_0x2e3869(0x2dd),_0x2e3869(0x213),_0x2e3869(0x1c9),_0x2e3869(0x1bd),_0x2e3869(0x2bd),_0x2e3869(0x29b),_0x2e3869(0x1ce),'dead'];if(_0x341f61===_0x3800f2&&_0x5ac9dd[_0x2e3869(0x200)](_0x3800f2))return;_0x1b65a1['play'](_0x3800f2);}},Sprite_Battler[_0x318430(0x225)][_0x318430(0x1cf)]=function(){const _0x2a799f=_0x318430;this[_0x2a799f(0x202)](),this[_0x2a799f(0x21b)](),this[_0x2a799f(0x19a)]();},Sprite_Battler[_0x318430(0x225)][_0x318430(0x202)]=function(){const _0x39a22a=_0x318430;if(!this[_0x39a22a(0x2b3)])return;let _0x1f771f=this['_battler'][_0x39a22a(0x2f7)]()[_0x39a22a(0x199)];const _0x114af8=SceneManager[_0x39a22a(0x2c1)];Imported[_0x39a22a(0x292)]&&_0x114af8[_0x39a22a(0x2e0)]&&$gameTemp[_0x39a22a(0x1a2)]&&(_0x1f771f*=0x2),Imported[_0x39a22a(0x229)]&&_0x114af8[_0x39a22a(0x25c)]&&(_0x1f771f*=(ConfigManager[_0x39a22a(0x303)]||0x0)+0x1),this[_0x39a22a(0x2b3)][_0x39a22a(0x246)]['timeScale']=_0x1f771f;},Sprite_Battler[_0x318430(0x225)][_0x318430(0x21b)]=function(){const _0x3f01a4=_0x318430;if(!this['_dragonbones'])return;const _0x3e997d=this[_0x3f01a4(0x2b3)][_0x3f01a4(0x246)];if(_0x3e997d['isCompleted']){const _0x575297=_0x3e997d[_0x3f01a4(0x2ba)];let _0x1c5f9a=VisuMZ[_0x3f01a4(0x29a)]['Settings'][_0x3f01a4(0x1f0)][_0x3f01a4(0x1eb)];_0x1c5f9a===undefined&&(_0x1c5f9a=[_0x3f01a4(0x28d),_0x3f01a4(0x2a9),'victory']),!_0x1c5f9a[_0x3f01a4(0x200)](_0x575297)&&this[_0x3f01a4(0x2d6)]();}},Sprite_Battler[_0x318430(0x225)][_0x318430(0x19a)]=function(){return;},Sprite_Battler[_0x318430(0x225)][_0x318430(0x2d6)]=function(){const _0x573299=_0x318430;if(!this[_0x573299(0x2b3)])return;const _0x15182b=this[_0x573299(0x1fc)];if(!_0x15182b)return;const _0x2939ef=this[_0x573299(0x2b3)][_0x573299(0x246)];if(_0x2939ef&&!_0x2939ef[_0x573299(0x1cb)])return;this[_0x573299(0x1fc)][_0x573299(0x223)]()&&this[_0x573299(0x2d4)]('idle');const _0x3e572e=_0x15182b[_0x573299(0x1d8)]();if(_0x15182b[_0x573299(0x1fb)]()||_0x15182b['isActing']())this[_0x573299(0x2b8)](_0x573299(0x2dd));else{if(_0x3e572e===0x3)this[_0x573299(0x2b8)](_0x573299(0x28d));else{if(_0x3e572e===0x2)this[_0x573299(0x2b8)](_0x573299(0x1ce));else{if(_0x15182b[_0x573299(0x286)]())this[_0x573299(0x2b8)](_0x573299(0x1c9));else{if(_0x15182b[_0x573299(0x2a6)]()||_0x15182b[_0x573299(0x1c8)]())this['playDragonbonesMotion'](_0x573299(0x1bd));else{if(_0x3e572e===0x1)this['playDragonbonesMotion'](_0x573299(0x29b));else{if(_0x15182b[_0x573299(0x1f2)]())this[_0x573299(0x2b8)](_0x573299(0x2bd));else _0x15182b['isUndecided']()?this[_0x573299(0x2b8)](_0x573299(0x2dd)):this[_0x573299(0x2b8)](_0x573299(0x213));}}}}}}},VisuMZ[_0x318430(0x29a)][_0x318430(0x26f)]=Sprite_Actor['prototype'][_0x318430(0x244)],Sprite_Actor[_0x318430(0x225)][_0x318430(0x244)]=function(){const _0x591c67=_0x318430;VisuMZ[_0x591c67(0x29a)][_0x591c67(0x26f)]['call'](this),this['initMembersDragonbonesUnion']();},VisuMZ[_0x318430(0x29a)][_0x318430(0x2e7)]=Sprite_Actor[_0x318430(0x225)][_0x318430(0x21f)],Sprite_Actor[_0x318430(0x225)]['updateBitmap']=function(){const _0x1947de=_0x318430,_0x3cbd94=this[_0x1947de(0x1fc)];_0x3cbd94[_0x1947de(0x232)]()?(Sprite_Battler['prototype'][_0x1947de(0x21f)][_0x1947de(0x27b)](this),this[_0x1947de(0x204)]!==_0x3cbd94['dragonbonesData']()['battler']&&this[_0x1947de(0x25a)](),this['updateDragonbones']()):(VisuMZ[_0x1947de(0x29a)][_0x1947de(0x2e7)][_0x1947de(0x27b)](this),this[_0x1947de(0x26d)](this[_0x1947de(0x2b3)]));},VisuMZ[_0x318430(0x29a)][_0x318430(0x257)]=Sprite_Actor[_0x318430(0x225)][_0x318430(0x22b)],Sprite_Actor[_0x318430(0x225)][_0x318430(0x22b)]=function(_0x22b8f0){const _0xf8d60b=_0x318430;VisuMZ[_0xf8d60b(0x29a)][_0xf8d60b(0x257)][_0xf8d60b(0x27b)](this,_0x22b8f0),this[_0xf8d60b(0x2ae)][_0xf8d60b(0x216)]==='Sprite_Actor'&&this['playDragonbonesMotion'](_0x22b8f0);},VisuMZ[_0x318430(0x29a)]['Sprite_Actor_updateShadow']=Sprite_Actor['prototype'][_0x318430(0x2cc)],Sprite_Actor[_0x318430(0x225)]['updateShadow']=function(){const _0xd5d041=_0x318430;this[_0xd5d041(0x27e)](),VisuMZ[_0xd5d041(0x29a)]['Sprite_Actor_updateShadow'][_0xd5d041(0x27b)](this),this[_0xd5d041(0x1fc)]&&this[_0xd5d041(0x1fc)]['hasDragonbonesBattler']()&&(this[_0xd5d041(0x259)][_0xd5d041(0x203)]=![]);},Sprite_Actor[_0x318430(0x225)][_0x318430(0x27e)]=function(){const _0x1041bf=_0x318430;if(this[_0x1041bf(0x2ae)]!==Sprite_Actor)return;let _0x320fa1=!![];if(this[_0x1041bf(0x1fc)]&&this[_0x1041bf(0x1fc)]['hasDragonbonesBattler']())_0x320fa1=![];this[_0x1041bf(0x28b)][_0x1041bf(0x203)]=_0x320fa1,this[_0x1041bf(0x2bb)][_0x1041bf(0x203)]=_0x320fa1,this[_0x1041bf(0x2f0)][_0x1041bf(0x203)]=_0x320fa1;},VisuMZ['DragonbonesUnion']['Sprite_Actor_updateFrame']=Sprite_Actor[_0x318430(0x225)][_0x318430(0x2a1)],Sprite_Actor['prototype']['updateFrame']=function(){const _0x5b8af9=_0x318430;this[_0x5b8af9(0x1fc)]&&this[_0x5b8af9(0x1fc)]['hasDragonbonesBattler']()?this[_0x5b8af9(0x263)]():VisuMZ[_0x5b8af9(0x29a)][_0x5b8af9(0x1ac)]['call'](this);},Sprite_Actor['prototype']['updateFrameDragonbonesUnion']=function(){const _0x3edf43=_0x318430,_0x587cba=this[_0x3edf43(0x28b)][_0x3edf43(0x1e8)];if(_0x587cba){const _0x5ecc0d=_0x587cba['width'],_0x1e5e0f=_0x587cba[_0x3edf43(0x22a)];this['_mainSprite'][_0x3edf43(0x1c5)](0x0,0x0,_0x5ecc0d,_0x1e5e0f),this[_0x3edf43(0x1c5)](0x0,0x0,_0x5ecc0d,_0x1e5e0f);}},VisuMZ[_0x318430(0x29a)]['Sprite_Enemy_initMembers']=Sprite_Enemy[_0x318430(0x225)][_0x318430(0x244)],Sprite_Enemy['prototype']['initMembers']=function(){const _0x16dec4=_0x318430;VisuMZ[_0x16dec4(0x29a)][_0x16dec4(0x19b)][_0x16dec4(0x27b)](this),this[_0x16dec4(0x206)]();},VisuMZ[_0x318430(0x29a)][_0x318430(0x26c)]=Sprite_Enemy[_0x318430(0x225)][_0x318430(0x2ad)],Sprite_Enemy[_0x318430(0x225)]['setBattler']=function(_0xb7cfbe){const _0x6c971d=_0x318430;this[_0x6c971d(0x2a2)](),VisuMZ['DragonbonesUnion'][_0x6c971d(0x26c)][_0x6c971d(0x27b)](this,_0xb7cfbe);if(_0xb7cfbe['isHidden']())this[_0x6c971d(0x2f6)]=0x0;},VisuMZ[_0x318430(0x29a)][_0x318430(0x2a4)]=Sprite_Enemy[_0x318430(0x225)][_0x318430(0x21f)],Sprite_Enemy[_0x318430(0x225)][_0x318430(0x21f)]=function(){const _0x5db7d4=_0x318430,_0x51beb1=this[_0x5db7d4(0x1fc)];_0x51beb1[_0x5db7d4(0x232)]()?(Sprite_Battler[_0x5db7d4(0x225)]['updateBitmap'][_0x5db7d4(0x27b)](this),this[_0x5db7d4(0x204)]!==_0x51beb1[_0x5db7d4(0x2f7)]()['battler']&&this[_0x5db7d4(0x25a)](),this['updateDragonbones']()):(VisuMZ[_0x5db7d4(0x29a)]['Sprite_Enemy_updateBitmap'][_0x5db7d4(0x27b)](this),this[_0x5db7d4(0x26d)](this[_0x5db7d4(0x2b3)]));},VisuMZ[_0x318430(0x29a)][_0x318430(0x1db)]=Sprite_Enemy[_0x318430(0x225)][_0x318430(0x272)],Sprite_Enemy[_0x318430(0x225)][_0x318430(0x272)]=function(){const _0x3d388d=_0x318430;VisuMZ[_0x3d388d(0x29a)][_0x3d388d(0x1db)][_0x3d388d(0x27b)](this);if(!VisuMZ[_0x3d388d(0x29a)][_0x3d388d(0x234)][_0x3d388d(0x2ac)])return;const _0x41a3b8=this[_0x3d388d(0x1fc)];_0x41a3b8&&_0x41a3b8[_0x3d388d(0x232)]()&&this['refreshMotionDragonbones']();},Sprite_Enemy[_0x318430(0x225)]['refreshMotionDragonbones']=function(){const _0x4f868e=_0x318430,_0x42ea3f=this[_0x4f868e(0x1fc)];if(_0x42ea3f){const _0x41e48d=_0x42ea3f[_0x4f868e(0x1d8)]();if(_0x42ea3f[_0x4f868e(0x1fb)]()||_0x42ea3f[_0x4f868e(0x282)]())this['playDragonbonesMotion'](_0x4f868e(0x2dd));else{if(_0x41e48d===0x3)this[_0x4f868e(0x2b8)](_0x4f868e(0x28d));else{if(_0x41e48d===0x2)this[_0x4f868e(0x2b8)](_0x4f868e(0x1ce));else{if(_0x42ea3f['isChanting']())this['playDragonbonesMotion']('chant');else{if(_0x42ea3f['isGuard']()||_0x42ea3f['isGuardWaiting']())this[_0x4f868e(0x2b8)](_0x4f868e(0x1bd));else{if(_0x41e48d===0x1)this['playDragonbonesMotion'](_0x4f868e(0x29b));else{if(_0x42ea3f[_0x4f868e(0x1f2)]())this['playDragonbonesMotion'](_0x4f868e(0x2bd));else _0x42ea3f[_0x4f868e(0x2e5)]()?this[_0x4f868e(0x2b8)]('walk'):this['playDragonbonesMotion']('walk');}}}}}}}},Spriteset_Battle[_0x318430(0x225)][_0x318430(0x2a2)]=function(){const _0x1d004e=_0x318430;for(const _0x422846 of this[_0x1d004e(0x2bc)]()){if(!_0x422846)continue;_0x422846[_0x1d004e(0x2a2)]();}},PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],_0x318430(0x2f3),_0xea5e31=>{const _0x304e0e=_0x318430;if(!$gameScreen)return;VisuMZ['ConvertParams'](_0xea5e31,_0xea5e31),$gameScreen[_0x304e0e(0x2e4)](_0xea5e31[_0x304e0e(0x1de)]);const _0x2be612=$gameScreen['picture'](_0xea5e31['PictureID']),_0x3d4609=_0x2be612['dragonbonesData']();_0x3d4609[_0x304e0e(0x1a4)]=_0xea5e31[_0x304e0e(0x1c3)],_0x3d4609[_0x304e0e(0x246)]=_0xea5e31[_0x304e0e(0x242)],_0x3d4609[_0x304e0e(0x264)]=_0xea5e31[_0x304e0e(0x2d3)],_0x3d4609[_0x304e0e(0x2ce)]=_0xea5e31[_0x304e0e(0x233)],_0x3d4609['scaleX']=_0xea5e31[_0x304e0e(0x254)],_0x3d4609[_0x304e0e(0x1fd)]=_0xea5e31['ScaleY'],_0x3d4609[_0x304e0e(0x199)]=_0xea5e31[_0x304e0e(0x2b2)];}),PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],_0x318430(0x274),_0x18dc89=>{const _0xeaa1bb=_0x318430;if(!$gameScreen)return;VisuMZ['ConvertParams'](_0x18dc89,_0x18dc89),$gameScreen['createDefaultPicture'](_0x18dc89[_0xeaa1bb(0x1de)]);const _0x5f1d8e=$gameScreen[_0xeaa1bb(0x1b6)](_0x18dc89[_0xeaa1bb(0x1de)]),_0x52cb38=_0x5f1d8e['dragonbonesData']();_0x52cb38['animation']=_0x18dc89['Animation'];}),PluginManager['registerCommand'](pluginData[_0x318430(0x216)],_0x318430(0x278),_0x2fcb9e=>{const _0x4b710e=_0x318430;if(!$gameScreen)return;VisuMZ[_0x4b710e(0x235)](_0x2fcb9e,_0x2fcb9e),$gameScreen[_0x4b710e(0x2e4)](_0x2fcb9e['PictureID']);const _0x3e258a=$gameScreen[_0x4b710e(0x1b6)](_0x2fcb9e['PictureID']),_0x4067a9=_0x3e258a[_0x4b710e(0x2f7)]();_0x4067a9[_0x4b710e(0x264)]=_0x2fcb9e[_0x4b710e(0x2d3)],_0x4067a9[_0x4b710e(0x2ce)]=_0x2fcb9e[_0x4b710e(0x233)];}),PluginManager['registerCommand'](pluginData[_0x318430(0x216)],_0x318430(0x1ab),_0x34415f=>{const _0x2feac4=_0x318430;if(!$gameScreen)return;VisuMZ[_0x2feac4(0x235)](_0x34415f,_0x34415f),$gameScreen[_0x2feac4(0x2e4)](_0x34415f['PictureID']);const _0x156736=$gameScreen[_0x2feac4(0x1b6)](_0x34415f['PictureID']),_0x1c1f44=_0x156736[_0x2feac4(0x2f7)]();_0x1c1f44[_0x2feac4(0x210)]=_0x34415f['ScaleX'],_0x1c1f44[_0x2feac4(0x1fd)]=_0x34415f[_0x2feac4(0x2ed)];}),PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],_0x318430(0x290),_0x5ba8f6=>{const _0x2a70bf=_0x318430;if(!$gameScreen)return;VisuMZ['ConvertParams'](_0x5ba8f6,_0x5ba8f6),$gameScreen[_0x2a70bf(0x2e4)](_0x5ba8f6[_0x2a70bf(0x1de)]);const _0x1c1ef9=$gameScreen[_0x2a70bf(0x1b6)](_0x5ba8f6['PictureID']),_0x5b112a=_0x1c1ef9[_0x2a70bf(0x2f7)]();_0x5b112a['timeScale']=_0x5ba8f6[_0x2a70bf(0x2b2)];}),Game_Screen[_0x318430(0x225)]['createDefaultPicture']=function(_0x152ccf){const _0x207c12=_0x318430;if(this[_0x207c12(0x1b6)](_0x152ccf))return;this[_0x207c12(0x262)](_0x152ccf,'',0x0,Math['round'](Graphics[_0x207c12(0x218)]/0x2),Math[_0x207c12(0x221)](Graphics[_0x207c12(0x22a)]/0x2),0x64,0x64,0xff,0x0);},VisuMZ['DragonbonesUnion'][_0x318430(0x23b)]=Game_Screen[_0x318430(0x225)]['erasePicture'],Game_Screen['prototype'][_0x318430(0x2c5)]=function(_0x367816){const _0x332e4f=_0x318430;this[_0x332e4f(0x21a)](_0x367816),VisuMZ[_0x332e4f(0x29a)][_0x332e4f(0x23b)][_0x332e4f(0x27b)](this,_0x367816);},Game_Screen[_0x318430(0x225)]['erasePictureDragonbonesUnion']=function(_0x4a4879){const _0x629c4=_0x318430,_0x5a531a=this['realPictureId'](_0x4a4879),_0x4bac37=this['_pictures'][_0x5a531a];if(!_0x4bac37)return;_0x4bac37[_0x629c4(0x1ba)](),_0x4bac37[_0x629c4(0x2a2)]();},VisuMZ[_0x318430(0x29a)][_0x318430(0x1be)]=Game_Picture[_0x318430(0x225)][_0x318430(0x2f9)],Game_Picture['prototype']['initialize']=function(){const _0x44a951=_0x318430;VisuMZ[_0x44a951(0x29a)]['Game_Picture_initialize'][_0x44a951(0x27b)](this),this[_0x44a951(0x1ba)]();},Game_Picture[_0x318430(0x225)][_0x318430(0x1ba)]=function(){const _0x4cf718=_0x318430;this[_0x4cf718(0x2e2)]={'filename':'','animation':DragonbonesManager['DefaultAnimation'],'scaleX':0x1,'scaleY':0x1,'offsetX':0x0,'offsetY':0x0,'timeScale':0x1};},Game_Picture[_0x318430(0x225)]['dragonbonesData']=function(){const _0x490869=_0x318430;if(this[_0x490869(0x2e2)]!==undefined)return this['_dragonbonesData'];return this['initDragonbonesData'](),this[_0x490869(0x2e2)];},Game_Picture[_0x318430(0x225)][_0x318430(0x245)]=function(){return this['dragonbonesData']()['filename']!=='';},Game_Picture[_0x318430(0x225)]['disposeDragonbones']=function(){const _0xfebd5c=_0x318430;if(!SceneManager[_0xfebd5c(0x2c1)])return;if(!SceneManager['_scene']['_spriteset'])return;const _0x14328d=SceneManager[_0xfebd5c(0x2c1)][_0xfebd5c(0x288)][_0xfebd5c(0x26e)](this);if(_0x14328d)_0x14328d[_0xfebd5c(0x2a2)]();},Spriteset_Base[_0x318430(0x225)][_0x318430(0x26e)]=function(_0x55c301){const _0xaf9ca7=_0x318430;return this[_0xaf9ca7(0x250)][_0xaf9ca7(0x25e)][_0xaf9ca7(0x271)](_0x197c83=>_0x197c83&&_0x197c83['picture']()===_0x55c301);},VisuMZ[_0x318430(0x29a)][_0x318430(0x23a)]=Sprite_Picture[_0x318430(0x225)][_0x318430(0x2f9)],Sprite_Picture[_0x318430(0x225)]['initialize']=function(_0x3897d3){const _0x2f0a1d=_0x318430;this[_0x2f0a1d(0x1ba)](),VisuMZ[_0x2f0a1d(0x29a)][_0x2f0a1d(0x23a)][_0x2f0a1d(0x27b)](this,_0x3897d3);},Sprite_Picture[_0x318430(0x225)]['initDragonbonesData']=function(_0x684ea4){const _0x3f0cf0=_0x318430;this[_0x3f0cf0(0x2b3)]=null,this[_0x3f0cf0(0x1dc)]='',this[_0x3f0cf0(0x304)]='';},VisuMZ['DragonbonesUnion'][_0x318430(0x2d8)]=Sprite_Picture[_0x318430(0x225)][_0x318430(0x1cc)],Sprite_Picture['prototype'][_0x318430(0x1cc)]=function(){const _0x42f870=_0x318430;VisuMZ[_0x42f870(0x29a)][_0x42f870(0x2d8)][_0x42f870(0x27b)](this),this['updateDragonbones']();},Sprite_Picture[_0x318430(0x225)][_0x318430(0x2a2)]=function(){const _0x28a319=_0x318430;this[_0x28a319(0x2b3)]&&(this['removeChild'](this[_0x28a319(0x2b3)]),this[_0x28a319(0x2b3)][_0x28a319(0x301)](),this[_0x28a319(0x2b3)]=null,this[_0x28a319(0x1dc)]='',this['_dragonbonesAnimation']='');},Sprite_Picture[_0x318430(0x225)][_0x318430(0x1cf)]=function(){const _0x4d5115=_0x318430,_0x4c95dc=this[_0x4d5115(0x1b6)]();if(!_0x4c95dc)return this[_0x4d5115(0x2a2)]();if(!_0x4c95dc[_0x4d5115(0x245)]())return this[_0x4d5115(0x2a2)]();this[_0x4d5115(0x226)]();if(!this[_0x4d5115(0x2b3)])return;this[_0x4d5115(0x21b)](),this['updateDragonbonesProperties'](),this['updateDragonbonesTimeScale']();},Sprite_Picture[_0x318430(0x225)]['updateDragonbonesArmature']=function(){const _0x2b956e=_0x318430,_0x567065=this['picture']()[_0x2b956e(0x2f7)]();if(this[_0x2b956e(0x1dc)]===_0x567065[_0x2b956e(0x1a4)])return;this['disposeDragonbones'](),this[_0x2b956e(0x1dc)]=_0x567065[_0x2b956e(0x1a4)],DragonbonesManager['loadArmature'](_0x567065['filename'],this[_0x2b956e(0x2fb)]['bind'](this));},Sprite_Picture['prototype'][_0x318430(0x2fb)]=function(){const _0xdb26d2=_0x318430,_0x38cf77=this['picture']()[_0xdb26d2(0x2f7)]();this[_0xdb26d2(0x2b3)]=DragonbonesManager[_0xdb26d2(0x2b5)](_0x38cf77[_0xdb26d2(0x1a4)]),this[_0xdb26d2(0x29d)](this[_0xdb26d2(0x2b3)],0x0),this[_0xdb26d2(0x21b)]();},Sprite_Picture[_0x318430(0x225)][_0x318430(0x21b)]=function(){const _0x2e72e0=_0x318430;if(!this['_dragonbones'])return;const _0x42141f=this[_0x2e72e0(0x1b6)]()[_0x2e72e0(0x2f7)]();this[_0x2e72e0(0x304)]!==_0x42141f[_0x2e72e0(0x246)]&&(this[_0x2e72e0(0x304)]=_0x42141f['animation'],this[_0x2e72e0(0x2d4)]());},Sprite_Picture[_0x318430(0x225)][_0x318430(0x2d4)]=function(){const _0x4a1afe=_0x318430;if(!this[_0x4a1afe(0x2b3)])return;const _0xe802bb=this[_0x4a1afe(0x2b3)][_0x4a1afe(0x246)],_0x37aa91=this[_0x4a1afe(0x304)]['toLowerCase']()['trim']();_0xe802bb[_0x4a1afe(0x2bf)][_0x37aa91]&&_0xe802bb[_0x4a1afe(0x2b4)](_0x37aa91);},Sprite_Picture[_0x318430(0x225)][_0x318430(0x212)]=function(){const _0x217607=_0x318430;if(!this['_dragonbones'])return;const _0xdcbd8=this[_0x217607(0x1b6)]()[_0x217607(0x2f7)]();this[_0x217607(0x2b3)]['x']=_0xdcbd8['offsetX'],this[_0x217607(0x2b3)]['y']=_0xdcbd8['offsetY'],this['_dragonbones'][_0x217607(0x2f8)]['x']=_0xdcbd8[_0x217607(0x210)],this[_0x217607(0x2b3)]['scale']['y']=_0xdcbd8['scaleY'];},Sprite_Picture[_0x318430(0x225)]['updateDragonbonesTimeScale']=function(){const _0x28409d=_0x318430;if(!this[_0x28409d(0x2b3)])return;const _0x1e6308=this['picture']()[_0x28409d(0x2f7)]();let _0x3cd946=_0x1e6308[_0x28409d(0x199)];this[_0x28409d(0x2b3)][_0x28409d(0x246)]['timeScale']=_0x3cd946;},PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],'MapSprite_ActorChange',_0x5dbf10=>{const _0x4c716a=_0x318430;if(!$gameMap)return;VisuMZ[_0x4c716a(0x235)](_0x5dbf10,_0x5dbf10);const _0x422cd6=$gameActors[_0x4c716a(0x2e6)](_0x5dbf10[_0x4c716a(0x1b0)]);if(!_0x422cd6)return;const _0x4c6fbc=JsonEx[_0x4c716a(0x2f4)](_0x422cd6[_0x4c716a(0x1aa)]);_0x422cd6[_0x4c716a(0x1aa)]={'filename':_0x5dbf10[_0x4c716a(0x1c3)],'animation':'','scaleX':_0x5dbf10['ScaleX'],'scaleY':_0x5dbf10['ScaleY'],'offsetX':_0x5dbf10['OffsetX'],'offsetY':_0x5dbf10['OffsetY'],'timeScale':_0x5dbf10[_0x4c716a(0x2b2)],'walkRate':_0x5dbf10[_0x4c716a(0x23f)]??0x1,'dashRate':_0x5dbf10[_0x4c716a(0x2c2)]??0x1,'width':_0x5dbf10['Width'],'height':_0x5dbf10['Height'],'flipLeft':_0x5dbf10['FlipLeft'],'flipRight':_0x5dbf10['FlipRight'],'animationNames':{'idle':_0x5dbf10[_0x4c716a(0x25d)],'walk':_0x5dbf10[_0x4c716a(0x241)],'dash':_0x5dbf10[_0x4c716a(0x2c6)],'jump':_0x5dbf10['Jump'],'ladderidle':_0x5dbf10[_0x4c716a(0x224)],'ladderclimb':_0x5dbf10['LadderClimb'],'ropeidle':_0x5dbf10[_0x4c716a(0x20d)],'ropeclimb':_0x5dbf10[_0x4c716a(0x261)]}},$gamePlayer[_0x4c716a(0x1ad)]();}),PluginManager['registerCommand'](pluginData[_0x318430(0x216)],'MapSprite_ActorAnimationPlay',_0xa2f3da=>{const _0x4e6a7e=_0x318430;if(!$gameMap)return;if(SceneManager[_0x4e6a7e(0x2c1)]['constructor']!==Scene_Map)return;VisuMZ[_0x4e6a7e(0x235)](_0xa2f3da,_0xa2f3da);const _0xbf56b=$gameActors[_0x4e6a7e(0x2e6)](_0xa2f3da[_0x4e6a7e(0x1b0)]),_0x3405c1=_0xbf56b[_0x4e6a7e(0x1f3)](),_0x524fd9=_0x3405c1===0x0?$gamePlayer:$gamePlayer[_0x4e6a7e(0x293)]()[_0x4e6a7e(0x27c)](_0x3405c1-0x1);if(!_0x524fd9)return;_0x524fd9[_0x4e6a7e(0x19d)]=_0xa2f3da[_0x4e6a7e(0x242)];}),PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],'MapSprite_ActorAnimationStop',_0x15d482=>{const _0x2d109e=_0x318430;if(!$gameMap)return;if(SceneManager[_0x2d109e(0x2c1)][_0x2d109e(0x2ae)]!==Scene_Map)return;VisuMZ['ConvertParams'](_0x15d482,_0x15d482);const _0x455a6d=$gameActors[_0x2d109e(0x2e6)](_0x15d482[_0x2d109e(0x1b0)]),_0xbe97de=_0x455a6d[_0x2d109e(0x1f3)](),_0x286092=_0xbe97de===0x0?$gamePlayer:$gamePlayer[_0x2d109e(0x293)]()['follower'](_0xbe97de-0x1);if(!_0x286092)return;_0x286092[_0x2d109e(0x19d)]='';}),PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],_0x318430(0x2f2),_0x19e1d9=>{const _0x341593=_0x318430;if(!$gameMap)return;if(SceneManager[_0x341593(0x2c1)]['constructor']!==Scene_Map)return;VisuMZ[_0x341593(0x235)](_0x19e1d9,_0x19e1d9);const _0x213628=$gameTemp[_0x341593(0x220)](),_0x4905a0=$gameMap['event'](_0x19e1d9[_0x341593(0x2e1)]||_0x213628[_0x341593(0x1b3)]());if(!_0x4905a0)return;_0x4905a0[_0x341593(0x19d)]=_0x19e1d9[_0x341593(0x242)];}),PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],'MapSprite_EventAnimationStop',_0x30eecd=>{const _0x93821d=_0x318430;if(!$gameMap)return;if(SceneManager[_0x93821d(0x2c1)]['constructor']!==Scene_Map)return;VisuMZ[_0x93821d(0x235)](_0x30eecd,_0x30eecd);const _0x54ccac=$gameTemp[_0x93821d(0x220)](),_0x3a121b=$gameMap[_0x93821d(0x1da)](_0x30eecd[_0x93821d(0x2e1)]||_0x54ccac[_0x93821d(0x1b3)]());if(!_0x3a121b)return;_0x3a121b['dragonbonesAnimation']='';}),PluginManager['registerCommand'](pluginData[_0x318430(0x216)],'MapSprite_FollowerAnimationPlay',_0x4b803a=>{const _0x2c977c=_0x318430;if(!$gameMap)return;if(SceneManager[_0x2c977c(0x2c1)]['constructor']!==Scene_Map)return;VisuMZ[_0x2c977c(0x235)](_0x4b803a,_0x4b803a);const _0x2d567c=$gamePlayer[_0x2c977c(0x293)]()[_0x2c977c(0x27c)](_0x4b803a[_0x2c977c(0x2c8)]);if(!_0x2d567c)return;_0x2d567c[_0x2c977c(0x19d)]=_0x4b803a[_0x2c977c(0x242)];}),PluginManager[_0x318430(0x27f)](pluginData['name'],_0x318430(0x295),_0x261369=>{const _0x26aaec=_0x318430;if(!$gameMap)return;if(SceneManager['_scene'][_0x26aaec(0x2ae)]!==Scene_Map)return;VisuMZ[_0x26aaec(0x235)](_0x261369,_0x261369);const _0x303fc6=$gamePlayer[_0x26aaec(0x293)]()['follower'](_0x261369['FollowerIndex']);if(!_0x303fc6)return;_0x303fc6[_0x26aaec(0x19d)]='';}),PluginManager[_0x318430(0x27f)](pluginData['name'],_0x318430(0x280),_0x1804be=>{const _0x16ab4f=_0x318430;if(!$gameMap)return;if(SceneManager[_0x16ab4f(0x2c1)]['constructor']!==Scene_Map)return;VisuMZ[_0x16ab4f(0x235)](_0x1804be,_0x1804be),$gamePlayer['dragonbonesAnimation']=_0x1804be['Animation'];}),PluginManager[_0x318430(0x27f)](pluginData[_0x318430(0x216)],'MapSprite_PlayerAnimationStop',_0x589a45=>{const _0x377768=_0x318430;if(!$gameMap)return;if(SceneManager[_0x377768(0x2c1)]['constructor']!==Scene_Map)return;$gamePlayer[_0x377768(0x19d)]='';}),Game_Temp[_0x318430(0x225)]['setLastPluginCommandInterpreter']=function(_0x960ac4){this['_lastPluginCommandInterpreter']=_0x960ac4;},Game_Temp[_0x318430(0x225)][_0x318430(0x220)]=function(){const _0xf20d63=_0x318430;return this[_0xf20d63(0x1d2)];},Object[_0x318430(0x296)](Game_CharacterBase[_0x318430(0x225)],_0x318430(0x19d),{'get':function(){const _0xb60c70=_0x318430;return this['dragonbonesSpriteData']()[_0xb60c70(0x246)];},'set':function(_0x453656){const _0x216fc4=_0x318430;this[_0x216fc4(0x260)]()['animation']=_0x453656;},'configurable':!![]}),Game_CharacterBase[_0x318430(0x225)][_0x318430(0x1ba)]=function(){const _0x251753=_0x318430,_0xd0268a=VisuMZ['DragonbonesUnion'][_0x251753(0x234)][_0x251753(0x1e4)];this[_0x251753(0x1aa)]={'filename':'','animation':'','scaleX':_0xd0268a['ScaleX'],'scaleY':_0xd0268a[_0x251753(0x2ed)],'offsetX':_0xd0268a[_0x251753(0x2d3)],'offsetY':_0xd0268a[_0x251753(0x233)],'timeScale':_0xd0268a[_0x251753(0x2b2)],'walkRate':0x1,'dashRate':0x1,'width':_0xd0268a[_0x251753(0x28f)],'height':_0xd0268a[_0x251753(0x273)],'flipLeft':_0xd0268a[_0x251753(0x28e)],'flipRight':_0xd0268a['FlipRight'],'animationNames':{'idle':_0xd0268a[_0x251753(0x25d)],'walk':_0xd0268a[_0x251753(0x241)],'dash':_0xd0268a['Dash'],'jump':_0xd0268a[_0x251753(0x209)],'ladderidle':_0xd0268a[_0x251753(0x224)],'ladderclimb':_0xd0268a[_0x251753(0x211)],'ropeidle':_0xd0268a[_0x251753(0x20d)],'ropeclimb':_0xd0268a[_0x251753(0x261)]}},this[_0x251753(0x25b)]===undefined&&(this[_0x251753(0x25b)]=0x0);},Game_CharacterBase[_0x318430(0x225)]['setupDragonbonesData']=function(){},Game_CharacterBase[_0x318430(0x225)]['checkDragonbonesStringTags']=function(_0x5c1201){const _0x5a4cd2=_0x318430,_0x41696f=this['dragonbonesSpriteData']();_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE:[ ]*(.*)>/i)&&(_0x41696f[_0x5a4cd2(0x1a4)]=String(RegExp['$1'])[_0x5a4cd2(0x2fc)]());_0x5c1201['match'](/<DRAGONBONES SPRITE (?:SKIN|NAME|FILENAME):[ ]*(.*)>/i)&&(_0x41696f['filename']=String(RegExp['$1'])[_0x5a4cd2(0x2fc)]());_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ]SCALE:[ ](.*),[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x210)]=Number(RegExp['$1']),_0x41696f['scaleY']=Number(RegExp['$2']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ](?:SCALEX|SCALE X):[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x210)]=Number(RegExp['$1']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ](?:SCALEY|SCALE Y):[ ](.*)>/i)&&(_0x41696f['scaleY']=Number(RegExp['$1']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ]OFFSET:[ ](.*),[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x264)]=Number(RegExp['$1']),_0x41696f[_0x5a4cd2(0x2ce)]=Number(RegExp['$2']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ](?:OFFSETX|OFFSET X):[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x264)]=Number(RegExp['$1']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ](?:OFFSETY|OFFSET Y):[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x2ce)]=Number(RegExp['$1']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ]SIZE:[ ](.*),[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x218)]=Number(RegExp['$1']),_0x41696f[_0x5a4cd2(0x22a)]=Number(RegExp['$2']));_0x5c1201['match'](/<DRAGONBONES SPRITE[ ]WIDTH:[ ](.*)>/i)&&(_0x41696f['width']=Number(RegExp['$1']));_0x5c1201['match'](/<DRAGONBONES SPRITE[ ]HEIGHT:[ ](.*)>/i)&&(_0x41696f['height']=Number(RegExp['$1']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ](?:TIMESCALE|TIME SCALE):[ ](.*)>/i)&&(_0x41696f['timeScale']=Number(RegExp['$1']));_0x5c1201['match'](/<DRAGONBONES SPRITE[ ](?:WALK RATE|WALKING RATE):[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x2d0)]=Number(RegExp['$1']));_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE[ ](?:DASH RATE|DASHING RATE):[ ](.*)>/i)&&(_0x41696f[_0x5a4cd2(0x2de)]=Number(RegExp['$1']));_0x5c1201['match'](/<DRAGONBONES SPRITE FLIP LEFT>/i)&&(_0x41696f[_0x5a4cd2(0x2a5)]=!![]);_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE NO FLIP LEFT>/i)&&(_0x41696f['flipLeft']=![]);_0x5c1201['match'](/<DRAGONBONES SPRITE FLIP RIGHT>/i)&&(_0x41696f[_0x5a4cd2(0x1a5)]=!![]);_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE NO FLIP RIGHT>/i)&&(_0x41696f['flipRight']=![]);const _0x70ba3f=_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE MOTION (.*):[ ](.*)>/gi);if(_0x70ba3f)for(const _0x524b16 of _0x70ba3f){_0x524b16[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE MOTION (.*):[ ](.*)>/i);const _0x106668=String(RegExp['$1'])[_0x5a4cd2(0x2cd)]()[_0x5a4cd2(0x2fc)](),_0x3445ce=String(RegExp['$2'])[_0x5a4cd2(0x2cd)]()['trim']();_0x41696f['animationNames'][_0x106668]=_0x3445ce;}if(_0x5c1201[_0x5a4cd2(0x1a8)](/<DRAGONBONES SPRITE (?:SETTINGS|SETTING)>\s*([\s\S]*)\s*<\/DRAGONBONES SPRITE (?:SETTINGS|SETTING)>/i)){const _0x1a3e8b=String(RegExp['$1']);_0x1a3e8b[_0x5a4cd2(0x1a8)](/(?:SKIN|NAME|FILENAME):[ ]*(.*)/i)&&(_0x41696f[_0x5a4cd2(0x1a4)]=String(RegExp['$1'])[_0x5a4cd2(0x2fc)]());_0x1a3e8b[_0x5a4cd2(0x1a8)](/SCALE:[ ](.*),[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x210)]=Number(RegExp['$1']),_0x41696f[_0x5a4cd2(0x1fd)]=Number(RegExp['$2']));_0x1a3e8b['match'](/(?:SCALEX|SCALE X):[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x210)]=Number(RegExp['$1']));_0x1a3e8b['match'](/(?:SCALEY|SCALE Y):[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x1fd)]=Number(RegExp['$1']));_0x1a3e8b[_0x5a4cd2(0x1a8)](/OFFSET:[ ](.*),[ ](.*)/i)&&(_0x41696f['offsetX']=Number(RegExp['$1']),_0x41696f[_0x5a4cd2(0x2ce)]=Number(RegExp['$2']));_0x1a3e8b[_0x5a4cd2(0x1a8)](/(?:OFFSETX|OFFSET X):[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x264)]=Number(RegExp['$1']));_0x1a3e8b['match'](/(?:OFFSETY|OFFSET Y):[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x2ce)]=Number(RegExp['$1']));_0x1a3e8b[_0x5a4cd2(0x1a8)](/(?:TIMESCALE|TIME SCALE):[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x199)]=Number(RegExp['$1']));_0x1a3e8b[_0x5a4cd2(0x1a8)](/(?:WALK RATE|WALKING RATE):[ ](.*)/i)&&(_0x41696f['walkRate']=Number(RegExp['$1']));_0x1a3e8b['match'](/(?:DASH RATE|DASHING RATE):[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x2de)]=Number(RegExp['$1']));_0x1a3e8b['match'](/SIZE:[ ](.*),[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x218)]=Number(RegExp['$1']),_0x41696f['height']=Number(RegExp['$2']));_0x1a3e8b[_0x5a4cd2(0x1a8)](/WIDTH:[ ](.*)/i)&&(_0x41696f['width']=Number(RegExp['$1']));_0x1a3e8b['match'](/HEIGHT:[ ](.*)/i)&&(_0x41696f[_0x5a4cd2(0x22a)]=Number(RegExp['$1']));_0x1a3e8b['match'](/NO FLIP LEFT/i)&&(_0x41696f[_0x5a4cd2(0x2a5)]=![]);_0x1a3e8b[_0x5a4cd2(0x1a8)](/FLIP LEFT/i)&&(_0x41696f['flipLeft']=!![]);_0x1a3e8b[_0x5a4cd2(0x1a8)](/NO FLIP RIGHT/i)&&(_0x41696f[_0x5a4cd2(0x1a5)]=![]);_0x1a3e8b[_0x5a4cd2(0x1a8)](/FLIP RIGHT/i)&&(_0x41696f[_0x5a4cd2(0x1a5)]=!![]);const _0x469d6f=_0x5c1201[_0x5a4cd2(0x1a8)](/(?:ANI|MOTION) (.*):[ ](.*)/gi);if(_0x469d6f)for(const _0x3a5485 of _0x469d6f){_0x3a5485[_0x5a4cd2(0x1a8)](/(?:ANI|MOTION) (.*):[ ](.*)/i);const _0x1731d6=String(RegExp['$1'])['toLowerCase']()[_0x5a4cd2(0x2fc)](),_0x428eae=String(RegExp['$2'])[_0x5a4cd2(0x2cd)]()[_0x5a4cd2(0x2fc)]();_0x41696f[_0x5a4cd2(0x2b6)][_0x1731d6]=_0x428eae;}}},Game_CharacterBase[_0x318430(0x225)][_0x318430(0x260)]=function(){const _0x5c54bd=_0x318430;if(this[_0x5c54bd(0x1aa)]!==undefined)return this['_dragonbonesSpriteData'];return this[_0x5c54bd(0x1ba)](),this['setupDragonbonesData'](),this['_dragonbonesSpriteData'];},Game_CharacterBase[_0x318430(0x225)][_0x318430(0x245)]=function(){const _0x51e99a=_0x318430;return this[_0x51e99a(0x260)]()['filename']!=='';},Game_CharacterBase[_0x318430(0x225)]['currentDragonbonesAnimation']=function(_0x3a65eb){const _0x43a272=_0x318430,_0x504f16=this[_0x43a272(0x260)]();if(!_0x3a65eb)return _0x504f16['animationNames']['idle'];_0x504f16[_0x43a272(0x246)]=_0x504f16[_0x43a272(0x246)][_0x43a272(0x2cd)]()[_0x43a272(0x2fc)]();if(_0x504f16['animation']!==''&&_0x3a65eb[_0x43a272(0x246)][_0x43a272(0x2bf)][_0x504f16[_0x43a272(0x246)]])return _0x504f16[_0x43a272(0x246)];let _0xdd93d8=[];if(this[_0x43a272(0x1e7)]())_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this[_0x43a272(0x294)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x2d1)])),_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this['addDragonbonesAnimationDirections'](_0x504f16[_0x43a272(0x2b6)]['walk']));else{if(this[_0x43a272(0x1b5)]()&&!this[_0x43a272(0x1e7)]())Imported['VisuMZ_1_EventsMoveCore']&&this['isOnRope']()?(this[_0x43a272(0x25b)]>0x0&&(_0xdd93d8['push'](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x1d0)]),_0xdd93d8[_0x43a272(0x270)](_0x504f16['animationNames']['ladderclimb']),_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this[_0x43a272(0x294)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x2dd)]))),_0xdd93d8[_0x43a272(0x270)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x1b8)]),_0xdd93d8[_0x43a272(0x270)](_0x504f16[_0x43a272(0x2b6)]['ladderidle'])):(this[_0x43a272(0x25b)]>0x0&&(_0xdd93d8[_0x43a272(0x270)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x255)]),_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this[_0x43a272(0x294)](_0x504f16[_0x43a272(0x2b6)]['walk']))),_0xdd93d8['push'](_0x504f16['animationNames'][_0x43a272(0x243)]));else this[_0x43a272(0x25b)]>0x0&&(this['isDashing']()&&(_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this[_0x43a272(0x294)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x201)]))),_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this[_0x43a272(0x294)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x2dd)])));}_0xdd93d8=_0xdd93d8[_0x43a272(0x240)](this[_0x43a272(0x294)](_0x504f16[_0x43a272(0x2b6)][_0x43a272(0x1c2)]));for(const _0x5afc99 of _0xdd93d8){if(_0x3a65eb[_0x43a272(0x246)][_0x43a272(0x2bf)][_0x5afc99])return _0x5afc99;}return _0x504f16[_0x43a272(0x2b6)]['idle'];},Game_CharacterBase[_0x318430(0x225)]['addDragonbonesAnimationDirections']=function(_0x1b3f55){const _0xcd1b87=_0x318430,_0x4b9f8b=this[_0xcd1b87(0x260)](),_0x48f23f=this[_0xcd1b87(0x19e)]();let _0x26e53f=[];_0x26e53f[_0xcd1b87(0x270)](_0x1b3f55+_0x48f23f);if(_0x48f23f===0x1){_0x26e53f[_0xcd1b87(0x270)](_0x1b3f55+0x4);if(_0x4b9f8b[_0xcd1b87(0x2a5)])_0x26e53f['push'](_0x1b3f55+0x6);_0x26e53f['push'](_0x1b3f55+0x2);}if(_0x48f23f===0x3){_0x26e53f['push'](_0x1b3f55+0x6);if(_0x4b9f8b[_0xcd1b87(0x1a5)])_0x26e53f['push'](_0x1b3f55+0x4);_0x26e53f['push'](_0x1b3f55+0x2);}if(_0x48f23f===0x7){_0x26e53f[_0xcd1b87(0x270)](_0x1b3f55+0x4);if(_0x4b9f8b['flipLeft'])_0x26e53f['push'](_0x1b3f55+0x6);_0x26e53f[_0xcd1b87(0x270)](_0x1b3f55+0x8);}if(_0x48f23f===0x9){_0x26e53f['push'](_0x1b3f55+0x6);if(_0x4b9f8b[_0xcd1b87(0x1a5)])_0x26e53f[_0xcd1b87(0x270)](_0x1b3f55+0x4);_0x26e53f[_0xcd1b87(0x270)](_0x1b3f55+0x8);}return _0x26e53f[_0xcd1b87(0x270)](_0x1b3f55),_0x26e53f;},VisuMZ[_0x318430(0x29a)][_0x318430(0x1d9)]=Game_CharacterBase[_0x318430(0x225)][_0x318430(0x1cc)],Game_CharacterBase[_0x318430(0x225)][_0x318430(0x1cc)]=function(){const _0x2b7433=_0x318430;VisuMZ[_0x2b7433(0x29a)][_0x2b7433(0x1d9)][_0x2b7433(0x27b)](this),this[_0x2b7433(0x219)]();},Game_CharacterBase[_0x318430(0x225)][_0x318430(0x219)]=function(){const _0xe2d295=_0x318430;if(!this[_0xe2d295(0x245)]())return;this['isMoving']()?this[_0xe2d295(0x25b)]=VisuMZ[_0xe2d295(0x29a)][_0xe2d295(0x234)][_0xe2d295(0x1e4)][_0xe2d295(0x20c)]:this[_0xe2d295(0x25b)]--;},VisuMZ['DragonbonesUnion'][_0x318430(0x265)]=Game_Player[_0x318430(0x225)][_0x318430(0x1ad)],Game_Player['prototype'][_0x318430(0x1ad)]=function(){const _0x16605b=_0x318430;VisuMZ['DragonbonesUnion'][_0x16605b(0x265)][_0x16605b(0x27b)](this),this['setupDragonbonesData']();},Game_Player[_0x318430(0x225)][_0x318430(0x22d)]=function(){const _0x1a578f=_0x318430,_0x250098=$gameParty[_0x1a578f(0x24b)]();!_0x250098?this[_0x1a578f(0x1ba)]():this[_0x1a578f(0x1aa)]=_0x250098['dragonbonesSpriteData']();},VisuMZ[_0x318430(0x29a)][_0x318430(0x1f1)]=Game_Follower[_0x318430(0x225)][_0x318430(0x1ad)],Game_Follower[_0x318430(0x225)][_0x318430(0x1ad)]=function(){const _0x571382=_0x318430;VisuMZ[_0x571382(0x29a)]['Game_Follower_refresh'][_0x571382(0x27b)](this),this[_0x571382(0x22d)]();},Game_Follower['prototype'][_0x318430(0x22d)]=function(){const _0x9816e0=_0x318430,_0x228222=this[_0x9816e0(0x2e6)]();!_0x228222?this[_0x9816e0(0x1ba)]():this[_0x9816e0(0x1aa)]=_0x228222['dragonbonesSpriteData']();},Game_Actor['prototype'][_0x318430(0x1ba)]=function(){const _0x2b3cec=_0x318430;Game_BattlerBase[_0x2b3cec(0x225)][_0x2b3cec(0x1ba)]['call'](this),Game_CharacterBase[_0x2b3cec(0x225)][_0x2b3cec(0x1ba)][_0x2b3cec(0x27b)](this);},Game_Actor[_0x318430(0x225)][_0x318430(0x22d)]=function(){const _0x17058b=_0x318430;Game_BattlerBase[_0x17058b(0x225)][_0x17058b(0x22d)][_0x17058b(0x27b)](this);const _0x123946=this[_0x17058b(0x2e6)]()[_0x17058b(0x291)];Game_CharacterBase[_0x17058b(0x225)][_0x17058b(0x252)][_0x17058b(0x27b)](this,_0x123946);},Game_Actor[_0x318430(0x225)]['dragonbonesSpriteData']=function(){const _0x538c05=_0x318430;if(this[_0x538c05(0x1aa)]!==undefined)return this['_dragonbonesSpriteData'];return this['initDragonbonesData'](),this[_0x538c05(0x22d)](),this['_dragonbonesSpriteData'];},VisuMZ[_0x318430(0x29a)][_0x318430(0x21d)]=Game_Event['prototype'][_0x318430(0x1ad)],Game_Event['prototype']['refresh']=function(){const _0x2b26b6=_0x318430;VisuMZ[_0x2b26b6(0x29a)][_0x2b26b6(0x21d)][_0x2b26b6(0x27b)](this),this[_0x2b26b6(0x22d)]();},VisuMZ['DragonbonesUnion'][_0x318430(0x1e5)]=Game_Event['prototype'][_0x318430(0x2fa)],Game_Event['prototype'][_0x318430(0x2fa)]=function(){const _0x4d8ccb=_0x318430;VisuMZ[_0x4d8ccb(0x29a)][_0x4d8ccb(0x1e5)][_0x4d8ccb(0x27b)](this),this['initDragonbonesData']();},VisuMZ[_0x318430(0x29a)][_0x318430(0x2ea)]=Game_Event[_0x318430(0x225)][_0x318430(0x253)],Game_Event['prototype'][_0x318430(0x253)]=function(){const _0x185bdf=_0x318430;VisuMZ[_0x185bdf(0x29a)]['Game_Event_setupPageSettings'][_0x185bdf(0x27b)](this),this[_0x185bdf(0x1ba)](),this[_0x185bdf(0x22d)]();},Game_Event[_0x318430(0x225)][_0x318430(0x22d)]=function(){const _0x35b8fd=_0x318430;this[_0x35b8fd(0x20f)](),this[_0x35b8fd(0x1bf)]();},Game_Event[_0x318430(0x225)][_0x318430(0x20f)]=function(){const _0x444443=_0x318430;if(!this[_0x444443(0x1da)]())return;const _0x2f5a57=this['event']()['note'];if(_0x2f5a57==='')return;this['checkDragonbonesStringTags'](_0x2f5a57);},Game_Event['prototype'][_0x318430(0x1bf)]=function(){const _0x27451d=_0x318430;if(!this[_0x27451d(0x1da)]())return;if(!this[_0x27451d(0x277)]())return;const _0x47a384=this[_0x27451d(0x2b0)]();let _0x27e601='';for(const _0x1962c1 of _0x47a384){if([0x6c,0x198][_0x27451d(0x200)](_0x1962c1[_0x27451d(0x1f6)])){if(_0x27e601!=='')_0x27e601+='\x0a';_0x27e601+=_0x1962c1[_0x27451d(0x2cf)][0x0];}}this[_0x27451d(0x252)](_0x27e601);},VisuMZ[_0x318430(0x29a)]['Game_Interpreter_PluginCommand']=Game_Interpreter['prototype'][_0x318430(0x1d1)],Game_Interpreter[_0x318430(0x225)][_0x318430(0x1d1)]=function(_0x513c2e){const _0x44e38b=_0x318430;return $gameTemp['setLastPluginCommandInterpreter'](this),VisuMZ['DragonbonesUnion'][_0x44e38b(0x283)]['call'](this,_0x513c2e);},VisuMZ['DragonbonesUnion']['Sprite_Character_initialize']=Sprite_Character[_0x318430(0x225)][_0x318430(0x2f9)],Sprite_Character[_0x318430(0x225)]['initialize']=function(_0x4615e5){const _0x5acc5a=_0x318430;this['initDragonbonesData'](),VisuMZ[_0x5acc5a(0x29a)]['Sprite_Character_initialize']['call'](this,_0x4615e5),this[_0x5acc5a(0x2f1)]();},Sprite_Character[_0x318430(0x225)][_0x318430(0x1ba)]=function(){const _0x22876f=_0x318430;this[_0x22876f(0x2b3)]=null,this['_dragonbonesFilename']='',this[_0x22876f(0x304)]='';},Sprite_Character[_0x318430(0x225)][_0x318430(0x2f1)]=function(){const _0x1bbaeb=_0x318430;this[_0x1bbaeb(0x236)]=new Sprite(),this[_0x1bbaeb(0x1bb)](this[_0x1bbaeb(0x236)]);},VisuMZ[_0x318430(0x29a)][_0x318430(0x1c6)]=Sprite_Character[_0x318430(0x225)][_0x318430(0x21f)],Sprite_Character[_0x318430(0x225)][_0x318430(0x21f)]=function(){const _0x1862d1=_0x318430;VisuMZ[_0x1862d1(0x29a)][_0x1862d1(0x1c6)][_0x1862d1(0x27b)](this),this[_0x1862d1(0x1cf)]();},Sprite_Character['prototype'][_0x318430(0x2a2)]=function(){const _0x12d0b0=_0x318430;this[_0x12d0b0(0x2b3)]&&(this[_0x12d0b0(0x236)][_0x12d0b0(0x26d)](this[_0x12d0b0(0x2b3)]),this[_0x12d0b0(0x2b3)][_0x12d0b0(0x301)](),this[_0x12d0b0(0x2b3)]=null,this[_0x12d0b0(0x1dc)]='',this[_0x12d0b0(0x304)]='');},Sprite_Character[_0x318430(0x225)]['updateDragonbones']=function(){const _0x368ded=_0x318430;if(!this[_0x368ded(0x2cb)])return this['disposeDragonbones']();if(!this['_character'][_0x368ded(0x245)]())return this[_0x368ded(0x2a2)]();this[_0x368ded(0x226)]();if(!this[_0x368ded(0x2b3)])return;this['updateDragonbonesAnimation'](),this[_0x368ded(0x212)](),this[_0x368ded(0x202)]();},Sprite_Character['prototype'][_0x318430(0x226)]=function(){const _0x5bb6a1=_0x318430,_0x473472=this[_0x5bb6a1(0x2cb)][_0x5bb6a1(0x260)]();if(this[_0x5bb6a1(0x1dc)]===_0x473472[_0x5bb6a1(0x1a4)])return;this[_0x5bb6a1(0x2a2)](),this['_dragonbonesFilename']=_0x473472[_0x5bb6a1(0x1a4)],DragonbonesManager[_0x5bb6a1(0x26b)](_0x473472[_0x5bb6a1(0x1a4)],this[_0x5bb6a1(0x2fb)]['bind'](this));},Sprite_Character['prototype'][_0x318430(0x2fb)]=function(){const _0x1150d6=_0x318430,_0x575bd8=this['_character'][_0x1150d6(0x260)]();this[_0x1150d6(0x2b3)]=DragonbonesManager[_0x1150d6(0x2b5)](_0x575bd8['filename']),this[_0x1150d6(0x21b)](),setTimeout(this['addDragonbonesChild'][_0x1150d6(0x1a1)](this),0x0);},Sprite_Character[_0x318430(0x225)][_0x318430(0x21e)]=function(){const _0x5bb12b=_0x318430;if(!this[_0x5bb12b(0x2b3)])return;if(!this[_0x5bb12b(0x236)])return;this[_0x5bb12b(0x236)][_0x5bb12b(0x29d)](this[_0x5bb12b(0x2b3)],0x0);},Sprite_Character[_0x318430(0x225)][_0x318430(0x21b)]=function(){const _0xb4f12e=_0x318430;if(!this[_0xb4f12e(0x2b3)])return;const _0x1254ee=this[_0xb4f12e(0x2cb)][_0xb4f12e(0x260)](),_0x335e92=this[_0xb4f12e(0x2b3)][_0xb4f12e(0x246)];_0x335e92[_0xb4f12e(0x1cb)]&&(this['_character'][_0xb4f12e(0x19d)]='',this[_0xb4f12e(0x304)]='',_0x335e92[_0xb4f12e(0x2ba)]='');const _0x2a29fd=this[_0xb4f12e(0x2cb)][_0xb4f12e(0x1e0)](this[_0xb4f12e(0x2b3)]);this[_0xb4f12e(0x304)]!==_0x2a29fd&&(this['_dragonbonesAnimation']=_0x2a29fd,this[_0xb4f12e(0x2d4)]());},Sprite_Character[_0x318430(0x225)][_0x318430(0x2d4)]=function(){const _0x218747=_0x318430;if(!this[_0x218747(0x2b3)])return;const _0x1b9bc0=this[_0x218747(0x2b3)][_0x218747(0x246)],_0x44255c=this['_dragonbonesAnimation'][_0x218747(0x2cd)]()[_0x218747(0x2fc)]();if(_0x1b9bc0['animations'][_0x44255c]){if(_0x1b9bc0['lastAnimationName']===_0x44255c&&_0x1b9bc0['animations'][_0x44255c][_0x218747(0x28a)]<=0x0)return;_0x1b9bc0[_0x218747(0x2b4)](_0x44255c);}},Sprite_Character[_0x318430(0x225)]['updateDragonbonesProperties']=function(){const _0xad5660=_0x318430;if(!this[_0xad5660(0x2b3)])return;const _0x14b7e6=this[_0xad5660(0x2cb)][_0xad5660(0x260)]();this['_dragonbones']['x']=_0x14b7e6['offsetX'],this['_dragonbones']['y']=_0x14b7e6[_0xad5660(0x2ce)],this[_0xad5660(0x2b3)]['scale']['x']=_0x14b7e6[_0xad5660(0x210)]*this[_0xad5660(0x267)](),this[_0xad5660(0x2b3)][_0xad5660(0x2f8)]['y']=_0x14b7e6['scaleY'];},Sprite_Character[_0x318430(0x225)]['dragonbonesFlip']=function(){const _0x22f401=_0x318430,_0x26eb73=this['_character'][_0x22f401(0x260)]();this[_0x22f401(0x25f)]=this[_0x22f401(0x25f)]||0x1;if(_0x26eb73['flipLeft']&&[0x1,0x4,0x7][_0x22f401(0x200)](this[_0x22f401(0x2cb)][_0x22f401(0x19e)]()))this[_0x22f401(0x25f)]=-0x1;else{if(_0x26eb73[_0x22f401(0x1a5)]&&[0x9,0x6,0x3][_0x22f401(0x200)](this[_0x22f401(0x2cb)][_0x22f401(0x19e)]()))this['_dragonbonesFlipDirection']=-0x1;else![0x8,0x2][_0x22f401(0x200)](this['_character'][_0x22f401(0x19e)]())&&(this[_0x22f401(0x25f)]=0x1);}return this[_0x22f401(0x25f)];},Sprite_Character[_0x318430(0x225)]['updateDragonbonesTimeScale']=function(){const _0x1f3e06=_0x318430;if(!this[_0x1f3e06(0x2b3)])return;const _0x1f5807=this[_0x1f3e06(0x2cb)][_0x1f3e06(0x260)]();let _0x4dac3a=_0x1f5807[_0x1f3e06(0x199)];this[_0x1f3e06(0x2cb)][_0x1f3e06(0x1ff)]()&&(_0x4dac3a*=this[_0x1f3e06(0x2cb)][_0x1f3e06(0x227)](),this['_character'][_0x1f3e06(0x208)]()?_0x4dac3a*=_0x1f5807[_0x1f3e06(0x2de)]:_0x4dac3a*=_0x1f5807[_0x1f3e06(0x2d0)]),this[_0x1f3e06(0x2b3)][_0x1f3e06(0x246)][_0x1f3e06(0x199)]=_0x4dac3a;},VisuMZ['DragonbonesUnion'][_0x318430(0x1c1)]=Sprite_Character[_0x318430(0x225)][_0x318430(0x2d7)],Sprite_Character['prototype'][_0x318430(0x2d7)]=function(){const _0x4a6430=_0x318430;this[_0x4a6430(0x2cb)]&&this['_character']['hasDragonbones']()?this[_0x4a6430(0x2af)]():VisuMZ[_0x4a6430(0x29a)][_0x4a6430(0x1c1)]['call'](this);},Sprite_Character['prototype'][_0x318430(0x2af)]=function(){const _0xb46b26=_0x318430,_0x1ccea7=this[_0xb46b26(0x2cb)]['dragonbonesSpriteData'](),_0xb9fbe5=_0x1ccea7[_0xb46b26(0x22a)];this['setFrame'](0x0,0x0,0x0,_0xb9fbe5);};

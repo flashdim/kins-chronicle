@@ -1,0 +1,53 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: QueenShaccad
+Scalex: -1.2
+Scaley: 1.2
+Width: 494
+Height: 349
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack B
+Ani Missile: Attack C
+Ani Skill: Attack C
+Ani Chant: Attack C
+Ani Spell: Attack C
+Ani Item: Attack C
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Spell
+Attack B - Hound Attack
+Attack C - Hound Attack B
+Attack D - Sword Attack
+Damage
+Idle
+
+Sample Action Sequence:
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack A: user
+wait: 30
+animation 102: target
+action effect
+wait: 15
+move user: return, 30
+</target action>

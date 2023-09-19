@@ -1,0 +1,57 @@
+<Attack animation: 1>
+<DragonBone Settings>
+Battler: ShianteDevourerofSouls
+Scalex: -1.0
+Scaley: 1.0
+Width: 250
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack D
+Ani Missile: Attack C
+Ani Skill: Attack C
+Ani Chant: Idle
+Ani Spell: Attack C
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Soul burst
+Attack B - Soul flare
+Attack C - Soul lift
+Attack D - Soul cruncher
+Damage
+Idle
+
+<Target Action>
+motion Attack D: user
+move user: targets, BASE, 19, auto offset x -150, offset y +100
+wait for movement
+move user: targets, BASE, 25, auto offset x -80, offset y +100
+wait: 24
+action effect
+JUMP targets: 20, 18
+move targets: FORWARD, 40, 25
+animation 39: targets
+wait: 45
+move user: HOME, 20
+animation 101: targets
+wait: 25
+move targets: FORWARD, -40, 20
+wait: 15
+</Target Action>
+

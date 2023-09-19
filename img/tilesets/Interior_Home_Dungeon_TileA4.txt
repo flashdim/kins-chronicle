@@ -1,0 +1,49 @@
+﻿Wall (Stone)|壁（石）
+Wall (Brick)|壁（レンガ）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Wood)|壁（木造）
+Wall (Wood, Ruins)|壁（木造・廃墟）
+Wall (Wood)|壁（木造）
+Wall (Wood, Ruins)|壁（木造・廃墟）
+Wall (Wood)|壁（木造）
+Wall (Stone)|壁（石）
+Wall (Dirt)|建物（土壁）
+Wall (Dirt)|建物（土壁）
+Wall (Wood)|壁（木造）
+Wall (Wood, Ruins)|壁（木造・廃墟）
+Wall (Tent)|壁（テント）
+Wall (Tent, Ruins)|壁（テント・廃墟）
+Wall (Stone)|壁（石）
+Wall (Stone)|壁（石）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Brick)|壁（レンガ）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Green Stone)|壁（緑石）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Forest|森
+Wall (Hedge)|壁（生け垣）
+Wall (Stone)|壁（石）
+Wall (Stone)|壁（石）
+Wall (Brick)|壁（レンガ）
+Wall (Brick)|壁（レンガ）
+Wall (Green Stone)|壁（緑石）
+Wall (Green Stone)|壁（緑石）
+Forest|森
+Wall (Hedge)|壁（生け垣）
+Wall (Rock Cave)|壁（岩洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Ice Cave)|壁（氷洞窟）
+Wall (Ice Cave)|壁（氷洞窟）
+Wall (Stone)|壁（石）
+NONE
+NONE
+Wall (Rock Cave)|壁（岩洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Dirt Cave)|壁（土洞窟）
+Wall (Ice Cave)|壁（氷洞窟）
+Wall (Ice Cave)|壁（氷洞窟）
+Wall (Brick)|壁（レンガ）
+Wall (Wood)|壁（木造）
+Wall (Hole)|壁（穴）
+

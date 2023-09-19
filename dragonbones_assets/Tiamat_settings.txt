@@ -1,0 +1,110 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Tiamat
+Scalex: -0.4
+Scaley: 0.4
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack Slash
+Ani Swing: Attack Gauntlet
+Ani Thrust: Attack Thrust
+Ani Missile: Attack Skill
+Ani Skill: Attack Skill
+Ani Chant: Idle
+Ani Spell: Attack Gauntlet
+Ani Item: Attack Skill
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Retreat
+
+Replace Sprite
+</DragonBone Settings>
+
+
+*Sample Action Sequences*
+***Attack Thrust***
+
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack Thrust: user
+wait: 30
+animation 13: target
+animation 15: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+***Attack Gauntlet***
+
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack Gauntlet: user
+wait: 30
+animation 13: target
+animation 18: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+***Attack Slash***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack Slash: user
+wait: 30
+animation 8: target
+animation 13: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+***Attack Skill***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+wait: 6
+motion Attack Skill: user
+wait: 30
+animation 14: target
+animation 15: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

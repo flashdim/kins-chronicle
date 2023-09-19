@@ -1,0 +1,49 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- SlimeBasic -- Enemy Settings (copy any enemy as a base)
+---------------------
+<DragonBone Replace Sprite>
+<DragonBone Settings>
+Battler: SlimeBasic
+Scalex: 1.0
+Scaley: 1.0
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Attack
+Ani Skill: Attack
+Ani Chant: Attack
+Ani Spell: Attack
+Ani Item: Attack
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Idle
+Ani Abnormal: Idle
+Ani Sleep: Idle
+Ani Dying: Idle
+Ani Dead: Dead
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- SlimeBasic -- Attack Settings (copy '#15 Thrust Attack' as a base)
+---------------------
+<Target Action>
+motion evade: user
+move user: targets, front, 25
+wait for movement
+motion thrust: user
+wait: 25
+action animation
+wait: 10
+shake screen: 3, 9, 5
+action effect
+death break
+</target Action>
+---------------------

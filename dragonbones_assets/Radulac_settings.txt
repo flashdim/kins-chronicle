@@ -1,0 +1,58 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Radulac
+Scalex: -1.0
+Scaley: 1.0
+Width: 673
+Height: 445
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack B
+Ani Missile: Attack C
+Ani Skill: Attack C
+Ani Chant: Attack C
+Ani Spell: Attack C
+Ani Item: Attack C
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Lounges at target with both claws.
+Attack B - Spell Cast
+Attack C - Fierce claw stab
+Attack D - Talon attack
+Idle
+Damage
+
+Sample Action Sequence:
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -200
+wait: 6
+motion Attack A: user
+wait: 30
+animation 58: target
+animation 7: target
+action effect
+action effect
+action effect
+wait: 15
+move user: return, 30
+</target action>

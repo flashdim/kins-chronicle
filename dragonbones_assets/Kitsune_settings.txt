@@ -1,0 +1,64 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Kitsune
+Scalex: -1.0
+Scaley: 1.0
+Width: 360
+Height: 320
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack A
+Ani Missile: Attack C
+Ani Skill: Attack B
+Ani Chant: Attack A
+Ani Spell: Attack C
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+ Available Motions:
+Attack A - Open Mouth Casting
+Attack B - Open Mouth Casting Extended
+Attack C - Short Jump
+Attack D - Raises front legs
+Attack E - Hurls itself at target
+Attack F - Hurls itself at target and tail swipes
+Attack G - Tail Swipe
+Attack I - Triple Tail Swipe
+Attack J - Tail Swipes with each tail
+Damage - Taking Damage from actor
+Idle
+
+Global Action Sequence(Replace motion Attack X and tweak as needed!):
+
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack G: user
+wait: 30
+animation 18: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+

@@ -1,0 +1,53 @@
+<Attack animation: 1>
+<DragonBone Settings>
+Battler: NubraLion
+Scalex: -1.0
+Scaley: 1.0
+Width: 200
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack F
+Ani Thrust: Attack D
+Ani Missile: Attack C
+Ani Skill: Attack F
+Ani Chant: Idle
+Ani Spell: Attack E
+Ani Item: Attack C
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A
+Attack B
+Attack C
+Damage
+Idle
+
+-
+ANIMATION NOTE:
+Recommend removing the screen flashes on animation 102.
+-
+Sample Action Sequence
+<whole action>
+motion Attack A: user
+animation 65: target
+wait: 35
+action effect
+wait: 50
+animation 102: target
+wait: 50
+</whole action>
+

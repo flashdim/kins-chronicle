@@ -1,0 +1,2431 @@
+//=============================================================================
+// VisuStella MZ - Combat Log
+// VisuMZ_4_CombatLog.js
+//=============================================================================
+
+var Imported = Imported || {};
+Imported.VisuMZ_4_CombatLog = true;
+
+var VisuMZ = VisuMZ || {};
+VisuMZ.CombatLog = VisuMZ.CombatLog || {};
+VisuMZ.CombatLog.version = 1.08;
+
+//=============================================================================
+ /*:
+ * @target MZ
+ * @plugindesc [RPG Maker MZ] [Tier 4] [Version 1.08] [CombatLog]
+ * @author VisuStella
+ * @url http://www.yanfly.moe/wiki/Combat_Log_VisuStella_MZ
+ * @orderAfter VisuMZ_0_CoreEngine
+ *
+ * @help
+ * ============================================================================
+ * Introduction
+ * ============================================================================
+ *
+ * Sometimes text appears way too fast in the battle system or sometimes
+ * players may miss what kind of information was delivered on-screen. For times
+ * like that, being able to access the Combat Log would be important. The
+ * Combat Log records all of the text that appears in the battle log window at
+ * the top. The player can access the Combat Log display any time during action
+ * selection phase or by holding down the designated Hot Key. Sometimes,
+ * players can even review over the Combat Log to try and figure out any kinds
+ * of patterns enemies may even have.
+ *
+ * Features include all (but not limited to) the following:
+ * 
+ * * Record the events that happen in battle into an accessible Combat Log for
+ *   players to go back and review.
+ * * Access the Combat Log in-battle through the Party Command Window, Actor
+ *   Command Window, or by holding down the Hot Key.
+ * * Icons are added to help players quickly differentiate between different
+ *   types of events.
+ * * Combat Log can have its numbers color-coded to quickly determine their
+ *   effects towards action targets.
+ * * Players can review past Combat Logs from an option in the Main Menu.
+ *
+ * ============================================================================
+ * Requirements
+ * ============================================================================
+ *
+ * This plugin is made for RPG Maker MZ. This will not work in other iterations
+ * of RPG Maker.
+ *
+ * ------ Tier 4 ------
+ *
+ * This plugin is a Tier 4 plugin. Place it under other plugins of lower tier
+ * value on your Plugin Manager list (ie: 0, 1, 2, 3, 4, 5). This is to ensure
+ * that your plugins will have the best compatibility with the rest of the
+ * VisuStella MZ library.
+ *
+ * ============================================================================
+ * Extra Features
+ * ============================================================================
+ *
+ * There are some extra features found if other VisuStella MZ plugins are found
+ * present in the Plugin Manager list.
+ *
+ * ---
+ * 
+ * VisuMZ_1_BattleCore
+ * 
+ * The VisuStella MZ Battle Core's <Battle Commands> notetag can now add in
+ * "Combat Log" to its list to have the Combat Log shown as an option to the
+ * Actor Command Window. Do remember to have this option enabled in the Plugin
+ * Parameters as well.
+ * 
+ * ---
+ *
+ * VisuMZ_1_MessageCore
+ *
+ * By having the VisuStella MZ Message Core installed, you can enable the
+ * Auto Color functions for the Combat Log. Do remember to have this option
+ * enabled in the Plugin Parameters as well.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Notetags
+ * ============================================================================
+ *
+ * The following are notetags that have been added through this plugin. These
+ * notetags will not work with your game if this plugin is OFF or not present.
+ *
+ * ---
+ * 
+ * === Bypass-Related Notetags ===
+ * 
+ * ---
+ *
+ * <Bypass Combat Log>
+ *
+ * - Used for: State Notetags
+ * - Insert this notetag inside a state to make its state messages ignored.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Commands
+ * ============================================================================
+ *
+ * The following are Plugin Commands that come with this plugin. They can be
+ * accessed through the Plugin Command event command.
+ *
+ * ---
+ * 
+ * === Combat Log Plugin Commands ===
+ * 
+ * ---
+ *
+ * Combat Log: Add Text
+ * - Adds custom text to the current Combat Log.
+ *
+ *   Text:
+ *   - What text would you like to add to the Combat Log?
+ *
+ *   Icon:
+ *   - What icon would you like to bind to this entry?
+ *
+ * ---
+ *
+ * Combat Log: Add Horizontal Line
+ * - Adds a horizontal line to the current Combat Log.
+ *
+ * ---
+ *
+ * Combat Log: Bypass Text?
+ * - Temporarily bypass adding any new text to the Combat Log until this
+ *   is turned off?
+ *
+ *   Bypass?:
+ *   - Bypass text from being added to the Combat Log temporarily?
+ *
+ * ---
+ *
+ * Combat Log: Hot Key Enable?
+ * - Enables/disables the Combat Log hot key in battle?
+ *
+ *   Enable?:
+ *   - Enables/disables the Combat Log hot key in battle.
+ *
+ * ---
+ * 
+ * === System Plugin Commands ===
+ * 
+ * ---
+ *
+ * System: Show in Main Menu?
+ * - Shows/hides CombatLog menu inside the Main Menu.
+ *
+ *   Show/Hide?:
+ *   - Shows/hides Combat Log command inside the Main Menu.
+ *   - Note! This command will be disabled if the player does not have any
+ *     Combat Logs recorded.
+ *
+ * ---
+ *
+ * System: Show in Party Command?
+ * - Shows/hides CombatLog menu inside the Window_PartyCommand.
+ *
+ *   Show/Hide?:
+ *   - Shows/hides Combat Log command inside Window_PartyCommand.
+ *
+ * ---
+ *
+ * System: Show in Actor Command?
+ * - Shows/hides CombatLog menu inside the Window_ActorCommand.
+ *
+ *   Show/Hide?:
+ *   - Shows/hides Combat Log command inside Window_ActorCommand.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: General Settings
+ * ============================================================================
+ *
+ * General settings for the Combat Log. Determine how the commands appear,
+ * the hot key used, and accessibility through the Main Menu, Party Command
+ * Window, and Actor Command Window.
+ *
+ * ---
+ *
+ * General
+ * 
+ *   Command Name:
+ *   - Name of the 'Combat Log' option in the various menus.
+ * 
+ *   Icon:
+ *   - Icon used for each of the 'Combat Log' options.
+ * 
+ *   Hot Key:
+ *   - This is the key used for quickly opening the Combat Log in battle.
+ * 
+ *   Stored Logs:
+ *   - How many combat logs are stored as a history?
+ *   - This affects the Combat Log menu.
+ *
+ * ---
+ *
+ * Main Menu
+ * 
+ *   Show in Main Menu?:
+ *   - Add the 'Combat Log' option to the Main Menu by default?
+ *   - Note! This command will be disabled if the player does not have any
+ *     Combat Logs recorded.
+ *
+ * ---
+ *
+ * Window_PartyCommand
+ * 
+ *   Show in Window?:
+ *   - Add the 'Combat Log' option to Window_PartyCommand by default?
+ *
+ * ---
+ *
+ * Window_ActorCommand
+ * 
+ *   Show in Window?:
+ *   - Add the 'Combat Log' option to Window_ActorCommand by default?
+ * 
+ *   Help: Combat Log:
+ *   - Help text for Combat Log command.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Combat Log Settings
+ * ============================================================================
+ *
+ * Settings regarding the Combat Log contents. Disable any unwanted information
+ * you want from here to prevent them from being displayed.
+ *
+ * ---
+ *
+ * General
+ * 
+ *   Show Icons?:
+ *   - Show icons in the Combat Log?
+ * 
+ *   Auto Color?:
+ *   - Use auto colors for the Combat Log?
+ *   - Requires VisuMZ_1_MessageCore
+ * 
+ *   Color Numbers?:
+ *   - Color numbers for damage differences?
+ *
+ * ---
+ *
+ * Battle Start
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *
+ * ---
+ *
+ * Enemy Emerge
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Battle Advantages
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Preemptive Icon:
+ *   Surprised Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *
+ * ---
+ *
+ * Start Turn
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Turn Count
+ *
+ * ---
+ *
+ * End Turn
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Turn Count
+ *
+ * ---
+ *
+ * Battle Victory
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Battle Escape
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Battle Defeat
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Action Text
+ * 
+ *   Show Skill Message 1?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Show Skill Message 2?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Show Item Message?:
+ *   - Show this event in the Combat Log?
+ *
+ * ---
+ *
+ * HP Settings
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ *
+ * ---
+ *
+ * HP Settings > HP Heal
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * HP Settings > HP Damage
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * HP Settings > No HP Damage
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * MP Settings
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ *
+ * ---
+ *
+ * MP Settings > MP Heal
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * MP Settings > MP Damage
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * MP Settings > No MP Damage
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * TP Settings
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ *
+ * ---
+ *
+ * TP Settings > TP Heal
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * TP Settings > TP Damage
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * TP Settings > No TP Damage
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text Color:
+ *   - Text color used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * State Settings
+ * 
+ *   Show State Add?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Show State Remove?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Show State Current?:
+ *   - Show this event in the Combat Log?
+ *
+ * ---
+ *
+ * Buff & Debuff Settings
+ * 
+ *   Show Add Buff?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Show Add Debuff?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Show Erase Buff?:
+ *   - Show this event in the Combat Log?
+ *
+ * ---
+ *
+ * Counterattack
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Reflection
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Substitute
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Effect Failure
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Critical Hit
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Missed Hit
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * Evaded Hit
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Background Settings
+ * ============================================================================
+ *
+ * Background settings for Scene_CombatLog. Pretty up the scene to fit the rest
+ * of your game with these settings!
+ *
+ * ---
+ *
+ * Settings
+ * 
+ *   Snapshop Opacity:
+ *   - Snapshot opacity for the scene.
+ * 
+ *   Background 1:
+ *   - Filename used for the bottom background image.
+ *   - Leave empty if you don't wish to use one.
+ * 
+ *   Background 2:
+ *   - Filename used for the upper background image.
+ *   - Leave empty if you don't wish to use one.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Window Settings
+ * ============================================================================
+ *
+ * Settings regarding this plugin's windows. These alter how the windows appear
+ * in the battle and menu scenes.
+ *
+ * ---
+ *
+ * Combat Log (Battle)
+ * 
+ *   Background Type:
+ *   - Select background type for this window.
+ * 
+ *   JS: X, Y, W, H:
+ *   - Code used to determine the dimensions for this window.
+ *
+ * ---
+ *
+ * Combat Log (Menu)
+ * 
+ *   Background Type:
+ *   - Select background type for this window.
+ * 
+ *   JS: X, Y, W, H:
+ *   - Code used to determine the dimensions for this window.
+ *
+ * ---
+ *
+ * Combat History (Menu)
+ * 
+ *   Latest Command:
+ *   - Text displayed for latest battle.
+ *   - %1 - Battle Count
+ * 
+ *   Past Command:
+ *   - Text displayed for past battles.
+ *   - %1 - Battle Count
+ * 
+ *   Background Type:
+ *   - Select background type for this window.
+ * 
+ *   JS: X, Y, W, H:
+ *   - Code used to determine the dimensions for this window.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Plugin Parameters: Compatibility Settings
+ * ============================================================================
+ *
+ * These settings are for creating compatibility with the other VisuStella MZ
+ * plugins that can benefit from having their effects recorded inside of the
+ * Combat Log.
+ *
+ * ---
+ *
+ * Battle System - ATB > Interrupt
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Battle System - CTB > Order Change
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Battle System - STB > Instant
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Anti-Damage Barriers > Cancel Barrier
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name, %2 - State Name
+ *
+ * ---
+ *
+ * Anti-Damage Barriers > Nullify Barrier
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name, %2 - State Name
+ *
+ * ---
+ *
+ * Anti-Damage Barriers > Reduction Barrier
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name, %2 - State Name
+ *
+ * ---
+ *
+ * Anti-Damage Barriers > Absorption Barrier
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name, %2 - State Name, %3 - Damage
+ *
+ * ---
+ *
+ * Anti-Damage Barriers > MP Dispersion Barrier
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name, %2 - State Name, %3 - MP
+ *
+ * ---
+ *
+ * Anti-Damage Barriers > TP Dispersion Barrier
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name, %2 - State Name, %3 - TP
+ *
+ * ---
+ *
+ * Life State Effects > Auto Life
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Life State Effects > Curse
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Life State Effects > Doom
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Life State Effects > Fragile
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Life State Effects > Guts
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Life State Effects > Undead
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ * 
+ *   Text:
+ *   - Text displayed for this event in the Combat Log.
+ *   - You may use text codes.
+ *   - %1 - Target Name
+ *
+ * ---
+ *
+ * Steal Items > Steal Text
+ * 
+ *   Show?:
+ *   - Show this event in the Combat Log?
+ * 
+ *   Icon:
+ *   - Icon used for this event in the Combat Log.
+ *
+ * ---
+ *
+ * ============================================================================
+ * Terms of Use
+ * ============================================================================
+ *
+ * 1. These plugins may be used in free or commercial games provided that they
+ * have been acquired through legitimate means at VisuStella.com and/or any
+ * other official approved VisuStella sources. Exceptions and special
+ * circumstances that may prohibit usage will be listed on VisuStella.com.
+ * 
+ * 2. All of the listed coders found in the Credits section of this plugin must
+ * be given credit in your games or credited as a collective under the name:
+ * "VisuStella".
+ * 
+ * 3. You may edit the source code to suit your needs, so long as you do not
+ * claim the source code belongs to you. VisuStella also does not take
+ * responsibility for the plugin if any changes have been made to the plugin's
+ * code, nor does VisuStella take responsibility for user-provided custom code
+ * used for custom control effects including advanced JavaScript notetags
+ * and/or plugin parameters that allow custom JavaScript code.
+ * 
+ * 4. You may NOT redistribute these plugins nor take code from this plugin to
+ * use as your own. These plugins and their code are only to be downloaded from
+ * VisuStella.com and other official/approved VisuStella sources. A list of
+ * official/approved sources can also be found on VisuStella.com.
+ *
+ * 5. VisuStella is not responsible for problems found in your game due to
+ * unintended usage, incompatibility problems with plugins outside of the
+ * VisuStella MZ library, plugin versions that aren't up to date, nor
+ * responsible for the proper working of compatibility patches made by any
+ * third parties. VisuStella is not responsible for errors caused by any
+ * user-provided custom code used for custom control effects including advanced
+ * JavaScript notetags and/or plugin parameters that allow JavaScript code.
+ *
+ * 6. If a compatibility patch needs to be made through a third party that is
+ * unaffiliated with VisuStella that involves using code from the VisuStella MZ
+ * library, contact must be made with a member from VisuStella and have it
+ * approved. The patch would be placed on VisuStella.com as a free download
+ * to the public. Such patches cannot be sold for monetary gain, including
+ * commissions, crowdfunding, and/or donations.
+ * 
+ * 7. If this VisuStella MZ plugin is a paid product, all project team members
+ * must purchase their own individual copies of the paid product if they are to
+ * use it. Usage includes working on related game mechanics, managing related
+ * code, and/or using related Plugin Commands and features. Redistribution of
+ * the plugin and/or its code to other members of the team is NOT allowed
+ * unless they own the plugin itself as that conflicts with Article 4.
+ * 
+ * 8. Any extensions and/or addendums made to this plugin's Terms of Use can be
+ * found on VisuStella.com and must be followed.
+ *
+ * ============================================================================
+ * Credits
+ * ============================================================================
+ * 
+ * If you are using this plugin, credit the following people in your game:
+ * 
+ * Team VisuStella
+ * * Yanfly
+ * * Trihan
+ * * Arisu
+ * * Irina
+ *
+ * ============================================================================
+ * Changelog
+ * ============================================================================
+ * 
+ * Version 1.08: April 9, 2021
+ * * Documentation Update!
+ * ** Help file updated for new features.
+ * * New Features!
+ * ** New Plugin Parameters added by Olivia!
+ * *** Plugin Parameters > General Settings > Help: Combat Log
+ * **** Help text for Combat Log command.
+ * 
+ * Version 1.07: March 19, 2021
+ * * Bug Fixes!
+ * ** Combat log should no longer mask some windows from appearing and is now
+ *    instead placed as a non-window object. Fix made by Arisu.
+ * 
+ * Version 1.06: March 12, 2021
+ * * Bug Fixes!
+ * ** Icons for counters, reflections, and substitutes should now display
+ *    properly in the combat log. Fix made by Arisu.
+ * ** Turn data should now display properly in TPB-base battle systems.
+ *    Fix made by Arisu.
+ * ** Switching out to the Options Scene or Party Scene should no longer clear
+ *    the Combat Log in-battle. Fix made by Arisu.
+ * 
+ * Version 1.05: January 22, 2021
+ * * Feature Update!
+ * ** Dimmed background sprite now expands through the width of the screen
+ *    while in battle to no longer display the jagged edges. Update by Irina.
+ * 
+ * Version 1.04: January 15, 2021
+ * * Feature Update!
+ * ** Any entries added to the Combat Log with \V[x] will now have their exact
+ *    variable data stored at the time instead of displaying their current
+ *    variable value. Update made by Irina.
+ * 
+ * Version 1.03: January 8, 2021
+ * * Documentation Update!
+ * ** Help file updated for new features.
+ * * New Feature!
+ * ** New Plugin Command added by Irina.
+ * *** Plugin Parameters > General Settings > Stored Logs
+ * **** How many combat logs are stored as a history?
+ * 
+ * Version 1.02: January 1, 2021
+ * * Bug Fixes!
+ * ** Compatibility with the Absorption Barrier should be fixed. Fix made by
+ *    Yanfly.
+ * 
+ * Version 1.01: December 25, 2020
+ * * Feature Update!
+ * ** Combat Log when opened with the hot key will automatically close itself
+ *    if the Message Window is open. Update made by Yanfly.
+ *
+ * Version 1.00: January 15, 2021
+ * * Finished Plugin!
+ *
+ * ============================================================================
+ * End of Helpfile
+ * ============================================================================
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command CombatLogAddText
+ * @text Combat Log: Add Text
+ * @desc Adds custom text to the current Combat Log.
+ *
+ * @arg Text:str
+ * @text Text
+ * @desc What text would you like to add to the Combat Log?
+ * @default Custom
+ *
+ * @arg Icon:num
+ * @text Icon
+ * @desc What icon would you like to bind to this entry?
+ * @default 87
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command CombatLogAddHorzLine
+ * @text Combat Log: Add Horizontal Line
+ * @desc Adds a horizontal line to the current Combat Log.
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command CombatLogBypass
+ * @text Combat Log: Bypass Text?
+ * @desc Temporarily bypass adding any new text to the Combat Log until this is turned off?
+ *
+ * @arg Bypass:eval
+ * @text Bypass?
+ * @type boolean
+ * @on Bypass Text
+ * @off Add Normally
+ * @desc Bypass text from being added to the Combat Log temporarily?
+ * @default true
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command CombatLogEnableHotKey
+ * @text Combat Log: Hot Key Enable?
+ * @desc Enables/disables the Combat Log hot key in battle?
+ *
+ * @arg Enable:eval
+ * @text Enable?
+ * @type boolean
+ * @on Enable
+ * @off Disable
+ * @desc Enables/disables the Combat Log hot key in battle.
+ * @default true
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command SystemShowCombatLogMenu
+ * @text System: Show in Main Menu?
+ * @desc Shows/hides CombatLog menu inside the Main Menu.
+ *
+ * @arg Show:eval
+ * @text Show/Hide?
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Shows/hides Combat Log command inside the Main Menu.
+ * @default true
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command SystemShowCombatLogParty
+ * @text System: Show in Party Command?
+ * @desc Shows/hides CombatLog menu inside the Window_PartyCommand.
+ *
+ * @arg Show:eval
+ * @text Show/Hide?
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Shows/hides Combat Log command inside Window_PartyCommand.
+ * @default true
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @command SystemShowCombatLogActor
+ * @text System: Show in Actor Command?
+ * @desc Shows/hides CombatLog menu inside the Window_ActorCommand.
+ *
+ * @arg Show:eval
+ * @text Show/Hide?
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Shows/hides Combat Log command inside Window_ActorCommand.
+ * @default true
+ *
+ * @ --------------------------------------------------------------------------
+ *
+ * @ ==========================================================================
+ * @ Plugin Parameters
+ * @ ==========================================================================
+ *
+ * @param BreakHead
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param CombatLog
+ * @default Plugin Parameters
+ *
+ * @param ATTENTION
+ * @default READ THE HELP FILE
+ *
+ * @param BreakSettings
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param General:struct
+ * @text General Settings
+ * @type struct<General>
+ * @desc General settings for the Combat Log.
+ * @default {"General":"","Name:str":"Combat Log","Icon:num":"189","HotKey:str":"shift","MainMenu":"","ShowMainMenu:eval":"true","PartyCommand":"","ShowPartyCommand:eval":"true","ActorCommand":"","ShowActorCommand:eval":"true"}
+ *
+ * @param CombatLog:struct
+ * @text Combat Log Settings
+ * @type struct<CombatLog>
+ * @desc Settings regarding the Combat Log contents.
+ * @default {"General":"","ShowIcons:eval":"true","AutoColor:eval":"true","ColorNumbers:eval":"true","BattleStart":"","ShowBattleStart:eval":"true","IconBattleStart:num":"97","TextBattleStart:str":"\\C[4]Battle Start!\\C[0]","EnemyEmerge":"","ShowEnemyEmerge:eval":"true","IconEnemyEmerge:num":"5","Advantages":"","ShowAdvantages:eval":"true","IconPreemptive:num":"77","IconSurprise:num":"78","StartTurn":"","ShowStartTurn:eval":"true","IconStartTurn:num":"97","TextStartTurn:str":"\\C[4]Turn \\C[5]%1\\C[4]: \\C[6]Start!","EndTurn":"","ShowEndTurn:eval":"true","IconEndTurn:num":"97","TextEndTurn:str":"\\C[4]Turn \\C[5]%1\\C[4]: \\C[6]End!","Victory":"","ShowVictory:eval":"true","IconVictory:num":"87","Escape":"","ShowEscape:eval":"true","IconEscape:num":"82","Defeat":"","ShowDefeat:eval":"true","IconDefeat:num":"1","Actions":"","ShowSkillMessage1:eval":"true","ShowSkillMessage2:eval":"true","ShowItemMessage:eval":"true","HP":"","ShowHP:eval":"true","HealHP":"","IconHealHP:num":"72","TextColorHealHP:num":"24","DmgHP":"","IconDmgHP:num":"168","TextColorDmgHP:num":"2","NoDmgHP":"","IconNoDmgHP:num":"81","TextColorNoDmgHP:num":"6","MP":"","ShowMP:eval":"true","HealMP":"","IconHealMP:num":"72","TextColorHealMP:num":"4","DmgMP":"","IconDmgMP:num":"171","TextColorDmgMP:num":"5","NoDmgMP":"","IconNoDmgMP:num":"81","TextColorNoDmgMP:num":"6","TP":"","ShowTP:eval":"true","HealTP":"","IconHealTP:num":"164","TextColorHealTP:num":"24","DmgTP":"","IconDmgTP:num":"170","TextColorDmgTP:num":"28","NoDmgTP":"","IconNoDmgTP:num":"81","TextColorNoDmgTP:num":"6","States":"","ShowStateAdd:eval":"true","ShowStateRemove:eval":"true","ShowStateCurrent:eval":"true","Buffs":"","ShowAddBuff:eval":"true","ShowAddDebuff:eval":"true","ShowEraseBuff:eval":"true","Counter":"","ShowCounter:eval":"true","IconCounter:num":"77","Reflect":"","ShowReflect:eval":"true","IconReflect:num":"81","Subst":"","ShowSubst:eval":"true","IconSubst:num":"81","Fail":"","ShowFail:eval":"true","IconFail:num":"166","Critical":"","ShowCritical:eval":"true","IconCritical:num":"87","Miss":"","ShowMiss:eval":"true","IconMiss:num":"82","Evade":"","ShowEvade:eval":"true","IconEvade:num":"82"}
+ *
+ * @param BgSettings:struct
+ * @text Background Settings
+ * @type struct<BgSettings>
+ * @desc Background settings for Scene_CombatLog.
+ * @default {"SnapshotOpacity:num":"192","BgFilename1:str":"","BgFilename2:str":""}
+ *
+ * @param Window:struct
+ * @text Window Settings
+ * @type struct<Window>
+ * @desc Settings regarding this plugin's windows.
+ * @default {"CombatLogBattle":"","CombatLogBattle_BgType:num":"1","CombatLogBattle_RectJS:func":"\"const wx = 0;\\nconst wy = 0;\\nconst ww = Graphics.boxWidth;\\nconst wh = Graphics.boxHeight;\\nreturn new Rectangle(wx, wy, ww, wh);\"","CombatLogMenu":"","CombatLogMenu_BgType:num":"0","CombatLogMenu_RectJS:func":"\"const wx = 0;\\nconst wy = this._historyWindow.y + this._historyWindow.height;\\nconst ww = Graphics.boxWidth;\\nconst wh = this.mainAreaHeight() - this._historyWindow.height;\\nreturn new Rectangle(wx, wy, ww, wh);\"","CombatHistory":"","CombatHistoryLatest:str":"Latest","CombatHistoryPrevious:str":"Battle #%1","CombatHistory_BgType:num":"0","CombatHistory_RectJS:func":"\"const ww = Graphics.boxWidth;\\nconst wh = this.calcWindowHeight(1, true);\\nconst wx = 0;\\nconst wy = this.mainAreaTop();\\nreturn new Rectangle(wx, wy, ww, wh);\""}
+ * 
+ * @param -
+ *
+ * @param Compatibility:struct
+ * @text Compatibility Settings
+ * @type struct<Compatibility>
+ * @desc Compatibility settings with other VisuStella MZ plugins.
+ * @default {"VisuMZ_2_BattleSystemATB":"","VisuMZ_2_BattleSystemATB_Interrupt":"","ShowBattleSysAtbInterrupt:eval":"true","IconBattleSysAtbInterrupt:num":"78","TextBattleSysAtbInterrupt:str":"%1 has been interrupted!","VisuMZ_2_BattleSystemCTB":"","VisuMZ_2_BattleSystemCTB_OrderChange":"","ShowBattleSysCtbOrderChange:eval":"true","IconBattleSysCtbOrderChange:num":"75","TextBattleSysCtbOrderChange:str":"%1's turn order has changed!","VisuMZ_2_BattleSystemSTB":"","VisuMZ_2_BattleSystemSTB_Instant":"","ShowBattleSysStbInstant:eval":"true","IconBattleSysStbInstant:num":"73","TextBattleSysStbInstant:str":"%1's gains an extra action!","VisuMZ_3_AntiDmgBarriers":"","VisuMZ_3_AntiDmgBarriers_Cancel":"","Show_AntiDmgBarrier_Cancel:eval":"true","Text_AntiDmgBarrier_Cancel:str":"%2 cancels damage for %1!","VisuMZ_3_AntiDmgBarriers_Nullify":"","Show_AntiDmgBarrier_Nullify:eval":"true","Text_AntiDmgBarrier_Nullify:str":"%2 nullifies damage for %1!","VisuMZ_3_AntiDmgBarriers_Reduce":"","Show_AntiDmgBarrier_Reduce:eval":"true","Text_AntiDmgBarrier_Reduce:str":"%2 reduces damage for %1!","VisuMZ_3_AntiDmgBarriers_Absorb":"","Show_AntiDmgBarrier_Absorb:eval":"true","Text_AntiDmgBarrier_Absorb:str":"%2 absorbs \\C[5]%2\\C[0] damage for %1!","VisuMZ_3_AntiDmgBarriers_MpDisperse":"","Show_AntiDmgBarrier_MpDisperse:eval":"true","Text_AntiDmgBarrier_MpDisperse:str":"%2 dispersed damage to %1's %3!","VisuMZ_3_AntiDmgBarriers_TpDisperse":"","Show_AntiDmgBarrier_TpDisperse:eval":"true","Text_AntiDmgBarrier_TpDisperse:str":"%2 dispersed damage to %1's %3!","VisuMZ_3_LifeStateEffects":"","VisuMZ_3_LifeStateEffects_AutoLife":"","Show_LifeStateEffects_AutoLife:eval":"true","Icon_LifeStateEffects_AutoLife:num":"70","Text_LifeStateEffects_AutoLife:str":"%1 is automatically revived!","VisuMZ_3_LifeStateEffects_Curse":"","Show_LifeStateEffects_Curse:eval":"true","Icon_LifeStateEffects_Curse:num":"71","Text_LifeStateEffects_Curse:str":"%1's curse takes hold...","VisuMZ_3_LifeStateEffects_Doom":"","Show_LifeStateEffects_Doom:eval":"true","Icon_LifeStateEffects_Doom:num":"1","Text_LifeStateEffects_Doom:str":"%1 has fallen to doom.","VisuMZ_3_LifeStateEffects_Fragile":"","Show_LifeStateEffects_Fragile:eval":"true","Icon_LifeStateEffects_Fragile:num":"166","Text_LifeStateEffects_Fragile:str":"%1 was too fragile!","VisuMZ_3_LifeStateEffects_Guts":"","Show_LifeStateEffects_Guts:eval":"true","Icon_LifeStateEffects_Guts:num":"77","Text_LifeStateEffects_Guts:str":"%1 powers through a fatal blow!","VisuMZ_3_LifeStateEffects_Undead":"","Show_LifeStateEffects_Undead:eval":"true","Icon_LifeStateEffects_Undead:num":"10","Text_LifeStateEffects_Undead:str":"%1 suffers from being undead!","VisuMZ_3_StealItems":"","VisuMZ_3_StealItems_Steal":"","Show_StealItems_Steal:eval":"true","Icon_StealItems_Steal:num":"142"}
+ *
+ * @param BreakEnd1
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ * @param End Of
+ * @default Plugin Parameters
+ *
+ * @param BreakEnd2
+ * @text --------------------------
+ * @default ----------------------------------
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * General Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~General:
+ *
+ * @param General
+ *
+ * @param Name:str
+ * @text Command Name
+ * @parent General
+ * @desc Name of the 'Combat Log' option in the various menus.
+ * @default Combat Log
+ *
+ * @param Icon:num
+ * @text Icon
+ * @parent General
+ * @desc Icon used for each of the 'Combat Log' options.
+ * @default 189
+ *
+ * @param HotKey:str
+ * @text Hot Key
+ * @parent General
+ * @type combo
+ * @option none
+ * @option tab
+ * @option shift
+ * @option control
+ * @option pageup
+ * @option pagedown
+ * @desc This is the key used for quickly opening the Combat Log in battle.
+ * @default shift
+ *
+ * @param StoredLogs:num
+ * @text Stored Logs
+ * @parent General
+ * @desc How many combat logs are stored as a history?
+ * This affects the Combat Log menu.
+ * @default 5
+ *
+ * @param MainMenu
+ * @text Main Menu
+ *
+ * @param ShowMainMenu:eval
+ * @text Show in Main Menu?
+ * @parent MainMenu
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Add the 'Combat Log' option to the Main Menu by default?
+ * @default true
+ *
+ * @param PartyCommand
+ * @text Window_PartyCommand
+ *
+ * @param ShowPartyCommand:eval
+ * @text Show in Window?
+ * @parent PartyCommand
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Add the 'Combat Log' option to Window_PartyCommand by default?
+ * @default true
+ *
+ * @param ActorCommand
+ * @text Window_ActorCommand
+ *
+ * @param ShowActorCommand:eval
+ * @text Show in Window?
+ * @parent ActorCommand
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Add the 'Combat Log' option to Window_ActorCommand by default?
+ * @default true
+ *
+ * @param BattleHelpCombatLog:json
+ * @text Help: Combat Log
+ * @parent ActorCommand
+ * @type note
+ * @desc Help text for Combat Log command.
+ * Requires VisuMZ_1_BattleCore!
+ * @default "View the combat log."
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Combat Log Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~CombatLog:
+ *
+ * @param General
+ *
+ * @param ShowIcons:eval
+ * @text Show Icons?
+ * @parent General
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show icons in the Combat Log?
+ * @default true
+ *
+ * @param AutoColor:eval
+ * @text Auto Color?
+ * @parent General
+ * @type boolean
+ * @on Use Auto Color
+ * @off Don't Use
+ * @desc Use auto colors for the Combat Log?
+ * Requires VisuMZ_1_MessageCore
+ * @default true
+ *
+ * @param ColorNumbers:eval
+ * @text Color Numbers?
+ * @parent General
+ * @type boolean
+ * @on Color Numbers
+ * @off Don't Color
+ * @desc Color numbers for damage differences?
+ * @default true
+ * 
+ * @param BattleStart
+ * @text Battle Start
+ *
+ * @param ShowBattleStart:eval
+ * @text Show?
+ * @parent BattleStart
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconBattleStart:num
+ * @text Icon
+ * @parent BattleStart
+ * @desc Icon used for this event in the Combat Log.
+ * @default 97
+ *
+ * @param TextBattleStart:str
+ * @text Text
+ * @parent BattleStart
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes.
+ * @default \C[4]Battle Start!\C[0]
+ * 
+ * @param EnemyEmerge
+ * @text Enemy Emerge
+ *
+ * @param ShowEnemyEmerge:eval
+ * @text Show?
+ * @parent EnemyEmerge
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconEnemyEmerge:num
+ * @text Icon
+ * @parent EnemyEmerge
+ * @desc Icon used for this event in the Combat Log.
+ * @default 5
+ * 
+ * @param Advantages
+ * @text Battle Advantages
+ *
+ * @param ShowAdvantages:eval
+ * @text Show?
+ * @parent Advantages
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconPreemptive:num
+ * @text Preemptive Icon
+ * @parent Advantages
+ * @desc Icon used for this event in the Combat Log.
+ * @default 77
+ *
+ * @param IconSurprise:num
+ * @text Surprised Icon
+ * @parent Advantages
+ * @desc Icon used for this event in the Combat Log.
+ * @default 78
+ * 
+ * @param StartTurn
+ * @text Start Turn
+ *
+ * @param ShowStartTurn:eval
+ * @text Show?
+ * @parent StartTurn
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconStartTurn:num
+ * @text Icon
+ * @parent StartTurn
+ * @desc Icon used for this event in the Combat Log.
+ * @default 97
+ *
+ * @param TextStartTurn:str
+ * @text Text
+ * @parent StartTurn
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Turn Count
+ * @default \C[4]Turn \C[5]%1\C[4]: \C[6]Start!
+ * 
+ * @param EndTurn
+ * @text End Turn
+ *
+ * @param ShowEndTurn:eval
+ * @text Show?
+ * @parent EndTurn
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconEndTurn:num
+ * @text Icon
+ * @parent EndTurn
+ * @desc Icon used for this event in the Combat Log.
+ * @default 97
+ *
+ * @param TextEndTurn:str
+ * @text Text
+ * @parent EndTurn
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Turn Count
+ * @default \C[4]Turn \C[5]%1\C[4]: \C[6]End!
+ * 
+ * @param Victory
+ * @text Battle Victory
+ *
+ * @param ShowVictory:eval
+ * @text Show?
+ * @parent Victory
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconVictory:num
+ * @text Icon
+ * @parent Victory
+ * @desc Icon used for this event in the Combat Log.
+ * @default 87
+ * 
+ * @param Escape
+ * @text Battle Escape
+ *
+ * @param ShowEscape:eval
+ * @text Show?
+ * @parent Escape
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconEscape:num
+ * @text Icon
+ * @parent Escape
+ * @desc Icon used for this event in the Combat Log.
+ * @default 82
+ * 
+ * @param Defeat
+ * @text Battle Defeat
+ *
+ * @param ShowDefeat:eval
+ * @text Show?
+ * @parent Defeat
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconDefeat:num
+ * @text Icon
+ * @parent Defeat
+ * @desc Icon used for this event in the Combat Log.
+ * @default 1
+ * 
+ * @param Actions
+ * @text Action Text
+ *
+ * @param ShowSkillMessage1:eval
+ * @text Show Skill Message 1?
+ * @parent Actions
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param ShowSkillMessage2:eval
+ * @text Show Skill Message 2?
+ * @parent Actions
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param ShowItemMessage:eval
+ * @text Show Item Message?
+ * @parent Actions
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ * 
+ * @param HP
+ * @text HP Settings
+ *
+ * @param ShowHP:eval
+ * @text Show?
+ * @parent HP
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ * 
+ * @param HealHP
+ * @text HP Heal
+ * @parent HP
+ *
+ * @param IconHealHP:num
+ * @text Icon
+ * @parent HealHP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 72
+ *
+ * @param TextColorHealHP:num
+ * @text Text Color
+ * @parent HealHP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 24
+ * 
+ * @param DmgHP
+ * @text HP Damage
+ * @parent HP
+ *
+ * @param IconDmgHP:num
+ * @text Icon
+ * @parent DmgHP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 168
+ *
+ * @param TextColorDmgHP:num
+ * @text Text Color
+ * @parent DmgHP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 2
+ * 
+ * @param NoDmgHP
+ * @text No HP Damage
+ * @parent HP
+ *
+ * @param IconNoDmgHP:num
+ * @text Icon
+ * @parent NoDmgHP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 81
+ *
+ * @param TextColorNoDmgHP:num
+ * @text Text Color
+ * @parent NoDmgHP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 6
+ * 
+ * @param MP
+ * @text MP Settings
+ *
+ * @param ShowMP:eval
+ * @text Show?
+ * @parent MP
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ * 
+ * @param HealMP
+ * @text MP Heal
+ * @parent MP
+ *
+ * @param IconHealMP:num
+ * @text Icon
+ * @parent HealMP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 72
+ *
+ * @param TextColorHealMP:num
+ * @text Text Color
+ * @parent HealMP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 4
+ * 
+ * @param DmgMP
+ * @text MP Damage
+ * @parent MP
+ *
+ * @param IconDmgMP:num
+ * @text Icon
+ * @parent DmgMP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 171
+ *
+ * @param TextColorDmgMP:num
+ * @text Text Color
+ * @parent DmgMP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 5
+ * 
+ * @param NoDmgMP
+ * @text No MP Damage
+ * @parent MP
+ *
+ * @param IconNoDmgMP:num
+ * @text Icon
+ * @parent NoDmgMP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 81
+ *
+ * @param TextColorNoDmgMP:num
+ * @text Text Color
+ * @parent NoDmgMP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 6
+ * 
+ * @param TP
+ * @text TP Settings
+ *
+ * @param ShowTP:eval
+ * @text Show?
+ * @parent TP
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ * 
+ * @param HealTP
+ * @text TP Heal
+ * @parent TP
+ *
+ * @param IconHealTP:num
+ * @text Icon
+ * @parent HealTP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 164
+ *
+ * @param TextColorHealTP:num
+ * @text Text Color
+ * @parent HealTP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 24
+ * 
+ * @param DmgTP
+ * @text TP Damage
+ * @parent TP
+ *
+ * @param IconDmgTP:num
+ * @text Icon
+ * @parent DmgTP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 170
+ *
+ * @param TextColorDmgTP:num
+ * @text Text Color
+ * @parent DmgTP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 28
+ * 
+ * @param NoDmgTP
+ * @text No TP Damage
+ * @parent TP
+ *
+ * @param IconNoDmgTP:num
+ * @text Icon
+ * @parent NoDmgTP
+ * @desc Icon used for this event in the Combat Log.
+ * @default 81
+ *
+ * @param TextColorNoDmgTP:num
+ * @text Text Color
+ * @parent NoDmgTP
+ * @type number
+ * @min 0
+ * @max 31
+ * @desc Text color used for this event in the Combat Log.
+ * @default 6
+ * 
+ * @param States
+ * @text State Settings
+ *
+ * @param ShowStateAdd:eval
+ * @text Show State Add?
+ * @parent States
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param ShowStateRemove:eval
+ * @text Show State Remove?
+ * @parent States
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param ShowStateCurrent:eval
+ * @text Show State Current?
+ * @parent States
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ * 
+ * @param Buffs
+ * @text Buff & Debuff Settings
+ *
+ * @param ShowAddBuff:eval
+ * @text Show Add Buff?
+ * @parent Buffs
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param ShowAddDebuff:eval
+ * @text Show Add Debuff?
+ * @parent Buffs
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param ShowEraseBuff:eval
+ * @text Show Erase Buff?
+ * @parent Buffs
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ * 
+ * @param Counter
+ * @text Counterattack
+ *
+ * @param ShowCounter:eval
+ * @text Show?
+ * @parent Counter
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconCounter:num
+ * @text Icon
+ * @parent Counter
+ * @desc Icon used for this event in the Combat Log.
+ * @default 77
+ * 
+ * @param Reflect
+ * @text Reflection
+ *
+ * @param ShowReflect:eval
+ * @text Show?
+ * @parent Reflect
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconReflect:num
+ * @text Icon
+ * @parent Reflect
+ * @desc Icon used for this event in the Combat Log.
+ * @default 81
+ * 
+ * @param Subst
+ * @text Substitute
+ *
+ * @param ShowSubst:eval
+ * @text Show?
+ * @parent Subst
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconSubst:num
+ * @text Icon
+ * @parent Subst
+ * @desc Icon used for this event in the Combat Log.
+ * @default 81
+ * 
+ * @param Fail
+ * @text Effect Failure
+ *
+ * @param ShowFail:eval
+ * @text Show?
+ * @parent Fail
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconFail:num
+ * @text Icon
+ * @parent Fail
+ * @desc Icon used for this event in the Combat Log.
+ * @default 166
+ * 
+ * @param Critical
+ * @text Critical Hit
+ *
+ * @param ShowCritical:eval
+ * @text Show?
+ * @parent Critical
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconCritical:num
+ * @text Icon
+ * @parent Critical
+ * @desc Icon used for this event in the Combat Log.
+ * @default 87
+ * 
+ * @param Miss
+ * @text Missed Hit
+ *
+ * @param ShowMiss:eval
+ * @text Show?
+ * @parent Miss
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconMiss:num
+ * @text Icon
+ * @parent Miss
+ * @desc Icon used for this event in the Combat Log.
+ * @default 82
+ * 
+ * @param Evade
+ * @text Evaded Hit
+ *
+ * @param ShowEvade:eval
+ * @text Show?
+ * @parent Evade
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconEvade:num
+ * @text Icon
+ * @parent Evade
+ * @desc Icon used for this event in the Combat Log.
+ * @default 82
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Background Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~BgSettings:
+ *
+ * @param SnapshotOpacity:num
+ * @text Snapshop Opacity
+ * @type number
+ * @min 0
+ * @max 255
+ * @desc Snapshot opacity for the scene.
+ * @default 192
+ *
+ * @param BgFilename1:str
+ * @text Background 1
+ * @type file
+ * @dir img/titles1/
+ * @desc Filename used for the bottom background image.
+ * Leave empty if you don't wish to use one.
+ * @default 
+ *
+ * @param BgFilename2:str
+ * @text Background 2
+ * @type file
+ * @dir img/titles2/
+ * @desc Filename used for the upper background image.
+ * Leave empty if you don't wish to use one.
+ * @default 
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Window Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~Window:
+ *
+ * @param CombatLogBattle
+ * @text Combat Log (Battle)
+ *
+ * @param CombatLogBattle_BgType:num
+ * @text Background Type
+ * @parent CombatLogBattle
+ * @type select
+ * @option 0 - Window
+ * @value 0
+ * @option 1 - Dim
+ * @value 1
+ * @option 2 - Transparent
+ * @value 2
+ * @desc Select background type for this window.
+ * @default 1
+ *
+ * @param CombatLogBattle_RectJS:func
+ * @text JS: X, Y, W, H
+ * @parent CombatLogBattle
+ * @type note
+ * @desc Code used to determine the dimensions for this window.
+ * @default "const wx = 0;\nconst wy = 0;\nconst ww = Graphics.boxWidth;\nconst wh = Graphics.boxHeight;\nreturn new Rectangle(wx, wy, ww, wh);"
+ *
+ * @param CombatLogMenu
+ * @text Combat Log (Menu)
+ *
+ * @param CombatLogMenu_BgType:num
+ * @text Background Type
+ * @parent CombatLogMenu
+ * @type select
+ * @option 0 - Window
+ * @value 0
+ * @option 1 - Dim
+ * @value 1
+ * @option 2 - Transparent
+ * @value 2
+ * @desc Select background type for this window.
+ * @default 0
+ *
+ * @param CombatLogMenu_RectJS:func
+ * @text JS: X, Y, W, H
+ * @parent CombatLogMenu
+ * @type note
+ * @desc Code used to determine the dimensions for this window.
+ * @default "const wx = 0;\nconst wy = this._historyWindow.y + this._historyWindow.height;\nconst ww = Graphics.boxWidth;\nconst wh = this.mainAreaHeight() - this._historyWindow.height;\nreturn new Rectangle(wx, wy, ww, wh);"
+ *
+ * @param CombatHistory
+ * @text Combat History (Menu)
+ *
+ * @param CombatHistoryLatest:str
+ * @text Latest Command
+ * @parent CombatHistory
+ * @desc Text displayed for latest battle.
+ * %1 - Battle Count
+ * @default Latest
+ *
+ * @param CombatHistoryPrevious:str
+ * @text Past Command
+ * @parent CombatHistory
+ * @desc Text displayed for past battles.
+ * %1 - Battle Count
+ * @default Battle #%1
+ *
+ * @param CombatHistory_BgType:num
+ * @text Background Type
+ * @parent CombatHistory
+ * @type select
+ * @option 0 - Window
+ * @value 0
+ * @option 1 - Dim
+ * @value 1
+ * @option 2 - Transparent
+ * @value 2
+ * @desc Select background type for this window.
+ * @default 0
+ *
+ * @param CombatHistory_RectJS:func
+ * @text JS: X, Y, W, H
+ * @parent CombatHistory
+ * @type note
+ * @desc Code used to determine the dimensions for this window.
+ * @default "const ww = Graphics.boxWidth;\nconst wh = this.calcWindowHeight(1, true);\nconst wx = 0;\nconst wy = this.mainAreaTop();\nreturn new Rectangle(wx, wy, ww, wh);"
+ *
+ */
+/* ----------------------------------------------------------------------------
+ * Compatibility Settings
+ * ----------------------------------------------------------------------------
+ */
+/*~struct~Compatibility:
+ *
+ * @param VisuMZ_2_BattleSystemATB
+ * @text Battle System - ATB
+ * 
+ * @param VisuMZ_2_BattleSystemATB_Interrupt
+ * @text Interrupt
+ * @parent VisuMZ_2_BattleSystemATB
+ *
+ * @param ShowBattleSysAtbInterrupt:eval
+ * @text Show?
+ * @parent VisuMZ_2_BattleSystemATB_Interrupt
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconBattleSysAtbInterrupt:num
+ * @text Icon
+ * @parent VisuMZ_2_BattleSystemATB_Interrupt
+ * @desc Icon used for this event in the Combat Log.
+ * @default 78
+ *
+ * @param TextBattleSysAtbInterrupt:str
+ * @text Text
+ * @parent VisuMZ_2_BattleSystemATB_Interrupt
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1 has been interrupted!
+ *
+ * @param VisuMZ_2_BattleSystemCTB
+ * @text Battle System - CTB
+ * 
+ * @param VisuMZ_2_BattleSystemCTB_OrderChange
+ * @text Order Change
+ * @parent VisuMZ_2_BattleSystemCTB
+ *
+ * @param ShowBattleSysCtbOrderChange:eval
+ * @text Show?
+ * @parent VisuMZ_2_BattleSystemCTB_OrderChange
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconBattleSysCtbOrderChange:num
+ * @text Icon
+ * @parent VisuMZ_2_BattleSystemCTB_OrderChange
+ * @desc Icon used for this event in the Combat Log.
+ * @default 75
+ *
+ * @param TextBattleSysCtbOrderChange:str
+ * @text Text
+ * @parent VisuMZ_2_BattleSystemCTB_OrderChange
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1's turn order has changed!
+ *
+ * @param VisuMZ_2_BattleSystemSTB
+ * @text Battle System - STB
+ * 
+ * @param VisuMZ_2_BattleSystemSTB_Instant
+ * @text Instant
+ * @parent VisuMZ_2_BattleSystemSTB
+ *
+ * @param ShowBattleSysStbInstant:eval
+ * @text Show?
+ * @parent VisuMZ_2_BattleSystemSTB_Instant
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param IconBattleSysStbInstant:num
+ * @text Icon
+ * @parent VisuMZ_2_BattleSystemSTB_Instant
+ * @desc Icon used for this event in the Combat Log.
+ * @default 73
+ *
+ * @param TextBattleSysStbInstant:str
+ * @text Text
+ * @parent VisuMZ_2_BattleSystemSTB_Instant
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1's gains an extra action!
+ *
+ * @param VisuMZ_3_AntiDmgBarriers
+ * @text Anti-Damage Barriers
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_Cancel
+ * @text Cancel Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_Cancel:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_Cancel
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_Cancel:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_Cancel
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name
+ * @default %2 cancels damage for %1!
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_Nullify
+ * @text Nullify Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_Nullify:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_Nullify
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_Nullify:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_Nullify
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name
+ * @default %2 nullifies damage for %1!
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_Reduce
+ * @text Reduction Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_Reduce:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_Reduce
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_Reduce:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_Reduce
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name
+ * @default %2 reduces damage for %1!
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_Reduce
+ * @text Reduction Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_Reduce:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_Reduce
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_Reduce:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_Reduce
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name
+ * @default %2 reduces damage for %1!
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_Absorb
+ * @text Absorption Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_Absorb:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_Absorb
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_Absorb:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_Absorb
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name, %3 - Damage
+ * @default %2 absorbs \C[5]%2\C[0] damage for %1!
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_MpDisperse
+ * @text MP Dispersion Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_MpDisperse:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_MpDisperse
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_MpDisperse:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_MpDisperse
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name, %3 - MP
+ * @default %2 dispersed damage to %1's %3!
+ * 
+ * @param VisuMZ_3_AntiDmgBarriers_TpDisperse
+ * @text TP Dispersion Barrier
+ * @parent VisuMZ_3_AntiDmgBarriers
+ *
+ * @param Show_AntiDmgBarrier_TpDisperse:eval
+ * @text Show?
+ * @parent VisuMZ_3_AntiDmgBarriers_TpDisperse
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Text_AntiDmgBarrier_TpDisperse:str
+ * @text Text
+ * @parent VisuMZ_3_AntiDmgBarriers_TpDisperse
+ * @desc Text displayed for this event in the Combat Log.
+ * %1 - Target Name, %2 - State Name, %3 - TP
+ * @default %2 dispersed damage to %1's %3!
+ *
+ * @param VisuMZ_3_LifeStateEffects
+ * @text Life State Effects
+ * 
+ * @param VisuMZ_3_LifeStateEffects_AutoLife
+ * @text Auto Life
+ * @parent VisuMZ_3_LifeStateEffects
+ *
+ * @param Show_LifeStateEffects_AutoLife:eval
+ * @text Show?
+ * @parent VisuMZ_3_LifeStateEffects_AutoLife
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_LifeStateEffects_AutoLife:num
+ * @text Icon
+ * @parent VisuMZ_3_LifeStateEffects_AutoLife
+ * @desc Icon used for this event in the Combat Log.
+ * @default 70
+ *
+ * @param Text_LifeStateEffects_AutoLife:str
+ * @text Text
+ * @parent VisuMZ_3_LifeStateEffects_AutoLife
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1 is automatically revived!
+ * 
+ * @param VisuMZ_3_LifeStateEffects_Curse
+ * @text Curse
+ * @parent VisuMZ_3_LifeStateEffects
+ *
+ * @param Show_LifeStateEffects_Curse:eval
+ * @text Show?
+ * @parent VisuMZ_3_LifeStateEffects_Curse
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_LifeStateEffects_Curse:num
+ * @text Icon
+ * @parent VisuMZ_3_LifeStateEffects_Curse
+ * @desc Icon used for this event in the Combat Log.
+ * @default 71
+ *
+ * @param Text_LifeStateEffects_Curse:str
+ * @text Text
+ * @parent VisuMZ_3_LifeStateEffects_Curse
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1's curse takes hold...
+ * 
+ * @param VisuMZ_3_LifeStateEffects_Doom
+ * @text Doom
+ * @parent VisuMZ_3_LifeStateEffects
+ *
+ * @param Show_LifeStateEffects_Doom:eval
+ * @text Show?
+ * @parent VisuMZ_3_LifeStateEffects_Doom
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_LifeStateEffects_Doom:num
+ * @text Icon
+ * @parent VisuMZ_3_LifeStateEffects_Doom
+ * @desc Icon used for this event in the Combat Log.
+ * @default 1
+ *
+ * @param Text_LifeStateEffects_Doom:str
+ * @text Text
+ * @parent VisuMZ_3_LifeStateEffects_Doom
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1 has fallen to doom.
+ * 
+ * @param VisuMZ_3_LifeStateEffects_Fragile
+ * @text Fragile
+ * @parent VisuMZ_3_LifeStateEffects
+ *
+ * @param Show_LifeStateEffects_Fragile:eval
+ * @text Show?
+ * @parent VisuMZ_3_LifeStateEffects_Fragile
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_LifeStateEffects_Fragile:num
+ * @text Icon
+ * @parent VisuMZ_3_LifeStateEffects_Fragile
+ * @desc Icon used for this event in the Combat Log.
+ * @default 166
+ *
+ * @param Text_LifeStateEffects_Fragile:str
+ * @text Text
+ * @parent VisuMZ_3_LifeStateEffects_Fragile
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1 was too fragile!
+ * 
+ * @param VisuMZ_3_LifeStateEffects_Guts
+ * @text Guts
+ * @parent VisuMZ_3_LifeStateEffects
+ *
+ * @param Show_LifeStateEffects_Guts:eval
+ * @text Show?
+ * @parent VisuMZ_3_LifeStateEffects_Guts
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_LifeStateEffects_Guts:num
+ * @text Icon
+ * @parent VisuMZ_3_LifeStateEffects_Guts
+ * @desc Icon used for this event in the Combat Log.
+ * @default 77
+ *
+ * @param Text_LifeStateEffects_Guts:str
+ * @text Text
+ * @parent VisuMZ_3_LifeStateEffects_Guts
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1 powers through a fatal blow!
+ * 
+ * @param VisuMZ_3_LifeStateEffects_Undead
+ * @text Undead
+ * @parent VisuMZ_3_LifeStateEffects
+ *
+ * @param Show_LifeStateEffects_Undead:eval
+ * @text Show?
+ * @parent VisuMZ_3_LifeStateEffects_Undead
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_LifeStateEffects_Undead:num
+ * @text Icon
+ * @parent VisuMZ_3_LifeStateEffects_Undead
+ * @desc Icon used for this event in the Combat Log.
+ * @default 10
+ *
+ * @param Text_LifeStateEffects_Undead:str
+ * @text Text
+ * @parent VisuMZ_3_LifeStateEffects_Undead
+ * @desc Text displayed for this event in the Combat Log.
+ * You may use text codes. %1 - Target Name
+ * @default %1 suffers from being undead!
+ *
+ * @param VisuMZ_3_StealItems
+ * @text Steal Items
+ * 
+ * @param VisuMZ_3_StealItems_Steal
+ * @text Steal Text
+ * @parent VisuMZ_3_StealItems
+ *
+ * @param Show_StealItems_Steal:eval
+ * @text Show?
+ * @parent VisuMZ_3_StealItems_Steal
+ * @type boolean
+ * @on Show
+ * @off Hide
+ * @desc Show this event in the Combat Log?
+ * @default true
+ *
+ * @param Icon_StealItems_Steal:num
+ * @text Icon
+ * @parent VisuMZ_3_StealItems_Steal
+ * @desc Icon used for this event in the Combat Log.
+ * @default 142
+ *
+ */
+//=============================================================================
+
+const _0x1bca=['HotKey','deactivate','width','ShowStartTurn','Window_ActorCommand_addCustomCommands','Window_ActorCommand_makeCommandList','IconHealHP','Game_Battler_onAntiDamageTpBarrier','Show_AntiDmgBarrier_Absorb','Scene_Battle_isAnyInputWindowActive','Game_Battler_onCtbOrderChange','ShowBattleSysCtbOrderChange','combatLogName','length','endTurn','registerCommand','setLogWindow','setActorCmdCombatLogVisible','Show_AntiDmgBarrier_Cancel','displayAbsorptionBarrierPopup','unshift','open','mainMenu','Game_Battler_gainSilentTp','removeState','displayMiss','counterAttack','escapeStart','BgFilename2','closeCombatLog','SCROLL_SPEED_CURSOR','iconIndex','evasion','Game_System_initialize','STR','Scene_Battle_updateCancelButton','battleRefresh','combatLog_MP_Heal','criticalToActor','ShowStateCurrent','TextColorDmgTP','value','VisuMZ_1_MainMenuCore','isSkill','combatLog_TP_Dmg','_backSprite1','commandCombatLog','AutoColor','Window_BattleLog_displayMiss','SnapshotOpacity','CombatLogAddText','Scene_Battle_createDisplayObjects','Settings','setMp','combatLog','addWindow','Game_Battler_onAntiDamageCancelBarrier','ShowEraseBuff','_combatLogs','ShowEnemyEmerge','down','isOpen','combatLog_BattleCmd_Icon','IconSubst','Window_BattleLog_displayCurrentState','displayCritical','enemyNoHit','ConvertParams','text','TextColorDmgHP','toUpperCase','382742QNnLTG','addChildToBack','itemLineRect','Heal','_buffs','drawRect','combatLog_TP_NoDmg','CombatLogBattle_RectJS','255271pqXVZt','makeCommandList','combatLog_HP_NoDmg','enemyDamage','filter','combatLog_EndTurn','BattleManager_startBattle','ShowBattleSysStbInstant','%1\x20is\x20missing\x20a\x20required\x20plugin.\x0aPlease\x20install\x20%2\x20into\x20the\x20Plugin\x20Manager.','boxHeight','BypassCombatLog','surprise','TextStartTurn','isTriggered','CombatLogBattle_BgType','padding','createCustomBackgroundImages','Game_BattlerBase_eraseBuff','IconBattleSysCtbOrderChange','actorLoss','ShowReflect','split','pageup','TextEndTurn','combatLog_Result_Escape','19169kMjXqI','combatLogHelp','Window_BattleLog_startTurn','bind','ARRAYFUNC','Game_BattlerBase_getAntiDamageBarrierReduction','setLastWindow','stbGainInstant','enemyLoss','STRUCT','onLifeStateEffect','Window_BattleLog_displayFailure','_combatLogAccess','Text','displaySubstitute','visible','Game_BattlerBase_decreaseBuff','combatLog_Result_Defeat','isMainMenuCombatLogEnabled','combatLog_Preemptive_Icon','bitmap','Game_Battler_addState','dimColor2','close','turnCount','processOk','View\x20the\x20combat\x20log.','Compatibility','isActor','critical','trim','isTpb','ARRAYEVAL','ShowIcons','Game_BattlerBase_increaseBuff','actorNoDamage','COMBATLOG_MAXIMUM_BATTLE_ENTRIES','home','CombatLogMenu_RectJS','Game_Battler_onAntiDamageMpBarrier','_combatLogPayment','startBattle','substitute','none','Window_BattleLog_displayEvasion','smoothScrollDown','helpAreaHeight','_surprise','IconBattleSysStbInstant','ShowAddBuff','ARRAYSTRUCT','ShowTP','leader','isCombatLogCommandVisible','Dmg','resetFontSettings','TextBattleStart','itemHeight','addChild','addCombatLogCommand','param','IconDmgTP','Window_BattleLog_displayReflection','_historyWindow','CombatLog','isBypassCombatLog','scaleSprite','ARRAYSTR','TextColorHealMP','IconDmgHP','updateHelp','BgSettings','Game_Battler_stbGainInstant','Text_AntiDmgBarrier_Absorb','getLastWindow','processVictory','BattleHelpCombatLog','onCtbOrderChange','isAutoColorAffected','isActiveTpb','ARRAYNUM','Game_BattlerBase_setMp','TextBattleSysStbInstant','combatLog_EnemyEmerge_Icon','height','Game_Battler_onAtbInterrupt','processCursorHomeEndTrigger','_preemptive','NoDmg','Icon','pagedown','physical','combatLog_Result_Victory','cursorDown','dimColor1','IconBattleSysAtbInterrupt','Window_ActorCommand_updateHelp','_combatLogIndex','TextColorNoDmgTP','magicEvasion','_partyCommandWindow','_tp','1lKWfIy','setHandler','drawHorzLine','message4','displayAction','ShowBattleSysAtbInterrupt','message2','BgFilename1','Name','openness','CombatLogMenu_BgType','BIGGER_LINE_HEIGHT','_windowLayer','Icon_LifeStateEffects_%1','BattleManager_endTurn','historyWindowRect','aliveMembers','BattleManager_onEscapeFailure','combatLog_BattleCmd_Name','ShowSkillMessage1','displayFailure','startBattleCombatLog','anchor','Show_AntiDmgBarrier_Reduce','combatLog_%1_%2','combatLog_Reflection_Icon','active','isHit','create','Text_AntiDmgBarrier_Nullify','call','ShowBattleStart','Game_BattlerBase_setHp','createCommandWindow','drawItemBackground','CombatHistory_BgType','General','_backSprite2','format','ShowStateAdd','scrollTo','allowShiftScrolling','Scene_Battle_isTimeActive','Window_BattleLog_displaySubstitute','displayCurrentState','Game_BattlerBase_setTp','IconDefeat','isMainMenuCombatLogVisible','isCombatLogHotKeyActive','Window_PartyCommand_addCustomCommands','Game_Battler_displayAbsorptionBarrierPopup','preemptive','addStealText','Game_Battler_onLifeStateEffect','isSceneBattle','FUNC','Bypass','displayEvasion','setCombatLogIndex','enemyRecovery','updateCancelButton','mainAreaTop','Show','isCombatLogCommandEnabled','Window_Selectable_allowShiftScrolling','displayCounter','drawItem','IconHealTP','IconFail','Enable','%1\x20is\x20incorrectly\x20placed\x20on\x20the\x20plugin\x20list.\x0aIt\x20is\x20a\x20Tier\x20%2\x20plugin\x20placed\x20over\x20other\x20Tier\x20%3\x20plugins.\x0aPlease\x20reorder\x20the\x20plugin\x20list\x20from\x20smallest\x20to\x20largest\x20tier\x20numbers.','combatLog_StartTurn_Icon','addCustomCommands','ShowStateRemove','setFrame','combatLog_HP_Heal','increaseBuff','centerSprite','7hYZNUp','createBackground','combatLog_Failure_Icon','NUM','Window_BattleLog_startAction','smoothScrollTo','RegExp','BattleManager_processAbort','setPartyCmdCombatLogVisible','processCursorMove','ACCESS_BUTTON','setTp','actorCmd','combatLog_HP_Dmg','Show_StealItems_Steal','message3','combatLog_Evasion_Icon','addTextToCombatLog','IconSurprise','note','onAtbInterrupt','eraseBuff','Window','addState','combatLog_MP_Dmg','EVAL','_helpWindow','ShowEscape','update','123017gytxqD','getAntiDamageBarrierReduction','initCombatLogBase','initCombatLogAccess','cancel','ShowCritical','ColorNumbers','isPressed','Window_BattleLog_displayCounter','actorRecovery','isAccessKeyPressed','push','combatLog_Miss_Icon','_combatLog_Latest','battleMembers','startAction','Window_Selectable_isCursorMovable','onAntiDamageCancelBarrier','applyCombatLogColor','_actorId','BattleManager_onEscapeSuccess','ARRAYJSON','IconMiss','TextBattleSysAtbInterrupt','buffIconIndex','setBackgroundType','onEscapeSuccess','isPartyCmdCombatLogVisible','ShowCounter','max','addLoadListener','setCombatLogHotKeyActive','actorNoHit','success','472452UNbrwi','combatLog_Counter_Icon','end','combatLog_CriticalHit_Icon','onAntiDamageNullificationBarrier','decreaseBuff','fillRect','select','getTotalCombatLogs','onAntiDamageMpBarrier','_cancelButton','Scene_Menu_createCommandWindow','combatLogStateChanges','setText','combatLog_EndTurn_Icon','displayReflection','maxScrollY','buffAdd','Game_Battler_removeState','isActorCmdCombatLogVisible','updateTurnEnd','onEscapeFailure','name','ShowAdvantages','_scene','combatLog_TP_Heal','result','TextColorDmgMP','CombatHistory_RectJS','TextColorHealHP','combatLogWindowRect','partyCmd','finishCurrentCombatLog','Window_BattleLog_displayAction','IconEvade','_logWindow','combatLog_Surprise_Icon','description','replace','setHp','_bypassAddToCombatLog','currentSymbol','ShowFail','includes','SHOW_LINE_BACKGROUND','ShowSkillMessage2','Window_MenuCommand_addOriginalCommands','=====HORZLINE=====','useItem','combatLog_MP_NoDmg','ShowItemMessage','map','IconStartTurn','Window_BattleLog_addStealText','itemRect','IconDmgMP','combatLog_StartTurn','isBusy','_lastWindow','addCommand','inBattle','\x5cN[%1]','processAbort','combatLog_BattleStart','Window_PartyCommand_makeCommandList','createCombatLogWindow','processDefeat','prototype','getBackgroundOpacity','\x5cC[%1]%2\x5cC[0]','Window_BattleLog_displayCritical','scale','getCombatLog','BattleManager_processVictory','CombatLogBypass','gradientFillRect','constructor','exit','SCROLL_SPEED_PAGEDN','StoredLogs','activate','_combatLogSilentTp','_actorCommandWindow','states','combatLogBuffChanges','Game_Battler_onAntiDamageNullificationBarrier','_list','startTurn','\x5cI[%1]%2','setBypassCombatLog','addHorzLineToCombatLog','gainSilentTp','popScene','addOriginalCommands','boxWidth','criticalToEnemy','version','CombatLogEnableHotKey','IconNoDmgMP','isStateAffected','isTimeActive','Text_AntiDmgBarrier_Reduce','match','CombatLogAddHorzLine','ShowHP','initialize','ShowPartyCommand','return\x200','VisuMZ_1_BattleCore','hotkeyOn','_combatLog_HistoryFmt','openCombatLog','IconEscape','message1','ShowEvade','RemoveUnwantedTextCodes','ShowSubst','partyName','_dimmerSprite','refreshCombatLog','onAntiDamageTpBarrier','drawTextEx','_combatLogWindow','adjustSprite','Icon_StealItems_Steal','smoothScrollUp','Game_Battler_useItem','setMainMenuCombatLogVisible','BattleManager_updateTurnEnd','combatLog_BattleStart_Icon','parse','ShowAddDebuff','combatLog_Substitute_Icon','isCursorMovable','253629aYAhkL','actionFailure','ShowMainMenu','Show_AntiDmgBarrier_Nullify','processCancel','CombatHistoryPrevious','commandStyle','IconPreemptive','294707ktlfGI','BattleManager_processDefeat'];const _0x4700=function(_0x14505b,_0x4fb43c){_0x14505b=_0x14505b-0xf1;let _0x1bcad5=_0x1bca[_0x14505b];return _0x1bcad5;};const _0x459e76=_0x4700;(function(_0x560a77,_0x3917f8){const _0x58c9af=_0x4700;while(!![]){try{const _0x8ba8ec=-parseInt(_0x58c9af(0x1da))+-parseInt(_0x58c9af(0x24c))+parseInt(_0x58c9af(0x2b2))*parseInt(_0x58c9af(0x233))+parseInt(_0x58c9af(0x1e2))+parseInt(_0x58c9af(0x154))+parseInt(_0x58c9af(0x22b))+-parseInt(_0x58c9af(0x132))*parseInt(_0x58c9af(0x115));if(_0x8ba8ec===_0x3917f8)break;else _0x560a77['push'](_0x560a77['shift']());}catch(_0x4c5d24){_0x560a77['push'](_0x560a77['shift']());}}}(_0x1bca,0x42397));var label=_0x459e76(0x28c),tier=tier||0x0,dependencies=[],pluginData=$plugins[_0x459e76(0x237)](function(_0x988e6d){const _0x20dc93=_0x459e76;return _0x988e6d['status']&&_0x988e6d['description'][_0x20dc93(0x17f)]('['+label+']');})[0x0];VisuMZ[label][_0x459e76(0x218)]=VisuMZ[label][_0x459e76(0x218)]||{},VisuMZ[_0x459e76(0x227)]=function(_0x42f632,_0x464ea7){const _0x7f93d2=_0x459e76;for(const _0xfc1097 in _0x464ea7){if(_0xfc1097['match'](/(.*):(.*)/i)){const _0x3e8ae2=String(RegExp['$1']),_0x4209f8=String(RegExp['$2'])[_0x7f93d2(0x22a)]()[_0x7f93d2(0x26a)]();let _0x314bf7,_0x32d642,_0x3dabf4;switch(_0x4209f8){case _0x7f93d2(0x118):_0x314bf7=_0x464ea7[_0xfc1097]!==''?Number(_0x464ea7[_0xfc1097]):0x0;break;case _0x7f93d2(0x29c):_0x32d642=_0x464ea7[_0xfc1097]!==''?JSON[_0x7f93d2(0x1d6)](_0x464ea7[_0xfc1097]):[],_0x314bf7=_0x32d642[_0x7f93d2(0x187)](_0x662c53=>Number(_0x662c53));break;case _0x7f93d2(0x12e):_0x314bf7=_0x464ea7[_0xfc1097]!==''?eval(_0x464ea7[_0xfc1097]):null;break;case _0x7f93d2(0x26c):_0x32d642=_0x464ea7[_0xfc1097]!==''?JSON[_0x7f93d2(0x1d6)](_0x464ea7[_0xfc1097]):[],_0x314bf7=_0x32d642['map'](_0x29b0ff=>eval(_0x29b0ff));break;case'JSON':_0x314bf7=_0x464ea7[_0xfc1097]!==''?JSON['parse'](_0x464ea7[_0xfc1097]):'';break;case _0x7f93d2(0x147):_0x32d642=_0x464ea7[_0xfc1097]!==''?JSON['parse'](_0x464ea7[_0xfc1097]):[],_0x314bf7=_0x32d642['map'](_0x29188b=>JSON[_0x7f93d2(0x1d6)](_0x29188b));break;case _0x7f93d2(0xfe):_0x314bf7=_0x464ea7[_0xfc1097]!==''?new Function(JSON['parse'](_0x464ea7[_0xfc1097])):new Function(_0x7f93d2(0x1bf));break;case _0x7f93d2(0x250):_0x32d642=_0x464ea7[_0xfc1097]!==''?JSON[_0x7f93d2(0x1d6)](_0x464ea7[_0xfc1097]):[],_0x314bf7=_0x32d642['map'](_0x5c741f=>new Function(JSON[_0x7f93d2(0x1d6)](_0x5c741f)));break;case _0x7f93d2(0x206):_0x314bf7=_0x464ea7[_0xfc1097]!==''?String(_0x464ea7[_0xfc1097]):'';break;case _0x7f93d2(0x28f):_0x32d642=_0x464ea7[_0xfc1097]!==''?JSON['parse'](_0x464ea7[_0xfc1097]):[],_0x314bf7=_0x32d642['map'](_0xcaa423=>String(_0xcaa423));break;case _0x7f93d2(0x255):_0x3dabf4=_0x464ea7[_0xfc1097]!==''?JSON[_0x7f93d2(0x1d6)](_0x464ea7[_0xfc1097]):{},_0x314bf7=VisuMZ[_0x7f93d2(0x227)]({},_0x3dabf4);break;case _0x7f93d2(0x27e):_0x32d642=_0x464ea7[_0xfc1097]!==''?JSON[_0x7f93d2(0x1d6)](_0x464ea7[_0xfc1097]):[],_0x314bf7=_0x32d642[_0x7f93d2(0x187)](_0x4014ac=>VisuMZ[_0x7f93d2(0x227)]({},JSON[_0x7f93d2(0x1d6)](_0x4014ac)));break;default:continue;}_0x42f632[_0x3e8ae2]=_0x314bf7;}}return _0x42f632;},(_0x1c3f7f=>{const _0xa843ec=_0x459e76,_0x4f56fa=_0x1c3f7f[_0xa843ec(0x16a)];for(const _0x40f39c of dependencies){if(!Imported[_0x40f39c]){alert(_0xa843ec(0x23b)[_0xa843ec(0x2d8)](_0x4f56fa,_0x40f39c)),SceneManager['exit']();break;}}const _0x7419ba=_0x1c3f7f[_0xa843ec(0x179)];if(_0x7419ba[_0xa843ec(0x1ba)](/\[Version[ ](.*?)\]/i)){const _0x5092d0=Number(RegExp['$1']);_0x5092d0!==VisuMZ[label][_0xa843ec(0x1b4)]&&(alert('%1\x27s\x20version\x20does\x20not\x20match\x20plugin\x27s.\x20Please\x20update\x20it\x20in\x20the\x20Plugin\x20Manager.'['format'](_0x4f56fa,_0x5092d0)),SceneManager['exit']());}if(_0x7419ba[_0xa843ec(0x1ba)](/\[Tier[ ](\d+)\]/i)){const _0x1a85b9=Number(RegExp['$1']);_0x1a85b9<tier?(alert(_0xa843ec(0x10d)[_0xa843ec(0x2d8)](_0x4f56fa,_0x1a85b9,tier)),SceneManager[_0xa843ec(0x1a1)]()):tier=Math[_0xa843ec(0x14f)](_0x1a85b9,tier);}VisuMZ['ConvertParams'](VisuMZ[label][_0xa843ec(0x218)],_0x1c3f7f['parameters']);})(pluginData),PluginManager[_0x459e76(0x1f3)](pluginData[_0x459e76(0x16a)],_0x459e76(0x216),_0x5b18b7=>{const _0xfb84cb=_0x459e76;VisuMZ['ConvertParams'](_0x5b18b7,_0x5b18b7);const _0x9c9f72=_0x5b18b7[_0xfb84cb(0x259)],_0x15d306=_0x5b18b7[_0xfb84cb(0x2a5)];$gameSystem['addTextToCombatLog'](_0x9c9f72,_0x15d306);}),PluginManager[_0x459e76(0x1f3)](pluginData[_0x459e76(0x16a)],_0x459e76(0x1bb),_0x2c8702=>{const _0x4bdb35=_0x459e76;VisuMZ[_0x4bdb35(0x227)](_0x2c8702,_0x2c8702),$gameSystem[_0x4bdb35(0x1ae)]();}),PluginManager['registerCommand'](pluginData[_0x459e76(0x16a)],_0x459e76(0x19e),_0x16b61b=>{const _0x166d1a=_0x459e76;VisuMZ['ConvertParams'](_0x16b61b,_0x16b61b);const _0xfb41dc=_0x16b61b[_0x166d1a(0xff)];$gameSystem['setBypassCombatLog'](_0xfb41dc);}),PluginManager[_0x459e76(0x1f3)](pluginData[_0x459e76(0x16a)],_0x459e76(0x1b5),_0x57dc06=>{const _0x513a92=_0x459e76;VisuMZ[_0x513a92(0x227)](_0x57dc06,_0x57dc06);const _0x5ef21b=_0x57dc06[_0x513a92(0x10c)];$gameSystem[_0x513a92(0x151)](_0x5ef21b);}),PluginManager[_0x459e76(0x1f3)](pluginData[_0x459e76(0x16a)],'SystemShowCombatLogMenu',_0x5e0044=>{const _0x377398=_0x459e76;VisuMZ[_0x377398(0x227)](_0x5e0044,_0x5e0044);const _0x24c09a=_0x5e0044[_0x377398(0x105)];$gameSystem[_0x377398(0x1d3)](_0x24c09a);}),PluginManager['registerCommand'](pluginData[_0x459e76(0x16a)],'SystemShowCombatLogParty',_0x5d521a=>{const _0x12551a=_0x459e76;VisuMZ[_0x12551a(0x227)](_0x5d521a,_0x5d521a);const _0x11daa7=_0x5d521a[_0x12551a(0x105)];$gameSystem[_0x12551a(0x11d)](_0x11daa7);}),PluginManager['registerCommand'](pluginData[_0x459e76(0x16a)],'SystemShowCombatLogActor',_0x4ae1f8=>{const _0x2c5591=_0x459e76;VisuMZ[_0x2c5591(0x227)](_0x4ae1f8,_0x4ae1f8);const _0x33be93=_0x4ae1f8['Show'];$gameSystem['setActorCmdCombatLogVisible'](_0x33be93);}),VisuMZ['CombatLog'][_0x459e76(0x11b)]={'BypassCombatLog':/<BYPASS COMBAT LOG>/i},ImageManager['combatLog_BattleCmd_Icon']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x2d6)][_0x459e76(0x2a5)],ImageManager['combatLog_BattleStart_Icon']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)]['IconBattleStart'],ImageManager[_0x459e76(0x29f)]=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)]['IconEnemyEmerge'],ImageManager[_0x459e76(0x25f)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x1e1)],ImageManager[_0x459e76(0x178)]=VisuMZ['CombatLog'][_0x459e76(0x218)]['CombatLog'][_0x459e76(0x127)],ImageManager[_0x459e76(0x10e)]=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x188)],ImageManager[_0x459e76(0x162)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)]['CombatLog']['IconEndTurn'],ImageManager[_0x459e76(0x2a8)]=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)]['IconVictory'],ImageManager[_0x459e76(0x24b)]=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)][_0x459e76(0x1c4)],ImageManager['combatLog_Result_Defeat']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0xf5)],ImageManager['combatLog_Counter_Icon']=VisuMZ['CombatLog']['Settings'][_0x459e76(0x28c)]['IconCounter'],ImageManager[_0x459e76(0x2cb)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)]['IconReflect'],ImageManager[_0x459e76(0x1d8)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x223)],ImageManager[_0x459e76(0x117)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x10b)],ImageManager['combatLog_CriticalHit_Icon']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)]['CombatLog']['IconCritical'],ImageManager[_0x459e76(0x13e)]=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x148)],ImageManager[_0x459e76(0x125)]=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)][_0x459e76(0x176)],ImageManager[_0x459e76(0x112)]=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)][_0x459e76(0x1ea)],ImageManager[_0x459e76(0x122)]=VisuMZ['CombatLog'][_0x459e76(0x218)]['CombatLog'][_0x459e76(0x291)],ImageManager[_0x459e76(0x235)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)]['IconNoDmgHP'],ImageManager[_0x459e76(0x209)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)]['IconHealMP'],ImageManager['combatLog_MP_Dmg']=VisuMZ['CombatLog']['Settings'][_0x459e76(0x28c)][_0x459e76(0x18b)],ImageManager[_0x459e76(0x185)]=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x1b6)],ImageManager[_0x459e76(0x16d)]=VisuMZ['CombatLog']['Settings'][_0x459e76(0x28c)][_0x459e76(0x10a)],ImageManager['combatLog_TP_Dmg']=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)][_0x459e76(0x289)],ImageManager[_0x459e76(0x231)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)]['IconNoDmgTP'],TextManager[_0x459e76(0x2c4)]=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x2d6)][_0x459e76(0x2ba)],TextManager['combatLog_BattleStart']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x284)],TextManager[_0x459e76(0x18c)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x23f)],TextManager[_0x459e76(0x238)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)]['CombatLog'][_0x459e76(0x24a)],TextManager[_0x459e76(0x24d)]=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x2d6)][_0x459e76(0x298)]??_0x459e76(0x266),TextManager[_0x459e76(0x13f)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x12b)]['CombatHistoryLatest'],TextManager[_0x459e76(0x1c2)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)]['Window'][_0x459e76(0x1df)],ColorManager['combatLog_HP_Heal']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x171)],ColorManager['combatLog_HP_Dmg']=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x229)],ColorManager['combatLog_HP_NoDmg']=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)]['TextColorNoDmgHP'],ColorManager['combatLog_MP_Heal']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x290)],ColorManager['combatLog_MP_Dmg']=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x16f)],ColorManager[_0x459e76(0x185)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)]['IconNoDmgMP'],ColorManager['combatLog_TP_Heal']=VisuMZ[_0x459e76(0x28c)]['Settings'][_0x459e76(0x28c)]['TextColorHealTP'],ColorManager['combatLog_TP_Dmg']=VisuMZ['CombatLog'][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x20c)],ColorManager[_0x459e76(0x231)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x28c)][_0x459e76(0x2ae)],ColorManager[_0x459e76(0x144)]=function(_0x201a70,_0x3b36fd){const _0x3d049e=_0x459e76;if(!VisuMZ[_0x3d049e(0x28c)][_0x3d049e(0x218)][_0x3d049e(0x28c)][_0x3d049e(0x138)])return Math['abs'](_0x3b36fd);const _0x2ca730=_0x3d049e(0x2ca);let _0x27987f;if(_0x3b36fd>0x0)_0x27987f=_0x2ca730[_0x3d049e(0x2d8)](_0x201a70,_0x3d049e(0x22e));else _0x3b36fd===0x0?_0x27987f=_0x2ca730[_0x3d049e(0x2d8)](_0x201a70,_0x3d049e(0x2a4)):_0x27987f=_0x2ca730['format'](_0x201a70,_0x3d049e(0x282));return _0x3b36fd=Math['abs'](_0x3b36fd),ColorManager[_0x27987f]?_0x3d049e(0x199)[_0x3d049e(0x2d8)](ColorManager[_0x27987f],_0x3b36fd):_0x3b36fd;},SceneManager[_0x459e76(0xfd)]=function(){const _0x5d37f9=_0x459e76;return this[_0x5d37f9(0x16c)]&&this['_scene'][_0x5d37f9(0x1a0)]===Scene_Battle;},VisuMZ[_0x459e76(0x28c)]['BattleManager_startBattle']=BattleManager[_0x459e76(0x275)],BattleManager[_0x459e76(0x275)]=function(){const _0x168a6f=_0x459e76;VisuMZ[_0x168a6f(0x28c)][_0x168a6f(0x239)][_0x168a6f(0x2d0)](this),this[_0x168a6f(0x2c7)]();},BattleManager['startBattleCombatLog']=function(){const _0x2ff3f3=_0x459e76,_0x1e4cc8=VisuMZ[_0x2ff3f3(0x28c)][_0x2ff3f3(0x218)][_0x2ff3f3(0x28c)];if(_0x1e4cc8[_0x2ff3f3(0x2d1)]){$gameSystem[_0x2ff3f3(0x174)](),$gameSystem[_0x2ff3f3(0x1ad)](![]),$gameSystem[_0x2ff3f3(0x1ae)]();let _0x110d9f=TextManager[_0x2ff3f3(0x193)],_0x5f46c3=ImageManager[_0x2ff3f3(0x1d5)];$gameSystem['addTextToCombatLog'](_0x110d9f,_0x5f46c3),$gameSystem[_0x2ff3f3(0x1ae)]();}if(_0x1e4cc8[_0x2ff3f3(0x21f)])for(const _0x1f0a03 of $gameTroop[_0x2ff3f3(0x2c2)]()){let _0x1f0ed0=TextManager['emerge']['format'](_0x1f0a03['combatLogName']()),_0x556d87=ImageManager['combatLog_EnemyEmerge_Icon'];$gameSystem[_0x2ff3f3(0x126)](_0x1f0ed0,_0x556d87);}if(_0x1e4cc8[_0x2ff3f3(0x16b)]){if(this[_0x2ff3f3(0x2a3)]){let _0x5e27a9=TextManager[_0x2ff3f3(0xfa)][_0x2ff3f3(0x2d8)]($gameParty['combatLogName']()),_0x1e3b74=ImageManager[_0x2ff3f3(0x25f)];$gameSystem[_0x2ff3f3(0x126)](_0x5e27a9,_0x1e3b74);}else{if(this[_0x2ff3f3(0x27b)]){let _0x3de3a7=TextManager[_0x2ff3f3(0x23e)]['format']($gameParty[_0x2ff3f3(0x1f0)]()),_0x1b2dc8=ImageManager[_0x2ff3f3(0x178)];$gameSystem[_0x2ff3f3(0x126)](_0x3de3a7,_0x1b2dc8);}}}},VisuMZ['CombatLog'][_0x459e76(0x2c0)]=BattleManager['endTurn'],BattleManager[_0x459e76(0x1f2)]=function(){const _0x28adb6=_0x459e76;if($gameTroop[_0x28adb6(0x264)]()>0x0&&VisuMZ['CombatLog'][_0x28adb6(0x218)][_0x28adb6(0x28c)]['ShowEndTurn']){$gameSystem[_0x28adb6(0x1ae)]();let _0x52364f=TextManager[_0x28adb6(0x238)]['format']($gameTroop[_0x28adb6(0x264)]()),_0x18b07f=ImageManager['combatLog_EndTurn_Icon'];$gameSystem[_0x28adb6(0x126)](_0x52364f,_0x18b07f),$gameSystem[_0x28adb6(0x1ae)]();}VisuMZ[_0x28adb6(0x28c)]['BattleManager_endTurn'][_0x28adb6(0x2d0)](this);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1d4)]=BattleManager['updateTurnEnd'],BattleManager[_0x459e76(0x168)]=function(){const _0x1f0487=_0x459e76;VisuMZ[_0x1f0487(0x28c)][_0x1f0487(0x1d4)][_0x1f0487(0x2d0)](this);if(this[_0x1f0487(0x26b)]()&&VisuMZ[_0x1f0487(0x28c)][_0x1f0487(0x218)][_0x1f0487(0x28c)]['ShowStartTurn']&&$gameTroop['turnCount']()>0x0){$gameSystem[_0x1f0487(0x1ae)]();let _0x5efd0f=TextManager[_0x1f0487(0x18c)]['format']($gameTroop[_0x1f0487(0x264)]()),_0x239f6a=ImageManager[_0x1f0487(0x10e)];$gameSystem[_0x1f0487(0x126)](_0x5efd0f,_0x239f6a);}},VisuMZ[_0x459e76(0x28c)]['BattleManager_processVictory']=BattleManager[_0x459e76(0x297)],BattleManager['processVictory']=function(){const _0x474055=_0x459e76;$gameSystem[_0x474055(0x1ad)](!![]),VisuMZ[_0x474055(0x28c)][_0x474055(0x19d)][_0x474055(0x2d0)](this),$gameSystem[_0x474055(0x1ad)](![]);if(VisuMZ[_0x474055(0x28c)][_0x474055(0x218)][_0x474055(0x28c)]['ShowVictory']){$gameSystem[_0x474055(0x1ae)]();let _0x30034e=TextManager['victory']['format']($gameParty['combatLogName']()),_0x3163f8=ImageManager[_0x474055(0x2a8)];$gameSystem[_0x474055(0x126)](_0x30034e,_0x3163f8),$gameSystem[_0x474055(0x1ae)]();}},VisuMZ['CombatLog'][_0x459e76(0x11c)]=BattleManager[_0x459e76(0x192)],BattleManager[_0x459e76(0x192)]=function(){const _0x2416e0=_0x459e76;$gameSystem[_0x2416e0(0x1ad)](!![]),VisuMZ[_0x2416e0(0x28c)][_0x2416e0(0x11c)][_0x2416e0(0x2d0)](this),$gameSystem[_0x2416e0(0x1ad)](![]),$gameSystem[_0x2416e0(0x1ae)]();},VisuMZ[_0x459e76(0x28c)]['BattleManager_onEscapeSuccess']=BattleManager[_0x459e76(0x14c)],BattleManager[_0x459e76(0x14c)]=function(){const _0x3ad149=_0x459e76;VisuMZ[_0x3ad149(0x28c)][_0x3ad149(0x146)][_0x3ad149(0x2d0)](this);if(VisuMZ[_0x3ad149(0x28c)][_0x3ad149(0x218)][_0x3ad149(0x28c)][_0x3ad149(0x130)]){$gameSystem['addHorzLineToCombatLog']();let _0x5d1036=TextManager[_0x3ad149(0x1ff)][_0x3ad149(0x2d8)]($gameParty[_0x3ad149(0x1f0)]()),_0x1db714=ImageManager['combatLog_Result_Escape'];$gameSystem['addTextToCombatLog'](_0x5d1036,_0x1db714),$gameSystem[_0x3ad149(0x1ae)]();}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x2c3)]=BattleManager[_0x459e76(0x169)],BattleManager[_0x459e76(0x169)]=function(){const _0x37551d=_0x459e76;VisuMZ['CombatLog'][_0x37551d(0x2c3)][_0x37551d(0x2d0)](this);if(VisuMZ[_0x37551d(0x28c)]['Settings'][_0x37551d(0x28c)][_0x37551d(0x130)]){$gameSystem[_0x37551d(0x1ae)]();let _0x29a61e=TextManager[_0x37551d(0x1ff)][_0x37551d(0x2d8)]($gameParty[_0x37551d(0x1f0)]()),_0x40142d=ImageManager[_0x37551d(0x24b)];$gameSystem[_0x37551d(0x126)](_0x29a61e,_0x40142d),$gameSystem[_0x37551d(0x126)](TextManager['escapeFailure'],_0x40142d),$gameSystem[_0x37551d(0x1ae)]();}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1e3)]=BattleManager[_0x459e76(0x196)],BattleManager[_0x459e76(0x196)]=function(){const _0x71ab51=_0x459e76;VisuMZ[_0x71ab51(0x28c)][_0x71ab51(0x1e3)][_0x71ab51(0x2d0)](this);if(VisuMZ[_0x71ab51(0x28c)][_0x71ab51(0x218)][_0x71ab51(0x28c)]['ShowDefeat']){$gameSystem[_0x71ab51(0x1ae)]();let _0x49fb10=TextManager['defeat']['format']($gameParty['combatLogName']()),_0x352353=ImageManager[_0x71ab51(0x25d)];$gameSystem[_0x71ab51(0x126)](_0x49fb10,_0x352353),$gameSystem[_0x71ab51(0x1ae)]();}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x205)]=Game_System['prototype']['initialize'],Game_System[_0x459e76(0x197)][_0x459e76(0x1bd)]=function(){const _0x397882=_0x459e76;VisuMZ[_0x397882(0x28c)][_0x397882(0x205)][_0x397882(0x2d0)](this),this[_0x397882(0x134)](),this[_0x397882(0x135)]();},Game_System[_0x459e76(0x270)]=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)]['General'][_0x459e76(0x1a3)]??0x5,Game_System['prototype']['initCombatLogBase']=function(){const _0x330033=_0x459e76;this[_0x330033(0x21e)]=[],this['_bypassAddToCombatLog']=![];},Game_System[_0x459e76(0x197)][_0x459e76(0x19c)]=function(_0x272cfc){const _0x399eb9=_0x459e76;if(this['_combatLogs']===undefined)this['initCombatLogBase']();return _0x272cfc=_0x272cfc||0x0,this[_0x399eb9(0x21e)][_0x272cfc]=this[_0x399eb9(0x21e)][_0x272cfc]||[],this[_0x399eb9(0x21e)][_0x272cfc];},Game_System[_0x459e76(0x197)][_0x459e76(0x126)]=function(_0x28934c,_0x2925ca){const _0x767295=_0x459e76;if(this[_0x767295(0x28d)]())return;if(!_0x28934c)return;_0x2925ca=_0x2925ca||0x0,_0x28934c=VisuMZ[_0x767295(0x28c)][_0x767295(0x1c7)](_0x28934c);const _0x2be7ec=this[_0x767295(0x19c)](),_0x5687c8=_0x28934c[_0x767295(0x248)]('\x0a');while(_0x5687c8['length']>0x0){let _0xfadea=_0x5687c8['shift']();VisuMZ[_0x767295(0x28c)]['Settings'][_0x767295(0x28c)][_0x767295(0x26d)]&&(_0xfadea=_0x767295(0x1ac)[_0x767295(0x2d8)](_0x2925ca,_0xfadea)),_0x2925ca=0x0,_0x2be7ec[_0x767295(0x13d)](_0xfadea);}this['refreshCombatLog']();},Game_System['prototype'][_0x459e76(0x1ae)]=function(){const _0x136e84=_0x459e76;if(this[_0x136e84(0x28d)]())return;const _0x551dfa=this[_0x136e84(0x19c)](),_0x219cbd=_0x551dfa[_0x551dfa['length']-0x1];if(_0x219cbd===_0x136e84(0x183))return;_0x551dfa['push']('=====HORZLINE====='),this['refreshCombatLog']();},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1c7)]=function(_0x28ff37){const _0x46f265=_0x459e76;while(_0x28ff37[_0x46f265(0x1ba)](/\\V\[(\d+)\]/gi)){_0x28ff37=_0x28ff37[_0x46f265(0x17a)](/\\V\[(\d+)\]/gi,(_0x56eda0,_0x2c2c5c)=>$gameVariables[_0x46f265(0x20d)](parseInt(_0x2c2c5c)));}return _0x28ff37;},Game_System[_0x459e76(0x197)][_0x459e76(0x174)]=function(){const _0xcd71d4=_0x459e76;if(this[_0xcd71d4(0x21e)]===undefined)this[_0xcd71d4(0x134)]();this['_combatLogs'][_0xcd71d4(0x1f8)]([]);while(this[_0xcd71d4(0x21e)][_0xcd71d4(0x1f1)]>Game_System[_0xcd71d4(0x270)]){this[_0xcd71d4(0x21e)]['pop']();}},Game_System['prototype']['getTotalCombatLogs']=function(){const _0x1f81c1=_0x459e76;if(this[_0x1f81c1(0x21e)]===undefined)this[_0x1f81c1(0x134)]();return this[_0x1f81c1(0x21e)][_0x1f81c1(0x1f1)];},Game_System[_0x459e76(0x197)][_0x459e76(0x28d)]=function(){const _0x504b95=_0x459e76;if(this[_0x504b95(0x17c)]===undefined)this[_0x504b95(0x134)]();return this['_bypassAddToCombatLog'];},Game_System[_0x459e76(0x197)][_0x459e76(0x1ad)]=function(_0x7ff2cc){const _0x378762=_0x459e76;if(this[_0x378762(0x17c)]===undefined)this[_0x378762(0x134)]();this[_0x378762(0x17c)]=_0x7ff2cc;;},Game_System[_0x459e76(0x197)][_0x459e76(0x1cb)]=function(){const _0x583875=_0x459e76;if(!SceneManager[_0x583875(0xfd)]())return;const _0x5c4323=SceneManager['_scene'][_0x583875(0x1ce)];_0x5c4323&&_0x5c4323[_0x583875(0x208)]();},Game_System[_0x459e76(0x197)][_0x459e76(0x135)]=function(){const _0x52d3c9=_0x459e76,_0x4f5bc8=VisuMZ[_0x52d3c9(0x28c)]['Settings'][_0x52d3c9(0x2d6)];this[_0x52d3c9(0x258)]={'mainMenu':_0x4f5bc8[_0x52d3c9(0x1dc)],'partyCmd':_0x4f5bc8[_0x52d3c9(0x1be)],'actorCmd':_0x4f5bc8['ShowActorCommand'],'hotkeyOn':!![]};},Game_System[_0x459e76(0x197)][_0x459e76(0xf6)]=function(){const _0x95563b=_0x459e76;if(this[_0x95563b(0x258)]===undefined)this[_0x95563b(0x135)]();return this[_0x95563b(0x258)]['mainMenu'];},Game_System[_0x459e76(0x197)][_0x459e76(0x25e)]=function(){const _0x22ed67=_0x459e76;if(this[_0x22ed67(0x21e)]===undefined)this[_0x22ed67(0x134)]();return this[_0x22ed67(0x15c)]()>0x0;},Game_System[_0x459e76(0x197)][_0x459e76(0x1d3)]=function(_0xe1c351){const _0xb0b8b7=_0x459e76;if(this[_0xb0b8b7(0x258)]===undefined)this[_0xb0b8b7(0x135)]();this[_0xb0b8b7(0x258)][_0xb0b8b7(0x1fa)]=_0xe1c351;},Game_System[_0x459e76(0x197)][_0x459e76(0x14d)]=function(){const _0x263f11=_0x459e76;if(this[_0x263f11(0x258)]===undefined)this[_0x263f11(0x135)]();return this[_0x263f11(0x258)]['partyCmd'];},Game_System[_0x459e76(0x197)][_0x459e76(0x11d)]=function(_0x2ffa6e){const _0x1b2bd0=_0x459e76;if(this[_0x1b2bd0(0x258)]===undefined)this[_0x1b2bd0(0x135)]();this[_0x1b2bd0(0x258)][_0x1b2bd0(0x173)]=_0x2ffa6e;},Game_System[_0x459e76(0x197)][_0x459e76(0x167)]=function(){const _0xee6e2d=_0x459e76;if(this['_combatLogAccess']===undefined)this[_0xee6e2d(0x135)]();return this[_0xee6e2d(0x258)][_0xee6e2d(0x121)];},Game_System[_0x459e76(0x197)][_0x459e76(0x1f5)]=function(_0xaa0a2a){const _0x41bddf=_0x459e76;if(this[_0x41bddf(0x258)]===undefined)this['initCombatLogAccess']();this[_0x41bddf(0x258)][_0x41bddf(0x121)]=_0xaa0a2a;},Game_System[_0x459e76(0x197)][_0x459e76(0xf7)]=function(){const _0x2c1ce8=_0x459e76;if(this['_combatLogAccess']===undefined)this[_0x2c1ce8(0x135)]();return this[_0x2c1ce8(0x258)][_0x2c1ce8(0x1c1)];},Game_System[_0x459e76(0x197)][_0x459e76(0x151)]=function(_0x146a3c){const _0x4df92f=_0x459e76;if(this[_0x4df92f(0x258)]===undefined)this[_0x4df92f(0x135)]();this[_0x4df92f(0x258)]['hotkeyOn']=_0x146a3c;},VisuMZ['CombatLog'][_0x459e76(0x2d2)]=Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x17b)],Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x17b)]=function(_0x4c9157){const _0x118174=_0x459e76,_0x54595b=this['_hp'];VisuMZ[_0x118174(0x28c)][_0x118174(0x2d2)][_0x118174(0x2d0)](this,_0x4c9157);if(!SceneManager[_0x118174(0xfd)]())return;if(this[_0x118174(0x274)])return;if(!VisuMZ[_0x118174(0x28c)][_0x118174(0x218)][_0x118174(0x28c)][_0x118174(0x1bc)])return;const _0xacc55f=_0x4c9157;let _0x34e882,_0x60f9b5,_0x1a4eda=_0xacc55f-_0x54595b;if(_0xacc55f>_0x54595b)_0x34e882=this[_0x118174(0x268)]()?TextManager[_0x118174(0x13b)]:TextManager[_0x118174(0x236)],_0x60f9b5=ImageManager[_0x118174(0x112)];else _0xacc55f===_0x54595b?(_0x34e882=this[_0x118174(0x268)]()?TextManager[_0x118174(0x26f)]:TextManager['enemyNoDamage'],_0x60f9b5=ImageManager[_0x118174(0x235)]):(_0x34e882=this[_0x118174(0x268)]()?TextManager['actorDamage']:TextManager['enemyDamage'],_0x60f9b5=ImageManager[_0x118174(0x122)]);_0x1a4eda=ColorManager[_0x118174(0x144)]('HP',_0x1a4eda);let _0x38fe52=_0x34e882[_0x118174(0x2d8)](this['combatLogName'](),_0x1a4eda,TextManager['hp']);$gameSystem[_0x118174(0x126)](_0x38fe52,_0x60f9b5);},VisuMZ['CombatLog'][_0x459e76(0x29d)]=Game_BattlerBase['prototype'][_0x459e76(0x219)],Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x219)]=function(_0x43a4f5){const _0x4848b4=_0x459e76,_0x4b442b=this['_mp'];VisuMZ[_0x4848b4(0x28c)][_0x4848b4(0x29d)][_0x4848b4(0x2d0)](this,_0x43a4f5);if(!SceneManager[_0x4848b4(0xfd)]())return;if(this[_0x4848b4(0x274)])return;if(!VisuMZ[_0x4848b4(0x28c)][_0x4848b4(0x218)][_0x4848b4(0x28c)]['ShowMP'])return;const _0x489bed=_0x43a4f5;let _0x451c4c,_0xf9bb32,_0x1b01fb=_0x489bed-_0x4b442b;if(_0x489bed>_0x4b442b)_0x451c4c=this['isActor']()?TextManager[_0x4848b4(0x13b)]:TextManager[_0x4848b4(0x102)],_0xf9bb32=ImageManager[_0x4848b4(0x209)];else _0x489bed===_0x4b442b?(_0x451c4c=this['isActor']()?TextManager['actorLoss']:TextManager['enemyLoss'],_0xf9bb32=ImageManager[_0x4848b4(0x185)]):(_0x451c4c=this[_0x4848b4(0x268)]()?TextManager['actorLoss']:TextManager[_0x4848b4(0x254)],_0xf9bb32=ImageManager[_0x4848b4(0x12d)]);_0x1b01fb=ColorManager['applyCombatLogColor']('MP',_0x1b01fb);let _0x1a97d8=_0x451c4c[_0x4848b4(0x2d8)](this['combatLogName'](),_0x1b01fb,TextManager['mp']);$gameSystem[_0x4848b4(0x126)](_0x1a97d8,_0xf9bb32);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0xf4)]=Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x120)],Game_BattlerBase['prototype'][_0x459e76(0x120)]=function(_0x1ed54e){const _0xd0723c=_0x459e76,_0x4060ba=this[_0xd0723c(0x2b1)];VisuMZ['CombatLog'][_0xd0723c(0xf4)][_0xd0723c(0x2d0)](this,_0x1ed54e);if(!SceneManager[_0xd0723c(0xfd)]())return;if(this['_combatLogPayment'])return;if(this[_0xd0723c(0x1a5)])return;if(!VisuMZ[_0xd0723c(0x28c)]['Settings'][_0xd0723c(0x28c)][_0xd0723c(0x27f)])return;const _0x4c957a=_0x1ed54e;let _0x804e2f,_0x4c9dca,_0x2f433b=_0x4c957a-_0x4060ba;if(_0x4c957a>_0x4060ba)_0x804e2f=this[_0xd0723c(0x268)]()?TextManager[_0xd0723c(0x13b)]:TextManager['enemyRecovery'],_0x4c9dca=ImageManager[_0xd0723c(0x16d)];else _0x4c957a===_0x4060ba?(_0x804e2f=this[_0xd0723c(0x268)]()?TextManager[_0xd0723c(0x246)]:TextManager[_0xd0723c(0x254)],_0x4c9dca=ImageManager['combatLog_TP_NoDmg']):(_0x804e2f=this[_0xd0723c(0x268)]()?TextManager[_0xd0723c(0x246)]:TextManager[_0xd0723c(0x254)],_0x4c9dca=ImageManager[_0xd0723c(0x210)]);_0x2f433b=ColorManager[_0xd0723c(0x144)]('TP',_0x2f433b);let _0x12f06d=_0x804e2f['format'](this[_0xd0723c(0x1f0)](),_0x2f433b,TextManager['tp']);$gameSystem[_0xd0723c(0x126)](_0x12f06d,_0x4c9dca);},VisuMZ[_0x459e76(0x28c)]['Game_Battler_gainSilentTp']=Game_Battler[_0x459e76(0x197)][_0x459e76(0x1af)],Game_Battler['prototype'][_0x459e76(0x1af)]=function(_0x3fe887){const _0x4f54fc=_0x459e76;this[_0x4f54fc(0x1a5)]=!![],VisuMZ['CombatLog'][_0x4f54fc(0x1fb)][_0x4f54fc(0x2d0)](this,_0x3fe887),this[_0x4f54fc(0x1a5)]=![];},VisuMZ['CombatLog'][_0x459e76(0x1d2)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x184)],Game_Battler[_0x459e76(0x197)][_0x459e76(0x184)]=function(_0x393517){const _0x4b88f9=_0x459e76;this[_0x4b88f9(0x274)]=!![],VisuMZ[_0x4b88f9(0x28c)][_0x4b88f9(0x1d2)]['call'](this,_0x393517),this['_combatLogPayment']=![];},VisuMZ['CombatLog'][_0x459e76(0x261)]=Game_Battler[_0x459e76(0x197)]['addState'],Game_Battler[_0x459e76(0x197)][_0x459e76(0x12c)]=function(_0xc643f9){const _0x151556=_0x459e76,_0x1e9ca0=this[_0x151556(0x1b7)](_0xc643f9);VisuMZ[_0x151556(0x28c)]['Game_Battler_addState'][_0x151556(0x2d0)](this,_0xc643f9);const _0x5dc535=this['isStateAffected'](_0xc643f9);this[_0x151556(0x160)](_0xc643f9,_0x1e9ca0,_0x5dc535);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x166)]=Game_Battler['prototype'][_0x459e76(0x1fc)],Game_Battler[_0x459e76(0x197)][_0x459e76(0x1fc)]=function(_0x490e49){const _0x2a4b0d=_0x459e76,_0x2b7275=this['isStateAffected'](_0x490e49);VisuMZ[_0x2a4b0d(0x28c)]['Game_Battler_removeState'][_0x2a4b0d(0x2d0)](this,_0x490e49);const _0x1bb13b=this['isStateAffected'](_0x490e49);this[_0x2a4b0d(0x160)](_0x490e49,_0x2b7275,_0x1bb13b);},Game_Battler[_0x459e76(0x197)][_0x459e76(0x160)]=function(_0x4bf7ff,_0x5ecbab,_0x15af2d){const _0x8a4f5=_0x459e76;if(!SceneManager['isSceneBattle']())return;const _0x2035ed=$dataStates[_0x4bf7ff];if(!_0x2035ed)return;if(_0x2035ed[_0x8a4f5(0x128)][_0x8a4f5(0x1ba)](VisuMZ[_0x8a4f5(0x28c)][_0x8a4f5(0x11b)][_0x8a4f5(0x23d)]))return;const _0x4752b9=VisuMZ[_0x8a4f5(0x28c)][_0x8a4f5(0x218)][_0x8a4f5(0x28c)];if(!_0x5ecbab&&_0x15af2d){let _0x19ff3b=this['isActor']()?_0x2035ed[_0x8a4f5(0x1c5)]:_0x2035ed[_0x8a4f5(0x2b8)];if(_0x19ff3b&&_0x4752b9[_0x8a4f5(0x2d9)]){let _0x327c63=_0x19ff3b['format'](this['combatLogName']()),_0x22e31d=_0x2035ed[_0x8a4f5(0x203)];$gameSystem[_0x8a4f5(0x126)](_0x327c63,_0x22e31d);}}if(_0x5ecbab&&_0x15af2d){let _0x5da662=_0x2035ed['message3'];if(_0x5da662&&_0x4752b9[_0x8a4f5(0x20b)]){let _0xe1358a=_0x5da662[_0x8a4f5(0x2d8)](this[_0x8a4f5(0x1f0)]()),_0x2f53d5=_0x2035ed[_0x8a4f5(0x203)];$gameSystem[_0x8a4f5(0x126)](_0xe1358a,_0x2f53d5);}}if(_0x5ecbab&&!_0x15af2d){let _0x20d279=_0x2035ed[_0x8a4f5(0x2b5)];if(_0x20d279&&_0x4752b9[_0x8a4f5(0x110)]){let _0x4c47e3=_0x20d279[_0x8a4f5(0x2d8)](this[_0x8a4f5(0x1f0)]()),_0x3a2938=_0x2035ed[_0x8a4f5(0x203)];$gameSystem[_0x8a4f5(0x126)](_0x4c47e3,_0x3a2938);}}},VisuMZ['CombatLog']['Game_BattlerBase_increaseBuff']=Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x113)],Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x113)]=function(_0x3e5f13){const _0xc478ef=_0x459e76;VisuMZ[_0xc478ef(0x28c)][_0xc478ef(0x26e)][_0xc478ef(0x2d0)](this,_0x3e5f13);if(!VisuMZ[_0xc478ef(0x28c)]['Settings'][_0xc478ef(0x28c)][_0xc478ef(0x27d)])return;this[_0xc478ef(0x1a8)](_0x3e5f13,0x1,TextManager[_0xc478ef(0x165)]);},VisuMZ['CombatLog'][_0x459e76(0x25c)]=Game_BattlerBase[_0x459e76(0x197)]['decreaseBuff'],Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x159)]=function(_0x2e42a9){const _0x4c40d8=_0x459e76;VisuMZ[_0x4c40d8(0x28c)][_0x4c40d8(0x25c)][_0x4c40d8(0x2d0)](this,_0x2e42a9);if(!VisuMZ[_0x4c40d8(0x28c)]['Settings']['CombatLog'][_0x4c40d8(0x1d7)])return;this['combatLogBuffChanges'](_0x2e42a9,-0x1,TextManager['debuffAdd']);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x244)]=Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x12a)],Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x12a)]=function(_0x53f0a3){const _0x3a0cf3=_0x459e76,_0x40f8ca=this[_0x3a0cf3(0x22f)][_0x53f0a3]||0x0;VisuMZ[_0x3a0cf3(0x28c)][_0x3a0cf3(0x244)][_0x3a0cf3(0x2d0)](this,_0x53f0a3);const _0x242b10=this['_buffs'][_0x53f0a3]||0x0,_0x450208=_0x242b10>_0x40f8ca?0x1:-0x1;if(!VisuMZ['CombatLog'][_0x3a0cf3(0x218)][_0x3a0cf3(0x28c)][_0x3a0cf3(0x21d)])return;this[_0x3a0cf3(0x1a8)](_0x53f0a3,_0x450208,TextManager['buffRemove']);},Game_Battler[_0x459e76(0x197)][_0x459e76(0x1a8)]=function(_0x1a02d1,_0x3d70fa,_0x528d43){const _0x2a1d15=_0x459e76;if(!SceneManager['isSceneBattle']())return;if(!_0x528d43)return;const _0x45d832=this[_0x2a1d15(0x14a)](_0x3d70fa||-0x1,_0x1a02d1),_0x2e3ca3=TextManager[_0x2a1d15(0x288)](_0x1a02d1),_0xda14cc=_0x528d43[_0x2a1d15(0x2d8)](this[_0x2a1d15(0x1f0)](),_0x2e3ca3);$gameSystem['addTextToCombatLog'](_0xda14cc,_0x45d832);},Game_Actor[_0x459e76(0x197)][_0x459e76(0x1f0)]=function(){const _0x5629ca=_0x459e76;return _0x5629ca(0x191)[_0x5629ca(0x2d8)](this[_0x5629ca(0x145)]);},Game_Enemy['prototype']['combatLogName']=function(){const _0x2cd3d0=_0x459e76;return this[_0x2cd3d0(0x16a)]();},Game_Party[_0x459e76(0x197)][_0x459e76(0x1f0)]=function(){const _0x47cf5d=_0x459e76,_0xdc5c22=this[_0x47cf5d(0x140)]()[_0x47cf5d(0x1f1)];if(_0xdc5c22===0x0)return'';else return _0xdc5c22===0x1?this['leader']()[_0x47cf5d(0x1f0)]():TextManager[_0x47cf5d(0x1c9)][_0x47cf5d(0x2d8)](this[_0x47cf5d(0x280)]()['combatLogName']());},VisuMZ['CombatLog']['Scene_Menu_createCommandWindow']=Scene_Menu[_0x459e76(0x197)][_0x459e76(0x2d3)],Scene_Menu[_0x459e76(0x197)]['createCommandWindow']=function(){const _0x387702=_0x459e76;VisuMZ[_0x387702(0x28c)][_0x387702(0x15f)][_0x387702(0x2d0)](this);const _0x2c4518=this['_commandWindow'];_0x2c4518[_0x387702(0x2b3)]('CombatLog',this[_0x387702(0x212)]['bind'](this));},Scene_Menu[_0x459e76(0x197)][_0x459e76(0x212)]=function(){const _0x34e6d1=_0x459e76;SceneManager[_0x34e6d1(0x13d)](Scene_CombatLog);},VisuMZ['CombatLog'][_0x459e76(0x217)]=Scene_Battle[_0x459e76(0x197)]['createDisplayObjects'],Scene_Battle['prototype']['createDisplayObjects']=function(){const _0x5d40df=_0x459e76;VisuMZ['CombatLog'][_0x5d40df(0x217)][_0x5d40df(0x2d0)](this),this[_0x5d40df(0x195)]();},Scene_Battle['prototype'][_0x459e76(0x195)]=function(){const _0x11a9a1=_0x459e76,_0x457f39=this['combatLogWindowRect']();this[_0x11a9a1(0x1ce)]=new Window_CombatLogDisplay(_0x457f39),this[_0x11a9a1(0x1ce)][_0x11a9a1(0x101)](0x0),this[_0x11a9a1(0x286)](this['_combatLogWindow']),this[_0x11a9a1(0x1ce)]['x']=this[_0x11a9a1(0x2be)]['x'],this[_0x11a9a1(0x1ce)]['y']=this[_0x11a9a1(0x2be)]['y'],this[_0x11a9a1(0x1ce)]['setBackgroundType'](VisuMZ[_0x11a9a1(0x28c)][_0x11a9a1(0x218)][_0x11a9a1(0x12b)][_0x11a9a1(0x241)]),this['_combatLogWindow'][_0x11a9a1(0x2b3)](_0x11a9a1(0x21a),this[_0x11a9a1(0x201)][_0x11a9a1(0x24f)](this)),this[_0x11a9a1(0x1ce)][_0x11a9a1(0x2b3)](_0x11a9a1(0x136),this['closeCombatLog'][_0x11a9a1(0x24f)](this)),this['_partyCommandWindow'][_0x11a9a1(0x2b3)](_0x11a9a1(0x21a),this[_0x11a9a1(0x1c3)][_0x11a9a1(0x24f)](this,this[_0x11a9a1(0x2b0)])),this[_0x11a9a1(0x1a6)][_0x11a9a1(0x2b3)]('combatLog',this[_0x11a9a1(0x1c3)]['bind'](this,this[_0x11a9a1(0x1a6)]));},Scene_Battle['prototype'][_0x459e76(0x172)]=function(){const _0x57a525=_0x459e76,_0xf4381=VisuMZ[_0x57a525(0x28c)]['Settings'][_0x57a525(0x12b)][_0x57a525(0x232)];if(_0xf4381)return _0xf4381[_0x57a525(0x2d0)](this);const _0x3544a8=0x0,_0x5d842e=0x0,_0x4c27cb=Graphics[_0x57a525(0x1b2)],_0x4f2c80=Graphics[_0x57a525(0x23c)];return new Rectangle(_0x3544a8,_0x5d842e,_0x4c27cb,_0x4f2c80);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1ed)]=Scene_Battle['prototype']['isAnyInputWindowActive'],Scene_Battle[_0x459e76(0x197)]['isAnyInputWindowActive']=function(){const _0x296edd=_0x459e76;if(this[_0x296edd(0x1ce)]&&this[_0x296edd(0x1ce)][_0x296edd(0x2cc)])return!![];return VisuMZ['CombatLog'][_0x296edd(0x1ed)][_0x296edd(0x2d0)](this);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x207)]=Scene_Battle[_0x459e76(0x197)][_0x459e76(0x103)],Scene_Battle[_0x459e76(0x197)][_0x459e76(0x103)]=function(){const _0x146225=_0x459e76;VisuMZ['CombatLog'][_0x146225(0x207)]['call'](this),this['_combatLogWindow']&&this[_0x146225(0x1ce)][_0x146225(0x2bb)]>0x0&&this[_0x146225(0x15e)]&&(this[_0x146225(0x15e)][_0x146225(0x25b)]=![]);},VisuMZ[_0x459e76(0x28c)]['Scene_Battle_isTimeActive']=Scene_Battle[_0x459e76(0x197)][_0x459e76(0x1b8)],Scene_Battle['prototype'][_0x459e76(0x1b8)]=function(){const _0x3913ed=_0x459e76;return BattleManager[_0x3913ed(0x29b)]()&&this[_0x3913ed(0x1ce)]&&this['_combatLogWindow']['active']?![]:VisuMZ[_0x3913ed(0x28c)][_0x3913ed(0xf1)][_0x3913ed(0x2d0)](this);},Scene_Battle[_0x459e76(0x197)][_0x459e76(0x1c3)]=function(_0x20909e){const _0x1c0403=_0x459e76;this[_0x1c0403(0x1ce)][_0x1c0403(0x1f9)](),this[_0x1c0403(0x1ce)][_0x1c0403(0x1a4)](),this['_combatLogWindow'][_0x1c0403(0x208)](),this[_0x1c0403(0x1ce)][_0x1c0403(0x252)](_0x20909e);},Scene_Battle[_0x459e76(0x197)]['closeCombatLog']=function(){const _0x302639=_0x459e76;this[_0x302639(0x1ce)][_0x302639(0x263)]();const _0x445cc0=this[_0x302639(0x1ce)][_0x302639(0x296)]();_0x445cc0[_0x302639(0x1a4)]();};function Scene_CombatLog(){const _0x5cbb9d=_0x459e76;this[_0x5cbb9d(0x1bd)](...arguments);}Scene_CombatLog['prototype']=Object[_0x459e76(0x2ce)](Scene_MenuBase[_0x459e76(0x197)]),Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x1a0)]=Scene_CombatLog,Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x1bd)]=function(){const _0x17dc1c=_0x459e76;Scene_MenuBase[_0x17dc1c(0x197)]['initialize'][_0x17dc1c(0x2d0)](this);},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x27a)]=function(){return 0x0;},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x2ce)]=function(){const _0xd15fd4=_0x459e76;Scene_MenuBase['prototype'][_0xd15fd4(0x2ce)]['call'](this),this['createHistoryWindow'](),this[_0xd15fd4(0x195)]();},Scene_CombatLog[_0x459e76(0x197)]['createHistoryWindow']=function(){const _0x230e37=_0x459e76,_0x2e5a98=this[_0x230e37(0x2c1)]();this[_0x230e37(0x28b)]=new Window_CombatLogHistory(_0x2e5a98),this[_0x230e37(0x28b)][_0x230e37(0x2b3)](_0x230e37(0x136),this[_0x230e37(0x1b0)]['bind'](this)),this[_0x230e37(0x21b)](this[_0x230e37(0x28b)]),this[_0x230e37(0x28b)][_0x230e37(0x14b)](VisuMZ[_0x230e37(0x28c)][_0x230e37(0x218)][_0x230e37(0x12b)][_0x230e37(0x2d5)]);},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x2c1)]=function(){const _0x1aa361=_0x459e76,_0x20964c=VisuMZ[_0x1aa361(0x28c)][_0x1aa361(0x218)][_0x1aa361(0x12b)][_0x1aa361(0x170)];if(_0x20964c)return _0x20964c[_0x1aa361(0x2d0)](this);const _0x5cb99a=Graphics[_0x1aa361(0x1b2)],_0x17c88a=this['calcWindowHeight'](0x1,!![]),_0x12489f=0x0,_0x2d62f7=this[_0x1aa361(0x104)]();return new Rectangle(_0x12489f,_0x2d62f7,_0x5cb99a,_0x17c88a);},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x195)]=function(){const _0x4bd4c4=_0x459e76,_0x40d258=this[_0x4bd4c4(0x172)]();this[_0x4bd4c4(0x1ce)]=new Window_CombatLogDisplay(_0x40d258),this[_0x4bd4c4(0x21b)](this['_combatLogWindow']),this[_0x4bd4c4(0x28b)][_0x4bd4c4(0x1f4)](this[_0x4bd4c4(0x1ce)]),this['_combatLogWindow'][_0x4bd4c4(0x14b)](VisuMZ[_0x4bd4c4(0x28c)][_0x4bd4c4(0x218)][_0x4bd4c4(0x12b)][_0x4bd4c4(0x2bc)]);},Scene_CombatLog['prototype'][_0x459e76(0x172)]=function(){const _0x571624=_0x459e76,_0x48fbeb=VisuMZ[_0x571624(0x28c)][_0x571624(0x218)][_0x571624(0x12b)][_0x571624(0x272)];if(_0x48fbeb)return _0x48fbeb['call'](this);const _0x2c77e7=0x0,_0x5bce6c=this[_0x571624(0x28b)]['y']+this[_0x571624(0x28b)][_0x571624(0x2a0)],_0x269fd4=Graphics['boxWidth'],_0x4042eb=this['mainAreaHeight']()-this['_historyWindow'][_0x571624(0x2a0)];return new Rectangle(_0x2c77e7,_0x5bce6c,_0x269fd4,_0x4042eb);},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x116)]=function(){const _0x54639=_0x459e76;Scene_MenuBase[_0x54639(0x197)][_0x54639(0x116)][_0x54639(0x2d0)](this),this['setBackgroundOpacity'](this[_0x54639(0x198)]()),this[_0x54639(0x243)]();},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x198)]=function(){const _0x26ee9a=_0x459e76;return VisuMZ[_0x26ee9a(0x28c)]['Settings'][_0x26ee9a(0x293)][_0x26ee9a(0x215)];},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x243)]=function(){const _0x3fc264=_0x459e76,_0x42717d=VisuMZ[_0x3fc264(0x28c)][_0x3fc264(0x218)][_0x3fc264(0x293)];_0x42717d&&(_0x42717d[_0x3fc264(0x2b9)]!==''||_0x42717d['BgFilename2']!=='')&&(this['_backSprite1']=new Sprite(ImageManager['loadTitle1'](_0x42717d['BgFilename1'])),this[_0x3fc264(0x2d7)]=new Sprite(ImageManager['loadTitle2'](_0x42717d[_0x3fc264(0x200)])),this[_0x3fc264(0x286)](this[_0x3fc264(0x211)]),this[_0x3fc264(0x286)](this[_0x3fc264(0x2d7)]),this[_0x3fc264(0x211)][_0x3fc264(0x260)][_0x3fc264(0x150)](this['adjustSprite']['bind'](this,this[_0x3fc264(0x211)])),this[_0x3fc264(0x2d7)][_0x3fc264(0x260)][_0x3fc264(0x150)](this[_0x3fc264(0x1cf)][_0x3fc264(0x24f)](this,this[_0x3fc264(0x2d7)])));},Scene_CombatLog[_0x459e76(0x197)][_0x459e76(0x1cf)]=function(_0x330d64){const _0x54ade1=_0x459e76;this[_0x54ade1(0x28e)](_0x330d64),this[_0x54ade1(0x114)](_0x330d64);},VisuMZ['CombatLog'][_0x459e76(0x107)]=Window_Selectable[_0x459e76(0x197)][_0x459e76(0x2db)],Window_Selectable[_0x459e76(0x197)]['allowShiftScrolling']=function(){const _0x9b025e=_0x459e76;if(SceneManager[_0x9b025e(0xfd)]()){const _0x5ed02d=SceneManager['_scene']['_combatLogWindow'];if(_0x5ed02d&&_0x5ed02d['isOpen']())return![];}return VisuMZ[_0x9b025e(0x28c)][_0x9b025e(0x107)][_0x9b025e(0x2d0)](this);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x142)]=Window_Selectable[_0x459e76(0x197)][_0x459e76(0x1d9)],Window_Selectable[_0x459e76(0x197)][_0x459e76(0x1d9)]=function(){const _0x507dc2=_0x459e76;if(SceneManager[_0x507dc2(0xfd)]()){const _0x22d144=SceneManager[_0x507dc2(0x16c)][_0x507dc2(0x1ce)];if(_0x22d144&&_0x22d144[_0x507dc2(0x221)]())return![];}return VisuMZ[_0x507dc2(0x28c)][_0x507dc2(0x142)][_0x507dc2(0x2d0)](this);},VisuMZ['CombatLog'][_0x459e76(0x182)]=Window_MenuCommand['prototype'][_0x459e76(0x1b1)],Window_MenuCommand[_0x459e76(0x197)][_0x459e76(0x1b1)]=function(){const _0x230cad=_0x459e76;VisuMZ[_0x230cad(0x28c)][_0x230cad(0x182)]['call'](this);if(Imported[_0x230cad(0x20e)])return;this[_0x230cad(0x287)]();},Window_MenuCommand['prototype'][_0x459e76(0x287)]=function(){const _0x57bfcc=_0x459e76;if(!this[_0x57bfcc(0x281)]())return;const _0x391cd0=TextManager[_0x57bfcc(0x2c4)],_0x55462d=this['isCombatLogCommandEnabled']();this[_0x57bfcc(0x18f)](_0x391cd0,_0x57bfcc(0x21a),_0x55462d);},Window_MenuCommand[_0x459e76(0x197)]['isCombatLogCommandVisible']=function(){const _0x2fd67b=_0x459e76;return $gameSystem[_0x2fd67b(0xf6)]();},Window_MenuCommand[_0x459e76(0x197)][_0x459e76(0x106)]=function(){const _0x47ab24=_0x459e76;return $gameSystem[_0x47ab24(0x25e)]();},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x24e)]=Window_BattleLog['prototype'][_0x459e76(0x1ab)],Window_BattleLog[_0x459e76(0x197)]['startTurn']=function(){const _0x35288b=_0x459e76;VisuMZ['CombatLog'][_0x35288b(0x24e)][_0x35288b(0x2d0)](this);if(!VisuMZ[_0x35288b(0x28c)][_0x35288b(0x218)]['CombatLog'][_0x35288b(0x1e7)])return;$gameSystem[_0x35288b(0x1ae)]();let _0x2b4eda=TextManager[_0x35288b(0x18c)][_0x35288b(0x2d8)]($gameTroop[_0x35288b(0x264)]()),_0x27869d=ImageManager[_0x35288b(0x10e)];$gameSystem[_0x35288b(0x126)](_0x2b4eda,_0x27869d);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x119)]=Window_BattleLog[_0x459e76(0x197)]['startAction'],Window_BattleLog['prototype'][_0x459e76(0x141)]=function(_0x38bebb,_0xfd05ef,_0x4ae1ef){const _0x279d99=_0x459e76;$gameSystem[_0x279d99(0x1ae)](),VisuMZ[_0x279d99(0x28c)]['Window_BattleLog_startAction'][_0x279d99(0x2d0)](this,_0x38bebb,_0xfd05ef,_0x4ae1ef);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x224)]=Window_BattleLog[_0x459e76(0x197)]['displayCurrentState'],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0xf3)]=function(_0x486a3f){const _0x18563f=_0x459e76;VisuMZ[_0x18563f(0x28c)]['Window_BattleLog_displayCurrentState'][_0x18563f(0x2d0)](this,_0x486a3f);if(!_0x486a3f)return;if(!VisuMZ[_0x18563f(0x28c)]['Settings'][_0x18563f(0x28c)][_0x18563f(0x20b)]);const _0x48ecb2=_0x486a3f[_0x18563f(0x1a7)]();for(const _0x2a99ae of _0x48ecb2){if(!_0x2a99ae)continue;if(!_0x2a99ae[_0x18563f(0x124)])continue;if(_0x2a99ae['note'][_0x18563f(0x1ba)](VisuMZ['CombatLog']['RegExp']['BypassCombatLog']))continue;let _0x1f08df=_0x2a99ae[_0x18563f(0x124)],_0x351f75=_0x1f08df[_0x18563f(0x2d8)](_0x486a3f[_0x18563f(0x1f0)]()),_0x40b5bf=_0x2a99ae[_0x18563f(0x203)];$gameSystem[_0x18563f(0x126)](_0x351f75,_0x40b5bf);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x175)]=Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x2b6)],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x2b6)]=function(_0x39bc3b,_0x535081){const _0x5383e8=_0x459e76;VisuMZ['CombatLog'][_0x5383e8(0x175)][_0x5383e8(0x2d0)](this,_0x39bc3b,_0x535081);const _0x2fde7c=VisuMZ[_0x5383e8(0x28c)][_0x5383e8(0x218)][_0x5383e8(0x28c)];if(DataManager[_0x5383e8(0x20f)](_0x535081)){if(_0x535081[_0x5383e8(0x1c5)]&&_0x2fde7c[_0x5383e8(0x2c5)]){let _0x58565f=_0x535081[_0x5383e8(0x1c5)],_0x39405b=_0x58565f[_0x5383e8(0x2d8)](_0x39bc3b['combatLogName'](),_0x535081[_0x5383e8(0x16a)]),_0x3ca08f=_0x535081['iconIndex'];$gameSystem[_0x5383e8(0x126)](_0x39405b,_0x3ca08f);}if(_0x535081[_0x5383e8(0x2b8)]&&_0x2fde7c[_0x5383e8(0x181)]){let _0x11bb5e=_0x535081['message2'],_0x247024=_0x11bb5e[_0x5383e8(0x2d8)](_0x39bc3b[_0x5383e8(0x1f0)](),_0x535081['name']),_0x5a1b82=_0x535081[_0x5383e8(0x203)];$gameSystem['addTextToCombatLog'](_0x247024,_0x5a1b82);}}else{if(TextManager[_0x5383e8(0x184)]&&_0x2fde7c[_0x5383e8(0x186)]){let _0x1edf92=TextManager[_0x5383e8(0x184)],_0x525322=_0x1edf92[_0x5383e8(0x2d8)](_0x39bc3b[_0x5383e8(0x1f0)](),_0x535081[_0x5383e8(0x16a)]),_0x311cc7=_0x535081[_0x5383e8(0x203)];$gameSystem['addTextToCombatLog'](_0x525322,_0x311cc7);}}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x13a)]=Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x108)],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x108)]=function(_0x254e41){const _0x1192e9=_0x459e76;VisuMZ['CombatLog']['Window_BattleLog_displayCounter'][_0x1192e9(0x2d0)](this,_0x254e41);if(TextManager[_0x1192e9(0x1fe)]&&VisuMZ[_0x1192e9(0x28c)][_0x1192e9(0x218)][_0x1192e9(0x28c)][_0x1192e9(0x14e)]){let _0x2da919=TextManager[_0x1192e9(0x1fe)],_0x1cf0f9=_0x2da919['format'](_0x254e41[_0x1192e9(0x1f0)]()),_0x4f0c74=ImageManager[_0x1192e9(0x155)];$gameSystem[_0x1192e9(0x126)](_0x1cf0f9,_0x4f0c74);}},VisuMZ['CombatLog'][_0x459e76(0x28a)]=Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x163)],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x163)]=function(_0x5dedf4){const _0x4b2aab=_0x459e76;VisuMZ['CombatLog']['Window_BattleLog_displayReflection']['call'](this,_0x5dedf4);if(TextManager['magicReflection']&&VisuMZ[_0x4b2aab(0x28c)][_0x4b2aab(0x218)][_0x4b2aab(0x28c)][_0x4b2aab(0x247)]){let _0x4a778b=TextManager['magicReflection'],_0xd48453=_0x4a778b[_0x4b2aab(0x2d8)](_0x5dedf4[_0x4b2aab(0x1f0)]()),_0x1c90f6=ImageManager[_0x4b2aab(0x2cb)];$gameSystem[_0x4b2aab(0x126)](_0xd48453,_0x1c90f6);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0xf2)]=Window_BattleLog[_0x459e76(0x197)]['displaySubstitute'],Window_BattleLog['prototype'][_0x459e76(0x25a)]=function(_0x50d7b8,_0x40cb66){const _0x245cce=_0x459e76;VisuMZ[_0x245cce(0x28c)]['Window_BattleLog_displaySubstitute']['call'](this,_0x50d7b8,_0x40cb66);if(TextManager[_0x245cce(0x276)]&&VisuMZ['CombatLog'][_0x245cce(0x218)]['CombatLog'][_0x245cce(0x1c8)]){const _0x2120ba=_0x50d7b8[_0x245cce(0x1f0)]();let _0x4833c1=TextManager[_0x245cce(0x276)],_0x24b6dd=_0x4833c1[_0x245cce(0x2d8)](_0x2120ba,_0x40cb66['combatLogName']()),_0x588986=ImageManager[_0x245cce(0x1d8)];$gameSystem[_0x245cce(0x126)](_0x24b6dd,_0x588986);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x257)]=Window_BattleLog[_0x459e76(0x197)]['displayFailure'],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x2c6)]=function(_0x498f85){const _0x30269a=_0x459e76;VisuMZ[_0x30269a(0x28c)][_0x30269a(0x257)][_0x30269a(0x2d0)](this,_0x498f85);if(_0x498f85[_0x30269a(0x16e)]()[_0x30269a(0x2cd)]()&&!_0x498f85[_0x30269a(0x16e)]()[_0x30269a(0x153)]){if(TextManager[_0x30269a(0x1db)]&&VisuMZ[_0x30269a(0x28c)]['Settings'][_0x30269a(0x28c)][_0x30269a(0x17e)]){let _0x4abba5=TextManager[_0x30269a(0x1db)],_0x3e5246=_0x4abba5[_0x30269a(0x2d8)](_0x498f85[_0x30269a(0x1f0)]()),_0x2bee97=ImageManager[_0x30269a(0x117)];$gameSystem[_0x30269a(0x126)](_0x3e5246,_0x2bee97);}}},VisuMZ['CombatLog'][_0x459e76(0x19a)]=Window_BattleLog['prototype']['displayCritical'],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x225)]=function(_0x3e2671){const _0x31704d=_0x459e76;VisuMZ[_0x31704d(0x28c)][_0x31704d(0x19a)][_0x31704d(0x2d0)](this,_0x3e2671);if(_0x3e2671[_0x31704d(0x16e)]()[_0x31704d(0x269)]&&VisuMZ[_0x31704d(0x28c)]['Settings'][_0x31704d(0x28c)][_0x31704d(0x137)]){if(_0x3e2671[_0x31704d(0x268)]()){if(TextManager['criticalToActor']){let _0x4f5441=TextManager[_0x31704d(0x20a)],_0x55c9bc=ImageManager[_0x31704d(0x157)];$gameSystem[_0x31704d(0x126)](_0x4f5441,_0x55c9bc);}}else{if(TextManager[_0x31704d(0x1b3)]){let _0x28b501=TextManager['criticalToEnemy'],_0x5c4c4e=ImageManager['combatLog_CriticalHit_Icon'];$gameSystem[_0x31704d(0x126)](_0x28b501,_0x5c4c4e);}}}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x214)]=Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x1fd)],Window_BattleLog['prototype'][_0x459e76(0x1fd)]=function(_0x3e4c7a){const _0x48816c=_0x459e76;VisuMZ[_0x48816c(0x28c)][_0x48816c(0x214)]['call'](this,_0x3e4c7a);if(_0x3e4c7a['result']()[_0x48816c(0x2a7)]&&VisuMZ[_0x48816c(0x28c)][_0x48816c(0x218)]['CombatLog']['ShowMiss']){const _0x75eb37=_0x3e4c7a[_0x48816c(0x268)]();if(_0x75eb37&&TextManager[_0x48816c(0x152)]){let _0x37a18e=TextManager[_0x48816c(0x152)],_0xd9ee37=_0x37a18e[_0x48816c(0x2d8)](_0x3e4c7a[_0x48816c(0x1f0)]()),_0xb7ba62=ImageManager[_0x48816c(0x13e)];$gameSystem[_0x48816c(0x126)](_0xd9ee37,_0xb7ba62);}else{if(!_0x75eb37&&TextManager[_0x48816c(0x226)]){let _0x45978c=TextManager[_0x48816c(0x226)],_0x53a88c=_0x45978c[_0x48816c(0x2d8)](_0x3e4c7a[_0x48816c(0x1f0)]()),_0x573d5c=ImageManager[_0x48816c(0x13e)];$gameSystem[_0x48816c(0x126)](_0x53a88c,_0x573d5c);}}}else{if(TextManager[_0x48816c(0x1db)]&&VisuMZ['CombatLog']['Settings'][_0x48816c(0x28c)][_0x48816c(0x17e)]){let _0x2b49eb=TextManager[_0x48816c(0x1db)],_0x16ba55=_0x2b49eb[_0x48816c(0x2d8)](_0x3e4c7a[_0x48816c(0x1f0)]()),_0x11f1e5=ImageManager[_0x48816c(0x117)];$gameSystem[_0x48816c(0x126)](_0x16ba55,_0x11f1e5);}}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x278)]=Window_BattleLog['prototype'][_0x459e76(0x100)],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0x100)]=function(_0x1902c7){const _0x3c4721=_0x459e76;VisuMZ[_0x3c4721(0x28c)]['Window_BattleLog_displayEvasion'][_0x3c4721(0x2d0)](this,_0x1902c7);if(VisuMZ[_0x3c4721(0x28c)][_0x3c4721(0x218)][_0x3c4721(0x28c)][_0x3c4721(0x1c6)]){if(_0x1902c7[_0x3c4721(0x16e)]()[_0x3c4721(0x2a7)]&&TextManager[_0x3c4721(0x204)]){let _0x35c365=TextManager[_0x3c4721(0x204)],_0x488b58=_0x35c365[_0x3c4721(0x2d8)](_0x1902c7[_0x3c4721(0x1f0)]()),_0x2793ba=ImageManager[_0x3c4721(0x125)];$gameSystem['addTextToCombatLog'](_0x488b58,_0x2793ba);}else{if(TextManager[_0x3c4721(0x2af)]){let _0x4bd729=TextManager['magicEvasion'],_0x45cae5=_0x4bd729[_0x3c4721(0x2d8)](_0x1902c7['combatLogName']()),_0xc190d7=ImageManager[_0x3c4721(0x125)];$gameSystem[_0x3c4721(0x126)](_0x45cae5,_0xc190d7);}}}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x194)]=Window_PartyCommand[_0x459e76(0x197)][_0x459e76(0x234)],Window_PartyCommand[_0x459e76(0x197)]['makeCommandList']=function(){const _0x4cfb2a=_0x459e76;VisuMZ[_0x4cfb2a(0x28c)][_0x4cfb2a(0x194)]['call'](this);if(Imported[_0x4cfb2a(0x1c0)])return;this[_0x4cfb2a(0x287)]();},VisuMZ['CombatLog'][_0x459e76(0xf8)]=Window_PartyCommand[_0x459e76(0x197)][_0x459e76(0x10f)],Window_PartyCommand['prototype']['addCustomCommands']=function(){const _0x2980a5=_0x459e76;VisuMZ[_0x2980a5(0x28c)]['Window_PartyCommand_addCustomCommands']['call'](this),this[_0x2980a5(0x287)]();},Window_PartyCommand[_0x459e76(0x197)][_0x459e76(0x287)]=function(){const _0x309837=_0x459e76;if(!$gameSystem[_0x309837(0x14d)]())return;if(this['findSymbol']('combatLog')>=0x0)return;const _0x3353e9=Imported[_0x309837(0x1c0)]?this[_0x309837(0x1e0)]():_0x309837(0x228),_0x291608=TextManager[_0x309837(0x2c4)],_0x250fd9=ImageManager['combatLog_BattleCmd_Icon']||0x0,_0x272da3=_0x3353e9===_0x309837(0x228)?_0x291608:_0x309837(0x1ac)['format'](_0x250fd9,_0x291608);this[_0x309837(0x18f)](_0x272da3,_0x309837(0x21a));},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1e9)]=Window_ActorCommand[_0x459e76(0x197)][_0x459e76(0x234)],Window_ActorCommand[_0x459e76(0x197)][_0x459e76(0x234)]=function(){const _0x3ca729=_0x459e76;VisuMZ['CombatLog'][_0x3ca729(0x1e9)][_0x3ca729(0x2d0)](this);if(Imported[_0x3ca729(0x1c0)])return;this[_0x3ca729(0x287)]();},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1e8)]=Window_ActorCommand[_0x459e76(0x197)][_0x459e76(0x10f)],Window_ActorCommand[_0x459e76(0x197)][_0x459e76(0x10f)]=function(){const _0x50dbbc=_0x459e76;VisuMZ[_0x50dbbc(0x28c)][_0x50dbbc(0x1e8)][_0x50dbbc(0x2d0)](this),this['addCombatLogCommand']();},Window_ActorCommand[_0x459e76(0x197)]['addCombatLogCommand']=function(){const _0x5da8d5=_0x459e76;if(!$gameSystem['isActorCmdCombatLogVisible']())return;if(this['findSymbol']('combatLog')>=0x0)return;const _0x2a7ddf=Imported[_0x5da8d5(0x1c0)]?this[_0x5da8d5(0x1e0)]():'text',_0x1d1d32=TextManager[_0x5da8d5(0x2c4)],_0x5f200f=ImageManager[_0x5da8d5(0x222)]||0x0,_0x569631=_0x2a7ddf===_0x5da8d5(0x228)?_0x1d1d32:_0x5da8d5(0x1ac)['format'](_0x5f200f,_0x1d1d32);this[_0x5da8d5(0x18f)](_0x569631,_0x5da8d5(0x21a));},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)][_0x459e76(0x2ac)]=Window_ActorCommand[_0x459e76(0x197)][_0x459e76(0x292)],Window_ActorCommand[_0x459e76(0x197)][_0x459e76(0x292)]=function(){const _0x6d2f5e=_0x459e76,_0x467fcd=this[_0x6d2f5e(0x17d)]();switch(_0x467fcd){case _0x6d2f5e(0x21a):this[_0x6d2f5e(0x12f)][_0x6d2f5e(0x161)](TextManager[_0x6d2f5e(0x24d)]);break;default:VisuMZ[_0x6d2f5e(0x28c)][_0x6d2f5e(0x218)][_0x6d2f5e(0x2ac)]['call'](this);break;}};function Window_CombatLogHistory(){const _0x37bf42=_0x459e76;this[_0x37bf42(0x1bd)](...arguments);}Window_CombatLogHistory[_0x459e76(0x197)]=Object[_0x459e76(0x2ce)](Window_HorzCommand[_0x459e76(0x197)]),Window_CombatLogHistory[_0x459e76(0x197)][_0x459e76(0x1a0)]=Window_CombatLogHistory,Window_CombatLogHistory[_0x459e76(0x197)]['initialize']=function(_0x2ad378){Window_HorzCommand['prototype']['initialize']['call'](this,_0x2ad378);},Window_CombatLogHistory[_0x459e76(0x197)]['maxCols']=function(){return $gameSystem['getTotalCombatLogs']();},Window_CombatLogHistory[_0x459e76(0x197)][_0x459e76(0x2a2)]=function(){},Window_CombatLogHistory[_0x459e76(0x197)][_0x459e76(0x2a9)]=function(_0x4d1c76){},Window_CombatLogHistory[_0x459e76(0x197)]['cursorUp']=function(_0x2f7afd){},Window_CombatLogHistory[_0x459e76(0x197)][_0x459e76(0x131)]=function(){const _0x84e700=_0x459e76;Window_HorzCommand[_0x84e700(0x197)]['update'][_0x84e700(0x2d0)](this),this[_0x84e700(0x177)]&&this[_0x84e700(0x177)][_0x84e700(0x101)](this['currentExt']());},Window_CombatLogHistory[_0x459e76(0x197)][_0x459e76(0x1f4)]=function(_0x4f7c4b){const _0xbebd8b=_0x459e76;this[_0xbebd8b(0x177)]=_0x4f7c4b;},Window_CombatLogHistory[_0x459e76(0x197)][_0x459e76(0x234)]=function(){const _0x522367=_0x459e76;let _0x20c764=$gameSystem['getTotalCombatLogs']();for(let _0x333fac=0x0;_0x333fac<_0x20c764;_0x333fac++){let _0x288418=_0x333fac===0x0?TextManager[_0x522367(0x13f)]:TextManager[_0x522367(0x1c2)],_0x39d22a=_0x288418[_0x522367(0x2d8)]($gameSystem['battleCount']()-_0x333fac);this[_0x522367(0x18f)](_0x39d22a,'history',!![],_0x333fac);}};function Window_CombatLogDisplay(){const _0x176338=_0x459e76;this[_0x176338(0x1bd)](...arguments);}Window_CombatLogDisplay['prototype']=Object[_0x459e76(0x2ce)](Window_Command[_0x459e76(0x197)]),Window_CombatLogDisplay['prototype'][_0x459e76(0x1a0)]=Window_CombatLogDisplay,Window_CombatLogDisplay[_0x459e76(0x2bd)]=![],Window_CombatLogDisplay['SHOW_LINE_BACKGROUND']=![],Window_CombatLogDisplay['HORZ_LINE_THICKNESS']=0x4,Window_CombatLogDisplay[_0x459e76(0x202)]=0.2,Window_CombatLogDisplay[_0x459e76(0x1a2)]=1.5,Window_CombatLogDisplay['ACCESS_BUTTON']=VisuMZ[_0x459e76(0x28c)][_0x459e76(0x218)]['General'][_0x459e76(0x1e4)]||_0x459e76(0x277),Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x1bd)]=function(_0x75ff34){const _0x18fa2d=_0x459e76;Window_Command[_0x18fa2d(0x197)][_0x18fa2d(0x1bd)][_0x18fa2d(0x2d0)](this,_0x75ff34),this[_0x18fa2d(0x1e5)](),SceneManager[_0x18fa2d(0xfd)]()&&(this[_0x18fa2d(0x2bb)]=0x0);},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x285)]=function(){const _0x50e9c9=_0x459e76;let _0x146ac7=Window_Scrollable['prototype']['itemHeight'][_0x50e9c9(0x2d0)](this);return _0x146ac7+(Window_CombatLogDisplay[_0x50e9c9(0x2bd)]?0x8:0x0);},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x29a)]=function(){const _0x237053=_0x459e76;return VisuMZ[_0x237053(0x28c)]['Settings'][_0x237053(0x28c)][_0x237053(0x213)];},Window_CombatLogDisplay[_0x459e76(0x197)]['isMenuCursorBlacklisted']=function(){return!![];},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x15b)]=function(_0x51ac5c){},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x265)]=function(){this['processCancel']();},Window_CombatLogDisplay[_0x459e76(0x197)]['onTouchOk']=function(){const _0x4b87ae=_0x459e76;this[_0x4b87ae(0x1de)]();},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x11e)]=function(){const _0x53936=_0x459e76;SceneManager[_0x53936(0xfd)]()&&!this[_0x53936(0x2cc)]&&($gameSystem['isCombatLogHotKeyActive']()&&Window_CombatLogDisplay[_0x53936(0x11f)]!==undefined&&(this[_0x53936(0x13c)]()?this['open']():this[_0x53936(0x263)]())),this[_0x53936(0x221)]()&&(Input[_0x53936(0x139)](_0x53936(0x220))&&this[_0x53936(0x279)](Window_CombatLogDisplay[_0x53936(0x202)]),Input[_0x53936(0x139)]('up')&&this[_0x53936(0x1d1)](Window_CombatLogDisplay[_0x53936(0x202)]),Input[_0x53936(0x139)](_0x53936(0x2a6))&&this['smoothScrollDown'](Window_CombatLogDisplay['SCROLL_SPEED_PAGEDN']),Input['isPressed'](_0x53936(0x249))&&this[_0x53936(0x1d1)](Window_CombatLogDisplay['SCROLL_SPEED_PAGEDN']),Input[_0x53936(0x240)](_0x53936(0x271))&&this[_0x53936(0x11a)](0x0,0x0),Input[_0x53936(0x240)](_0x53936(0x156))&&this[_0x53936(0x11a)](0x0,this[_0x53936(0x164)]()));},Window_CombatLogDisplay[_0x459e76(0x197)]['isAccessKeyPressed']=function(){const _0x51ddc9=_0x459e76;if($gameMessage[_0x51ddc9(0x18d)]())return![];return Input[_0x51ddc9(0x139)](Window_CombatLogDisplay[_0x51ddc9(0x11f)]);},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x101)]=function(_0x4c01a3){const _0x588d8b=_0x459e76;if(this[_0x588d8b(0x2ad)]===_0x4c01a3)return;this[_0x588d8b(0x2ad)]=_0x4c01a3,this['refresh'](),this[_0x588d8b(0x2da)](0x0,0x0);},Window_CombatLogDisplay[_0x459e76(0x197)]['makeCommandList']=function(){const _0x5e9972=_0x459e76;if(this['_combatLogIndex']===undefined)return;const _0x575539=$gameSystem['getCombatLog'](this[_0x5e9972(0x2ad)]);for(const _0x3bb1fa of _0x575539){if(!_0x3bb1fa)continue;this[_0x5e9972(0x18f)](_0x3bb1fa,_0x5e9972(0x21a));}const _0x429cf9=this['_list'][this[_0x5e9972(0x1aa)][_0x5e9972(0x1f1)]-0x1];_0x429cf9&&_0x429cf9[_0x5e9972(0x16a)]!==_0x5e9972(0x183)&&this[_0x5e9972(0x18f)]('=====HORZLINE=====',_0x5e9972(0x21a));},Window_CombatLogDisplay['prototype'][_0x459e76(0x2d4)]=function(_0x1082b1){const _0x5cdd95=_0x459e76;if(Window_CombatLogDisplay[_0x5cdd95(0x180)]){const _0x2e3e5f=this[_0x5cdd95(0x18a)](_0x1082b1);this['drawBackgroundRect'](_0x2e3e5f);}},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x109)]=function(_0x43993b){const _0x5ecc4f=_0x459e76,_0x314362=this[_0x5ecc4f(0x22d)](_0x43993b),_0x48841=this['commandName'](_0x43993b);_0x48841==='=====HORZLINE====='?this[_0x5ecc4f(0x2b4)](_0x314362):this[_0x5ecc4f(0x1cd)](_0x48841,_0x314362['x'],_0x314362['y'],_0x314362['width']);},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x2b4)]=function(_0x1db9fc){const _0x45be0e=_0x459e76;this[_0x45be0e(0x283)]();const _0x504c12=Window_CombatLogDisplay['HORZ_LINE_THICKNESS'],_0x1c3c6b=_0x1db9fc['y']+(_0x1db9fc[_0x45be0e(0x2a0)]-_0x504c12)/0x2;this[_0x45be0e(0x230)](_0x1db9fc['x'],_0x1c3c6b,_0x1db9fc[_0x45be0e(0x1e6)],_0x504c12);},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x208)]=function(){const _0x3990c4=_0x459e76;this[_0x3990c4(0x2ad)]=0x0,this['refresh'](),this[_0x3990c4(0x2da)](0x0,this[_0x3990c4(0x164)]());},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x252)]=function(_0x245a72){this['_lastWindow']=_0x245a72;},Window_CombatLogDisplay[_0x459e76(0x197)][_0x459e76(0x296)]=function(){const _0x515981=_0x459e76;return this[_0x515981(0x18e)];},Window_CombatLogDisplay[_0x459e76(0x197)]['createDimmerSprite']=function(){const _0x518159=_0x459e76;this[_0x518159(0x1ca)]=new Sprite(),this[_0x518159(0x1ca)][_0x518159(0x260)]=new Bitmap(0x0,0x0),this['_dimmerSprite']['x']=-0x4,this[_0x518159(0x22c)](this['_dimmerSprite']);},Window_CombatLogDisplay['prototype']['refreshDimmerBitmap']=function(){const _0x3470e2=_0x459e76;if(this[_0x3470e2(0x1ca)]){const _0x27ac0b=this[_0x3470e2(0x1ca)][_0x3470e2(0x260)],_0x5a4b87=this[_0x3470e2(0x1e6)]>0x0?this[_0x3470e2(0x1e6)]+0x8:0x0,_0x3dce20=this[_0x3470e2(0x2a0)],_0x47c119=this[_0x3470e2(0x242)],_0x4e6b76=ColorManager[_0x3470e2(0x2aa)](),_0x1ebcb0=ColorManager[_0x3470e2(0x262)]();_0x27ac0b['resize'](_0x5a4b87,_0x3dce20),_0x27ac0b[_0x3470e2(0x19f)](0x0,0x0,_0x5a4b87,_0x47c119,_0x1ebcb0,_0x4e6b76,!![]),_0x27ac0b[_0x3470e2(0x15a)](0x0,_0x47c119,_0x5a4b87,_0x3dce20-_0x47c119*0x2,_0x4e6b76),_0x27ac0b[_0x3470e2(0x19f)](0x0,_0x3dce20-_0x47c119,_0x5a4b87,_0x47c119,_0x4e6b76,_0x1ebcb0,!![]),this[_0x3470e2(0x1ca)][_0x3470e2(0x111)](0x0,0x0,_0x5a4b87,_0x3dce20),$gameParty[_0x3470e2(0x190)]()&&(this[_0x3470e2(0x1ca)][_0x3470e2(0x19b)]['x']=0x64,this[_0x3470e2(0x1ca)][_0x3470e2(0x2c8)]['x']=0.5);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x2a1)]=Game_Battler['prototype'][_0x459e76(0x129)],Game_Battler['prototype'][_0x459e76(0x129)]=function(){const _0x99caf8=_0x459e76;VisuMZ[_0x99caf8(0x28c)][_0x99caf8(0x2a1)][_0x99caf8(0x2d0)](this);if(!SceneManager[_0x99caf8(0xfd)]())return;const _0x4e5bf0=VisuMZ[_0x99caf8(0x28c)]['Settings'][_0x99caf8(0x267)];if(!_0x4e5bf0)return;if(!_0x4e5bf0[_0x99caf8(0x2b7)])return;const _0x116592=_0x4e5bf0[_0x99caf8(0x149)];if(_0x116592){let _0xf483d8=_0x116592[_0x99caf8(0x2d8)](this[_0x99caf8(0x1f0)]()),_0xfc3857=_0x4e5bf0[_0x99caf8(0x2ab)];$gameSystem[_0x99caf8(0x126)](_0xf483d8,_0xfc3857);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1ee)]=Game_Battler[_0x459e76(0x197)]['onCtbOrderChange'],Game_Battler[_0x459e76(0x197)][_0x459e76(0x299)]=function(_0x4f6da1){const _0x2d24cf=_0x459e76;VisuMZ['CombatLog'][_0x2d24cf(0x1ee)][_0x2d24cf(0x2d0)](this,_0x4f6da1);if(_0x4f6da1===0x0)return;if(!SceneManager[_0x2d24cf(0xfd)]())return;const _0xea632e=VisuMZ[_0x2d24cf(0x28c)]['Settings'][_0x2d24cf(0x267)];if(!_0xea632e)return;if(!_0xea632e[_0x2d24cf(0x1ef)])return;const _0x560506=_0xea632e['TextBattleSysCtbOrderChange'];if(_0x560506){let _0xf96ebd=_0x560506[_0x2d24cf(0x2d8)](this[_0x2d24cf(0x1f0)]()),_0x231a96=_0xea632e[_0x2d24cf(0x245)];$gameSystem['addTextToCombatLog'](_0xf96ebd,_0x231a96);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x294)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x253)],Game_Battler[_0x459e76(0x197)]['stbGainInstant']=function(_0x408870){const _0x2847ca=_0x459e76;VisuMZ[_0x2847ca(0x28c)][_0x2847ca(0x294)][_0x2847ca(0x2d0)](this,_0x408870);if(_0x408870===0x0)return;if(!SceneManager['isSceneBattle']())return;const _0x5893d1=VisuMZ[_0x2847ca(0x28c)]['Settings']['Compatibility'];if(!_0x5893d1)return;if(!_0x5893d1[_0x2847ca(0x23a)])return;const _0x2503b8=_0x5893d1[_0x2847ca(0x29e)];if(_0x2503b8){let _0xa3f31=_0x2503b8[_0x2847ca(0x2d8)](this[_0x2847ca(0x1f0)]()),_0x2b67c5=_0x5893d1[_0x2847ca(0x27c)];$gameSystem[_0x2847ca(0x126)](_0xa3f31,_0x2b67c5);}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1a9)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x158)],Game_Battler['prototype']['onAntiDamageNullificationBarrier']=function(_0x27ddcb){const _0x197158=_0x459e76,_0x3b1d58=VisuMZ['CombatLog']['Settings'][_0x197158(0x267)];if(_0x3b1d58&&_0x3b1d58[_0x197158(0x1dd)]&&SceneManager[_0x197158(0xfd)]()){let _0x5183f3=_0x3b1d58[_0x197158(0x2cf)];if(_0x5183f3){let _0x3a912c=_0x5183f3['format'](this[_0x197158(0x1f0)](),_0x27ddcb[_0x197158(0x16a)]),_0x999773=_0x27ddcb['iconIndex'];$gameSystem[_0x197158(0x126)](_0x3a912c,_0x999773);}}VisuMZ[_0x197158(0x28c)][_0x197158(0x1a9)]['call'](this,_0x27ddcb);},VisuMZ['CombatLog'][_0x459e76(0x21c)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x143)],Game_Battler[_0x459e76(0x197)][_0x459e76(0x143)]=function(_0x5b9f5c){const _0x2cc22a=_0x459e76,_0x3a442d=VisuMZ[_0x2cc22a(0x28c)]['Settings'][_0x2cc22a(0x267)];if(_0x3a442d&&_0x3a442d[_0x2cc22a(0x1f6)]&&SceneManager[_0x2cc22a(0xfd)]()){let _0x1b3ea4=_0x3a442d['Text_AntiDmgBarrier_Cancel'];if(_0x1b3ea4){let _0x5da974=_0x1b3ea4[_0x2cc22a(0x2d8)](this[_0x2cc22a(0x1f0)](),_0x5b9f5c[_0x2cc22a(0x16a)]),_0x12bc73=_0x5b9f5c[_0x2cc22a(0x203)];$gameSystem['addTextToCombatLog'](_0x5da974,_0x12bc73);}}VisuMZ[_0x2cc22a(0x28c)][_0x2cc22a(0x21c)][_0x2cc22a(0x2d0)](this,_0x5b9f5c);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x251)]=Game_BattlerBase['prototype']['getAntiDamageBarrierReduction'],Game_BattlerBase[_0x459e76(0x197)][_0x459e76(0x133)]=function(_0x4bc266){const _0xf61f6=_0x459e76,_0x4a279f=VisuMZ['CombatLog'][_0xf61f6(0x218)][_0xf61f6(0x267)];if(_0x4a279f&&_0x4a279f[_0xf61f6(0x2c9)]&&SceneManager[_0xf61f6(0xfd)]()){let _0x43372c=_0x4a279f[_0xf61f6(0x1b9)];if(_0x43372c){let _0x2df841=_0x43372c['format'](this[_0xf61f6(0x1f0)](),$dataStates[_0x4bc266]['name']),_0x47411e=$dataStates[_0x4bc266][_0xf61f6(0x203)];$gameSystem['addTextToCombatLog'](_0x2df841,_0x47411e);}}return VisuMZ[_0xf61f6(0x28c)]['Game_BattlerBase_getAntiDamageBarrierReduction'][_0xf61f6(0x2d0)](this,_0x4bc266);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0xf9)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x1f7)],Game_Battler['prototype'][_0x459e76(0x1f7)]=function(_0x87feaa,_0xbb3f40){const _0x80ef6a=_0x459e76;VisuMZ[_0x80ef6a(0x28c)][_0x80ef6a(0xf9)][_0x80ef6a(0x2d0)](this,_0x87feaa,_0xbb3f40);if(_0x87feaa===0x0)return;const _0x46adbd=VisuMZ[_0x80ef6a(0x28c)]['Settings']['Compatibility'];if(_0x46adbd&&_0x46adbd[_0x80ef6a(0x1ec)]&&SceneManager[_0x80ef6a(0xfd)]()){let _0x27f1b9=_0x46adbd[_0x80ef6a(0x295)];if(_0x27f1b9){let _0x29073a=_0x27f1b9[_0x80ef6a(0x2d8)](this[_0x80ef6a(0x1f0)](),_0xbb3f40[_0x80ef6a(0x16a)],_0x87feaa),_0x2d74e2=_0xbb3f40[_0x80ef6a(0x203)];$gameSystem[_0x80ef6a(0x126)](_0x29073a,_0x2d74e2);}}},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x273)]=Game_Battler['prototype']['onAntiDamageMpBarrier'],Game_Battler[_0x459e76(0x197)][_0x459e76(0x15d)]=function(_0x31cf86){const _0x18d5cf=_0x459e76,_0x34ca9e=VisuMZ['CombatLog'][_0x18d5cf(0x218)][_0x18d5cf(0x267)];if(_0x34ca9e&&_0x34ca9e['Show_AntiDmgBarrier_MpDisperse']&&SceneManager['isSceneBattle']()){let _0x1325d7=_0x34ca9e['Text_AntiDmgBarrier_MpDisperse'];if(_0x1325d7){let _0x4a305c=_0x1325d7[_0x18d5cf(0x2d8)](this[_0x18d5cf(0x1f0)](),_0x31cf86[_0x18d5cf(0x16a)],TextManager['mp']),_0x37c1ba=_0x31cf86[_0x18d5cf(0x203)];$gameSystem[_0x18d5cf(0x126)](_0x4a305c,_0x37c1ba);}}VisuMZ['CombatLog']['Game_Battler_onAntiDamageMpBarrier'][_0x18d5cf(0x2d0)](this,_0x31cf86);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0x1eb)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x1cc)],Game_Battler['prototype'][_0x459e76(0x1cc)]=function(_0x293618){const _0x5cbed7=_0x459e76,_0x3827c9=VisuMZ[_0x5cbed7(0x28c)][_0x5cbed7(0x218)]['Compatibility'];if(_0x3827c9&&_0x3827c9['Show_AntiDmgBarrier_TpDisperse']&&SceneManager[_0x5cbed7(0xfd)]()){let _0x36d2ad=_0x3827c9['Text_AntiDmgBarrier_TpDisperse'];if(_0x36d2ad){let _0x4b86b3=_0x36d2ad[_0x5cbed7(0x2d8)](this[_0x5cbed7(0x1f0)](),_0x293618[_0x5cbed7(0x16a)],TextManager['tp']),_0x2f42bf=_0x293618[_0x5cbed7(0x203)];$gameSystem[_0x5cbed7(0x126)](_0x4b86b3,_0x2f42bf);}}VisuMZ[_0x5cbed7(0x28c)][_0x5cbed7(0x1eb)][_0x5cbed7(0x2d0)](this,_0x293618);},VisuMZ[_0x459e76(0x28c)][_0x459e76(0xfc)]=Game_Battler[_0x459e76(0x197)][_0x459e76(0x256)],Game_Battler[_0x459e76(0x197)][_0x459e76(0x256)]=function(_0xeffb26){const _0x23539d=_0x459e76;VisuMZ[_0x23539d(0x28c)][_0x23539d(0xfc)]['call'](this,_0xeffb26);if(!SceneManager[_0x23539d(0xfd)]())return;if(!_0xeffb26)return;const _0x3f1386=VisuMZ[_0x23539d(0x28c)][_0x23539d(0x218)]['Compatibility'];if(!_0x3f1386)return;if(!_0x3f1386['Show_LifeStateEffects_%1'['format'](_0xeffb26)])return;let _0x28dda4=_0x3f1386['Text_LifeStateEffects_%1'['format'](_0xeffb26)];if(_0x28dda4){let _0x19088d=_0x28dda4[_0x23539d(0x2d8)](this[_0x23539d(0x1f0)]()),_0x5b21dd=_0x3f1386[_0x23539d(0x2bf)[_0x23539d(0x2d8)](_0xeffb26)];$gameSystem['addTextToCombatLog'](_0x19088d,_0x5b21dd);}},VisuMZ['CombatLog'][_0x459e76(0x189)]=Window_BattleLog[_0x459e76(0x197)]['addStealText'],Window_BattleLog[_0x459e76(0x197)][_0x459e76(0xfb)]=function(_0x566999){const _0x183403=_0x459e76;VisuMZ[_0x183403(0x28c)][_0x183403(0x189)][_0x183403(0x2d0)](this,_0x566999);if(_0x566999==='')return;const _0x3a6efb=VisuMZ[_0x183403(0x28c)][_0x183403(0x218)][_0x183403(0x267)];if(_0x3a6efb&&_0x3a6efb[_0x183403(0x123)]&&SceneManager[_0x183403(0xfd)]()){let _0x2d20a1=_0x3a6efb[_0x183403(0x1d0)];$gameSystem[_0x183403(0x126)](_0x566999,_0x2d20a1);}};

@@ -1,0 +1,61 @@
+<Attack animation: 39>
+<DragonBone Settings>
+Battler: SlimeBossGolgotha
+Scalex: -1.0
+Scaley: 1.0
+Width: 250
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Charged Spit
+Attack B - Aggressive Stab
+Attack C - Digesting
+Attack D - Spitting
+Damage
+Idle
+
+Sample Action Sequence:
+<Target Action>
+motion Attack C: user
+move user: targets, BASE, 19, auto offset x -550
+wait for movement
+move user: targets, BASE, 25, auto offset x -350
+wait: 15
+action effect
+action animation: targets
+JUMP targets: 100, 18
+move targets: FORWARD, 280, 25
+wait: 5
+animation 58: targets
+wait: 45
+move user: HOME, 20
+wait: 25
+move targets: FORWARD, -280, 20
+wait: 5
+animation 59: targets
+wait: 5
+</Target Action>
+

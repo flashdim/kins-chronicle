@@ -1,0 +1,32 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- Witch Baba Settings (copy any enemy as a base)
+---------------------
+<Attack animation: 12>
+<DragonBone Settings>
+Battler: Baba
+Scalex: -1.0
+Scaley: 1.0
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Attack
+Ani Thrust: Attack
+Ani Missile: Skill
+Ani Skill: Skill
+Ani Chant: Attack
+Ani Spell: Skill
+Ani Item: Skill
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle Weak
+Ani Sleep: Idle Weak
+Ani Dying: Idle Weak
+Ani Dead: Idle
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+ 

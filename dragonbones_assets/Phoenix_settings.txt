@@ -1,0 +1,53 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Phoenix
+Scalex: -0.8
+Scaley: 0.8
+Width: 100
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Casting
+Ani Chant: Idle
+Ani Spell: Casting
+Ani Item: Casting
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Wing Attack
+Attack B - Wing Spin Attack
+Attack C - Cleave Attack
+Idle 
+Damage 
+
+Sample Action Sequence:
+Fire Spell
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack A: user
+wait: 40
+animation 67: target
+action effect
+wait: 30
+move user: return, 30
+</target action>

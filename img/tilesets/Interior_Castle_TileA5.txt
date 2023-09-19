@@ -1,0 +1,128 @@
+﻿Darkness|暗闇
+Transparent|透明
+Ground (Blue Tile)|床（青タイル）
+Ground (Blue Tile, Shadow)|床（青タイル・影）
+Ground (Blue Tile, Shadow)|床（青タイル・影）
+Ground (Blue Tile, Light)|床（青タイル・光）
+Ground (Blue Tile, Ruins)|床（青タイル・廃墟）
+Ground (Blue Tile, Ruins)|床（青タイル・廃墟）
+Ground (Wood)|床（木製）
+Ground (Wood, Ruins)|床（木製・廃墟）
+Ground (Wood Tile)|床（木製タイル）
+Ground (Wood Tile, Shadow)|床（木製タイル・影）
+Ground (Wood Tile, Shadow)|床（木製タイル・影）
+Ground (Wood Tile, Light)|床（木製タイル・光）
+Ground (Wood Tile, Ruins)|床（木製タイル・廃墟）
+Ground (Wood Tile, Ruins)|床（木製タイル・廃墟）
+Ground (Wood)|床（木製）
+Ground (Wood, Ruins)|床（木製・廃墟）
+Ground (Wood Tile)|床（木製タイル）
+Ground (Wood Tile, Shadow)|床（木製タイル・影）
+Ground (Wood Tile, Shadow)|床（木製タイル・影）
+Ground (Wood Tile, Light)|床（木製タイル・光）
+Ground (Wood Tile, Ruins)|床（木製タイル・廃墟）
+Ground (Wood Tile, Ruins)|床（木製タイル・廃墟）
+Ground (Wood)|床（木製）
+Ground (Wood, Ruins)|床（木製・廃墟）
+Ground (Green Tile)|床（緑タイル）
+Ground (Green Tile, Shadow)|床（緑タイル・影）
+Ground (Green Tile, Shadow)|床（緑タイル・影）
+Ground (Green Tile, Light)|床（緑タイル・光）
+Ground (Green Tile, Ruins)|床（緑タイル・廃墟）
+Ground (Green Tile, Ruins)|床（緑タイル・廃墟）
+Ground (Wood)|床（木製）
+Ground (Wood, Ruins)|床（木製・廃墟）
+Ground (Green Tile)|床（緑タイル）
+Ground (Green Tile, Shadow)|床（緑タイル・影）
+Ground (Green Tile, Shadow)|床（緑タイル・影）
+Ground (Green Tile, Light)|床（緑タイル・光）
+Ground (Green Tile, Ruins)|床（緑タイル・廃墟）
+Ground (Green Tile, Ruins)|床（緑タイル・廃墟）
+Ground (Stone)|床（石）
+Ground (Brick)|床（レンガ）
+Ground (Brick, Shadow)|床（レンガ・影）
+Ground (Brick, Shadow)|床（レンガ・影）
+Ground (Brick, Light)|床（レンガ・光）
+Ground (Brick, Light)|床（レンガ・光）
+Ground (Brick, Ruins)|床（レンガ・廃墟）
+Ground (Brick, Ruins)|床（レンガ・廃墟）
+Stairs (Stone)|階段（石）
+Stairs (Stone)|階段（石）
+Stairs (Stone)|階段（石）
+Stairs (Green Stone)|階段（緑石）
+Stairs (Green Stone)|階段（緑石）
+Stairs (Green Stone)|階段（緑石）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Stairs (Stone, Ruins)|階段（石・廃墟）
+Stairs (Stone, Ruins)|階段（石・廃墟）
+Stairs (Stone, Ruins)|階段（石・廃墟）
+Stairs (Green Stone, Ruins)|階段（緑石・廃墟）
+Stairs (Green Stone, Ruins)|階段（緑石・廃墟）
+Stairs (Green Stone, Ruins)|階段（緑石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Stairs (Brown Stone)|階段（石）
+Stairs (Brown Stone)|階段（石）
+Stairs (Brown Stone)|階段（石）
+Stairs (Carpet)|階段（絨毯）
+Stairs (Carpet)|階段（絨毯）
+Stairs (Carpet)|階段（絨毯）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Stairs (Brown Stone, Ruins)|階段（石・廃墟）
+Stairs (Brown Stone, Ruins)|階段（石・廃墟）
+Stairs (Brown Stone, Ruins)|階段（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone)|壁（石）
+Wall (Stone)|壁（石）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone)|壁（石）
+Wall (Stone)|壁（石）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Stone, Ruins)|壁（石・廃墟）
+Wall (Brick)|壁（レンガ）
+Wall (Brick)|壁（レンガ）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick)|壁（レンガ）
+Wall (Brick)|壁（レンガ）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Brick, Ruins)|壁（レンガ・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone)|壁（緑石）
+Wall (Green Stone)|壁（緑石）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Ruins)|壁（緑石・廃墟）
+Wall (Green Stone, Light)|壁（緑石・ライト）
+Wall (Green Stone)|壁（緑石）

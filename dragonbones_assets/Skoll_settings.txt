@@ -1,0 +1,55 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Skoll
+Scalex: -1.0
+Scaley: 1.0
+Width: 274
+Height: 237
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack A
+Ani Skill: Casting
+Ani Chant: Idle
+Ani Spell: Casting
+Ani Item: Casting
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Axe Attack
+Attack B - Heavy Axe Attack
+Attack C - Spell Cast
+Damage
+Idle
+
+Sample Action Sequence:
+Attack A
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -200
+wait: 6
+motion Attack A: user
+wait: 30
+animation 9: target
+action effect
+wait: 30
+move user: return, 30
+</target action>

@@ -1,0 +1,88 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Horde
+Scalex: -0.8
+Scaley: 0.8
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack C
+Ani Skill: Skill Attack
+Ani Chant: Idle
+Ani Spell: Skill Attack
+Ani Item: Skill Attack
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Sample Action Sequences:
+THRUST ATTACK
+<cooldown: 4>
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack A: user
+wait: 30
+animation 16: target
+action effect
+wait: 15
+</target action>
+
+SWING ATTACK
+<cooldown: 4>
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack B: user
+wait: 30
+animation 7: target
+action effect
+wait: 15
+</target action>
+
+SHOOT ATTACK
+<cooldown: 4>
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack C: user
+wait: 30
+animation 91: target
+action effect
+wait: 15
+</target action>
+
+SKILL ATTACK
+<cooldown: 4>
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Skill Attack: user
+wait: 30
+animation 102: target
+action effect
+wait: 15
+</target action>

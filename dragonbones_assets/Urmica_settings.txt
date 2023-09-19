@@ -1,0 +1,52 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Urmica
+Scalex: -0.8
+Scaley: 0.8
+Width: 754
+Height: 672
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Skill A
+Ani Swing: Skill A
+Ani Thrust: Skill B
+Ani Missile: Skill A
+Ani Skill: Skill A
+Ani Chant: Idle
+Ani Spell: Idle
+Ani Item: Skill A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Skill A - Short Spell
+Skill B - Horn Stab
+Skill C - Extended Spell
+Skill D - Devour Attack
+Idle
+Damage
+
+Sample Action Sequence:
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Attack A: user
+wait: 15
+animation 81: user
+action effect
+wait: 30
+</target action>

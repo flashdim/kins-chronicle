@@ -1,0 +1,256 @@
+﻿Transparent|透明
+Boulder|岩
+Boulder|岩
+Boulder|岩
+Boulder|岩
+Gravel Mound|土砂
+Gravel Mound|土砂
+Entrance|入口
+NONE
+Boulder|岩
+Boulder|岩
+Boulder|岩
+Gravel Mound|土砂
+Gravel Mound|土砂
+Gravel Mound|土砂
+Entrance|入口
+Crate|木箱
+Crate (Dirt)|木箱（土）
+Crate|木箱
+Wood Stand|木製台
+Stool|椅子
+Stone Pillar|石の柱
+Broken Stone Pillar|折れた石の柱
+Monument|石碑
+Crate|木箱
+Crate|木箱
+Crate|木箱
+Barrel|樽
+Pickax|つるはし
+Stone Pillar|石の柱
+Broken Stone Pillar|折れた石の柱
+Monument|石碑
+Bed|ベッド
+Hexagram|魔法陣
+Hexagram|魔法陣
+Hexagram|魔法陣
+Wood board|木の板
+Large Monument|大きな石碑
+Large Monument|大きな石碑
+Large Monument|大きな石碑
+Bed|ベッド
+Hexagram|魔法陣
+Hexagram|魔法陣
+Hexagram|魔法陣
+Wood board|木の板
+Large Monument|大きな石碑
+Large Monument|大きな石碑
+Large Monument|大きな石碑
+Crystals|水晶
+Rock (Ice)|岩（氷）
+Metal Ladder|鉄ばしご
+Scrap Wood|端材
+Wood board|木の板
+Large Monument|大きな石碑
+Large Monument|大きな石碑
+Large Monument|大きな石碑
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rope Ladder|縄ばしご
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rope Ladder|縄ばしご
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rope Ladder|縄ばしご
+Metal Ladder|鉄ばしご
+Wood Ladder|木製ばしご
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Metal Ladder|鉄ばしご
+Wood Ladder|木製ばしご
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Rails|線路
+Metal Ladder|鉄ばしご
+Wood Ladder|木製ばしご
+Monument|石碑
+Monument|石碑
+Monument|石碑
+Monument|石碑
+Jail Bars|鉄格子
+Jail Bars|鉄格子
+Rope|ロープ
+Stone Plate|石板
+Monument|石碑
+Monument|石碑
+Monument|石碑
+Monument|石碑
+Jail Bars|鉄格子
+Jail Bars|鉄格子
+Rope|ロープ
+Drainpipe|排水管
+Rock|岩
+Rock|岩
+Rock|岩
+Rock|岩
+Rock|岩
+Rock|岩
+Rope|ロープ
+Drainpipe|排水管
+Rock|岩
+Rock|岩
+Rock|岩
+Rock|岩
+Rock|岩
+Stone Tablet|石版
+Stone Pillar (Moss)|石の柱（苔）
+Broken Stone Pillar (Moss)|折れた石の柱（苔）
+Rock (Ice)|岩（氷）
+Rock (Ice)|岩（氷）
+Rock (Ice)|岩（氷）
+Rock (Ice)|岩（氷）
+Stone Pillar (Ice)|石の柱（氷）
+Broken Stone Pillar (Ice)|折れた石の柱（氷）
+Stone Pillar (Moss)|石の柱（苔）
+Broken Stone Pillar (Moss)|折れた石の柱（苔）
+Rock (Ice)|岩（氷）
+Rock (Ice)|岩（氷）
+Rock (Ice)|岩（氷）
+Rock (Ice)|岩（氷）
+Stone Pillar (Ice)|石の柱（氷）
+Broken Stone Pillar (Ice)|折れた石の柱（氷）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Ice)|大きな石碑（氷）
+Large Monument (Ice)|大きな石碑（氷）
+Large Monument (Ice)|大きな石碑（氷）
+Crystals|水晶
+Crystals|水晶
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Ice)|大きな石碑（氷）
+Large Monument (Ice)|大きな石碑（氷）
+Large Monument (Ice)|大きな石碑（氷）
+Crystals|水晶
+Crystals|水晶
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Moss)|大きな石碑（苔）
+Large Monument (Ice)|大きな石碑（氷）
+Large Monument (Ice)|大きな石碑（氷）
+Large Monument (Ice)|大きな石碑（氷）
+Crystals|水晶
+Crystals|水晶
+Moss|苔
+Moss|苔
+Wall (Dark Rock)|壁（暗い岩）
+Wall (Dark Rock)|壁（暗い岩）
+Wall (Dark Rock)|壁（暗い岩）
+Crystals|水晶
+Crystals|水晶
+Crystals|水晶
+Moss|苔
+Moss|苔
+Wall (Dark Rock)|壁（暗い岩）
+Wall (Dark Rock)|壁（暗い岩）
+Wall (Dark Rock)|壁（暗い岩）
+Crystals|水晶
+Crystals|水晶
+Crystals|水晶
+Wall (Dark Rock, Crystals)|壁（暗い岩・水晶）
+Wall (Dark Rock, Crystals)|壁（暗い岩・水晶）
+Wall (Dark Rock, Crystals)|壁（暗い岩・水晶）
+Wall (Dark Rock)|壁（暗い岩）
+Wall (Dark Rock)|壁（暗い岩）
+Wall (Dark Rock, Crystals)|壁（暗い岩・水晶）
+Rock (Crystals)|岩（水晶）
+Rock (Moss)|岩（苔）
+Rock (Crystals)|岩（水晶）
+Rock (Moss)|岩（苔）
+Growth|突起物
+Growth|突起物
+Growth|突起物
+Growth|突起物
+Growth|突起物
+Cobweb|クモの巣
+Rock (Crystals)|岩（水晶）
+Rock (Moss)|岩（苔）
+Growth|突起物
+Growth|突起物
+Growth|突起物
+Growth|突起物
+Growth|突起物
+Cobweb|クモの巣
+Coffin|棺
+Stone coffin|石棺
+Bed|ベッド
+Wood board|木の板
+Wood board|木の板
+Wood board|木の板
+Bookshelf|本棚
+Bookshelf|本棚
+Coffin|棺
+Stone coffin|石棺
+Bed|ベッド
+Wood board|木の板
+Stone Pillar (Crystal)|石の柱（水晶）
+Stone Pillar (Crystal, Ruins)|石の柱（水晶・廃墟）
+Bookshelf|本棚
+Bookshelf|本棚
+Dragon Statue|竜像
+Dragon Statue|竜像
+Dragon Statue (Ruins)|竜像（廃墟）
+Dragon Statue (Ruins)|竜像（廃墟）
+Stone Pillar|石の柱
+Stone Pillar (Ruins)|石の柱(廃墟)
+Bookshelf|本棚
+Bookshelf|本棚
+Dragon Statue|竜像
+Dragon Statue|竜像
+Dragon Statue (Ruins)|竜像（廃墟）
+Dragon Statue (Ruins)|竜像（廃墟）
+Stone Pillar|石の柱
+Stone Pillar (Ruins)|石の柱(廃墟)
+Bookshelf|本棚
+Bookshelf|本棚
+Stairs (Down)|階段（下り）
+Stairs (Down)|階段（下り）
+Angel Statue|天使像
+Angel Statue|天使像
+Angel Statue (Ruins)|天使像（廃墟）
+Angel Statue (Ruins)|天使像（廃墟）
+Bookshelf (Ruins)|本棚（廃墟）
+Bookshelf (Ruins)|本棚（廃墟）
+Stairs (Up)|階段（上り）
+Stairs (Up)|階段（上り）
+Angel Statue|天使像
+Angel Statue|天使像
+Angel Statue (Ruins)|天使像（廃墟）
+Angel Statue (Ruins)|天使像（廃墟）
+Bookshelf (Ruins)|本棚（廃墟）
+Bookshelf (Ruins)|本棚（廃墟）

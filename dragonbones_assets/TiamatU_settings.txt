@@ -1,0 +1,132 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: TiamatU
+Scalex: -0.7
+Scaley: 0.7
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Claw Attack
+Ani Swing: Knuckle Rending
+Ani Thrust: Knuckle Rending Extended
+Ani Missile: Short Breath
+Ani Skill: Short Breath
+Ani Chant: Idle
+Ani Spell: Extended Breath
+Ani Item: Short Breath
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+*SAMPLE ACTION SEQUENCES*
+***Claw Attack***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Claw Attack: user
+wait: 45
+animation 7: target
+animation 9: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+***Extended Breath***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Extended Breath: user
+wait: 15
+animation 68: target
+action effect
+action effect
+action effect
+wait: 30
+animation 68: target
+action effect
+action effect
+action effect
+move user: return, 30
+</target action>
+
+***Knuckle Rending***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Knuckle Rending: user
+wait: 15
+animation 11: target
+action effect
+wait: 20
+animation 11: target
+action effect
+wait: 20
+animation 11: target
+action effect
+wait: 20
+move user: return, 30
+</target action>
+
+***Force Knuckle Rending***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Knuckle Rending Extended: user
+wait: 15
+animation 11: target
+action effect
+wait: 20
+animation 11: target
+action effect
+wait: 20
+animation 11: target
+action effect
+wait: 20
+move user: return, 30
+</target action>
+
+***Short Breath***
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Short Breath: user
+wait: 45
+animation 66: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

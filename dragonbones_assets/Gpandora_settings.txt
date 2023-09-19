@@ -1,0 +1,50 @@
+<DragonBone Settings>
+Battler: GPandora
+Scalex: -1.0
+Scaley: 1.0
+Width: 150
+Height: 120
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack C
+Ani Skill: Attack C
+Ani Chant: Idle
+Ani Spell: Attack C
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Spell Cast A
+Attack B - Spell Cast B
+Attack C - Spell Cast C
+Damage
+Idle
+
+Sample Action Sequence:
+<Target Action>
+face user: target
+motion Attack A: user
+wait: 35
+action effect
+JUMP targets: -15, 6
+move targets: BACKWARD, 40, 5
+face targets: FORWARD
+animation 74: targets
+action animation: targets
+wait: 45
+</Target Action>

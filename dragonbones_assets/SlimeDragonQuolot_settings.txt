@@ -1,0 +1,54 @@
+<Attack animation: 18>
+<DragonBone Settings>
+Battler: SlimeDragonQuolot
+Scalex: -1.0
+Scaley: 1.0
+Width: 200
+Height: 220
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack D
+Ani Swing: Attack D
+Ani Thrust: Attack B
+Ani Missile: Attack A
+Ani Skill: Attack E
+Ani Chant: Idle
+Ani Spell: Attack A
+Ani Item: Attack C
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Attack Launch
+Attack B - Tail thrust
+Attack C - Threatening stamp
+Attack D - Fierce swing
+Attack E - Forward lunging strike
+Damage
+Idle
+
+<Target Action>
+face user: target
+motion Attack E: user
+move user: targets, BASE, 35, auto offset x -380
+wait: 33
+action effect
+JUMP targets: -15, 6
+move targets: BACKWARD, 50, 8
+face targets: FORWARD
+animation 18: targets
+action animation: targets
+wait: 55
+</Target Action>
+

@@ -1,0 +1,55 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Contiturtle
+Scalex: -1.0
+Scaley: 1.0
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack B
+Ani Thrust: Attack C
+Ani Missile: Attack D
+Ani Skill: Attack A
+Ani Chant: Attack A
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A
+Attack B
+Attack C
+Damage
+Idle
+
+Sample Action Sequences(Replace motion Attack X and tweak as needed!):
+
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack A: user
+wait: 30
+animation 18: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>

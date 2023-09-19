@@ -1,0 +1,84 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Rafflesia
+Scalex: -0.8
+Scaley: 0.8
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Skill A
+Ani Swing: Skill A
+Ani Thrust: Skill B
+Ani Missile: Skill A Extended
+Ani Skill: Skill A
+Ani Chant: Idle
+Ani Spell: Idle
+Ani Item: Skill A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+***Sample Action Sequences***
+Skill A
+
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Skill A: user
+wait: 45
+animation 66: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+Skill B
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Skill B: user
+wait: 30
+animation 17: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
+
+Skill A Extended
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+motion Skill A Extended: user
+wait: 15
+animation 68: target
+action effect
+action effect
+action effect
+wait: 30
+animation 68: target
+action effect
+action effect
+action effect
+move user: return, 30
+</target action>

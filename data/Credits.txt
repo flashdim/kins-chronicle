@@ -1,0 +1,158 @@
+Text that appears outside of the block tags
+will not display in the credits scene
+
+<block:-1,-1,10,10,offbot,left,UI_Credits>
+\OutlineColor[16]\OutlineWidth[4]\c[7]\{\{\{\{KIN'S
+\OutlineColor[16]\OutlineWidth[4]\c[7]\{\{\{\{ CHRONICLE
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Production and 
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Development
+by
+Seth "flashdim" Manrow
+flashdim@gmail.com
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Story Consulting
+by
+\{Brent Fisher
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Original Music
+by
+\{Jeremy Palmer
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Monster Art and Animation
+by
+\{Ækashics Librarium
+
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Additional Artwork
+<b>Additional Tarot & 
+Steam Trading Card Art</b>
+by
+\{Craig Fisher
+
+
+<b>Equipment & Armor</b>
+by 
+\{Alexander Zagorulko 
+
+
+<b>Icons</b>
+by
+\{Caz Wolf
+
+
+<b>Zodiac wheel</b>
+by 
+\{FreePik
+
+
+<b>Controller Layout Images</b>
+by
+\{Alphathon\} - Xbox Controller
+\{Tokyoship\} - Playstation Controller
+
+
+<b>Rogon Boss Design</b>
+by 
+\{Will Sama
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Plugins and Artwork
+\{(C){{2021}} VisuStella™
+
+VisuStellaMZ Plugin Family
+VisuStella™: Armory Axe and Staff
+VisuStella™: Armory Bow and Club
+VisuStella™: Armory Daggers
+VisuStella™: Armory Katana and Katar
+VisuStella™: Armory Sword and Spear
+VisuStella™: Atelier Potions and Tonics
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Additional Plugins
+
+\{MZ3D by CutieVirus
+
+\{HUD Maker Ultra by SumRndmDde
+
+\{rabbitMap by poorrabbit
+
+End Phase Triggers, Magic Circles
+and Title Screen Particles by
+\{HimeWorks
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Additional Plugins
+
+\{Battle HUD by Moghunter
+
+\{CycloneSteam by Hudell
+
+\{GreenWorks by Greenheart Games Pty. Ltd.
+
+\{Skill Type Listing code by MALIKI79
+
+\{Mano Input Config by Sigureya
+
+</block>
+
+<block:-1,0,10,10,100,left>
+
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Credits Scene 
+by 
+\{Galv
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Streaming Stars
+Ap0calypticCheese
+All Indie
+eckoray
+FullThrough
+ManaSP
+MiojoPronto
+Ready Set Indie Games
+Sixkilla Gaming
+TheElectricMindset
+Tsusaku Cohenat
+Wyvern Realm
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Alpha/Beta Test All-Stars
+eckoray
+Havoc
+Interested Person
+Jrad
+Onts 
+Sasiah
+Syrel
+WispyMouse
+willsama974
+</block>
+
+<block:-1,0,10,10,100,left>
+\OutlineColor[16]\OutlineWidth[4]\c[2]\{\{Special Thanks
+Omerta138
+AveSharia
+JSkrillz
+XxEpic12xX
+Aurora Hearts
+Luminera: The Radiant Journey
+</block>
+
+<block:600,0,10,10,420,left>
+\{\{AND PLAYERS
+\{\{ LIKE YOU
+</block>
+
+<block:6000,0,10,10,800,center>
+\c[2]RPG Maker MZ Engine and Artwork by
+Degica Games
+</block>

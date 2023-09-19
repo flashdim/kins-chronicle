@@ -1,0 +1,57 @@
+<Attack animation: 7>
+<DragonBone Settings>
+Battler: Alfadriel
+Scalex: -0.9
+Scaley: 0.9
+Width: 360
+Height: 320
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack A
+Ani Swing: Attack A
+Ani Thrust: Attack A
+Ani Missile: Attack A
+Ani Skill: Attack A
+Ani Chant: Attack A
+Ani Spell: Attack A
+Ani Item: Attack A
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle 
+Ani Sleep: Idle 
+Ani Dying: Idle
+Ani Dead: Damage
+Ani Victory: Idle
+Ani Escape: Idle
+
+Replace Sprite
+</DragonBone Settings>
+
+Available Motions:
+Attack A - Sword Stab
+Attack B - Sword Slash
+Attack C - Raises sword upwards
+Attack D - Shield Strike
+Damage
+Idle
+
+Sample Action Sequence (Tweak as needed):
+<setup action>
+display action
+immortal: targets, true
+</setup action>
+
+<target action>
+move user: targets, front, 15, auto offset x -220
+wait: 6
+motion Attack B: user
+wait: 30
+animation 8: target
+action effect
+action effect
+action effect
+wait: 30
+move user: return, 30
+</target action>
