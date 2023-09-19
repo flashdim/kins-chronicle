@@ -23,16 +23,16 @@ VisuStella™: Atelier Potions and Tonics [Copyright](C) VisuStella, LLC
 http://www.visustella.com/  
 
 ## Coding and Support
--VisustellaMZ @ http://www.visustella.com/  
--MZ3D by CutieVirus @ https://cutievirus.itch.io/  
--HUD Maker Ultra Pro by SumRndmDde @ http://sumrndm.site/  
--Battle HUD by Moghunter @ https://mogplugins.wordpress.com/  
--rabbitMap by poorrabbit @ https://poorrabbit.itch.io/  
--End Phase Triggers, Magic Circles, and Particles from HimeWorks @ https://himeworks.com/  
--CycloneSteam by Hudell @ https://github.com/Hudell/  
--GreenWorks by Greenheart Games Pty. Ltd. @ https://github.com/greenheartgames/  
--Skill Type Listing code by MALIKI79 @ https://forums.rpgmakerweb.com/index.php?members/maliki79.231/  
--Credits Scene by Galv @ https://www.patreon.com/Galv  
+VisustellaMZ @ http://www.visustella.com/  
+MZ3D by CutieVirus @ https://cutievirus.itch.io/  
+HUD Maker Ultra Pro by SumRndmDde @ http://sumrndm.site/  
+Battle HUD by Moghunter @ https://mogplugins.wordpress.com/  
+rabbitMap by poorrabbit @ https://poorrabbit.itch.io/  
+End Phase Triggers, Magic Circles, and Particles from HimeWorks @ https://himeworks.com/  
+CycloneSteam by Hudell @ https://github.com/Hudell/  
+GreenWorks by Greenheart Games Pty. Ltd. @ https://github.com/greenheartgames/  
+Skill Type Listing code by MALIKI79 @ https://forums.rpgmakerweb.com/index.php?members/maliki79.231/  
+Credits Scene by Galv @ https://www.patreon.com/Galv  
 
 ## Streaming Stars
 Ap0calypticCheese @ http://twitch.tv/Ap0calypticCheese  
