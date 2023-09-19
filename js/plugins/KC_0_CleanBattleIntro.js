@@ -35,7 +35,7 @@
 		var KC_Game_System_Init = Game_System.prototype.initialize
 		Game_System.prototype.initialize = function() {
 			KC_Game_System_Init.call(this);
-			this._gameVersion = "Early Access v0.42";
+			this._gameVersion = "v0.50-beta";
 			this._lastKnownName = "Kin";
 		}
 	}
