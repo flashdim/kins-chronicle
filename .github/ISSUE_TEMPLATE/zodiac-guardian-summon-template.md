@@ -1,5 +1,5 @@
 ---
-name: Zodiac Guardian Summons
+name: Zodiac Guardian Summon Template
 about: Template for new Guardian Summons
 title: "[NAME] Guardian Summon"
 labels: content
