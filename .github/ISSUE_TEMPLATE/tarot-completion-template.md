@@ -7,7 +7,7 @@ assignees: flashdim
 
 ---
 
--[ ] Tarot Artwork
- -[ ] Tarot Common Events
- -[ ] Tarot Skill Entries
- -[ ] Tarot Grant Events
+- [ ] Tarot Artwork
+- [ ] Tarot Common Events
+- [ ] Tarot Skill Entries
+- [ ] Tarot Grant Events
