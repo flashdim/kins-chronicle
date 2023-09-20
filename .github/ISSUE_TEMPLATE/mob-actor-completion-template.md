@@ -10,9 +10,10 @@ assignees: flashdim
 - [ ] Face Images
 - [ ] Enemy Traits
 - [ ] Enemy Skills
-- [ ] Custom Notetags
-- [ ] Customize Troops
+- [ ] Customized Notetags
+- [ ] Customized Troops
 - [ ] Actor Biography
+- [ ] Actor Notetags
 - [ ] Actor Class
 - [ ] Actor Class Traits
 - [ ] Actor Class Skills
