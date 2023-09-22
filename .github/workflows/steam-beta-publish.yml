@@ -1,0 +1,90 @@
+name: Deploy published release to Steam
+on: 
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+env:
+  REPO_ROOT: kins-chronicle
+  REPO_DEPOT1: kins-chronicle
+
+jobs:
+  deployToSteam:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code at version just published
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.release.name }}
+
+    - name: Add build dependancies
+      run: |
+        pwd; cd ~/work/$REPO_ROOT/$REPO_DEPOT1
+        tar xvzf .github/deployment/artifacts.tar.gz
+        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
+
+    - name: Cleanup build environment
+      run: |
+        rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT1/.git*
+        ls -la ~/work/$REPO_ROOT/$REPO_DEPOT1
+
+    - name: Set new version in game code
+      run: >
+        sed -i "s/GAME_VERSION/${{ github.event.release.name }}/g" 
+        ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
+
+    - name: Verify new version in game code
+      run: grep "gameVersion" ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
+
+    - name: Create appbuild manifest
+      run: |
+        echo "\"AppBuild\""                                     > ~/work/manifest.vdf
+        echo "{"                                               >> ~/work/manifest.vdf
+        echo "  \"AppID\" \"1617800\""                         >> ~/work/manifest.vdf
+        echo "  \"Desc\" \"${{ github.event.release.name }}\"" >> ~/work/manifest.vdf
+        echo "  \"BuildOutput\" \"~/work/BuildOutput\""        >> ~/work/manifest.vdf
+        echo "  \"ContentRoot\" \"$REPO_ROOT\""                >> ~/work/manifest.vdf
+        echo "  \"SetLive\" \"beta\""                          >> ~/work/manifest.vdf
+        echo ""                                                >> ~/work/manifest.vdf
+        echo "  \"Depots\""                                    >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "    \"1617801\""                                 >> ~/work/manifest.vdf
+        echo "       \"FileMapping\""                          >> ~/work/manifest.vdf
+        echo "       {"                                        >> ~/work/manifest.vdf
+        echo "         \"LocalPath\" \"./$REPO_DEPOT1/*\""     >> ~/work/manifest.vdf
+        echo "         \"DepotPath\" \".\""                    >> ~/work/manifest.vdf
+        echo "         \"recursive\" \"1\""                    >> ~/work/manifest.vdf
+        echo "       }"                                        >> ~/work/manifest.vdf
+        echo "    }"                                           >> ~/work/manifest.vdf
+        echo "}"                                               >> ~/work/manifest.vdf
+        cat ~/work/manifest.vdf
+    
+    - name: Setup steamcmd
+      uses: CyberAndrii/setup-steamcmd@v1
+
+    - name: Create steam config dir
+      run: mkdir -p ~/Steam/config; ls -l ~/Steam/config
+
+    - name: Create steam build output folder
+      run: mkdir -p ~/work/BuildOutput; ls -l ~/work/BuildOutput
+    
+    - name: Create VDF file for login
+      run: |
+        echo "${{ secrets.STEAM_CONFIG_VDF }}" | base64 -d > ~/Steam/config/config.vdf
+        chmod 777 ~/Steam/config/config.vdf
+        ls -l ~/Steam/config
+
+    - name: Test steamcmd login
+      run: steamcmd 
+        +set_steam_guard_code "INVALID" 
+        +login ${{ secrets.STEAM_USERNAME }} 
+        +quit
+
+    - name: Upload beta branch via steamcmd
+      run: steamcmd 
+        +set_steam_guard_code "INVALID" 
+        +login ${{ secrets.STEAM_USERNAME }} 
+        +run_app_build ~/work/manifest.vdf 
+        +quit
