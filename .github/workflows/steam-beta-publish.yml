@@ -49,15 +49,17 @@ jobs:
         echo "  \"SetLive\" \"beta\""                          >> ~/work/manifest.vdf
         echo ""                                                >> ~/work/manifest.vdf
         echo "  \"Depots\""                                    >> ~/work/manifest.vdf
-        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "  {"                                             >> ~/work/manifest.vdf
         echo "    \"1617801\""                                 >> ~/work/manifest.vdf
-        echo "       \"FileMapping\""                          >> ~/work/manifest.vdf
-        echo "       {"                                        >> ~/work/manifest.vdf
-        echo "         \"LocalPath\" \"./$REPO_DEPOT1/*\""     >> ~/work/manifest.vdf
-        echo "         \"DepotPath\" \".\""                    >> ~/work/manifest.vdf
-        echo "         \"recursive\" \"1\""                    >> ~/work/manifest.vdf
-        echo "       }"                                        >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
+        echo "      {"                                         >> ~/work/manifest.vdf
+        echo "        \"LocalPath\" \"./$REPO_DEPOT1/*\""      >> ~/work/manifest.vdf
+        echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
+        echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
+        echo "      }"                                         >> ~/work/manifest.vdf
         echo "    }"                                           >> ~/work/manifest.vdf
+        echo "  }"                                             >> ~/work/manifest.vdf
         echo "}"                                               >> ~/work/manifest.vdf
         cat ~/work/manifest.vdf
     
