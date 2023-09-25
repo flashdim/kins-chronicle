@@ -1,4 +1,4 @@
 
-file*.rmmzsave
 data/MapInfos.json
+save/*
 package.json
