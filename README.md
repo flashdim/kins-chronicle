@@ -1,10 +1,16 @@
 # Kin's Chronicle
 
+## How to Contribute
+1. RPG Maker MZ v1.70  
+1. NW.js v0.55.0 SDK winx64 @ https://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-win-x64.zip  
+   1. Place the contents of the above ZIP in your "RPG Maker MZ\nwjs-win" folder, overwriting the contents
+
+# Credits
 ## Story
 Consulting by Brent Fisher @ https://www.brentfisher.net/
 
 ## Music
-Composed and mastered by Jeremy Palmer
+Composed and mastered by Jeremy Palmer of Life Lucid @ https://linktr.ee/lifelucid
 
 ## Art
 Librarium Animated Battlers from Aekashics @ http://akashics.moe/  
@@ -19,11 +25,11 @@ VisuStella™: Armory Axe and Staff [Copyright](C) 2021 VisuStella™
 VisuStella™: Armory Bow and Club [Copyright](C) 2021 VisuStella™  
 VisuStella™: Armory Katana and Katar [Copyright](C) 2021 VisuStella™  
 VisuStella™: Armory Sword and Spear [Copyright](C) 2021 VisuStella™  
-VisuStella™: Atelier Potions and Tonics [Copyright](C) VisuStella, LLC  
+VisuStella™: Atelier Potions and Tonics [Copyright](C) VisuStella, LLC    - 
 http://www.visustella.com/  
 
 ## Coding and Support
-VisustellaMZ @ http://www.visustella.com/  
+VisustellaMZ @ http://www.visustella.com/    - 
 MZ3D by CutieVirus @ https://cutievirus.itch.io/  
 HUD Maker Ultra Pro by SumRndmDde @ http://sumrndm.site/  
 Battle HUD by Moghunter @ https://mogplugins.wordpress.com/  
