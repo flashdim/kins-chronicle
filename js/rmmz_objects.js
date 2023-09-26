@@ -1,5 +1,5 @@
 //=============================================================================
-// rmmz_objects.js v1.5.0
+// rmmz_objects.js v1.4.0
 //=============================================================================
 
 //-----------------------------------------------------------------------------
@@ -5684,7 +5684,7 @@ Game_Party.prototype.isAllDead = function() {
     }
 };
 
-Game_Party.prototype.isEscaped = function() {
+Game_Party.prototype.isEscaped = function(item) {
     return this.isAllDead() && this.hiddenBattleMembers().length > 0;
 };
 
@@ -6115,19 +6115,11 @@ Game_Map.prototype.isEventRunning = function() {
 };
 
 Game_Map.prototype.tileWidth = function() {
-    if ("tileSize" in $dataSystem) {
-        return $dataSystem.tileSize;
-    } else {
-        return 48;
-    }
+    return 48;
 };
 
 Game_Map.prototype.tileHeight = function() {
-    return this.tileWidth();
-};
-
-Game_Map.prototype.bushDepth = function() {
-    return this.tileHeight() / 4;
+    return 48;
 };
 
 Game_Map.prototype.mapId = function() {
@@ -7307,7 +7299,7 @@ Game_CharacterBase.prototype.refreshBushDepth = function() {
         !this.isJumping()
     ) {
         if (!this.isMoving()) {
-            this._bushDepth = $gameMap.bushDepth();
+            this._bushDepth = 12;
         }
     } else {
         this._bushDepth = 0;
@@ -9908,12 +9900,6 @@ Game_Interpreter.prototype.command108 = function(params) {
         this._index++;
         this._comments.push(this.currentCommand().parameters[0]);
     }
-    return true;
-};
-
-// Skip
-Game_Interpreter.prototype.command109 = function() {
-    this.skipBranch();
     return true;
 };
 

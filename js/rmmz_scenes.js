@@ -1,5 +1,5 @@
 //=============================================================================
-// rmmz_scenes.js v1.5.0
+// rmmz_scenes.js v1.4.0
 //=============================================================================
 
 //-----------------------------------------------------------------------------
@@ -659,7 +659,7 @@ Scene_Map.prototype.create = function() {
     if (this._transfer) {
         DataManager.loadMapData($gamePlayer.newMapId());
         this.onTransfer();
-    } else {
+    } else if (!$dataMap || $dataMap.id !== $gameMap.mapId()) {
         DataManager.loadMapData($gameMap.mapId());
     }
 };
@@ -2351,8 +2351,7 @@ Scene_Load.prototype.reloadMapIfUpdated = function() {
         const mapId = $gameMap.mapId();
         const x = $gamePlayer.x;
         const y = $gamePlayer.y;
-        const d = $gamePlayer.direction();
-        $gamePlayer.reserveTransfer(mapId, x, y, d, 0);
+        $gamePlayer.reserveTransfer(mapId, x, y);
         $gamePlayer.requestMapReload();
     }
 };

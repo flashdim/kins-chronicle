@@ -1,5 +1,5 @@
 //=============================================================================
-// rmmz_managers.js v1.5.0
+// rmmz_managers.js v1.4.0
 //=============================================================================
 
 //-----------------------------------------------------------------------------
@@ -1961,9 +1961,7 @@ SceneManager.determineRepeatNumber = function(deltaTime) {
 };
 
 SceneManager.terminate = function() {
-    if (Utils.isNwjs()) {
-        nw.App.quit();
-    }
+    window.close();
 };
 
 SceneManager.onError = function(event) {
@@ -2685,7 +2683,7 @@ BattleManager.updateTurnEnd = function() {
         this.startTurn();
     } else {
         this.endAllBattlersTurn();
-        this._phase = "start";
+        this.startInput();
     }
 };
 

@@ -1,5 +1,5 @@
 //=============================================================================
-// main.js v1.5.0
+// main.js v1.4.0
 //=============================================================================
 
 const scriptUrls = [
@@ -28,7 +28,6 @@ class Main {
     run() {
         this.showLoadingSpinner();
         this.testXhr();
-        this.hookNwjsClose();
         this.loadMainScripts();
     }
 
@@ -53,14 +52,6 @@ class Main {
         xhr.open("GET", document.currentScript.src);
         xhr.onload = () => (this.xhrSucceeded = true);
         xhr.send();
-    }
-
-    hookNwjsClose() {
-        // [Note] When closing the window, the NW.js process sometimes does
-        //   not terminate properly. This code is a workaround for that.
-        if (typeof nw === "object") {
-            nw.Window.get().on("close", () => nw.App.quit());
-        }
     }
 
     loadMainScripts() {
@@ -134,7 +125,7 @@ class Main {
         // [Note] We cannot save the game properly when Gatekeeper Path
         //   Randomization is in effect.
         return (
-            typeof process === "object" &&
+            Utils.isNwjs() &&
             process.mainModule.filename.startsWith("/private/var")
         );
     }
