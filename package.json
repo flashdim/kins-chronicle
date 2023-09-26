@@ -7,7 +7,6 @@
         "width": 1920,
         "height": 1080,
         "position": "center",
-        "icon": "icon/icon.png",
-        "frame": false
+        "icon": "icon/icon.png"
     }
 }
