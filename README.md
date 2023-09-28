@@ -2,7 +2,7 @@
 
 ## How to Contribute
 1. RPG Maker MZ v1.70
-   1. Corescript v1.5.0
+   1. Corescript v1.4.0
 1. NW.js v0.75.0 SDK winx64 @ https://dl.nwjs.io/v0.75.0/nwjs-sdk-v0.75.0-win-x64.zip
    1. Place the contents of the above ZIP in your "RPG Maker MZ\nwjs-win" folder, overwriting the contents
 
