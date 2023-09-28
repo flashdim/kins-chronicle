@@ -17,7 +17,7 @@ jobs:
     - name: Checkout code at version just published
       uses: actions/checkout@v4
       with:
-        ref: DEVELOPMENT
+        ref: ${{ github.event.pull_request.after }}
 
     - name: Add build dependancies
       run: |
