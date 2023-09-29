@@ -1,7 +1,7 @@
 name: Deploy development PR build to Steam
 on: 
   pull_request:
-    types: [opened, reopened]
+    types: [closed]
 
 permissions:
   contents: read
@@ -12,12 +12,11 @@ env:
 
 jobs:
   deployToSteam:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code at version just published
       uses: actions/checkout@v4
-      with:
-        ref: ${{ github.event.pull_request.after }}
 
     - name: Add build dependancies
       run: |
