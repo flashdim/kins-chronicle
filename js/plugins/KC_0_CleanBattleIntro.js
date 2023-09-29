@@ -464,6 +464,8 @@ Scene_Map.prototype.processMapTouch = function() {
     }
 };
 */
+Game_Temp.prototype.setDestination = function(x, y) {
+};
 
 //-------------------------------------------
 // Trigger Main Menu common event with RMB or Gamepad
