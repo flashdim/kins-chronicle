@@ -67,6 +67,7 @@ jobs:
         echo "  }"                                             >> ~/work/manifest.vdf
         echo "}"                                               >> ~/work/manifest.vdf
         cat ~/work/manifest.vdf
+        cd ~/work
     
     - name: Setup steamcmd
       uses: CyberAndrii/setup-steamcmd@v1
