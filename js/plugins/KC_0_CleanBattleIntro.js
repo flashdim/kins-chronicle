@@ -517,6 +517,9 @@ Scene_Title.prototype.createBackground = function() {
 
 	if ( $gameSystem._lastKnownName != "Kin" ) {
 		this._backSprite1 = new Sprite(ImageManager.loadTitle1("title2"));
+		if (CycloneSteam.running) {
+			CycloneSteam.activateAchievement("YOUR_CHRONICLE");
+		};
 	} else {
 		this._backSprite1 = new Sprite(ImageManager.loadTitle1($dataSystem.title1Name));		
 	};
