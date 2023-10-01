@@ -681,8 +681,8 @@ Input.gamepadMapper = {
     3: "menu", // Y
     4: "pageup", // LB
     5: "pagedown", // RB
-	6: "left", // L2
-	7: "right", // R2
+	6: "rotleft", // L2
+	7: "rotright", // R2
 	8: "minimap", // Select/Back
 	9: "menu", // Start
 	10: "quickturn", // L3
