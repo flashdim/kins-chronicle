@@ -4,7 +4,7 @@
 //=============================================================================
  /*:
  * @target MZ
- * @plugindesc [RPG Maker MZ] [Tier 0] [Version 0.40]
+ * @plugindesc [RPG Maker MZ] [Tier 0] [Version 0.41]
  * @author flashdim
  * @url http://www.twitter.com/KinsChronicle
  *
@@ -702,3 +702,35 @@ Window_NameEdit.prototype.drawChar = function(index) {
     this.drawTextEx("<center>" + this._name[index] || "", rect.x, rect.y, rect.width);
 };
 
+
+//-------------------------------------------
+// Used to check if any event can be
+// triggered within visible range
+// Value is fed to a var read by UltraHUD
+//-------------------------------------------
+Game_Player.prototype.checkEventTriggerPossible = function() {
+    var eventFound = 0;
+
+	if (this.canStartLocalEvents()) {
+		if (!this.canStartLocalEvents()) { return false; }
+		const dir = this.mv3d_direction();
+		const horz = mv3d.util.dirtoh(dir);
+		const vert = mv3d.util.dirtov(dir);
+		
+		const x2 = $gameMap.roundXWithDirection(this.x, horz);
+        const y2 = $gameMap.roundYWithDirection(this.y, vert);
+
+		if (!$gameMap.isEventRunning()) {
+			$gameMap.eventsXy(x2,y2)
+			.filter(event=>mv3d.charCollision($gamePlayer,event,false,false,false,true))
+			.forEach(event=>{
+				if (event.isTriggerIn([0,1,2]) && 
+				    event.isNormalPriority() &&
+					event.opacity() != 0 ) {
+					eventFound = 1;
+				}
+			});
+		}
+    }
+	return eventFound;
+};
