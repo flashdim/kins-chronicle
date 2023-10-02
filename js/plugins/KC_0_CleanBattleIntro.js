@@ -43,10 +43,10 @@
 )();
 
 //-------------------------------------------
-// Change the default icon width/height
+// Updating default icon width/height
 //-------------------------------------------
-ImageManager.iconWidth = 32;
-ImageManager.iconHeight = 32;
+ImageManager.iconWidth = 48;
+ImageManager.iconHeight = 48;
 
 //-------------------------------------------
 // These don't get loaded for some reason, so do it manually.
@@ -412,13 +412,6 @@ Window_BattleActor.prototype.cursorLeft = function(wrap) {
 			break;
 	};
 };
-
-
-//-------------------------------------------
-// Updating default icon width/height
-//-------------------------------------------
-ImageManager.iconWidth = 48;
-ImageManager.iconHeight = 48;
 
 //-------------------------------------------
 // Add a listener for the middle mouse button
