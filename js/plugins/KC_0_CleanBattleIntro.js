@@ -724,9 +724,10 @@ Game_Player.prototype.checkEventTriggerPossible = function() {
 			$gameMap.eventsXy(x2,y2)
 			.filter(event=>mv3d.charCollision($gamePlayer,event,false,false,false,true))
 			.forEach(event=>{
-				if (event.isTriggerIn([0,1,2]) && 
-				    event.isNormalPriority() &&
-					event.opacity() != 0 ) {
+				if (event.isTriggerIn([0,1,2]) && 	// Is the event triggerable?
+				    event.isNormalPriority() &&   	// Is it at player level?
+					event.opacity() != 0  &&		// Is it visible?
+					event.list().at(0).code != 0 ){// Does it respond to action?
 					eventFound = 1;
 				}
 			});
