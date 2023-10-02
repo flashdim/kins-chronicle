@@ -6,7 +6,7 @@
  * @target MZ
  * @plugindesc [RPG Maker MZ] [Tier 0] [Version 0.41]
  * @author flashdim
- * @url http://www.twitter.com/KinsChronicle
+ * @url https://github.com/users/flashdim/projects/2
  *
  * @help
  * ============================================================================
