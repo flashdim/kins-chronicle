@@ -469,6 +469,12 @@ Game_Temp.prototype.setDestination = function(x, y) {
 	function() {
 		var KC_Scene_Map_Update = Scene_Map.prototype.update
 		Scene_Map.prototype.update = function() {
+			//-------------------------------------------
+			// Cap the viewing angle for the player camera
+			//-------------------------------------------
+			mz3d.blendCameraPitch.min=15;
+			mz3d.blendCameraPitch.max=112;
+
 			KC_Scene_Map_Update.call(this);
 
 			// Exit pointer lock if:
