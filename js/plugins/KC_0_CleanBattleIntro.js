@@ -734,3 +734,116 @@ Game_Player.prototype.checkEventTriggerPossible = function() {
     }
 	return eventFound;
 };
+
+//-------------------------------------------
+// Needed to update control icons outside
+// of the Game_Map scene
+// Will call this on control changes in the
+// options menu
+// First check for gamepad so we can use those if needed
+//  ConfigManager["gamepadStyle"]
+//  0 = XBOX (default)
+//  1 = PS (shapes)
+//  2 = NIN (XBOX but A/B swapped)
+//-------------------------------------------
+Game_Temp.prototype.updateControlIcons = function() {
+
+	// Set default XBOX icons
+	$gameVariables.setValue(54,363); // A
+	$gameVariables.setValue(55,364); // B
+	$gameVariables.setValue(56,365); // X
+	$gameVariables.setValue(57,366); // Y
+	$gameVariables.setValue(58,381); // L1
+	$gameVariables.setValue(59,287); // R1
+	$gameVariables.setValue(60,381); // L2
+	$gameVariables.setValue(61,287); // R2
+	$gameVariables.setValue(62,285); // Back/select
+	$gameVariables.setValue(63,286); // Menu/start
+	$gameVariables.setValue(64,381); // L3
+	$gameVariables.setValue(65,287); // R3
+	
+	// Change for PSX style gamepads
+	if (ConfigManager.gamepadStyle == 1) {
+		$gameVariables.setValue(54,365); // cross
+		$gameVariables.setValue(55,367); // circle
+		$gameVariables.setValue(56,350); // square
+		$gameVariables.setValue(57,351); // triangle
+	}
+
+	// Change for Nintendo style gamepads
+	if (ConfigManager.gamepadStyle == 2) {
+		$gameVariables.setValue(55,365); // B
+		$gameVariables.setValue(54,367); // A
+		$gameVariables.setValue(57,365); // Y
+		$gameVariables.setValue(56,366); // X
+	}
+
+	// Check gamepadConnected
+	if (Input.isGamepadConnected()) {
+
+		// Check if 'ok' is default
+		if (Input.gamepadMapper[0] == 'ok') {
+			$gameVariables.setValue(50,$gameVariables.value(54)); // A
+		}
+		else {
+			// Wasn't default, so retrieve the config
+			// Add the base value of the key (0,1,2,3,etc) to the icon offset to
+			//  get the new icon
+			var c = 0; 
+			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'ok' ? c = k : false; }), c)
+			$gameVariables.setValue(50,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+		}
+
+		// Check if 'cancel' is default
+		if (Input.gamepadMapper[2] == 'cancel') {
+			$gameVariables.setValue(51,$gameVariables.value(55)); // B
+		}
+		else {
+			// Wasn't default, so retrieve the config
+			// Add the base value of the key (0,1,2,3,etc) to the icon offset to
+			//  get the new icon
+			var c = 0; 
+			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'cancel' ? c = k : false; }), c)
+			$gameVariables.setValue(51,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+		}
+
+		// Check if 'shift' is default
+		if (Input.gamepadMapper[2] == 'menu') {
+			$gameVariables.setValue(70,$gameVariables.value(56)); // X
+		}
+		else {
+			// Wasn't default, so retrieve the config
+			// Add the base value of the key (0,1,2,3,etc) to the icon offset to
+			//  get the new icon
+			var c = 0; 
+			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'shift' ? c = k : false; }), c)
+			$gameVariables.setValue(70,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+		}
+
+		// Check if 'menu' is default
+		if (Input.gamepadMapper[3] == 'menu') {
+			$gameVariables.setValue(52,$gameVariables.value(57)); // Y
+		}
+		else {
+			// Wasn't default, so retrieve the config
+			// Add the base value of the key (0,1,2,3,etc) to the icon offset to
+			//  get the new icon
+			var c = 0; 
+			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'menu' ? c = k : false; }), c)
+			$gameVariables.setValue(52,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+		}
+
+		// Check if 'minimap' is default
+		if (Input.gamepadMapper[8] == 'menu') {
+			$gameVariables.setValue(53,$gameVariables.value(62)); // Back/Select
+		}
+		else {
+			// Wasn't default, so retrieve the config
+			// Add the base value of the key (0,1,2,3,etc) to the icon offset to
+			//  get the new icon
+			var c = 0; 
+			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'minimap' ? c = k : false; }), c)
+			$gameVariables.setValue(53,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+		}
+	}
+};
