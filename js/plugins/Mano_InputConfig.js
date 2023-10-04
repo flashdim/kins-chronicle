@@ -3756,12 +3756,12 @@ class Key_CommandManager_T{
     createCommandList_ForGamepad(){
         const exit =this.exit();
         const reset =this.reset()
-        const alt = this.alt();
+        //const alt = this.alt();
         const apply = this.apply();
         return [
             apply,
             reset,
-            alt,
+        //    alt,
             exit
         ];
 
