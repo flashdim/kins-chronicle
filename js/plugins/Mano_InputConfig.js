@@ -2798,11 +2798,11 @@ class Window_GamepadButtons extends Window_InputConfigBase_workaround{
         const symbolWidth =width - numberWidth -nameWidth;
         const symbolX = nameX + nameWidth;
         //this.drawText(symbol,symbolX,y,symbolWidth);    
-		this.drawTextEx("<left>" + symbol,
+		this.drawTextEx("<left>" + button.name(),
 				x,
 				y,
 				Graphics.boxWidth/4);
-		this.drawTextEx("<left>= " + button.name(),
+		this.drawTextEx("<left>= " + symbol,
 				x+200,
 				y,
 				Graphics.boxWidth/4);
