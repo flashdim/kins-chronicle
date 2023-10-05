@@ -1,4 +1,4 @@
-name: Deploy development PR build to Steam
+name: Deploy development Linux build to Steam
 on: 
   workflow_dispatch
 
