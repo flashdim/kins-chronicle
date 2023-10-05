@@ -19,12 +19,12 @@ jobs:
     - name: Add build dependancies
       run: |
         pwd; cd ~/work/$REPO_ROOT/$REPO_DEPOT1
-        wget https://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-linux-x64.tar.gz
-        tar xvzf nwjs-sdk-v0.55.0-linux-x64.tar.gz
-        rm ./nwjs-sdk-v0.55.0-linux-x64/chromedriver
-        rm ./nwjs-sdk-v0.55.0-linux-x64.tar.gz
-        cp -R ./nwjs-sdk-v0.55.0-linux-x64/* ./
-        rm -Rf ./nwjs-sdk-v0.55.0-linux-x64
+        wget https://dl.nwjs.io/live-build/nw80/20230920-215121/25a23ad78/v0.80.1/nwjs-sdk-v0.80.1-linux-x64.tar.gz
+        tar xvzf nwjs-sdk-v0.80.1-linux-x64.tar.gz
+        rm ./nwjs-sdk-v0.80.1-linux-x64/chromedriver
+        rm ./nwjs-sdk-v0.80.1-linux-x64.tar.gz
+        cp -R ./nwjs-sdk-v0.80.1-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-v0.80.1-linux-x64
         mv ./nw ./Game
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
