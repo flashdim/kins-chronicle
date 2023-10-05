@@ -49,7 +49,7 @@ jobs:
         echo "  \"Desc\" \"linux_`date +%s`\"" >> ~/work/manifest.vdf
         echo "  \"BuildOutput\" \"~/work/BuildOutput\""        >> ~/work/manifest.vdf
         echo "  \"ContentRoot\" \"$REPO_ROOT\""                >> ~/work/manifest.vdf
-        echo "  \"SetLive\" \"development\""                   >> ~/work/manifest.vdf
+        echo "  \"SetLive\" \"linux-development\""             >> ~/work/manifest.vdf
         echo ""                                                >> ~/work/manifest.vdf
         echo "  \"Depots\""                                    >> ~/work/manifest.vdf
         echo "  {"                                             >> ~/work/manifest.vdf
