@@ -1,7 +1,6 @@
-name: Deploy published release to Steam
+name: Deploy development Linux build to Steam
 on: 
-  release:
-    types: [published]
+  workflow_dispatch
 
 permissions:
   contents: read
@@ -16,19 +15,17 @@ jobs:
     steps:
     - name: Checkout code at version just published
       uses: actions/checkout@v4
-      with:
-        ref: ${{ github.event.release.name }}
 
     - name: Add build dependancies
       run: |
         pwd; cd ~/work/$REPO_ROOT/$REPO_DEPOT1
-        wget https://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-win-x64.zip
-        unzip nwjs-sdk-v0.55.0-win-x64.zip
-        rm ./nwjs-sdk-v0.55.0-win-x64/chromedriver.exe
-        rm ./nwjs-sdk-v0.55.0-win-x64.zip
-        mv ./nwjs-sdk-v0.55.0-win-x64/* ./
-        rmdir ./nwjs-sdk-v0.55.0-win-x64
-        mv ./nw.exe ./Game.exe
+        wget https://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-linux-x64.tar.gz
+        tar xvzf nwjs-sdk-v0.55.0-linux-x64.tar.gz
+        rm ./nwjs-sdk-v0.55.0-linux-x64/chromedriver
+        rm ./nwjs-sdk-v0.55.0-linux-x64.tar.gz
+        cp -R ./nwjs-sdk-v0.55.0-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-v0.55.0-linux-x64
+        mv ./nw ./Game
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
     - name: Cleanup build environment
@@ -38,7 +35,7 @@ jobs:
 
     - name: Set new version in game code
       run: >
-        sed -i "s/GAME_VERSION/${{ github.event.release.name }}/g" 
+        sed -i "s/GAME_VERSION/linux_`date +%s`/g"
         ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
 
     - name: Verify new version in game code
@@ -49,14 +46,14 @@ jobs:
         echo "\"AppBuild\""                                     > ~/work/manifest.vdf
         echo "{"                                               >> ~/work/manifest.vdf
         echo "  \"AppID\" \"1617800\""                         >> ~/work/manifest.vdf
-        echo "  \"Desc\" \"${{ github.event.release.name }}\"" >> ~/work/manifest.vdf
+        echo "  \"Desc\" \"linux_`date +%s`\"" >> ~/work/manifest.vdf
         echo "  \"BuildOutput\" \"~/work/BuildOutput\""        >> ~/work/manifest.vdf
         echo "  \"ContentRoot\" \"$REPO_ROOT\""                >> ~/work/manifest.vdf
-        echo "  \"SetLive\" \"beta\""                          >> ~/work/manifest.vdf
+        echo "  \"SetLive\" \"linux-development\""             >> ~/work/manifest.vdf
         echo ""                                                >> ~/work/manifest.vdf
         echo "  \"Depots\""                                    >> ~/work/manifest.vdf
         echo "  {"                                             >> ~/work/manifest.vdf
-        echo "    \"1617801\""                                 >> ~/work/manifest.vdf
+        echo "    \"1617802\""                                 >> ~/work/manifest.vdf
         echo "    {"                                           >> ~/work/manifest.vdf
         echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
         echo "      {"                                         >> ~/work/manifest.vdf
