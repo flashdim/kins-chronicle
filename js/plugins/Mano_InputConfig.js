@@ -2967,21 +2967,22 @@ class Scene_InputConfigBase_MA extends Scene_MenuBase{
         this.addWindow(this._helpWindow);
     }
     mainWindowHeight(){
-        return this.subWindowTop() - this.mainAreaTop();
+        return this.calcWindowHeight(4,true);
     }
 
     mainWindowRect(){
         const x = 0;
         const y= this.mainAreaTop();
         const width = Graphics.boxWidth;
-        const height =this.mainWindowHeight();
+        const height = this.mainWindowHeight();
         return new Rectangle(x,y,width,height);
     }
     subWindowTop(){
-        return Graphics.boxHeight* 0.75 - this.subWindowHeight();
+        return this.mainAreaTop() + this.subWindowHeight();
     }
+    
     subWindowHeight(){
-        return this.calcWindowHeight(2,true);
+        return this.calcWindowHeight(4,true);
     }
 
     subWindowRect() {
