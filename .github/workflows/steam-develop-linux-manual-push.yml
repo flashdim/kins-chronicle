@@ -23,8 +23,8 @@ jobs:
         tar xvzf nwjs-sdk-v0.55.0-linux-x64.tar.gz
         rm ./nwjs-sdk-v0.55.0-linux-x64/chromedriver
         rm ./nwjs-sdk-v0.55.0-linux-x64.tar.gz
-        mv ./nwjs-sdk-v0.55.0-linux-x64/* ./
-        rmdir ./nwjs-sdk-v0.55.0-linux-x64
+        cp -R ./nwjs-sdk-v0.55.0-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-v0.55.0-linux-x64
         mv ./nw ./Game
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
