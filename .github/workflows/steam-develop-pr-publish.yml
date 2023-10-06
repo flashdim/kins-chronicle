@@ -27,7 +27,7 @@ jobs:
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
         wget https://dl.nwjs.io/${LINUX_NODEJS_VER}/nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
         tar xvzf nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
-        rm ./nwjs-sdk-${LINUX_NODEJS_VER}1-linux-x64/chromedriver
+        rm ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64/chromedriver
         rm ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
         cp -R ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64/* ./
         rm -Rf ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64
