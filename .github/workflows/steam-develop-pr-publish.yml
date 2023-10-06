@@ -9,6 +9,7 @@ permissions:
 env:
   REPO_ROOT: kins-chronicle
   REPO_DEPOT1: kins-chronicle
+  REPO_DEPOT2: kins-chronicle-linux
 
 jobs:
   deployToSteam:
@@ -30,10 +31,24 @@ jobs:
         mv ./nw.exe ./Game.exe
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
-    - name: Cleanup build environment
+    - name: Add linux build dependancies
+      run: |
+        pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
+        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-win-x64.zip
+        tar xvzf nwjs-sdk-v0.76.1-linux-x64.tar.gz
+        rm ./nwjs-sdk-v0.76.1-linux-x64/chromedriver
+        rm ./nwjs-sdk-v0.76.1-linux-x64.tar.gz
+        cp -R ./nwjs-sdk-v0.76.1-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-v0.76.1-linux-x64
+        mv ./nw ./Game
+        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT2
+
+    - name: Cleanup build environments
       run: |
         rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT1/.git*
         ls -la ~/work/$REPO_ROOT/$REPO_DEPOT1
+        rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT2/.git*
+        ls -la ~/work/$REPO_ROOT/$REPO_DEPOT2
 
     - name: Set new version in game code
       run: >
@@ -60,6 +75,15 @@ jobs:
         echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
         echo "      {"                                         >> ~/work/manifest.vdf
         echo "        \"LocalPath\" \"./$REPO_DEPOT1/*\""      >> ~/work/manifest.vdf
+        echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
+        echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
+        echo "      }"                                         >> ~/work/manifest.vdf
+        echo "    }"                                           >> ~/work/manifest.vdf
+        echo "    \"1617802\""                                 >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
+        echo "      {"                                         >> ~/work/manifest.vdf
+        echo "        \"LocalPath\" \"./$REPO_DEPOT2/*\""      >> ~/work/manifest.vdf
         echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
         echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
         echo "      }"                                         >> ~/work/manifest.vdf
