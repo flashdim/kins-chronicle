@@ -12,9 +12,9 @@ env:
   REPO_DEPOT2: kins-chronicle-linux
   REPO_DEPOT3: kins-chronicle-win
   REPO_DEPOT4: kins-chronicle-mac
-  LINUX_NODEJS_VER: v0.76.1
-  WIN_NODEJS_VER: v0.76.1
-  OSX_NODEJS_VER: v0.76.1
+  LINUX_NODEJS_VER: v0.78.1
+  WIN_NODEJS_VER: v0.78.1
+  OSX_NODEJS_VER: v0.78.1
 
 jobs:
   deployToSteam:
