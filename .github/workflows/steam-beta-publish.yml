@@ -22,12 +22,11 @@ jobs:
     - name: Add build dependancies
       run: |
         pwd; cd ~/work/$REPO_ROOT/$REPO_DEPOT1
-        wget https://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-win-x64.zip
-        unzip nwjs-sdk-v0.55.0-win-x64.zip
-        rm ./nwjs-sdk-v0.55.0-win-x64/chromedriver.exe
-        rm ./nwjs-sdk-v0.55.0-win-x64.zip
-        mv ./nwjs-sdk-v0.55.0-win-x64/* ./
-        rmdir ./nwjs-sdk-v0.55.0-win-x64
+        wget https://dl.nwjs.io/v0.79.1/nwjs-sdk-v0.79.1-win-x64.zip
+        unzip nwjs-sdk-v0.79.1-win-x64.zip
+        rm ./nwjs-sdk-v0.79.1-win-x64/chromedriver.exe
+        mv ./nwjs-sdk-v0.79.1-win-x64/* ./
+        rmdir ./nwjs-sdk-v0.79.1-win-x64
         mv ./nw.exe ./Game.exe
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
