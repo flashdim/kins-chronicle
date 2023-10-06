@@ -149,7 +149,7 @@ jobs:
         +login ${{ secrets.STEAM_USERNAME }} 
         +quit
 
-    - name: Upload beta branch via steamcmd
+    - name: Upload development branch via steamcmd
       run: steamcmd 
         +set_steam_guard_code "INVALID" 
         +login ${{ secrets.STEAM_USERNAME }} 
