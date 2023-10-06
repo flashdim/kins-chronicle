@@ -29,6 +29,14 @@ jobs:
         rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT1/.git*
         ls -la ~/work/$REPO_ROOT/$REPO_DEPOT1
 
+    - name: Set new version in game code
+      run: >
+        sed -i "s/GAME_VERSION/DEV_PR_${{ github.event.pull_request.number }}/g"
+        ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
+
+    - name: Verify new version in game code
+      run: grep "gameVersion" ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
+      
     - name: Add linux build dependencies
       run: |
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
@@ -67,16 +75,9 @@ jobs:
         cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Resources/app.nw/
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT4
         
-    - name: Set new version in game code
-      run: >
-        sed -i "s/GAME_VERSION/DEV_PR_${{ github.event.pull_request.number }}/g"
-        ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
-
-    - name: Verify new version in game code
-      run: grep "gameVersion" ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
-
     - name: Create appbuild manifest
       run: |
+        cd ~/work
         echo "\"AppBuild\""                                     > ~/work/manifest.vdf
         echo "{"                                               >> ~/work/manifest.vdf
         echo "  \"AppID\" \"1617800\""                         >> ~/work/manifest.vdf
@@ -126,7 +127,6 @@ jobs:
         echo "  }"                                             >> ~/work/manifest.vdf
         echo "}"                                               >> ~/work/manifest.vdf
         cat ~/work/manifest.vdf
-        cd ~/work
     
     - name: Setup steamcmd
       uses: CyberAndrii/setup-steamcmd@v1
