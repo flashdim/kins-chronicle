@@ -34,7 +34,7 @@ jobs:
     - name: Add linux build dependancies
       run: |
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
-        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-linux-x64.zip
+        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-linux-x64.tar.gz
         tar xvzf nwjs-sdk-v0.76.1-linux-x64.tar.gz
         rm ./nwjs-sdk-v0.76.1-linux-x64/chromedriver
         rm ./nwjs-sdk-v0.76.1-linux-x64.tar.gz
