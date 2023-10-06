@@ -24,6 +24,11 @@ jobs:
     - name: Checkout code at version just published
       uses: actions/checkout@v4
 
+    - name: Cleanup build environment
+      run: |
+        rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT1/.git*
+        ls -la ~/work/$REPO_ROOT/$REPO_DEPOT1
+
     - name: Add linux build dependencies
       run: |
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
@@ -57,14 +62,11 @@ jobs:
         rm ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64.zip
         mv ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64/* ./
         rmdir ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64
-        mv ./nw.exe ./Game.exe
+        mv ./nwjs.app ./Game.app
+        mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Resources/app.nw
+        cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Resources/app.nw/
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT4
         
-    - name: Cleanup build environments
-      run: |
-        rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT1/.git*
-        ls -la ~/work/$REPO_ROOT/$REPO_DEPOT1
-
     - name: Set new version in game code
       run: >
         sed -i "s/GAME_VERSION/DEV_PR_${{ github.event.pull_request.number }}/g"
