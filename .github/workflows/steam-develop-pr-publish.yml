@@ -11,6 +11,8 @@ env:
   REPO_DEPOT1: kins-chronicle
   REPO_DEPOT2: kins-chronicle-linux
   REPO_DEPOT3: kins-chronicle-win
+  LINUX_NODEJS_VER: v0.76.1
+  WIN_NODEJS_VER: v0.76.1
 
 jobs:
   deployToSteam:
@@ -23,24 +25,24 @@ jobs:
     - name: Add linux build dependencies
       run: |
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
-        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-linux-x64.tar.gz
-        tar xvzf nwjs-sdk-v0.76.1-linux-x64.tar.gz
-        rm ./nwjs-sdk-v0.76.1-linux-x64/chromedriver
-        rm ./nwjs-sdk-v0.76.1-linux-x64.tar.gz
-        cp -R ./nwjs-sdk-v0.76.1-linux-x64/* ./
-        rm -Rf ./nwjs-sdk-v0.76.1-linux-x64
+        wget https://dl.nwjs.io/${LINUX_NODEJS_VER}/nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
+        tar xvzf nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
+        rm ./nwjs-sdk-${LINUX_NODEJS_VER}1-linux-x64/chromedriver
+        rm ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
+        cp -R ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64
         mv ./nw ./Game
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT2
 
     - name: Add windows build dependencies
       run: |
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT3; cd ~/work/$REPO_ROOT/$REPO_DEPOT3
-        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-win-x64.zip
-        unzip nwjs-sdk-v0.76.1-win-x64.zip
-        rm ./nwjs-sdk-v0.76.1-win-x64/chromedriver.exe
-        rm ./nwjs-sdk-v0.76.1-win-x64.zip
-        mv ./nwjs-sdk-v0.76.1-win-x64/* ./
-        rmdir ./nwjs-sdk-v0.76.1-win-x64
+        wget https://dl.nwjs.io/${WIN_NODEJS_VER}/nwjs-sdk-${WIN_NODEJS_VER}-win-x64.zip
+        unzip nwjs-sdk-${WIN_NODEJS_VER}-win-x64.zip
+        rm ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64/chromedriver.exe
+        rm ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64.zip
+        mv ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64/* ./
+        rmdir ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64
         mv ./nw.exe ./Game.exe
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT3
         
