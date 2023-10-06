@@ -35,11 +35,11 @@ jobs:
       run: |
         pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
         wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-win-x64.zip
-        tar xvzf nwjs-sdk-v0.80.1-linux-x64.tar.gz
-        rm ./nwjs-sdk-v0.80.1-linux-x64/chromedriver
-        rm ./nwjs-sdk-v0.80.1-linux-x64.tar.gz
-        cp -R ./nwjs-sdk-v0.80.1-linux-x64/* ./
-        rm -Rf ./nwjs-sdk-v0.80.1-linux-x64
+        tar xvzf nwjs-sdk-v0.76.1-linux-x64.tar.gz
+        rm ./nwjs-sdk-v0.76.1-linux-x64/chromedriver
+        rm ./nwjs-sdk-v0.76.1-linux-x64.tar.gz
+        cp -R ./nwjs-sdk-v0.76.1-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-v0.76.1-linux-x64
         mv ./nw ./Game
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT2
 
