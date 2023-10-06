@@ -10,6 +10,7 @@ env:
   REPO_ROOT: kins-chronicle
   REPO_DEPOT1: kins-chronicle
   REPO_DEPOT2: kins-chronicle-linux
+  REPO_DEPOT3: kins-chronicle-win
 
 jobs:
   deployToSteam:
@@ -18,18 +19,6 @@ jobs:
     steps:
     - name: Checkout code at version just published
       uses: actions/checkout@v4
-
-    - name: Add build dependencies
-      run: |
-        pwd; cd ~/work/$REPO_ROOT/$REPO_DEPOT1
-        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-win-x64.zip
-        unzip nwjs-sdk-v0.76.1-win-x64.zip
-        rm ./nwjs-sdk-v0.76.1-win-x64/chromedriver.exe
-        rm ./nwjs-sdk-v0.76.1-win-x64.zip
-        mv ./nwjs-sdk-v0.76.1-win-x64/* ./
-        rmdir ./nwjs-sdk-v0.76.1-win-x64
-        mv ./nw.exe ./Game.exe
-        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
     - name: Add linux build dependencies
       run: |
@@ -43,12 +32,22 @@ jobs:
         mv ./nw ./Game
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT2
 
+    - name: Add windows build dependencies
+      run: |
+        pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT3; cd ~/work/$REPO_ROOT/$REPO_DEPOT3
+        wget https://dl.nwjs.io/v0.76.1/nwjs-sdk-v0.76.1-win-x64.zip
+        unzip nwjs-sdk-v0.76.1-win-x64.zip
+        rm ./nwjs-sdk-v0.76.1-win-x64/chromedriver.exe
+        rm ./nwjs-sdk-v0.76.1-win-x64.zip
+        mv ./nwjs-sdk-v0.76.1-win-x64/* ./
+        rmdir ./nwjs-sdk-v0.76.1-win-x64
+        mv ./nw.exe ./Game.exe
+        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT3
+        
     - name: Cleanup build environments
       run: |
         rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT1/.git*
         ls -la ~/work/$REPO_ROOT/$REPO_DEPOT1
-        rm -Rf ~/work/$REPO_ROOT/$REPO_DEPOT2/.git*
-        ls -la ~/work/$REPO_ROOT/$REPO_DEPOT2
 
     - name: Set new version in game code
       run: >
@@ -84,6 +83,15 @@ jobs:
         echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
         echo "      {"                                         >> ~/work/manifest.vdf
         echo "        \"LocalPath\" \"./$REPO_DEPOT2/*\""      >> ~/work/manifest.vdf
+        echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
+        echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
+        echo "      }"                                         >> ~/work/manifest.vdf
+        echo "    }"                                           >> ~/work/manifest.vdf
+        echo "    \"1617803\""                                 >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
+        echo "      {"                                         >> ~/work/manifest.vdf
+        echo "        \"LocalPath\" \"./$REPO_DEPOT3/*\""      >> ~/work/manifest.vdf
         echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
         echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
         echo "      }"                                         >> ~/work/manifest.vdf
