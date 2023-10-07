@@ -71,8 +71,8 @@ jobs:
         mv ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64/* ./
         rmdir ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64
         mv ./nwjs.app ./Game.app
-        mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Resources/app.nw
-        cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Resources/app.nw/
+        mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Content/Resources/app.nw
+        cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Content/Resources/app.nw/
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT4
         
     - name: Create appbuild manifest
