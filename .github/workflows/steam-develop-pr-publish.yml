@@ -13,7 +13,7 @@ env:
   REPO_DEPOT3: kins-chronicle-win
   REPO_DEPOT4: kins-chronicle-mac
   LINUX_NODEJS_VER: v0.80.0
-  WIN_NODEJS_VER: v0.80.0
+  WIN_NODEJS_VER: v0.76.0
   OSX_NODEJS_VER: v0.80.0
 
 jobs:
