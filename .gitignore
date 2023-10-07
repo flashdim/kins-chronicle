@@ -2,3 +2,4 @@
 save/*
 data/MapInfos.json
 ./package.json
+.DS_Store
