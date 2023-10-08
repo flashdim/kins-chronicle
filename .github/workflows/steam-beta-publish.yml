@@ -84,7 +84,7 @@ jobs:
         cd ./$REPO_ROOT/$REPO_DEPOT1/ && zip -r ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip ./*
         cd ./$REPO_ROOT/$REPO_DEPOT3/ && zip -ur ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip ./*
         ls ~/work/$REPO_ROOT/$REPO_DEPOT4/*
-        cd ./$REPO_ROOT/$REPO_DEPOT4/ && zip -r ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip ./*
+        cd ~/work/$REPO_ROOT/$REPO_DEPOT4/ && zip -r ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip ./*
         cd ~/work
         
     - name: Attach Artifacts to Release
