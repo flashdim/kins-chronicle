@@ -86,13 +86,11 @@ jobs:
         ls ~/work/$REPO_ROOT/$REPO_DEPOT4/*
         zip -r ~/work/$REPOT_DEPOT4-${{ github.event.release.name }}.zip ~/work/$REPO_ROOT/$REPO_DEPOT4/*
         
-    - name: Attach Releases
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          ${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
-          ${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
-          ${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
+    - name: Attach Artifacts to Release
+      run: |
+        gh release upload ${{ github.event.release.name }} $REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz
+        gh release upload ${{ github.event.release.name }} $REPOT_DEPOT3-${{ github.event.release.name }}.zip
+        gh release upload ${{ github.event.release.name }} $REPOT_DEPOT4-${{ github.event.release.name }}.zip
         
     - name: Create Steam AppBuild manifest
       run: |
