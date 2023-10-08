@@ -181,8 +181,8 @@ jobs:
     
     - name: Set up butler for itch.io
       run: |
-        cd ~/work && wget https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
-        unzip ./butler-linux-amd64.zip
+        cd ~/work && curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+        unzip ./butler.zip
         ./butler --version
         ./butler login 
       
