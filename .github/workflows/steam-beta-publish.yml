@@ -97,3 +97,18 @@ jobs:
         +login ${{ secrets.STEAM_USERNAME }} 
         +run_app_build ~/work/manifest.vdf 
         +quit
+        
+    - name: Create Release Attachments
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        zip -r "~/work/${REPOT_DEPOT3}-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT3/*"
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: 
+          ${{ var.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
