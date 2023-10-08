@@ -9,6 +9,12 @@ permissions:
 env:
   REPO_ROOT: kins-chronicle
   REPO_DEPOT1: kins-chronicle
+  REPO_DEPOT2: kins-chronicle-linux
+  REPO_DEPOT3: kins-chronicle-win
+  REPO_DEPOT4: kins-chronicle-mac
+  LINUX_NODEJS_VER: v0.80.0
+  WIN_NODEJS_VER: v0.76.0
+  OSX_NODEJS_VER: v0.80.0
 
 jobs:
   deployToSteam:
@@ -18,18 +24,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ github.event.release.name }}
-
-    - name: Add build dependancies
-      run: |
-        pwd; cd ~/work/$REPO_ROOT/$REPO_DEPOT1
-        wget https://dl.nwjs.io/v0.55.0/nwjs-sdk-v0.55.0-win-x64.zip
-        unzip nwjs-sdk-v0.55.0-win-x64.zip
-        rm ./nwjs-sdk-v0.55.0-win-x64.zip
-        rm ./nwjs-sdk-v0.55.0-win-x64/chromedriver.exe
-        mv ./nwjs-sdk-v0.55.0-win-x64/* ./
-        rmdir ./nwjs-sdk-v0.55.0-win-x64
-        mv ./nw.exe ./Game.exe
-        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT1
 
     - name: Cleanup build environment
       run: |
@@ -44,15 +38,54 @@ jobs:
     - name: Verify new version in game code
       run: grep "gameVersion" ~/work/$REPO_ROOT/$REPO_DEPOT1/js/plugins/KC_0_CleanBattleIntro.js
 
+    - name: Add linux build dependencies
+      run: |
+        pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT2; cd ~/work/$REPO_ROOT/$REPO_DEPOT2
+        wget https://dl.nwjs.io/${LINUX_NODEJS_VER}/nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
+        tar xvzf nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
+        rm ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64/chromedriver
+        rm ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64.tar.gz
+        cp -R ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64/* ./
+        rm -Rf ./nwjs-sdk-${LINUX_NODEJS_VER}-linux-x64
+        mv ./nw ./Game
+        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT2
+
+    - name: Add windows build dependencies
+      run: |
+        pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT3; cd ~/work/$REPO_ROOT/$REPO_DEPOT3
+        wget https://dl.nwjs.io/${WIN_NODEJS_VER}/nwjs-sdk-${WIN_NODEJS_VER}-win-x64.zip
+        unzip nwjs-sdk-${WIN_NODEJS_VER}-win-x64.zip
+        rm ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64/chromedriver.exe
+        rm ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64.zip
+        mv ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64/* ./
+        rmdir ./nwjs-sdk-${WIN_NODEJS_VER}-win-x64
+        mv ./nw.exe ./Game.exe
+        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT3
+
+    - name: Add osx build dependencies
+      run: |
+        pwd; mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4; cd ~/work/$REPO_ROOT/$REPO_DEPOT4
+        wget https://dl.nwjs.io/${OSX_NODEJS_VER}/nwjs-sdk-${OSX_NODEJS_VER}-osx-x64.zip
+        unzip nwjs-sdk-${OSX_NODEJS_VER}-osx-x64.zip
+        rm ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64/chromedriver
+        rm ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64.zip
+        mv ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64/* ./
+        rmdir ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64
+        mv ./nwjs.app ./Game.app
+        mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Content/Resources/app.nw
+        cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Content/Resources/app.nw/
+        ls -l ~/work/$REPO_ROOT/$REPO_DEPOT4
+        
     - name: Create appbuild manifest
       run: |
+        cd ~/work
         echo "\"AppBuild\""                                     > ~/work/manifest.vdf
         echo "{"                                               >> ~/work/manifest.vdf
         echo "  \"AppID\" \"1617800\""                         >> ~/work/manifest.vdf
-        echo "  \"Desc\" \"${{ github.event.release.name }}\"" >> ~/work/manifest.vdf
+        echo "  \"Desc\" \"DEV_PR_${{ github.event.pull_request.number }}\"" >> ~/work/manifest.vdf
         echo "  \"BuildOutput\" \"~/work/BuildOutput\""        >> ~/work/manifest.vdf
         echo "  \"ContentRoot\" \"$REPO_ROOT\""                >> ~/work/manifest.vdf
-        echo "  \"SetLive\" \"beta\""                          >> ~/work/manifest.vdf
+        echo "  \"SetLive\" \"development\""                   >> ~/work/manifest.vdf
         echo ""                                                >> ~/work/manifest.vdf
         echo "  \"Depots\""                                    >> ~/work/manifest.vdf
         echo "  {"                                             >> ~/work/manifest.vdf
@@ -65,10 +98,37 @@ jobs:
         echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
         echo "      }"                                         >> ~/work/manifest.vdf
         echo "    }"                                           >> ~/work/manifest.vdf
+        echo "    \"1617802\""                                 >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
+        echo "      {"                                         >> ~/work/manifest.vdf
+        echo "        \"LocalPath\" \"./$REPO_DEPOT2/*\""      >> ~/work/manifest.vdf
+        echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
+        echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
+        echo "      }"                                         >> ~/work/manifest.vdf
+        echo "    }"                                           >> ~/work/manifest.vdf
+        echo "    \"1617803\""                                 >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
+        echo "      {"                                         >> ~/work/manifest.vdf
+        echo "        \"LocalPath\" \"./$REPO_DEPOT3/*\""      >> ~/work/manifest.vdf
+        echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
+        echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
+        echo "      }"                                         >> ~/work/manifest.vdf
+        echo "    }"                                           >> ~/work/manifest.vdf
+        echo "    \"1617804\""                                 >> ~/work/manifest.vdf
+        echo "    {"                                           >> ~/work/manifest.vdf
+        echo "      \"FileMapping\""                           >> ~/work/manifest.vdf
+        echo "      {"                                         >> ~/work/manifest.vdf
+        echo "        \"LocalPath\" \"./$REPO_DEPOT4/*\""      >> ~/work/manifest.vdf
+        echo "        \"DepotPath\" \".\""                     >> ~/work/manifest.vdf
+        echo "        \"recursive\" \"1\""                     >> ~/work/manifest.vdf
+        echo "      }"                                         >> ~/work/manifest.vdf
+        echo "    }"                                           >> ~/work/manifest.vdf
         echo "  }"                                             >> ~/work/manifest.vdf
         echo "}"                                               >> ~/work/manifest.vdf
         cat ~/work/manifest.vdf
-        cd ~/work
+    
     
     - name: Setup steamcmd
       uses: CyberAndrii/setup-steamcmd@v1
@@ -99,17 +159,15 @@ jobs:
         +quit
         
     - name: Create Release Attachments
-      if: startsWith(github.ref, 'refs/tags/')
       run: |
-        tar czf "~/work/${REPOT_DEPOT3}-${{ github.event.release.name }}.tar.gz "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT2/*"
+        tar cvzf "~/work/${REPOT_DEPOT2}-${{ github.event.release.name }}.tar.gz "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT2/*"
         zip -r "~/work/${REPOT_DEPOT3}-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT3/*"
         zip -r "~/work/${REPOT_DEPOT4}-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT4/*"
         
     - name: Release
       uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: 
+        files: |
           ${{ var.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
           ${{ var.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
           ${{ var.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
