@@ -189,6 +189,6 @@ jobs:
     - name: Push build using butler
       run: |
         cd ~/work
-        ./butler push ~/work/$REPO_DEPOT2-${{ github.event.release.name }}.zip $BUTLER_API_GAME:linux-x64 --userversion ${{ github.event.release.name }}
+        ./butler push ~/work/$REPO_DEPOT2-${{ github.event.release.name }}.tar.gz $BUTLER_API_GAME:linux-x64 --userversion ${{ github.event.release.name }}
         ./butler push ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip $BUTLER_API_GAME:win-x64 --userversion ${{ github.event.release.name }}
         ./butler push ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip $BUTLER_API_GAME:osx-x64 --userversion ${{ github.event.release.name }}
