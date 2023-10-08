@@ -79,7 +79,7 @@ jobs:
     - name: Create Release Attachments
       run: |
         ls ~/work/$REPO_ROOT/$REPO_DEPOT1/*; ls ~/work/$REPO_ROOT/$REPO_DEPOT2/*
-        tar cvzf ~/work/$REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz ~/work/$REPO_ROOT/$REPO_DEPOT1/* ~/work/$REPO_ROOT/$REPO_DEPOT2/*
+        tar czf ~/work/$REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz ~/work/$REPO_ROOT/$REPO_DEPOT1/* ~/work/$REPO_ROOT/$REPO_DEPOT2/*
         ls ~/work/$REPO_ROOT/$REPO_DEPOT3/*
         zip -r ~/work/$REPOT_DEPOT3-${{ github.event.release.name }}.zip ~/work/$REPO_ROOT/$REPO_DEPOT1/* ~/work/$REPO_ROOT/$REPO_DEPOT3/*
         ls ~/work/$REPO_ROOT/$REPO_DEPOT4/*
@@ -89,9 +89,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
-          ${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
-          ${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
+          ~/work/$REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz
+          ~/work/$REPOT_DEPOT3-${{ github.event.release.name }}.zip
+          ~/work/$REPOT_DEPOT4-${{ github.event.release.name }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
