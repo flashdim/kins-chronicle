@@ -168,9 +168,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ${{ REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
-          ${{ REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
-          ${{ REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
+          ${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
+          ${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
+          ${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
