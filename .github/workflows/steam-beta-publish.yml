@@ -87,9 +87,9 @@ jobs:
         
     - name: Attach Artifacts to Release
       run: |
-        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT2-${{ github.event.release.name }}.tar.gz
-        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip
-        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip
+        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT2-${{ github.event.release.name }}.tar.gz --repo $GITHUB_REPOSITORY
+        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip --repo $GITHUB_REPOSITORY
+        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip --repo $GITHUB_REPOSITORY
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
