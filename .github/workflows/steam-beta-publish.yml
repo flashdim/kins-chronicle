@@ -79,7 +79,6 @@ jobs:
     - name: Create Release Attachments
       run: |
         cd ~/work
-        ls ~/work/$REPO_ROOT/$REPO_DEPOT1/*; ls ~/work/$REPO_ROOT/$REPO_DEPOT2/*
         tar czf ~/work/$REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz -C ~/work/$REPO_ROOT/$REPO_DEPOT1/ . -C ~/work/$REPO_ROOT/$REPO_DEPOT2/ .
         ls ~/work/$REPO_ROOT/$REPO_DEPOT3/*
         zip -r ~/work/$REPOT_DEPOT3-${{ github.event.release.name }}.zip ~/work/$REPO_ROOT/$REPO_DEPOT1/* ~/work/$REPO_ROOT/$REPO_DEPOT3/*
@@ -88,9 +87,9 @@ jobs:
         
     - name: Attach Artifacts to Release
       run: |
-        gh release upload ${{ github.event.release.name }} $REPO_DEPOT2-${{ github.event.release.name }}.tar.gz --clobber
-        gh release upload ${{ github.event.release.name }} $REPO_DEPOT3-${{ github.event.release.name }}.zip --clobber
-        gh release upload ${{ github.event.release.name }} $REPO_DEPOT4-${{ github.event.release.name }}.zip --clobber
+        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT2-${{ github.event.release.name }}.tar.gz
+        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip
+        gh release upload ${{ github.event.release.name }} ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
