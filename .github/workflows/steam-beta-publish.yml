@@ -88,9 +88,9 @@ jobs:
         
     - name: Attach Artifacts to Release
       run: |
-        gh release upload ${{ github.event.release.name }} $REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz
-        gh release upload ${{ github.event.release.name }} $REPOT_DEPOT3-${{ github.event.release.name }}.zip
-        gh release upload ${{ github.event.release.name }} $REPOT_DEPOT4-${{ github.event.release.name }}.zip
+        gh release upload ${{ github.event.release.name }} $REPO_DEPOT2-${{ github.event.release.name }}.tar.gz
+        gh release upload ${{ github.event.release.name }} $REPO_DEPOT3-${{ github.event.release.name }}.zip
+        gh release upload ${{ github.event.release.name }} $REPO_DEPOT4-${{ github.event.release.name }}.zip
         
     - name: Create Steam AppBuild manifest
       run: |
