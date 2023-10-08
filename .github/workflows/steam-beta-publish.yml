@@ -89,11 +89,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ~/work/${{ REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
-          ~/work/${{ REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
-          ~/work/${{ REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ~/work/${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
+          ~/work/${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
+          ~/work/${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
         
     - name: Create Steam AppBuild manifest
       run: |
