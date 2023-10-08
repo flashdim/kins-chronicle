@@ -9,9 +9,9 @@ permissions:
 env:
   REPO_ROOT: kins-chronicle
   REPO_DEPOT1: kins-chronicle
-  REPO_DEPOT2: kins-chronicle-linux
-  REPO_DEPOT3: kins-chronicle-win
-  REPO_DEPOT4: kins-chronicle-mac
+  REPO_DEPOT2: kins-chronicle-linux-x64
+  REPO_DEPOT3: kins-chronicle-win-x64
+  REPO_DEPOT4: kins-chronicle-osx-x64
   LINUX_NODEJS_VER: v0.80.0
   WIN_NODEJS_VER: v0.76.0
   OSX_NODEJS_VER: v0.80.0
@@ -72,8 +72,8 @@ jobs:
         mv ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64/* ./
         rmdir ./nwjs-sdk-${OSX_NODEJS_VER}-osx-x64
         mv ./nwjs.app ./Game.app
-        mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Content/Resources/app.nw
-        cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Content/Resources/app.nw/
+        mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Contents/Resources/app.nw
+        cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Contents/Resources/app.nw/
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT4
 
     - name: Create Release Attachments
