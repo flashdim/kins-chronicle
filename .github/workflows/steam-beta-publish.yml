@@ -75,8 +75,27 @@ jobs:
         mkdir -p ~/work/$REPO_ROOT/$REPO_DEPOT4/Game.app/Content/Resources/app.nw
         cp -pr ~/work/$REPO_ROOT/$REPO_DEPOT1/* ./Game.app/Content/Resources/app.nw/
         ls -l ~/work/$REPO_ROOT/$REPO_DEPOT4
+
+    - name: Create Release Attachments
+      run: |
+        ls "~/work/$REPO_ROOT/$REPO_DEPOT1/*"; ls "~/work/$REPO_ROOT/$REPO_DEPOT2/*"
+        tar cvzf "~/work/$REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT2/*"
+        ls "~/work/$REPO_ROOT/$REPO_DEPOT3/*"
+        zip -r "~/work/$REPOT_DEPOT3-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT3/*"
+        ls "~/work/$REPO_ROOT/$REPO_DEPOT4/*"
+        zip -r "~/work/$REPOT_DEPOT4-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT4/*"
         
-    - name: Create appbuild manifest
+    - name: Attach Releases
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
+          ${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
+          ${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Create Steam AppBuild manifest
       run: |
         cd ~/work
         echo "\"AppBuild\""                                     > ~/work/manifest.vdf
@@ -157,20 +176,4 @@ jobs:
         +login ${{ secrets.STEAM_USERNAME }} 
         +run_app_build ~/work/manifest.vdf 
         +quit
-        
-    - name: Create Release Attachments
-      run: |
-        tar cvzf "~/work/${REPOT_DEPOT2}-${{ github.event.release.name }}.tar.gz "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT2/*"
-        zip -r "~/work/${REPOT_DEPOT3}-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT1/*" "~/work/$REPO_ROOT/$REPO_DEPOT3/*"
-        zip -r "~/work/${REPOT_DEPOT4}-${{ github.event.release.name }}.zip "~/work/$REPO_ROOT/$REPO_DEPOT4/*"
-        
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          ${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
-          ${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
-          ${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
