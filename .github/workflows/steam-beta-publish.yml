@@ -15,9 +15,11 @@ env:
   LINUX_NODEJS_VER: v0.80.0
   WIN_NODEJS_VER: v0.76.0
   OSX_NODEJS_VER: v0.80.0
+  BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+  BUTLER_API_GAME: kins-chronicle/play
 
 jobs:
-  deployToSteam:
+  deployToAll:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code at version just published
@@ -101,10 +103,10 @@ jobs:
         echo "\"AppBuild\""                                     > ~/work/manifest.vdf
         echo "{"                                               >> ~/work/manifest.vdf
         echo "  \"AppID\" \"1617800\""                         >> ~/work/manifest.vdf
-        echo "  \"Desc\" \"DEV_PR_${{ github.event.pull_request.number }}\"" >> ~/work/manifest.vdf
+        echo "  \"Desc\" \"DEV_PR_${{ github.event.release.name }}\"" >> ~/work/manifest.vdf
         echo "  \"BuildOutput\" \"~/work/BuildOutput\""        >> ~/work/manifest.vdf
         echo "  \"ContentRoot\" \"$REPO_ROOT\""                >> ~/work/manifest.vdf
-        echo "  \"SetLive\" \"beta\""                   >> ~/work/manifest.vdf
+        echo "  \"SetLive\" \"beta\""                          >> ~/work/manifest.vdf
         echo ""                                                >> ~/work/manifest.vdf
         echo "  \"Depots\""                                    >> ~/work/manifest.vdf
         echo "  {"                                             >> ~/work/manifest.vdf
@@ -177,3 +179,15 @@ jobs:
         +run_app_build ~/work/manifest.vdf 
         +quit
     
+    - name: Set up butler for itch.io
+      run: |
+        cd ~/work && wget https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+        unzip ./butler-linux-amd64.zip
+        ./butler --version
+        ./butler login 
+      
+    - name: Push build using butler
+      run: |
+        ./butler push ~/work/$REPO_DEPOT2-${{ github.event.release.name }}.zip $BUTLER_API_GAME:linux-x64 --userversion ${{ github.event.release.name }}
+        ./butler push ~/work/$REPO_DEPOT3-${{ github.event.release.name }}.zip $BUTLER_API_GAME:win-x64 --userversion ${{ github.event.release.name }}
+        ./butler push ~/work/$REPO_DEPOT4-${{ github.event.release.name }}.zip $BUTLER_API_GAME:osx-x64 --userversion ${{ github.event.release.name }}
