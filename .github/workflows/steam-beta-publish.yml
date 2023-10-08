@@ -78,6 +78,7 @@ jobs:
 
     - name: Create Release Attachments
       run: |
+        cd ~/work
         ls ~/work/$REPO_ROOT/$REPO_DEPOT1/*; ls ~/work/$REPO_ROOT/$REPO_DEPOT2/*
         tar czf ~/work/$REPOT_DEPOT2-${{ github.event.release.name }}.tar.gz -C ~/work/$REPO_ROOT/$REPO_DEPOT1/ . -C ~/work/$REPO_ROOT/$REPO_DEPOT2/ .
         ls ~/work/$REPO_ROOT/$REPO_DEPOT3/*
@@ -89,9 +90,14 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ~/work/${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
-          ~/work/${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
-          ~/work/${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
+          ${{ env.REPOT_DEPOT2 }}-${{ github.event.release.name }}.tar.gz
+          ${{ env.REPOT_DEPOT3 }}-${{ github.event.release.name }}.zip
+          ${{ env.REPOT_DEPOT4 }}-${{ github.event.release.name }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPOT_DEPOT2: ${{ env.REPOT_DEPOT2 }}
+        REPOT_DEPOT3: ${{ env.REPOT_DEPOT3 }}
+        REPOT_DEPOT4: ${{ env.REPOT_DEPOT4 }}
         
     - name: Create Steam AppBuild manifest
       run: |
