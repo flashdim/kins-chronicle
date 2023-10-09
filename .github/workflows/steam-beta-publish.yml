@@ -103,7 +103,7 @@ jobs:
         echo "\"AppBuild\""                                     > ~/work/manifest.vdf
         echo "{"                                               >> ~/work/manifest.vdf
         echo "  \"AppID\" \"1617800\""                         >> ~/work/manifest.vdf
-        echo "  \"Desc\" \"DEV_PR_${{ github.event.release.name }}\"" >> ~/work/manifest.vdf
+        echo "  \"Desc\" \"${{ github.event.release.name }}\"" >> ~/work/manifest.vdf
         echo "  \"BuildOutput\" \"~/work/BuildOutput\""        >> ~/work/manifest.vdf
         echo "  \"ContentRoot\" \"$REPO_ROOT\""                >> ~/work/manifest.vdf
         echo "  \"SetLive\" \"beta\""                          >> ~/work/manifest.vdf
