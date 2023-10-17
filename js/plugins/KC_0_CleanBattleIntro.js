@@ -499,8 +499,8 @@ Game_Temp.prototype.setDestination = function(x, y) {
 			if (mz3d.mapLoaded && Input.isTriggered('home')) {
 				mz3d.blendCameraPitch.setValue(90,0.4);
 			}
-			if (mz3d.mapLoaded && Input.isTriggered('minimap')) {
-				$gameTemp.reserveCommonEvent(7); 
+			if (mz3d.mapLoaded && Input.isTriggered('help')) {
+				$gameTemp.reserveCommonEvent(13); 
 			}
 			if (mz3d.mapLoaded && Input.isTriggered('quickturn')) {
 				$gameTemp.reserveCommonEvent(53); 
@@ -629,7 +629,7 @@ Window_Help.prototype.setText = function(text) {
 // Extra keys for the Keyboard
 //-------------------------------------------
 Input.keyMapper = {
-    9: "minimap", // tab
+    9: "menu", // tab
     13: "ok", // enter
     16: "shift", // shift
     17: "control", // control
@@ -654,7 +654,7 @@ Input.keyMapper = {
 	68: "rotright", // D
 	69: "right", // E
 	70: "home", // F
-	77: "minimap", // M
+	72: "help", // H
     81: "left", // Q
 	82: "pageup", // R
 	83: "down", // S
@@ -667,6 +667,7 @@ Input.keyMapper = {
     100: "left", // numpad 4
     102: "right", // numpad 6
     104: "up", // numpad 8
+	112: "help", // F1
     120: "debug" // F9
 };
 
@@ -682,7 +683,7 @@ Input.gamepadMapper = {
     5: "pagedown", // RB
 	6: "rotleft", // L2
 	7: "rotright", // R2
-	8: "minimap", // Select/Back
+	8: "help", // Select/Back
 	9: "menu", // Start
 	10: "quickturn", // L3
 	11: "home", // R3
@@ -808,7 +809,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 		}
 
 		// Check if 'shift' is default
-		if (Input.gamepadMapper[2] == 'menu') {
+		if (Input.gamepadMapper[2] == 'shift') {
 			$gameVariables.setValue(70,$gameVariables.value(56)); // X
 		}
 		else {
@@ -833,8 +834,8 @@ Game_Temp.prototype.updateControlIcons = function() {
 			$gameVariables.setValue(52,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
 		}
 
-		// Check if 'minimap' is default
-		if (Input.gamepadMapper[8] == 'menu') {
+		// Check if 'help' is default
+		if (Input.gamepadMapper[8] == 'help') {
 			$gameVariables.setValue(53,$gameVariables.value(62)); // Back/Select
 		}
 		else {
@@ -842,7 +843,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 			// Add the base value of the key (0,1,2,3,etc) to the icon offset to
 			//  get the new icon
 			var c = 0; 
-			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'minimap' ? c = k : false; }), c)
+			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'help' ? c = k : false; }), c)
 			$gameVariables.setValue(53,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
 		}
 	}
