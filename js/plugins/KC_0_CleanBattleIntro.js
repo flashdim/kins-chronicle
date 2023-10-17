@@ -792,7 +792,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 			//  get the new icon
 			var c = 0; 
 			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'ok' ? c = k : false; }), c)
-			$gameVariables.setValue(50,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+			$gameVariables.setValue(50,parseInt(parseInt($gameVariables.value(parseInt(keyBaseValue) + 54))));
 		}
 
 		// Check if 'cancel' is default
@@ -805,7 +805,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 			//  get the new icon
 			var c = 0; 
 			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'cancel' ? c = k : false; }), c)
-			$gameVariables.setValue(51,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+			$gameVariables.setValue(51,parseInt(parseInt($gameVariables.value(parseInt(keyBaseValue) + 54))));
 		}
 
 		// Check if 'shift' is default
@@ -818,7 +818,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 			//  get the new icon
 			var c = 0; 
 			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'shift' ? c = k : false; }), c)
-			$gameVariables.setValue(70,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+			$gameVariables.setValue(70,parseInt(parseInt($gameVariables.value(parseInt(keyBaseValue) + 54))));
 		}
 
 		// Check if 'menu' is default
@@ -831,7 +831,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 			//  get the new icon
 			var c = 0; 
 			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'menu' ? c = k : false; }), c)
-			$gameVariables.setValue(52,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+			$gameVariables.setValue(52,parseInt(parseInt($gameVariables.value(parseInt(keyBaseValue) + 54))));
 		}
 
 		// Check if 'help' is default
@@ -844,7 +844,7 @@ Game_Temp.prototype.updateControlIcons = function() {
 			//  get the new icon
 			var c = 0; 
 			var keyBaseValue = '' + (Object.keys(Input.gamepadMapper).reverse().some(function(k) { return Input.gamepadMapper[k] == 'help' ? c = k : false; }), c)
-			$gameVariables.setValue(53,parseInt(parseInt(keyBaseValue) + parseInt($gameVariables.value(54))));
+			$gameVariables.setValue(53,parseInt(parseInt($gameVariables.value(parseInt(keyBaseValue) + 54))));
 		}
 	}
 };
