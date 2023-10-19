@@ -477,37 +477,30 @@ Game_Temp.prototype.setDestination = function(x, y) {
 
 			KC_Scene_Map_Update.call(this);
 
-			if (!$gameMap.isEventRunning()) {
-				// Exit pointer lock if:
-				// -A cancel was pressed
-				// -The mouse is locked
-				if (TouchInput.isCancelled() && document.pointerLockElement) {
-					document.exitPointerLock();
-					mz3d._relockPointer=false;
-				} else if (TouchInput.isCancelled() && !document.pointerLockElement ) {
-					$gameTemp.reserveCommonEvent(11); 
-				}
-				// Override normal menu trigger with custom
-				// common even
-				if (Input.isTriggered("menu")) {
-					$gameTemp.reserveCommonEvent(11); 
-				}
-				// Allow mouse scroll for view tilting
-				if (mz3d.mapLoaded && TouchInput.wheelY) {
-					this.processWheelScroll();
-				}
-				// Catch view recentering
-				if (mz3d.mapLoaded && Input.isTriggered('home')) {
-					mz3d.blendCameraPitch.setValue(90,0.4);
-				}
-				//Catch help menu
-				if (mz3d.mapLoaded && Input.isTriggered('help')) {
-					$gameTemp.reserveCommonEvent(13); 
-				}
-				// Catch quickturn
-				if (mz3d.mapLoaded && Input.isTriggered('quickturn')) {
-					$gameTemp.reserveCommonEvent(53); 
-				}
+			// Exit pointer lock if:
+			// -A cancel was pressed
+			// -There's no event in progress
+			// -The mouse is locked
+			if (TouchInput.isCancelled() && !$gameMap.isEventRunning() && document.pointerLockElement) {
+				document.exitPointerLock();
+				mz3d._relockPointer=false;
+			} else if (TouchInput.isCancelled() && !$gameMap.isEventRunning() && !document.pointerLockElement ) {
+				$gameTemp.reserveCommonEvent(11); 
+			}
+			if (Input.isTriggered("menu") && !$gameMap.isEventRunning()) {
+				$gameTemp.reserveCommonEvent(11); 
+			}
+			if (mz3d.mapLoaded && TouchInput.wheelY && !$gameMap.isEventRunning()) {
+				this.processWheelScroll();
+			}
+			if (mz3d.mapLoaded && Input.isTriggered('home') && !$gameMap.isEventRunning()) {
+				mz3d.blendCameraPitch.setValue(90,0.4);
+			}
+			if (mz3d.mapLoaded && Input.isTriggered('help')) {
+				$gameTemp.reserveCommonEvent(13); 
+			}
+			if (mz3d.mapLoaded && Input.isTriggered('quickturn')) {
+				$gameTemp.reserveCommonEvent(53); 
 			}
 		}
 	}
@@ -741,9 +734,10 @@ Game_Player.prototype.checkEventTriggerPossible = function() {
 };
 
 //-------------------------------------------
-// Needed to update control icons 
+// Needed to update control icons outside
+// of the Game_Map scene
 // Will call this on control changes in the
-// options menu 
+// options menu
 // First check for gamepad so we can use those if needed
 //  ConfigManager["gamepadStyle"]
 //  0 = XBOX (default)
