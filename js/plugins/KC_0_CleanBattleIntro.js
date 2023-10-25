@@ -490,13 +490,10 @@ Game_Temp.prototype.setDestination = function(x, y) {
 			if (Input.isTriggered("menu") && !$gameMap.isEventRunning()) {
 				$gameTemp.reserveCommonEvent(11); 
 			}
-			if (mz3d.mapLoaded && TouchInput.wheelY) {
+			if (mz3d.mapLoaded && TouchInput.wheelY && !$gameMap.isEventRunning()) {
 				this.processWheelScroll();
 			}
-			if (mz3d.mapLoaded && TouchInput.wheelY) {
-				this.processWheelScroll();
-			}
-			if (mz3d.mapLoaded && Input.isTriggered('home')) {
+			if (mz3d.mapLoaded && Input.isTriggered('home') && !$gameMap.isEventRunning()) {
 				mz3d.blendCameraPitch.setValue(90,0.4);
 			}
 			if (mz3d.mapLoaded && Input.isTriggered('help')) {

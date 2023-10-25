@@ -4452,6 +4452,18 @@ class Window_KeyConfig_MA extends Window_InputConfigBase {
 }
 
 class Scene_KeyConfig_MA extends Scene_InputConfigBase_MA{
+    mainWindowHeight(){
+        return this.calcWindowHeight(8.2,true);
+    }
+
+    subWindowHeight(){
+        return this.calcWindowHeight(6,true);
+    }
+
+    subWindowTop(){
+        return this.mainAreaTop() + this.calcWindowHeight(8.2,true);
+    }
+
     helpWindowLines(){
         return 2;
     }
