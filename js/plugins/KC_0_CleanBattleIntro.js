@@ -487,20 +487,39 @@ Game_Temp.prototype.setDestination = function(x, y) {
 			} else if (TouchInput.isCancelled() && !$gameMap.isEventRunning() && !document.pointerLockElement ) {
 				$gameTemp.reserveCommonEvent(11); 
 			}
-			if (Input.isTriggered("menu") && !$gameMap.isEventRunning()) {
-				$gameTemp.reserveCommonEvent(11); 
-			}
+
 			if (mz3d.mapLoaded && TouchInput.wheelY && !$gameMap.isEventRunning()) {
 				this.processWheelScroll();
 			}
-			if (mz3d.mapLoaded && Input.isTriggered('home') && !$gameMap.isEventRunning()) {
-				mz3d.blendCameraPitch.setValue(90,0.4);
-			}
-			if (mz3d.mapLoaded && Input.isTriggered('help')) {
-				$gameTemp.reserveCommonEvent(13); 
-			}
-			if (mz3d.mapLoaded && Input.isTriggered('quickturn')) {
-				$gameTemp.reserveCommonEvent(53); 
+			// Moved to InputConfig plugin
+			//if (mz3d.mapLoaded && Input.isTriggered('home') && !$gameMap.isEventRunning()) {
+			//	mz3d.blendCameraPitch.setValue(90,0.4);
+			//}
+			//if (Input.isTriggered("menu") && !$gameMap.isEventRunning()) {
+			//	$gameTemp.reserveCommonEvent(11); 
+			//}
+			// if (mz3d.mapLoaded && Input.isTriggered('help')) {
+			// 	$gameTemp.reserveCommonEvent(13); 
+			// }
+			//if (mz3d.mapLoaded && Input.isTriggered('quickturn')) {
+			//	$gameTemp.reserveCommonEvent(53); 
+			//}
+		}
+	}
+)();
+
+//-------------------------------------------
+// Trigger Help Menu common event in battle
+//-------------------------------------------
+(	
+	function() {
+		var KC_Scene_Battle_Update = Scene_Battle.prototype.update
+		Scene_Battle.prototype.update = function() {
+			
+			KC_Scene_Battle_Update.call(this);
+
+			if (mz3d.mapLoaded && Input.isTriggered('help') && !$gameTroop.isEventRunning()) {
+			 	$gameTemp.reserveCommonEvent(13); 
 			}
 		}
 	}
