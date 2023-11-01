@@ -47,7 +47,7 @@
     "iconIndex": 1168,
     "name": "Poor Clothing",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Body_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Body_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Clothing] An old robe covered in stains.",
     "params": [
       0,
@@ -81,7 +81,7 @@
     "iconIndex": 1169,
     "name": "Common Clothing",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Body_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Body_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Clothing] Linen clothing with high\nbreathability.",
     "params": [
       0,
@@ -115,7 +115,7 @@
     "iconIndex": 1170,
     "name": "Uncommon Clothing",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Body_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Cloth: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Body_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★☆☆☆: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Clothing] A robe typically used by Arcanist students.",
     "params": [
       0,
@@ -149,7 +149,7 @@
     "iconIndex": 1171,
     "name": "Rare Clothing",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Body_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Cloth: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Body_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★☆☆: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Clothing] A cloth vest typically worn by nobility.",
     "params": [
       0,
@@ -183,7 +183,7 @@
     "iconIndex": 1172,
     "name": "Unique Clothing",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Body_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Cloth: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Body_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★☆: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Clothing] Not fit for a king, but maybe a prince.",
     "params": [
       0,
@@ -217,7 +217,7 @@
     "iconIndex": 1173,
     "name": "Legendary Clothing",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Body_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Body_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Clothing] A robe once owned by a powerful vizier.",
     "params": [
       0,
@@ -251,7 +251,7 @@
     "iconIndex": 1174,
     "name": "Mythical Clothing",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Body_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Body_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Clothing] The techniques used to make this\nhave been long forgotten.",
     "params": [
       0,
@@ -285,7 +285,7 @@
     "iconIndex": 1175,
     "name": "Eldritch Clothing",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Clothing] Clothing forged by the gods themselves.",
     "params": [
       0,
@@ -995,7 +995,7 @@
     "iconIndex": 1200,
     "name": "Poor Shoes",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Feet_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Feet_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Clothing] Old shoes covered in stains.",
     "params": [
       0,
@@ -1029,7 +1029,7 @@
     "iconIndex": 1201,
     "name": "Common Shoes",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Feet_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Feet_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Clothing] Linen shoes with high\nbreathability.",
     "params": [
       0,
@@ -1063,7 +1063,7 @@
     "iconIndex": 1202,
     "name": "Uncommon Shoes",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Feet_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Cloth: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Feet_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★☆☆☆: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Clothing] Shoes typically used by Arcanist students.",
     "params": [
       0,
@@ -1097,7 +1097,7 @@
     "iconIndex": 1203,
     "name": "Rare Shoes",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Feet_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Cloth: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Feet_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★☆☆: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Clothing] Shoes typically worn by nobility.",
     "params": [
       0,
@@ -1131,7 +1131,7 @@
     "iconIndex": 1204,
     "name": "Unique Shoes",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Feet_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Cloth: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Feet_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★☆: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Clothing] Not fit for a king, but maybe a prince.",
     "params": [
       0,
@@ -1165,7 +1165,7 @@
     "iconIndex": 1205,
     "name": "Legendary Shoes",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Feet_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Feet_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Clothing] Shoes once owned by a powerful vizier.",
     "params": [
       0,
@@ -1199,7 +1199,7 @@
     "iconIndex": 1206,
     "name": "Mythical Shoes",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Feet_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Feet_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Clothing] The techniques used to make these\nhave been long forgotten.",
     "params": [
       0,
@@ -1233,7 +1233,7 @@
     "iconIndex": 1207,
     "name": "Eldritch Shoes",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Clothing] Shoes forged by the gods themselves.",
     "params": [
       0,
@@ -1943,7 +1943,7 @@
     "iconIndex": 1232,
     "name": "Poor Hood",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Head_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Head_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Clothing] Old hood covered in stains.",
     "params": [
       0,
@@ -1977,7 +1977,7 @@
     "iconIndex": 1233,
     "name": "Common Hood",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Head_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Head_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Clothing] Linen hood with high\nbreathability.",
     "params": [
       0,
@@ -2011,7 +2011,7 @@
     "iconIndex": 1234,
     "name": "Uncommon Hood",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Head_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Cloth: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Head_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★☆☆☆: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Clothing] Hood typically used by Arcanist students.",
     "params": [
       0,
@@ -2045,7 +2045,7 @@
     "iconIndex": 1235,
     "name": "Rare Hood",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Head_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Cloth: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Head_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★☆☆: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Clothing] Hood typically worn by nobility.",
     "params": [
       0,
@@ -2079,7 +2079,7 @@
     "iconIndex": 1236,
     "name": "Unique Hood",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Head_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Cloth: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Head_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★☆: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Clothing] Not fit for a king, but maybe a prince.",
     "params": [
       0,
@@ -2113,7 +2113,7 @@
     "iconIndex": 1237,
     "name": "Legendary Hood",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Head_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Head_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Clothing] Hood once owned by a powerful vizier.",
     "params": [
       0,
@@ -2147,7 +2147,7 @@
     "iconIndex": 1238,
     "name": "Mythical Hood",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Head_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Head_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Clothing] The techniques used to make this\nhave been long forgotten.",
     "params": [
       0,
@@ -2181,7 +2181,7 @@
     "iconIndex": 1239,
     "name": "Eldritch Hood",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Clothing] Hood forged by the gods themselves.",
     "params": [
       0,
@@ -2891,7 +2891,7 @@
     "iconIndex": 1264,
     "name": "Poor Gloves",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Hands_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Hands_Cloth_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 1\n Item Feather ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Clothing] Old gloves covered in stains.",
     "params": [
       0,
@@ -2925,7 +2925,7 @@
     "iconIndex": 1265,
     "name": "Common Gloves",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Hands_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Cloth: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Hands_Cloth_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★☆☆☆☆: 2\n Item Feather ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Clothing] Linen gloves with high\nbreathability.",
     "params": [
       0,
@@ -2959,7 +2959,7 @@
     "iconIndex": 1266,
     "name": "Uncommon Gloves",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Hands_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Cloth: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Hands_Cloth_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★☆☆☆: 2\n Item Feather ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Clothing] Gloves typically used by Arcanist students.",
     "params": [
       0,
@@ -2993,7 +2993,7 @@
     "iconIndex": 1267,
     "name": "Rare Gloves",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Hands_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Cloth: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Hands_Cloth_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★☆☆: 2\n Item Feather ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Clothing] Gloves typically worn by nobility.",
     "params": [
       0,
@@ -3027,7 +3027,7 @@
     "iconIndex": 1268,
     "name": "Unique Gloves",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Hands_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Cloth: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Hands_Cloth_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★☆: 2\n Item Feather ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Clothing] Not fit for a king, but maybe a prince.",
     "params": [
       0,
@@ -3061,7 +3061,7 @@
     "iconIndex": 1269,
     "name": "Legendary Gloves",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Hands_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Hands_Cloth_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 2\n Item Feather ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Clothing] Gloves once owned by a powerful vizier.",
     "params": [
       0,
@@ -3095,7 +3095,7 @@
     "iconIndex": 1270,
     "name": "Mythical Gloves",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Hands_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Hands_Cloth_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 4\n Item Feather ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Clothing] The techniques used to make these\nhave been long forgotten.",
     "params": [
       0,
@@ -3129,7 +3129,7 @@
     "iconIndex": 1271,
     "name": "Eldritch Gloves",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Cloth: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Clothing] Gloves forged by the gods themselves.",
     "params": [
       0,
