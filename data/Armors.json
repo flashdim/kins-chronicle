@@ -3839,7 +3839,7 @@
     "iconIndex": 1281,
     "name": "Common Light Shield",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Shield_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Wood: 2\n Item Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Shield_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★☆☆☆☆: 2\n Item Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Light] A shield made of driftwood.",
     "params": [
       0,
@@ -3873,7 +3873,7 @@
     "iconIndex": 1282,
     "name": "Uncommon Light Shield",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Shield_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Wood: 2\n Item Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Shield_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★★☆☆☆: 2\n Item Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Light] A shield made of wood slats,\nhardened with glue.",
     "params": [
       0,
@@ -3907,7 +3907,7 @@
     "iconIndex": 1283,
     "name": "Rare Light Shield",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Shield_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Wood: 2\n Item Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Shield_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★★★☆☆: 2\n Item Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Light] A shield made of layered planks.\nFunctional, and stylish!",
     "params": [
       0,
@@ -3941,7 +3941,7 @@
     "iconIndex": 1284,
     "name": "Unique Light Shield",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Shield_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Wood: 2\n Item Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Shield_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★★★★☆: 2\n Item Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Light] You're not sure what all the rivets are\nfor, but it sure does look cool.",
     "params": [
       0,
@@ -3975,7 +3975,7 @@
     "iconIndex": 1285,
     "name": "Legendary Light Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Shield_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 2\n Item Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Shield_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★★★★★: 2\n Item Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Light] The wood in this shield is as hard as\na rock, but it is still very light.",
     "params": [
       0,
@@ -4009,7 +4009,7 @@
     "iconIndex": 1286,
     "name": "Mythical Light Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Shield_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 4\n Item Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Shield_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★★★★★: 4\n Item Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Light] Whoever made this was highly skilled. You\ncan't even see where they hammered it together.",
     "params": [
       0,
@@ -4043,7 +4043,7 @@
     "iconIndex": 1287,
     "name": "Eldritch Light Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Shield_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 6\n Item Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Shield_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Wood ★★★★★: 6\n Item Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Light] A light shield forged by the gods themselves.",
     "params": [
       0,
