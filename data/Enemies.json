@@ -3953,7 +3953,7 @@
       },
       {
         "kind": 1,
-        "dataId": 88,
+        "dataId": 109,
         "denominator": 1
       }
     ],
@@ -4285,7 +4285,7 @@
       },
       {
         "kind": 1,
-        "dataId": 82,
+        "dataId": 103,
         "denominator": 1
       },
       {
@@ -4424,12 +4424,12 @@
       },
       {
         "kind": 1,
-        "dataId": 87,
+        "dataId": 108,
         "denominator": 1
       },
       {
         "kind": 1,
-        "dataId": 86,
+        "dataId": 107,
         "denominator": 1
       }
     ],
@@ -4691,7 +4691,7 @@
       },
       {
         "kind": 1,
-        "dataId": 82,
+        "dataId": 103,
         "denominator": 1
       },
       {
@@ -4923,22 +4923,22 @@
     "battlerName": "BOSS_Archial",
     "dropItems": [
       {
-        "dataId": 1,
-        "denominator": 1,
-        "kind": 0
+        "kind": 1,
+        "dataId": 64,
+        "denominator": 1
       },
       {
-        "dataId": 1,
-        "denominator": 1,
-        "kind": 0
+        "kind": 1,
+        "dataId": 102,
+        "denominator": 1
       },
       {
-        "dataId": 1,
-        "denominator": 1,
-        "kind": 0
+        "kind": 1,
+        "dataId": 91,
+        "denominator": 1
       }
     ],
-    "exp": 0,
+    "exp": 250,
     "traits": [
       {
         "code": 22,
@@ -5001,7 +5001,7 @@
         "value": 1
       }
     ],
-    "gold": 0,
+    "gold": 250,
     "name": "King Archial",
     "note": "<Level Variance: 0>\n<Nature: Adamant>\n<Alignment: Lawful Neutral>\n<Zodiac: Taurus>\n<Element: Void>\n<SubElement: Stone>\n<Variant: Normal>\n<Attack animation: 10>\n<DragonBone Settings>\nBattler: KingArchial\nScalex: -1.25\nScaley: 1.25\nWidth: 512\nHeight: 384\nAni Wait: Idle\nAni Walk: Idle\nAni Attack: Attack\nAni Swing: Attack\nAni Thrust: Attack\nAni Missile: Skill\nAni Skill: Skill\nAni Chant: Idle\nAni Spell: Skill\nAni Item: Skill\nAni Guard: Idle\nAni Evade: Idle\nAni Damage: Damage\nAni Abnormal: Idle Weak\nAni Sleep: Idle Weak\nAni Dying: Idle Weak\nAni Victory: Idle\nAni Escape: Idle\nReplace Sprite\n</DragonBone Settings>",
     "params": [
@@ -16859,7 +16859,7 @@
       },
       {
         "kind": 1,
-        "dataId": 82,
+        "dataId": 103,
         "denominator": 1
       },
       {
@@ -17060,7 +17060,7 @@
       },
       {
         "kind": 1,
-        "dataId": 87,
+        "dataId": 108,
         "denominator": 1
       }
     ],
@@ -17584,7 +17584,7 @@
       },
       {
         "kind": 1,
-        "dataId": 81,
+        "dataId": 102,
         "denominator": 1
       },
       {
@@ -17692,7 +17692,7 @@
       },
       {
         "kind": 1,
-        "dataId": 83,
+        "dataId": 104,
         "denominator": 1
       },
       {
@@ -18481,7 +18481,7 @@
       },
       {
         "kind": 1,
-        "dataId": 87,
+        "dataId": 108,
         "denominator": 1
       },
       {

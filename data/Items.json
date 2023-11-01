@@ -2281,8 +2281,8 @@
   },
   {
     "id": 81,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2290,25 +2290,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Void crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases max HP by 50 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 0,
+        "value1": 50,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 308,
+    "iconIndex": 32,
     "itypeId": 1,
-    "name": "Void Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Star Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "HP Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 82,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2316,25 +2323,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Stone crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases max MP by 10 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 1,
+        "value1": 10,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 317,
+    "iconIndex": 33,
     "itypeId": 1,
-    "name": "Stone Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Wind Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "MP Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 83,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2342,25 +2356,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Fire crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases Attack by 3 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 2,
+        "value1": 3,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 309,
+    "iconIndex": 34,
     "itypeId": 1,
-    "name": "Fire Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Ice Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "Attack Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 84,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2368,25 +2389,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Ice crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases Defense by 3 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 3,
+        "value1": 3,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 312,
+    "iconIndex": 35,
     "itypeId": 1,
-    "name": "Ice Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Fire Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "Defense Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 85,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2394,25 +2422,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Star crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases M.Attack by 3 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 4,
+        "value1": 3,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 307,
+    "iconIndex": 36,
     "itypeId": 1,
-    "name": "Star Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Void Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "Magic Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 86,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2420,25 +2455,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Bolt crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases M.Defense by 3 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 5,
+        "value1": 3,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 310,
+    "iconIndex": 37,
     "itypeId": 1,
-    "name": "Bolt Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Aqua Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "Resistance Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 87,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2446,25 +2488,32 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Aqua crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases Agility by 3 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 6,
+        "value1": 3,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 318,
+    "iconIndex": 38,
     "itypeId": 1,
-    "name": "Aqua Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Bolt Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "Agility Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
   },
   {
     "id": 88,
-    "animationId": 0,
-    "consumable": false,
+    "animationId": 51,
+    "consumable": true,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2472,17 +2521,24 @@
       "type": 0,
       "variance": 20
     },
-    "description": "[Ingredient] Wind crystal. Used to craft weapons.",
-    "effects": [],
+    "description": "Increases Luck by 3 points.",
+    "effects": [
+      {
+        "code": 42,
+        "dataId": 7,
+        "value1": 3,
+        "value2": 0
+      }
+    ],
     "hitType": 0,
-    "iconIndex": 311,
+    "iconIndex": 39,
     "itypeId": 1,
-    "name": "Wind Crystal",
-    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Stone Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
-    "occasion": 3,
-    "price": 0,
+    "name": "Luck Increase",
+    "note": "",
+    "occasion": 2,
+    "price": 3000,
     "repeats": 1,
-    "scope": 0,
+    "scope": 7,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2828,7 +2884,7 @@
   {
     "id": 102,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2836,17 +2892,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Void crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 308,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Void Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Star Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2854,7 +2910,7 @@
   {
     "id": 103,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2862,17 +2918,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Stone crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 317,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Stone Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Wind Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2880,7 +2936,7 @@
   {
     "id": 104,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2888,17 +2944,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Fire crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 309,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Fire Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Ice Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2906,7 +2962,7 @@
   {
     "id": 105,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2914,17 +2970,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Ice crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 312,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Ice Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Fire Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2932,7 +2988,7 @@
   {
     "id": 106,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2940,17 +2996,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Star crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 307,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Star Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Void Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2958,7 +3014,7 @@
   {
     "id": 107,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2966,17 +3022,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Bolt crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 310,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Bolt Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Aqua Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -2984,7 +3040,7 @@
   {
     "id": 108,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -2992,17 +3048,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Aqua crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 318,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Aqua Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Bolt Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
@@ -3010,7 +3066,7 @@
   {
     "id": 109,
     "animationId": 0,
-    "consumable": true,
+    "consumable": false,
     "damage": {
       "critical": false,
       "elementId": 0,
@@ -3018,17 +3074,17 @@
       "type": 0,
       "variance": 20
     },
-    "description": "",
+    "description": "[Ingredient] Wind crystal. Used to craft weapons.",
     "effects": [],
     "hitType": 0,
-    "iconIndex": 0,
+    "iconIndex": 311,
     "itypeId": 1,
-    "name": "",
-    "note": "",
-    "occasion": 0,
+    "name": "Wind Crystal",
+    "note": "<Crafting Show Switch: 22>\n<Crafting Ingredients>\n Item Stone Crystal: 2\n</Crafting Ingredients>\n<Category: Parts>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 96>",
+    "occasion": 3,
     "price": 0,
     "repeats": 1,
-    "scope": 7,
+    "scope": 0,
     "speed": 0,
     "successRate": 100,
     "tpGain": 0
