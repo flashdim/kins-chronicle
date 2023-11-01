@@ -657,7 +657,7 @@
     "iconIndex": 1160,
     "name": "Poor Heavy Armor",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Body_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 1\n Item Shadow Common Metal: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Body_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 1\n Item Shadow Metal ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Heavy] It looks like it has been in a war or two.",
     "params": [
       0,
@@ -691,7 +691,7 @@
     "iconIndex": 1161,
     "name": "Common Heavy Armor",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Body_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 2\n Item Shadow Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Body_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 2\n Item Shadow Metal ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Heavy] It's a little too heavy, but it protects you.",
     "params": [
       0,
@@ -725,7 +725,7 @@
     "iconIndex": 1162,
     "name": "Uncommon Heavy Armor",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Body_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Uncommon Metal: 2\n Item Shadow Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Body_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★☆☆☆: 2\n Item Shadow Metal ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Heavy] A well-made thin suit of steel armor.",
     "params": [
       0,
@@ -759,7 +759,7 @@
     "iconIndex": 1163,
     "name": "Rare Heavy Armor",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Body_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Rare Metal: 2\n Item Shadow Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Body_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★☆☆: 2\n Item Shadow Metal ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Heavy] Thick armor that covers almost your\nwhole body. Looks pretty threatening!",
     "params": [
       0,
@@ -793,7 +793,7 @@
     "iconIndex": 1164,
     "name": "Unique Heavy Armor",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Body_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Unique Metal: 2\n Item Shadow Unique Metal: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Body_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★☆: 2\n Item Shadow Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Heavy] Armor made for hunting dragons.",
     "params": [
       0,
@@ -827,7 +827,7 @@
     "iconIndex": 1165,
     "name": "Legendary Heavy Armor",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Body_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 2\n Item Shadow Legendary Metal: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Body_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 2\n Item Shadow Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Heavy] This armor was once used by a famous knight\nwho saved the world.",
     "params": [
       0,
@@ -861,7 +861,7 @@
     "iconIndex": 1166,
     "name": "Mythical Heavy Armor",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Body_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 4\n Item Shadow Legendary Metal: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Body_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 4\n Item Shadow Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Heavy] The layered plates make it easy to protect,\nbut also attack.",
     "params": [
       0,
@@ -895,7 +895,7 @@
     "iconIndex": 1167,
     "name": "Eldritch Heavy Armor",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 6\n Item Shadow Legendary Metal: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 6\n Item Shadow Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Heavy] Heavy armor forged by the gods themselves.",
     "params": [
       0,
@@ -1605,7 +1605,7 @@
     "iconIndex": 1192,
     "name": "Poor Heavy Boots",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Feet_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 1\n Item Shadow Common Metal: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Feet_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 1\n Item Shadow Metal ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Heavy] They look like they have been in a war or two.",
     "params": [
       0,
@@ -1639,7 +1639,7 @@
     "iconIndex": 1193,
     "name": "Common Heavy Boots",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Feet_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 2\n Item Shadow Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Feet_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 2\n Item Shadow Metal ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Heavy] They're a little too heavy, but they protect you.",
     "params": [
       0,
@@ -1673,7 +1673,7 @@
     "iconIndex": 1194,
     "name": "Uncommon Heavy Boots",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Feet_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Uncommon Metal: 2\n Item Shadow Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Feet_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★☆☆☆: 2\n Item Shadow Metal ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Heavy] A well-made pair of steel boots.",
     "params": [
       0,
@@ -1707,7 +1707,7 @@
     "iconIndex": 1195,
     "name": "Rare Heavy Boots",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Feet_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Rare Metal: 2\n Item Shadow Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Feet_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★☆☆: 2\n Item Shadow Metal ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Heavy] Thick boots that cover almost your\nwhole leg. They look pretty threatening!",
     "params": [
       0,
@@ -1741,7 +1741,7 @@
     "iconIndex": 1196,
     "name": "Unique Heavy Boots",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Feet_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Unique Metal: 2\n Item Shadow Unique Metal: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Feet_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★☆: 2\n Item Shadow Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Heavy] Boots made for hunting dragons.",
     "params": [
       0,
@@ -1775,7 +1775,7 @@
     "iconIndex": 1197,
     "name": "Legendary Heavy Boots",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Feet_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 2\n Item Shadow Legendary Metal: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Feet_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 2\n Item Shadow Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Heavy] These boots were once used by a famous knight\nwho saved the world.",
     "params": [
       0,
@@ -1809,7 +1809,7 @@
     "iconIndex": 1198,
     "name": "Mythical Heavy Boots",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Feet_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 4\n Item Shadow Legendary Metal: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Feet_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 4\n Item Shadow Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Heavy] The layered plates make it easy to protect,\nbut also attack.",
     "params": [
       0,
@@ -1843,7 +1843,7 @@
     "iconIndex": 1199,
     "name": "Eldritch Heavy Boots",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 6\n Item Shadow Legendary Metal: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 6\n Item Shadow Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Heavy] Heavy boots forged by the gods themselves.",
     "params": [
       0,
@@ -2553,7 +2553,7 @@
     "iconIndex": 1224,
     "name": "Poor Heavy Helmet",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Head_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 1\n Item Shadow Common Metal: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Head_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 1\n Item Shadow Metal ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Heavy] It looks like it has been in a war or two.",
     "params": [
       0,
@@ -2587,7 +2587,7 @@
     "iconIndex": 1225,
     "name": "Common Heavy Helmet",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Head_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 2\n Item Shadow Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Head_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 2\n Item Shadow Metal ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Heavy] It's a little too heavy, but it protects you.",
     "params": [
       0,
@@ -2621,7 +2621,7 @@
     "iconIndex": 1226,
     "name": "Uncommon Heavy Helmet",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Head_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Uncommon Metal: 2\n Item Shadow Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Head_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★☆☆☆: 2\n Item Shadow Metal ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Heavy] A well-made steel helmet.",
     "params": [
       0,
@@ -2655,7 +2655,7 @@
     "iconIndex": 1227,
     "name": "Rare Heavy Helmet",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Head_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Rare Metal: 2\n Item Shadow Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Head_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★☆☆: 2\n Item Shadow Metal ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Heavy] Thick helmet that covers almost your\nwhole head. It looks pretty threatening!",
     "params": [
       0,
@@ -2689,7 +2689,7 @@
     "iconIndex": 1228,
     "name": "Unique Heavy Helmet",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Head_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Unique Metal: 2\n Item Shadow Unique Metal: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Head_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★☆: 2\n Item Shadow Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Heavy] Helmet made for hunting dragons.",
     "params": [
       0,
@@ -2723,7 +2723,7 @@
     "iconIndex": 1229,
     "name": "Legendary Heavy Helmet",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Head_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 2\n Item Shadow Legendary Metal: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Head_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 2\n Item Shadow Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Heavy] This helmet was once used by a famous knight\nwho saved the world.",
     "params": [
       0,
@@ -2757,7 +2757,7 @@
     "iconIndex": 1230,
     "name": "Mythical Heavy Helmet",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Head_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 4\n Item Shadow Legendary Metal: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Head_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 4\n Item Shadow Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Heavy] The layered plates make it easy to protect,\nbut also attack.",
     "params": [
       0,
@@ -2791,7 +2791,7 @@
     "iconIndex": 1231,
     "name": "Eldritch Heavy Helmet",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 6\n Item Shadow Legendary Metal: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 6\n Item Shadow Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Heavy] Heavy helmet forged by the gods themselves.",
     "params": [
       0,
@@ -3501,7 +3501,7 @@
     "iconIndex": 1256,
     "name": "Poor Heavy Gauntlets",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Hands_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 1\n Item Shadow Common Metal: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Hands_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 1\n Item Shadow Metal ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Heavy] It looks like they have been in a war or two.",
     "params": [
       0,
@@ -3535,7 +3535,7 @@
     "iconIndex": 1257,
     "name": "Common Heavy Gauntlets",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Hands_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 2\n Item Shadow Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Hands_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 2\n Item Shadow Metal ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Heavy] They're a little too heavy, but protect you.",
     "params": [
       0,
@@ -3569,7 +3569,7 @@
     "iconIndex": 1258,
     "name": "Uncommon Heavy Gauntlets",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Hands_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Uncommon Metal: 2\n Item Shadow Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Hands_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★☆☆☆: 2\n Item Shadow Metal ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Heavy] A well-made pair of steel gauntlets.",
     "params": [
       0,
@@ -3603,7 +3603,7 @@
     "iconIndex": 1259,
     "name": "Rare Heavy Gauntlets",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Hands_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Rare Metal: 2\n Item Shadow Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Hands_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★☆☆: 2\n Item Shadow Metal ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Heavy] Thick gauntlets that cover almost your\nwhole hands. They look pretty threatening!",
     "params": [
       0,
@@ -3637,7 +3637,7 @@
     "iconIndex": 1260,
     "name": "Unique Heavy Gauntlets",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Hands_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Unique Metal: 2\n Item Shadow Unique Metal: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Hands_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★☆: 2\n Item Shadow Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Heavy] Gauntlets made for hunting dragons.",
     "params": [
       0,
@@ -3671,7 +3671,7 @@
     "iconIndex": 1261,
     "name": "Legendary Heavy Gauntlets",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Hands_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 2\n Item Shadow Legendary Metal: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Hands_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 2\n Item Shadow Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Heavy] These gauntlets were once used by a famous knight\nwho saved the world.",
     "params": [
       0,
@@ -3705,7 +3705,7 @@
     "iconIndex": 1262,
     "name": "Mythical Heavy Gauntlets",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Hands_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 4\n Item Shadow Legendary Metal: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Hands_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 4\n Item Shadow Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Heavy] The layered plates make it easy to protect,\nbut also attack.",
     "params": [
       0,
@@ -3739,7 +3739,7 @@
     "iconIndex": 1263,
     "name": "Eldritch Heavy Gauntlets",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 6\n Item Shadow Legendary Metal: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Heavy_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Heavy_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 6\n Item Shadow Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Heavy] Heavy gauntlets forged by the gods themselves.",
     "params": [
       0,
@@ -3941,7 +3941,7 @@
     "iconIndex": 1284,
     "name": "Unique Light Shield",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Shield_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Wood: 2\n Item Unique Metal: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Shield_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Wood: 2\n Item Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Light] You're not sure what all the rivets are\nfor, but it sure does look cool.",
     "params": [
       0,
@@ -3975,7 +3975,7 @@
     "iconIndex": 1285,
     "name": "Legendary Light Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Shield_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 2\n Item Legendary Metal: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Shield_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 2\n Item Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Light] The wood in this shield is as hard as\na rock, but it is still very light.",
     "params": [
       0,
@@ -4009,7 +4009,7 @@
     "iconIndex": 1286,
     "name": "Mythical Light Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Shield_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 4\n Item Legendary Metal: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Shield_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 4\n Item Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Light] Whoever made this was highly skilled. You\ncan't even see where they hammered it together.",
     "params": [
       0,
@@ -4043,7 +4043,7 @@
     "iconIndex": 1287,
     "name": "Eldritch Light Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Shield_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 6\n Item Legendary Metal: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Shield_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Wood: 6\n Item Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Light] A light shield forged by the gods themselves.",
     "params": [
       0,
@@ -4143,7 +4143,7 @@
     "iconIndex": 1297,
     "name": "Common Heavy Shield",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Shield_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Common Metal: 2\n Item Shadow Common Metal: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Shield_Heavy_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★☆☆☆☆: 2\n Item Shadow Metal ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Heavy] It's a little too heavy, but protects you.",
     "params": [
       0,
@@ -4177,7 +4177,7 @@
     "iconIndex": 1298,
     "name": "Uncommon Heavy Shield",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Shield_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Uncommon Metal: 2\n Item Shadow Uncommon Metal: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Shield_Heavy_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★☆☆☆: 2\n Item Shadow Metal ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Heavy] A well-made steel shield.",
     "params": [
       0,
@@ -4211,7 +4211,7 @@
     "iconIndex": 1299,
     "name": "Rare Heavy Shield",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Shield_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Rare Metal: 2\n Item Shadow Rare Metal: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Shield_Heavy_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★☆☆: 2\n Item Shadow Metal ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Heavy] A thick shield that covers almost your\nwhole torso. It looks pretty reflective!",
     "params": [
       0,
@@ -4245,7 +4245,7 @@
     "iconIndex": 1300,
     "name": "Unique Heavy Shield",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Shield_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Unique Metal: 2\n Item Shadow Unique Metal: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Shield_Heavy_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★☆: 2\n Item Shadow Metal ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Heavy] A shield made for hunting dragons.",
     "params": [
       0,
@@ -4279,7 +4279,7 @@
     "iconIndex": 1301,
     "name": "Legendary Heavy Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Shield_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 2\n Item Shadow Legendary Metal: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Shield_Heavy_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 2\n Item Shadow Metal ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Heavy] This shield was once used by a famous knight\nwho saved the world.",
     "params": [
       0,
@@ -4313,7 +4313,7 @@
     "iconIndex": 1302,
     "name": "Mythical Heavy Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Shield_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 4\n Item Shadow Legendary Metal: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Shield_Heavy_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 4\n Item Shadow Metal ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Heavy] The mattled plates make it look a bit like\nan ancient turtle shell.",
     "params": [
       0,
@@ -4347,7 +4347,7 @@
     "iconIndex": 1303,
     "name": "Eldritch Heavy Shield",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Shield_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Legendary Metal: 6\n Item Shadow Legendary Metal: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Shield_Heavy_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Shield_Heavy_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Light Metal ★★★★★: 6\n Item Shadow Metal ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Heavy] A heavy shield forged by the gods themselves.",
     "params": [
       0,
