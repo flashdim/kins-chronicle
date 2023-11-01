@@ -1,86 +1,4987 @@
 {
-"autoplayBgm":true,"autoplayBgs":true,"battleback1Name":"Clear","battleback2Name":"Clear","bgm":{"name":"Town Theme Loop_Master 1","pan":0,"pitch":100,"volume":15},"bgs":{"name":"Acoustic Guitar Song Loop_Master 1","pan":0,"pitch":100,"volume":90},"disableDashing":false,"displayName":"","encounterList":[],"encounterStep":30,"height":12,"note":"<rabbitMap: Map007,50,50>\n<rabbitMegaMap: Map007,40,40>\n<mz3d>\nambient(#808080)\nsun(#000000|-30,-30)\nceiling(A3,4,0|height:3.5,backface:false)\n</mz3d>\n","parallaxLoopX":false,"parallaxLoopY":false,"parallaxName":"","parallaxShow":true,"parallaxSx":0,"parallaxSy":0,"scrollType":0,"specifyBattleback":true,"tilesetId":5,"width":16,
-"data":[4930,4930,4931,4930,4930,4930,4930,4930,4930,4930,4930,4934,4930,4934,4931,4930,4937,4936,4936,4936,4936,4936,4936,4936,4936,4936,4936,4940,4928,4932,4929,4928,4978,4982,3714,3700,3700,3700,3700,3700,3700,3700,3700,3716,4929,4932,4929,4928,4976,4980,3696,3680,3680,3680,3680,3680,3680,3680,3680,3704,4929,4932,4929,4928,4976,4980,3720,3688,3680,3680,3680,3680,3680,3680,3680,3704,4929,4932,4929,4928,4976,4980,4110,3696,3680,3680,3680,3680,3680,3680,3680,3704,4929,4932,4929,4928,4976,4980,3714,3681,3680,3680,3680,3680,3680,3680,3680,3704,4929,4932,4929,4928,4976,4980,3720,3688,3680,3680,3680,3680,3680,3680,3680,3704,4929,4932,4929,4928,4976,4980,4110,3720,3688,3680,3680,3680,3680,3680,3680,3704,4929,4932,4929,4928,4984,4988,3726,4110,3720,3708,3708,3708,3708,3708,3708,3718,4929,4932,4929,4928,4931,4930,4930,4930,4930,4930,4930,4930,4930,4930,4930,4934,4928,4932,4929,4928,4936,4936,4937,4936,4936,4936,4936,4936,4936,4936,4936,4940,4936,4940,4937,4936,4978,4978,4979,4978,4978,4978,4978,4978,4978,4978,4978,4982,4978,4982,4979,4978,4976,4976,4981,4985,4984,4988,4981,4985,4984,4984,4988,4981,4976,4980,4977,4976,4976,4976,4989,0,3195,3197,4989,3195,3197,0,0,4989,4976,4980,4977,4976,4976,4980,0,0,0,0,0,0,0,0,0,0,4977,4980,4977,4976,4976,4980,0,0,3330,3316,3316,3316,3332,0,0,0,4977,4980,4977,4976,4976,4980,221,0,3312,3296,3296,3296,3320,0,0,0,4977,4980,4977,4976,4976,4980,0,0,3312,3296,3296,3296,3320,0,0,0,4977,4980,4977,4976,4976,4980,0,0,3336,3324,3324,3324,3334,0,0,0,4977,4980,4977,4976,4976,4980,221,0,0,0,0,0,0,0,0,0,4977,4980,4977,4976,4976,4976,4983,221,3195,3197,4983,3195,3197,0,0,4983,4976,4980,4977,4976,4976,4976,4981,4979,4978,4982,4981,4979,4978,4978,4982,4981,4976,4980,4977,4976,4984,4984,4985,4984,4984,4984,4984,4984,4984,4984,4984,4988,4984,4988,4985,4984,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4991,238,234,232,4991,0,0,0,0,4991,0,0,0,0,0,0,238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,217,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4991,217,0,0,4991,0,0,0,0,4991,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,0,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,0,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,0,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,103,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,0,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,0,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,103,0,0,0,0,0,0,0,0,0,132,132,132,132,132,132,0,103,0,0,0,0,0,0,0,0,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132,132],
-"events":[
-null,
-{"id":1,"name":"Wayrest Window","note":"<mz3d:shape(wall),rot(90),xoff(0.49),yoff(0.5),zoff(1.25)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":true,"image":{"tileId":0,"characterName":"!$Castle","direction":2,"pattern":1,"characterIndex":0},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":1,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":1,"moveType":0,"priorityType":1,"stepAnime":false,"through":true,"trigger":0,"walkAnime":false}],"x":11,"y":5},
-{"id":2,"name":"Lantern","note":"<mz3d:lamp(yellow,1,6),lampHeight(1),shape(cross),yoff(-0.25),z(2),scale(1,1)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":4,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":true,"image":{"tileId":0,"characterName":"!Flame","direction":6,"pattern":0,"characterIndex":0},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":19,"indent":null},{"code":35,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":5,"moveType":0,"priorityType":2,"stepAnime":true,"through":true,"trigger":0,"walkAnime":false}],"x":6,"y":3},
-null,
-null,
-{"id":5,"name":"Wayrest Door","note":"<mz3d:shape(wall),rot(90),xoff(-0.51),yoff(0.1),z(0),scale(1,2)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":true,"image":{"tileId":0,"characterName":"!Door1_Black","direction":2,"pattern":0,"characterIndex":0},"list":[{"code":250,"indent":0,"parameters":[{"name":"Open1","volume":90,"pitch":100,"pan":0}]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":36,"indent":null},{"code":15,"parameters":[6],"indent":0},{"code":17,"indent":null},{"code":15,"parameters":[6],"indent":0},{"code":18,"indent":0},{"code":15,"parameters":[6],"indent":0},{"code":19,"indent":null},{"code":15,"parameters":[6],"indent":null},{"code":35,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":true}]},{"code":505,"indent":0,"parameters":[{"code":36,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":17,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":18,"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":19,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":35,"indent":null}]},{"code":250,"indent":0,"parameters":[{"name":"Move1","volume":90,"pitch":100,"pan":0}]},{"code":117,"indent":0,"parameters":[4]},{"code":201,"indent":0,"parameters":[0,3,14,8,4,2]},{"code":357,"indent":0,"parameters":["mz3d","camera","Camera",{"pitch":"","yaw":"270","roll":"","dist":"","zoom":"","height":"","mode":"","follow":"","pan":"","time":"0.000"}]},{"code":657,"indent":0,"parameters":["Pitch = "]},{"code":657,"indent":0,"parameters":["Yaw = 270"]},{"code":657,"indent":0,"parameters":["Roll = "]},{"code":657,"indent":0,"parameters":["Distance = "]},{"code":657,"indent":0,"parameters":["Zoom = "]},{"code":657,"indent":0,"parameters":["Height = "]},{"code":657,"indent":0,"parameters":["Mode = "]},{"code":657,"indent":0,"parameters":["Follow Target = "]},{"code":657,"indent":0,"parameters":["Pan = "]},{"code":657,"indent":0,"parameters":["Time = 0.000"]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":3,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":false}],"x":12,"y":6},
-null,
-null,
-null,
-null,
-{"id":10,"name":"miniMapMonitor","note":"<mz3d:shadow(0),shadow(false)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"characterIndex":0,"characterName":"","direction":2,"pattern":0,"tileId":0},"list":[{"code":108,"indent":0,"parameters":["------------------------------------------------------"]},{"code":108,"indent":0,"parameters":["This keeps the AlwaysOn common event running"]},{"code":121,"indent":0,"parameters":[3,3,0]},{"code":108,"indent":0,"parameters":["------------------------------------------------------"]},{"code":108,"indent":0,"parameters":["Set up the player lantern if needed"]},{"code":111,"indent":0,"parameters":[0,11,1]},{"code":357,"indent":1,"parameters":["mz3d","lamp","Lamp",{"target":"player","color":"white","intensity":"1.000","dist":"2.500","time":"1.000"}]},{"code":657,"indent":1,"parameters":["Target = player"]},{"code":657,"indent":1,"parameters":["Color = white"]},{"code":657,"indent":1,"parameters":["Intensity = 1.000"]},{"code":657,"indent":1,"parameters":["Distance = 2.500"]},{"code":657,"indent":1,"parameters":["Time = 1.000"]},{"code":121,"indent":1,"parameters":[11,11,0]},{"code":0,"indent":1,"parameters":[]},{"code":412,"indent":0,"parameters":[]},{"code":108,"indent":0,"parameters":["------------------------------------------------------"]},{"code":123,"indent":0,"parameters":["A",0]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":1,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":3,"moveType":0,"priorityType":0,"stepAnime":false,"through":true,"trigger":3,"walkAnime":false},{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":true,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"characterIndex":0,"characterName":"","direction":2,"pattern":0,"tileId":0},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":1,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":1,"moveType":0,"priorityType":0,"stepAnime":false,"through":false,"trigger":0,"walkAnime":false}],"x":13,"y":9},
-null,
-null,
-null,
-null,
-{"id":15,"name":"Lantern","note":"<mz3d:lamp(yellow,1,6),lampHeight(1),shape(cross),yoff(0.25),z(2),scale(1,1)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":4,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":true,"image":{"tileId":0,"characterName":"!Flame","direction":6,"pattern":0,"characterIndex":0},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":19,"indent":null},{"code":35,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":5,"moveType":0,"priorityType":2,"stepAnime":true,"through":true,"trigger":0,"walkAnime":false}],"x":6,"y":8},
-null,
-{"id":17,"name":"Zee","note":"<mz3d:scale(1.2,1.4)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":55,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_014","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":121,"indent":0,"parameters":[55,55,0]},{"code":101,"indent":0,"parameters":["Zee",3,0,2,"???"]},{"code":401,"indent":0,"parameters":["...I'm \\N[4]. "]},{"code":401,"indent":0,"parameters":[""]},{"code":401,"indent":0,"parameters":["What are you supposed to be, exactly?"]},{"code":101,"indent":0,"parameters":["Riley",1,0,2,"???"]},{"code":401,"indent":0,"parameters":["*snkrt*...\\N[4]! Don't be <i>rude.</i>"]},{"code":101,"indent":0,"parameters":["Zee",1,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["...That's \\N[5], my <i>sister</i>."]},{"code":401,"indent":0,"parameters":["I came out here on a treasure hunt, "]},{"code":401,"indent":0,"parameters":["but the Gorge caved in."]},{"code":101,"indent":0,"parameters":["Riley",2,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["WE ALMOST <b>DIED.</b>"]},{"code":401,"indent":0,"parameters":[""]},{"code":401,"indent":0,"parameters":["I love the Sun Goddess, but I don't want to"]},{"code":401,"indent":0,"parameters":["meet her <i>yet</i>!"]},{"code":101,"indent":0,"parameters":["Zee",0,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["If you figure out a way into the Dry Basin,"]},{"code":401,"indent":0,"parameters":["I'll probably head back there."]},{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","QuestSet","Quest: Add/Complete/Fail/Remove",{"Keys:arraystr":"[\"B\"]","Status:str":"known"}]},{"code":657,"indent":0,"parameters":["Quest Keys = [\"B\"]"]},{"code":657,"indent":0,"parameters":["Status = known"]},{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","QuestObjectives","Quest: Objectives Change",{"Keys:arraystr":"[\"B\"]","TargetIDs:arrayeval":"[\"1\"]","Status:str":"show"}]},{"code":657,"indent":0,"parameters":["Quest Keys = [\"B\"]"]},{"code":657,"indent":0,"parameters":["Objective ID(s) = [\"1\"]"]},{"code":657,"indent":0,"parameters":["Status = show"]},{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","TrackerChangeQuest","Tracker: Change Quest",{"Key:str":"B"}]},{"code":657,"indent":0,"parameters":["Quest Key = B"]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":16,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":3,"moveType":3,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":55,"switch1Valid":true,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_014","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":101,"indent":0,"parameters":["Zee",0,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["If you figure out a way into the Dry Basin,"]},{"code":401,"indent":0,"parameters":["I'll probably head back there."]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":16,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":3,"moveType":3,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":4,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":57,"switch1Valid":true,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":16,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":3,"moveType":0,"priorityType":0,"stepAnime":false,"through":true,"trigger":0,"walkAnime":false},{"conditions":{"actorId":4,"actorValid":true,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":55,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":16,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":3,"moveType":0,"priorityType":0,"stepAnime":false,"through":true,"trigger":0,"walkAnime":false}],"x":3,"y":4},
-null,
-null,
-{"id":20,"name":"Wayrest Door","note":"<mz3d:shape(wall),rot(90),xoff(-0.51),yoff(-0.1),z(0),scale(1,2)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":true,"image":{"tileId":0,"characterName":"!Door1_Black","direction":2,"pattern":0,"characterIndex":1},"list":[{"code":250,"indent":0,"parameters":[{"name":"Open1","volume":90,"pitch":100,"pan":0}]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":36,"indent":null},{"code":15,"parameters":[6],"indent":0},{"code":17,"indent":null},{"code":15,"parameters":[6],"indent":0},{"code":18,"indent":0},{"code":15,"parameters":[6],"indent":0},{"code":19,"indent":null},{"code":15,"parameters":[6],"indent":null},{"code":35,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":true}]},{"code":505,"indent":0,"parameters":[{"code":36,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":17,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":18,"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":19,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[6],"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":35,"indent":null}]},{"code":117,"indent":0,"parameters":[4]},{"code":201,"indent":0,"parameters":[0,3,14,8,4,2]},{"code":357,"indent":0,"parameters":["mz3d","camera","Camera",{"pitch":"","yaw":"270","roll":"","dist":"","zoom":"","height":"","mode":"","follow":"","pan":"","time":"0.000"}]},{"code":657,"indent":0,"parameters":["Pitch = "]},{"code":657,"indent":0,"parameters":["Yaw = 270"]},{"code":657,"indent":0,"parameters":["Roll = "]},{"code":657,"indent":0,"parameters":["Distance = "]},{"code":657,"indent":0,"parameters":["Zoom = "]},{"code":657,"indent":0,"parameters":["Height = "]},{"code":657,"indent":0,"parameters":["Mode = "]},{"code":657,"indent":0,"parameters":["Follow Target = "]},{"code":657,"indent":0,"parameters":["Pan = "]},{"code":657,"indent":0,"parameters":["Time = 0.000"]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":3,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":false}],"x":12,"y":5},
-{"id":21,"name":"Prototype","note":"<mz3d:scale(1.25,1.25)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"$MOB_Clockwork_Prototype","direction":2,"pattern":0,"characterIndex":0},"list":[{"code":205,"indent":0,"parameters":[0,{"list":[{"code":18,"indent":null},{"code":35,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":18,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":35,"indent":null}]},{"code":230,"indent":0,"parameters":[600]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":1,"moveRoute":{"list":[{"code":18,"indent":null},{"code":35,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":1,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":4,"walkAnime":false},{"conditions":{"actorId":1,"actorValid":false,"itemId":3,"itemValid":true,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"$MOB_Clockwork_Prototype","direction":2,"pattern":0,"characterIndex":0},"list":[{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","QuestObjectives","Quest: Objectives Change",{"Keys:arraystr":"[\"B\"]","TargetIDs:arrayeval":"[\"5\"]","Status:str":"complete"}]},{"code":657,"indent":0,"parameters":["Quest Keys = [\"B\"]"]},{"code":657,"indent":0,"parameters":["Objective ID(s) = [\"5\"]"]},{"code":657,"indent":0,"parameters":["Status = complete"]},{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","QuestSet","Quest: Add/Complete/Fail/Remove",{"Keys:arraystr":"[\"B\"]","Status:str":"completed"}]},{"code":657,"indent":0,"parameters":["Quest Keys = [\"B\"]"]},{"code":657,"indent":0,"parameters":["Status = completed"]},{"code":250,"indent":0,"parameters":[{"name":"Key","volume":40,"pitch":150,"pan":0}]},{"code":230,"indent":0,"parameters":[60]},{"code":250,"indent":0,"parameters":[{"name":"Computer","volume":40,"pitch":50,"pan":0}]},{"code":101,"indent":0,"parameters":["Riley",2,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["!"]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":33,"indent":null},{"code":36,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":true}]},{"code":505,"indent":0,"parameters":[{"code":33,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":36,"indent":null}]},{"code":250,"indent":0,"parameters":[{"name":"Machine","volume":40,"pitch":150,"pan":0}]},{"code":230,"indent":0,"parameters":[45]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":24,"indent":null},{"code":15,"parameters":[15],"indent":null},{"code":0}],"repeat":true,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":24,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[15],"indent":null}]},{"code":250,"indent":0,"parameters":[{"name":"Leakage","volume":40,"pitch":150,"pan":0}]},{"code":230,"indent":0,"parameters":[29]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":24,"indent":null},{"code":15,"parameters":[10],"indent":null},{"code":0}],"repeat":true,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":24,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[10],"indent":null}]},{"code":250,"indent":0,"parameters":[{"name":"Leakage","volume":40,"pitch":120,"pan":0}]},{"code":230,"indent":0,"parameters":[45]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":24,"indent":null},{"code":15,"parameters":[3],"indent":null},{"code":0}],"repeat":true,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":24,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":15,"parameters":[3],"indent":null}]},{"code":250,"indent":0,"parameters":[{"name":"Leakage","volume":40,"pitch":70,"pan":0}]},{"code":101,"indent":0,"parameters":["Zee",3,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["..."]},{"code":357,"indent":0,"parameters":["mz3d","animation","Play Animation",{"id":"3","target":"","scale":"0.1500","rot":"auto","depth":"false","height":"0.3500"}]},{"code":657,"indent":0,"parameters":["Animation = 3"]},{"code":657,"indent":0,"parameters":["Target = "]},{"code":657,"indent":0,"parameters":["Scale = 0.1500"]},{"code":657,"indent":0,"parameters":["Rotation = auto"]},{"code":657,"indent":0,"parameters":["Depth = false"]},{"code":657,"indent":0,"parameters":["Height Offset = 0.3500"]},{"code":230,"indent":0,"parameters":[30]},{"code":123,"indent":0,"parameters":["A",0]},{"code":230,"indent":0,"parameters":[60]},{"code":205,"indent":0,"parameters":[29,{"list":[{"code":25,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":25,"indent":null}]},{"code":205,"indent":0,"parameters":[22,{"list":[{"code":25,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":25,"indent":null}]},{"code":111,"indent":0,"parameters":[12,"$gameParty._battleMembers.contains(2)"]},{"code":101,"indent":1,"parameters":["Cyrus",0,0,2,"\\n[2]"]},{"code":401,"indent":1,"parameters":["An \"A\" for effort."]},{"code":0,"indent":1,"parameters":[]},{"code":412,"indent":0,"parameters":[]},{"code":101,"indent":0,"parameters":["Riley",3,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["I give up. Can I just come with you instead?"]},{"code":101,"indent":0,"parameters":["Zee",0,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["Yeah. Maybe you can find a way into that Clock Tower."]},{"code":205,"indent":0,"parameters":[22,{"list":[{"code":1,"indent":null},{"code":25,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":true}]},{"code":505,"indent":0,"parameters":[{"code":1,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":25,"indent":null}]},{"code":121,"indent":0,"parameters":[59,59,0]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":18,"indent":null},{"code":35,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":3,"moveType":3,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":false},{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":true,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"","direction":2,"pattern":0,"characterIndex":0},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":3,"moveType":0,"priorityType":0,"stepAnime":false,"through":true,"trigger":0,"walkAnime":false}],"x":3,"y":5},
-{"id":22,"name":"Riley","note":"<mz3d:scale(1.2,1.4)>","pages":[{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_026","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":101,"indent":0,"parameters":["Riley",3,0,2,"?????"]},{"code":401,"indent":0,"parameters":["*snore*"]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":55,"switch1Valid":true,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_026","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":101,"indent":0,"parameters":["Riley",0,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["Don't mind \\N[4]. If the Light can abide them,"]},{"code":401,"indent":0,"parameters":["so can we."]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":1,"actorValid":false,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":57,"switch1Valid":true,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_026","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":101,"indent":0,"parameters":["Riley",0,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["I'm just enjoying the peace and quiet, to be honest."]},{"code":101,"indent":0,"parameters":["Riley",1,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["That robot thing creeps me out, though."]},{"code":401,"indent":0,"parameters":[""]},{"code":401,"indent":0,"parameters":["\\N[4] is convinced they can get it working, so..."]},{"code":401,"indent":0,"parameters":["whatever."]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":4,"actorValid":true,"itemId":3,"itemValid":true,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":57,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_026","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":101,"indent":0,"parameters":["Riley",3,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["Might as well try it, I guess."]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":4,"actorValid":true,"itemId":3,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":59,"switch1Valid":true,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_026","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":108,"indent":0,"parameters":["============================"]},{"code":108,"indent":0,"parameters":["Save Mob Event ID"]},{"code":122,"indent":0,"parameters":[29,29,0,4,"this._eventId"]},{"code":129,"indent":0,"parameters":[5,0,true]},{"code":122,"indent":0,"parameters":[20,20,0,3,3,1,0]},{"code":122,"indent":0,"parameters":[20,20,2,0,1]},{"code":316,"indent":0,"parameters":[0,5,0,1,20,false]},{"code":250,"indent":0,"parameters":[{"name":"Sound1","volume":90,"pitch":130,"pan":0}]},{"code":101,"indent":0,"parameters":["",0,1,1,"\\TransparentBG "]},{"code":401,"indent":0,"parameters":["<Auto>\\{\\{\\N[5] joined!\\|\\|\\^"]},{"code":117,"indent":0,"parameters":[112]},{"code":318,"indent":0,"parameters":[0,1,0,232]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":3,"walkAnime":true},{"conditions":{"actorId":5,"actorValid":true,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":55,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":0,"stepAnime":false,"through":true,"trigger":0,"walkAnime":false}],"x":7,"y":3},
-null,
-null,
-null,
-null,
-null,
-null,
-{"id":29,"name":"Zero","note":"<mz3d:scale(1.2,1.4)>","pages":[{"conditions":{"actorId":4,"actorValid":true,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":1,"switch1Valid":true,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_014","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","QuestObjectives","Quest: Objectives Change",{"Keys:arraystr":"[\"B\"]","TargetIDs:arrayeval":"[\"4\"]","Status:str":"complete"}]},{"code":657,"indent":0,"parameters":["Quest Keys = [\"B\"]"]},{"code":657,"indent":0,"parameters":["Objective ID(s) = [\"4\"]"]},{"code":657,"indent":0,"parameters":["Status = complete"]},{"code":357,"indent":0,"parameters":["VisuMZ_2_QuestSystem","QuestObjectives","Quest: Objectives Change",{"Keys:arraystr":"[\"B\"]","TargetIDs:arrayeval":"[\"5\"]","Status:str":"show"}]},{"code":657,"indent":0,"parameters":["Quest Keys = [\"B\"]"]},{"code":657,"indent":0,"parameters":["Objective ID(s) = [\"5\"]"]},{"code":657,"indent":0,"parameters":["Status = show"]},{"code":101,"indent":0,"parameters":["Riley",1,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["So, you made it back, but you dragged them"]},{"code":401,"indent":0,"parameters":["into your mess?"]},{"code":101,"indent":0,"parameters":["Zee",3,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["What can I say, three massive Earth Worms"]},{"code":401,"indent":0,"parameters":["provide a compelling case."]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":2,"indent":null},{"code":2,"indent":null},{"code":2,"indent":null},{"code":2,"indent":null},{"code":19,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":true}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":19,"indent":null}]},{"code":101,"indent":0,"parameters":["Riley",2,0,2,"\\N[5]"]},{"code":401,"indent":0,"parameters":["Wait, you actually found something out there?"]},{"code":101,"indent":0,"parameters":["Zee",0,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["Ayep."]},{"code":205,"indent":0,"parameters":[22,{"list":[{"code":2,"indent":0},{"code":2,"indent":null},{"code":2,"indent":null},{"code":5,"indent":0},{"code":16,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":false}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":5,"indent":0}]},{"code":505,"indent":0,"parameters":[{"code":16,"indent":null}]},{"code":205,"indent":0,"parameters":[0,{"list":[{"code":5,"indent":null},{"code":5,"indent":null},{"code":2,"indent":null},{"code":19,"indent":null},{"code":0}],"repeat":false,"skippable":false,"wait":true}]},{"code":505,"indent":0,"parameters":[{"code":5,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":5,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":2,"indent":null}]},{"code":505,"indent":0,"parameters":[{"code":19,"indent":null}]},{"code":101,"indent":0,"parameters":["Zee",0,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["C'mon, \\N[1], try out the key."]},{"code":203,"indent":0,"parameters":[0,0,3,6,8]},{"code":123,"indent":0,"parameters":["A",0]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":0,"parameters":[]}],"repeat":true,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":3,"walkAnime":true},{"conditions":{"actorId":4,"actorValid":true,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":true,"switch1Id":57,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"feschar_big_014","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":101,"indent":0,"parameters":["Zee",0,0,2,"\\N[4]"]},{"code":401,"indent":0,"parameters":["C'mon, \\N[1], try out the key."]},{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":14,"parameters":[-7,2],"indent":null},{"code":19,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":1,"stepAnime":false,"through":false,"trigger":0,"walkAnime":true},{"conditions":{"actorId":5,"actorValid":true,"itemId":1,"itemValid":false,"selfSwitchCh":"A","selfSwitchValid":false,"switch1Id":57,"switch1Valid":false,"switch2Id":1,"switch2Valid":false,"variableId":1,"variableValid":false,"variableValue":0},"directionFix":false,"image":{"tileId":0,"characterName":"","direction":2,"pattern":0,"characterIndex":2},"list":[{"code":0,"indent":0,"parameters":[]}],"moveFrequency":3,"moveRoute":{"list":[{"code":14,"parameters":[-7,2],"indent":null},{"code":19,"indent":null},{"code":0,"parameters":[]}],"repeat":false,"skippable":false,"wait":false},"moveSpeed":4,"moveType":0,"priorityType":0,"stepAnime":false,"through":true,"trigger":0,"walkAnime":true}],"x":10,"y":4},
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null,
-null
-]
+  "autoplayBgm": true,
+  "autoplayBgs": true,
+  "battleback1Name": "Clear",
+  "battleback2Name": "Clear",
+  "bgm": {
+    "name": "Town Theme Loop_Master 1",
+    "pan": 0,
+    "pitch": 100,
+    "volume": 15
+  },
+  "bgs": {
+    "name": "Acoustic Guitar Song Loop_Master 1",
+    "pan": 0,
+    "pitch": 100,
+    "volume": 90
+  },
+  "disableDashing": false,
+  "displayName": "",
+  "encounterList": [],
+  "encounterStep": 30,
+  "height": 12,
+  "note": "<rabbitMap: Map007,50,50>\n<rabbitMegaMap: Map007,40,40>\n<mz3d>\nambient(#808080)\nsun(#000000|-30,-30)\nceiling(A3,4,0|height:3.5,backface:false)\n</mz3d>\n",
+  "parallaxLoopX": false,
+  "parallaxLoopY": false,
+  "parallaxName": "",
+  "parallaxShow": true,
+  "parallaxSx": 0,
+  "parallaxSy": 0,
+  "scrollType": 0,
+  "specifyBattleback": true,
+  "tilesetId": 5,
+  "width": 16,
+  "data": [
+    4930,
+    4930,
+    4931,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4934,
+    4930,
+    4934,
+    4931,
+    4930,
+    4937,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4940,
+    4928,
+    4932,
+    4929,
+    4928,
+    4978,
+    4982,
+    3714,
+    3700,
+    3700,
+    3700,
+    3700,
+    3700,
+    3700,
+    3700,
+    3700,
+    3716,
+    4929,
+    4932,
+    4929,
+    4928,
+    4976,
+    4980,
+    3696,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3704,
+    4929,
+    4932,
+    4929,
+    4928,
+    4976,
+    4980,
+    3720,
+    3688,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3704,
+    4929,
+    4932,
+    4929,
+    4928,
+    4976,
+    4980,
+    4110,
+    3696,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3704,
+    4929,
+    4932,
+    4929,
+    4928,
+    4976,
+    4980,
+    3714,
+    3681,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3704,
+    4929,
+    4932,
+    4929,
+    4928,
+    4976,
+    4980,
+    3720,
+    3688,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3704,
+    4929,
+    4932,
+    4929,
+    4928,
+    4976,
+    4980,
+    4110,
+    3720,
+    3688,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3680,
+    3704,
+    4929,
+    4932,
+    4929,
+    4928,
+    4984,
+    4988,
+    3726,
+    4110,
+    3720,
+    3708,
+    3708,
+    3708,
+    3708,
+    3708,
+    3708,
+    3718,
+    4929,
+    4932,
+    4929,
+    4928,
+    4931,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4930,
+    4934,
+    4928,
+    4932,
+    4929,
+    4928,
+    4936,
+    4936,
+    4937,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4936,
+    4940,
+    4936,
+    4940,
+    4937,
+    4936,
+    4978,
+    4978,
+    4979,
+    4978,
+    4978,
+    4978,
+    4978,
+    4978,
+    4978,
+    4978,
+    4978,
+    4982,
+    4978,
+    4982,
+    4979,
+    4978,
+    4976,
+    4976,
+    4981,
+    4985,
+    4984,
+    4988,
+    4981,
+    4985,
+    4984,
+    4984,
+    4988,
+    4981,
+    4976,
+    4980,
+    4977,
+    4976,
+    4976,
+    4976,
+    4989,
+    0,
+    3195,
+    3197,
+    4989,
+    3195,
+    3197,
+    0,
+    0,
+    4989,
+    4976,
+    4980,
+    4977,
+    4976,
+    4976,
+    4980,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4977,
+    4980,
+    4977,
+    4976,
+    4976,
+    4980,
+    0,
+    0,
+    3330,
+    3316,
+    3316,
+    3316,
+    3332,
+    0,
+    0,
+    0,
+    4977,
+    4980,
+    4977,
+    4976,
+    4976,
+    4980,
+    221,
+    0,
+    3312,
+    3296,
+    3296,
+    3296,
+    3320,
+    0,
+    0,
+    0,
+    4977,
+    4980,
+    4977,
+    4976,
+    4976,
+    4980,
+    0,
+    0,
+    3312,
+    3296,
+    3296,
+    3296,
+    3320,
+    0,
+    0,
+    0,
+    4977,
+    4980,
+    4977,
+    4976,
+    4976,
+    4980,
+    0,
+    0,
+    3336,
+    3324,
+    3324,
+    3324,
+    3334,
+    0,
+    0,
+    0,
+    4977,
+    4980,
+    4977,
+    4976,
+    4976,
+    4980,
+    221,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4977,
+    4980,
+    4977,
+    4976,
+    4976,
+    4976,
+    4983,
+    221,
+    3195,
+    3197,
+    4983,
+    3195,
+    3197,
+    0,
+    0,
+    4983,
+    4976,
+    4980,
+    4977,
+    4976,
+    4976,
+    4976,
+    4981,
+    4979,
+    4978,
+    4982,
+    4981,
+    4979,
+    4978,
+    4978,
+    4982,
+    4981,
+    4976,
+    4980,
+    4977,
+    4976,
+    4984,
+    4984,
+    4985,
+    4984,
+    4984,
+    4984,
+    4984,
+    4984,
+    4984,
+    4984,
+    4984,
+    4988,
+    4984,
+    4988,
+    4985,
+    4984,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4991,
+    238,
+    234,
+    232,
+    4991,
+    0,
+    0,
+    0,
+    0,
+    4991,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    238,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    217,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    217,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4991,
+    217,
+    0,
+    0,
+    4991,
+    0,
+    0,
+    0,
+    0,
+    4991,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    103,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    103,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    0,
+    103,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132,
+    132
+  ],
+  "events": [
+    null,
+    {
+      "id": 1,
+      "name": "Wayrest Window",
+      "note": "<mz3d:shape(wall),rot(90),xoff(0.49),yoff(0.5),zoff(1.25)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "tileId": 0,
+            "characterName": "!$Castle",
+            "direction": 2,
+            "pattern": 1,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 1,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 1,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 11,
+      "y": 5
+    },
+    {
+      "id": 2,
+      "name": "Lantern",
+      "note": "<mz3d:lamp(yellow,1,6),lampHeight(1),shape(cross),yoff(-0.25),z(2),scale(1,1)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 4,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "tileId": 0,
+            "characterName": "!Flame",
+            "direction": 6,
+            "pattern": 0,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 19,
+                "indent": null
+              },
+              {
+                "code": 35,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 5,
+          "moveType": 0,
+          "priorityType": 2,
+          "stepAnime": true,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 6,
+      "y": 3
+    },
+    null,
+    null,
+    {
+      "id": 5,
+      "name": "Wayrest Door",
+      "note": "<mz3d:shape(wall),rot(90),xoff(-0.51),yoff(0.1),z(0),scale(1,2)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "tileId": 0,
+            "characterName": "!Door1_Black",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Open1",
+                  "volume": 90,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 36,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": 0
+                    },
+                    {
+                      "code": 17,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": 0
+                    },
+                    {
+                      "code": 18,
+                      "indent": 0
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": 0
+                    },
+                    {
+                      "code": 19,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 35,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 36,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 17,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 18,
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 19,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 35,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Move1",
+                  "volume": 90,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 117,
+              "indent": 0,
+              "parameters": [
+                4
+              ]
+            },
+            {
+              "code": 201,
+              "indent": 0,
+              "parameters": [
+                0,
+                3,
+                14,
+                8,
+                4,
+                2
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "mz3d",
+                "camera",
+                "Camera",
+                {
+                  "pitch": "",
+                  "yaw": "270",
+                  "roll": "",
+                  "dist": "",
+                  "zoom": "",
+                  "height": "",
+                  "mode": "",
+                  "follow": "",
+                  "pan": "",
+                  "time": "0.000"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Pitch = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Yaw = 270"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Roll = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Distance = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Zoom = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Height = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Mode = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Follow Target = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Pan = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Time = 0.000"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 12,
+      "y": 6
+    },
+    null,
+    null,
+    null,
+    null,
+    {
+      "id": 10,
+      "name": "miniMapMonitor",
+      "note": "<mz3d:shadow(0),shadow(false)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "characterIndex": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "tileId": 0
+          },
+          "list": [
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "------------------------------------------------------"
+              ]
+            },
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "This keeps the AlwaysOn common event running"
+              ]
+            },
+            {
+              "code": 121,
+              "indent": 0,
+              "parameters": [
+                3,
+                3,
+                0
+              ]
+            },
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "------------------------------------------------------"
+              ]
+            },
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "Set up the player lantern if needed"
+              ]
+            },
+            {
+              "code": 111,
+              "indent": 0,
+              "parameters": [
+                0,
+                11,
+                1
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 1,
+              "parameters": [
+                "mz3d",
+                "lamp",
+                "Lamp",
+                {
+                  "target": "player",
+                  "color": "white",
+                  "intensity": "1.000",
+                  "dist": "2.500",
+                  "time": "1.000"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 1,
+              "parameters": [
+                "Target = player"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 1,
+              "parameters": [
+                "Color = white"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 1,
+              "parameters": [
+                "Intensity = 1.000"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 1,
+              "parameters": [
+                "Distance = 2.500"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 1,
+              "parameters": [
+                "Time = 1.000"
+              ]
+            },
+            {
+              "code": 121,
+              "indent": 1,
+              "parameters": [
+                11,
+                11,
+                0
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 412,
+              "indent": 0,
+              "parameters": []
+            },
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "------------------------------------------------------"
+              ]
+            },
+            {
+              "code": 123,
+              "indent": 0,
+              "parameters": [
+                "A",
+                0
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 1,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 3,
+          "walkAnime": false
+        },
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": true,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "characterIndex": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "tileId": 0
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 1,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 1,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 13,
+      "y": 9
+    },
+    null,
+    null,
+    null,
+    null,
+    {
+      "id": 15,
+      "name": "Lantern",
+      "note": "<mz3d:lamp(yellow,1,6),lampHeight(1),shape(cross),yoff(0.25),z(2),scale(1,1)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 4,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "tileId": 0,
+            "characterName": "!Flame",
+            "direction": 6,
+            "pattern": 0,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 19,
+                "indent": null
+              },
+              {
+                "code": 35,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 5,
+          "moveType": 0,
+          "priorityType": 2,
+          "stepAnime": true,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 6,
+      "y": 8
+    },
+    null,
+    {
+      "id": 17,
+      "name": "Zee",
+      "note": "<mz3d:scale(1.2,1.4)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 55,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_014",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 121,
+              "indent": 0,
+              "parameters": [
+                55,
+                55,
+                0
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                3,
+                0,
+                2,
+                "???"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "...I'm \\N[4]. "
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                ""
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "What are you supposed to be, exactly?"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                1,
+                0,
+                2,
+                "???"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "*snkrt*...\\N[4]! Don't be <i>rude.</i>"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                1,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "...That's \\N[5], my <i>sister</i>."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I came out here on a treasure hunt, "
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "but the Gorge caved in."
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                2,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "WE ALMOST <b>DIED.</b>"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                ""
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I love the Sun Goddess, but I don't want to"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "meet her <i>yet</i>!"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                0,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "If you figure out a way into the Dry Basin,"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I'll probably head back there."
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "QuestSet",
+                "Quest: Add/Complete/Fail/Remove",
+                {
+                  "Keys:arraystr": "[\"B\"]",
+                  "Status:str": "known"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Keys = [\"B\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Status = known"
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "QuestObjectives",
+                "Quest: Objectives Change",
+                {
+                  "Keys:arraystr": "[\"B\"]",
+                  "TargetIDs:arrayeval": "[\"1\"]",
+                  "Status:str": "show"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Keys = [\"B\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Objective ID(s) = [\"1\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Status = show"
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "TrackerChangeQuest",
+                "Tracker: Change Quest",
+                {
+                  "Key:str": "B"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Key = B"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 16,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 3,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 55,
+            "switch1Valid": true,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_014",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                0,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "If you figure out a way into the Dry Basin,"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I'll probably head back there."
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 16,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 3,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 4,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 57,
+            "switch1Valid": true,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 16,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        },
+        {
+          "conditions": {
+            "actorId": 4,
+            "actorValid": true,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 55,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 16,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 3,
+      "y": 4
+    },
+    null,
+    null,
+    {
+      "id": 20,
+      "name": "Wayrest Door",
+      "note": "<mz3d:shape(wall),rot(90),xoff(-0.51),yoff(-0.1),z(0),scale(1,2)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": true,
+          "image": {
+            "tileId": 0,
+            "characterName": "!Door1_Black",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 1
+          },
+          "list": [
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Open1",
+                  "volume": 90,
+                  "pitch": 100,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 36,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": 0
+                    },
+                    {
+                      "code": 17,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": 0
+                    },
+                    {
+                      "code": 18,
+                      "indent": 0
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": 0
+                    },
+                    {
+                      "code": 19,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        6
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 35,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 36,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 17,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 18,
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 19,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    6
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 35,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 117,
+              "indent": 0,
+              "parameters": [
+                4
+              ]
+            },
+            {
+              "code": 201,
+              "indent": 0,
+              "parameters": [
+                0,
+                3,
+                14,
+                8,
+                4,
+                2
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "mz3d",
+                "camera",
+                "Camera",
+                {
+                  "pitch": "",
+                  "yaw": "270",
+                  "roll": "",
+                  "dist": "",
+                  "zoom": "",
+                  "height": "",
+                  "mode": "",
+                  "follow": "",
+                  "pan": "",
+                  "time": "0.000"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Pitch = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Yaw = 270"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Roll = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Distance = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Zoom = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Height = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Mode = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Follow Target = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Pan = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Time = 0.000"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 12,
+      "y": 5
+    },
+    {
+      "id": 21,
+      "name": "Prototype",
+      "note": "<mz3d:scale(1.25,1.25)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "$MOB_Clockwork_Prototype",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 18,
+                      "indent": null
+                    },
+                    {
+                      "code": 35,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 18,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 35,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                600
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 1,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 18,
+                "indent": null
+              },
+              {
+                "code": 35,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 1,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 4,
+          "walkAnime": false
+        },
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 3,
+            "itemValid": true,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "$MOB_Clockwork_Prototype",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "QuestObjectives",
+                "Quest: Objectives Change",
+                {
+                  "Keys:arraystr": "[\"B\"]",
+                  "TargetIDs:arrayeval": "[\"5\"]",
+                  "Status:str": "complete"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Keys = [\"B\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Objective ID(s) = [\"5\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Status = complete"
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "QuestSet",
+                "Quest: Add/Complete/Fail/Remove",
+                {
+                  "Keys:arraystr": "[\"B\"]",
+                  "Status:str": "completed"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Keys = [\"B\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Status = completed"
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Key",
+                  "volume": 40,
+                  "pitch": 150,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                60
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Computer",
+                  "volume": 40,
+                  "pitch": 50,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                2,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "!"
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 33,
+                      "indent": null
+                    },
+                    {
+                      "code": 36,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 33,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 36,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Machine",
+                  "volume": 40,
+                  "pitch": 150,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                45
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 24,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        15
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": true,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 24,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    15
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Leakage",
+                  "volume": 40,
+                  "pitch": 150,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                29
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 24,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        10
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": true,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 24,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    10
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Leakage",
+                  "volume": 40,
+                  "pitch": 120,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                45
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 24,
+                      "indent": null
+                    },
+                    {
+                      "code": 15,
+                      "parameters": [
+                        3
+                      ],
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": true,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 24,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 15,
+                  "parameters": [
+                    3
+                  ],
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Leakage",
+                  "volume": 40,
+                  "pitch": 70,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                3,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "..."
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "mz3d",
+                "animation",
+                "Play Animation",
+                {
+                  "id": "3",
+                  "target": "",
+                  "scale": "0.1500",
+                  "rot": "auto",
+                  "depth": "false",
+                  "height": "0.3500"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Animation = 3"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Target = "
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Scale = 0.1500"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Rotation = auto"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Depth = false"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Height Offset = 0.3500"
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                30
+              ]
+            },
+            {
+              "code": 123,
+              "indent": 0,
+              "parameters": [
+                "A",
+                0
+              ]
+            },
+            {
+              "code": 230,
+              "indent": 0,
+              "parameters": [
+                60
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                29,
+                {
+                  "list": [
+                    {
+                      "code": 25,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 25,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                22,
+                {
+                  "list": [
+                    {
+                      "code": 25,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 25,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 111,
+              "indent": 0,
+              "parameters": [
+                12,
+                "$gameParty._battleMembers.contains(2)"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 1,
+              "parameters": [
+                "Cyrus",
+                0,
+                0,
+                2,
+                "\\n[2]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 1,
+              "parameters": [
+                "An \"A\" for effort."
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 1,
+              "parameters": []
+            },
+            {
+              "code": 412,
+              "indent": 0,
+              "parameters": []
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                3,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I give up. Can I just come with you instead?"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                0,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Yeah. Maybe you can find a way into that Clock Tower."
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                22,
+                {
+                  "list": [
+                    {
+                      "code": 1,
+                      "indent": null
+                    },
+                    {
+                      "code": 25,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 1,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 25,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 121,
+              "indent": 0,
+              "parameters": [
+                59,
+                59,
+                0
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 18,
+                "indent": null
+              },
+              {
+                "code": 35,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 3,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": false
+        },
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": true,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 0
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 3,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 3,
+      "y": 5
+    },
+    {
+      "id": 22,
+      "name": "Riley",
+      "note": "<mz3d:scale(1.2,1.4)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_026",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                3,
+                0,
+                2,
+                "?????"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "*snore*"
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 55,
+            "switch1Valid": true,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_026",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                0,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Don't mind \\N[4]. If the Light can abide them,"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "so can we."
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 1,
+            "actorValid": false,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 57,
+            "switch1Valid": true,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_026",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                0,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "I'm just enjoying the peace and quiet, to be honest."
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                1,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "That robot thing creeps me out, though."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                ""
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "\\N[4] is convinced they can get it working, so..."
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "whatever."
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 4,
+            "actorValid": true,
+            "itemId": 3,
+            "itemValid": true,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 57,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_026",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                3,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Might as well try it, I guess."
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 4,
+            "actorValid": true,
+            "itemId": 3,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 59,
+            "switch1Valid": true,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_026",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "============================"
+              ]
+            },
+            {
+              "code": 108,
+              "indent": 0,
+              "parameters": [
+                "Save Mob Event ID"
+              ]
+            },
+            {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                29,
+                29,
+                0,
+                4,
+                "this._eventId"
+              ]
+            },
+            {
+              "code": 129,
+              "indent": 0,
+              "parameters": [
+                5,
+                0,
+                true
+              ]
+            },
+            {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                20,
+                20,
+                0,
+                3,
+                3,
+                1,
+                0
+              ]
+            },
+            {
+              "code": 122,
+              "indent": 0,
+              "parameters": [
+                20,
+                20,
+                2,
+                0,
+                1
+              ]
+            },
+            {
+              "code": 316,
+              "indent": 0,
+              "parameters": [
+                0,
+                5,
+                0,
+                1,
+                20,
+                false
+              ]
+            },
+            {
+              "code": 250,
+              "indent": 0,
+              "parameters": [
+                {
+                  "name": "Sound1",
+                  "volume": 90,
+                  "pitch": 130,
+                  "pan": 0
+                }
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "",
+                0,
+                1,
+                1,
+                "\\TransparentBG "
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "<Auto>\\{\\{\\N[5] joined!\\|\\|\\^"
+              ]
+            },
+            {
+              "code": 117,
+              "indent": 0,
+              "parameters": [
+                112
+              ]
+            },
+            {
+              "code": 318,
+              "indent": 0,
+              "parameters": [
+                0,
+                1,
+                0,
+                232
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 3,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 5,
+            "actorValid": true,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 55,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": false
+        }
+      ],
+      "x": 7,
+      "y": 3
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+      "id": 29,
+      "name": "Zero",
+      "note": "<mz3d:scale(1.2,1.4)>",
+      "pages": [
+        {
+          "conditions": {
+            "actorId": 4,
+            "actorValid": true,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 1,
+            "switch1Valid": true,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_014",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "QuestObjectives",
+                "Quest: Objectives Change",
+                {
+                  "Keys:arraystr": "[\"B\"]",
+                  "TargetIDs:arrayeval": "[\"4\"]",
+                  "Status:str": "complete"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Keys = [\"B\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Objective ID(s) = [\"4\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Status = complete"
+              ]
+            },
+            {
+              "code": 357,
+              "indent": 0,
+              "parameters": [
+                "VisuMZ_2_QuestSystem",
+                "QuestObjectives",
+                "Quest: Objectives Change",
+                {
+                  "Keys:arraystr": "[\"B\"]",
+                  "TargetIDs:arrayeval": "[\"5\"]",
+                  "Status:str": "show"
+                }
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Quest Keys = [\"B\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Objective ID(s) = [\"5\"]"
+              ]
+            },
+            {
+              "code": 657,
+              "indent": 0,
+              "parameters": [
+                "Status = show"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                1,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "So, you made it back, but you dragged them"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "into your mess?"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                3,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "What can I say, three massive Earth Worms"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "provide a compelling case."
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 19,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 19,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Riley",
+                2,
+                0,
+                2,
+                "\\N[5]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Wait, you actually found something out there?"
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                0,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "Ayep."
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                22,
+                {
+                  "list": [
+                    {
+                      "code": 2,
+                      "indent": 0
+                    },
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 5,
+                      "indent": 0
+                    },
+                    {
+                      "code": 16,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": false
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 5,
+                  "indent": 0
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 16,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 205,
+              "indent": 0,
+              "parameters": [
+                0,
+                {
+                  "list": [
+                    {
+                      "code": 5,
+                      "indent": null
+                    },
+                    {
+                      "code": 5,
+                      "indent": null
+                    },
+                    {
+                      "code": 2,
+                      "indent": null
+                    },
+                    {
+                      "code": 19,
+                      "indent": null
+                    },
+                    {
+                      "code": 0
+                    }
+                  ],
+                  "repeat": false,
+                  "skippable": false,
+                  "wait": true
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 5,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 5,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 2,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 505,
+              "indent": 0,
+              "parameters": [
+                {
+                  "code": 19,
+                  "indent": null
+                }
+              ]
+            },
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                0,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "C'mon, \\N[1], try out the key."
+              ]
+            },
+            {
+              "code": 203,
+              "indent": 0,
+              "parameters": [
+                0,
+                0,
+                3,
+                6,
+                8
+              ]
+            },
+            {
+              "code": 123,
+              "indent": 0,
+              "parameters": [
+                "A",
+                0
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": true,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 3,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 4,
+            "actorValid": true,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": true,
+            "switch1Id": 57,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "feschar_big_014",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 101,
+              "indent": 0,
+              "parameters": [
+                "Zee",
+                0,
+                0,
+                2,
+                "\\N[4]"
+              ]
+            },
+            {
+              "code": 401,
+              "indent": 0,
+              "parameters": [
+                "C'mon, \\N[1], try out the key."
+              ]
+            },
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 14,
+                "parameters": [
+                  -7,
+                  2
+                ],
+                "indent": null
+              },
+              {
+                "code": 19,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 1,
+          "stepAnime": false,
+          "through": false,
+          "trigger": 0,
+          "walkAnime": true
+        },
+        {
+          "conditions": {
+            "actorId": 5,
+            "actorValid": true,
+            "itemId": 1,
+            "itemValid": false,
+            "selfSwitchCh": "A",
+            "selfSwitchValid": false,
+            "switch1Id": 57,
+            "switch1Valid": false,
+            "switch2Id": 1,
+            "switch2Valid": false,
+            "variableId": 1,
+            "variableValid": false,
+            "variableValue": 0
+          },
+          "directionFix": false,
+          "image": {
+            "tileId": 0,
+            "characterName": "",
+            "direction": 2,
+            "pattern": 0,
+            "characterIndex": 2
+          },
+          "list": [
+            {
+              "code": 0,
+              "indent": 0,
+              "parameters": []
+            }
+          ],
+          "moveFrequency": 3,
+          "moveRoute": {
+            "list": [
+              {
+                "code": 14,
+                "parameters": [
+                  -7,
+                  2
+                ],
+                "indent": null
+              },
+              {
+                "code": 19,
+                "indent": null
+              },
+              {
+                "code": 0,
+                "parameters": []
+              }
+            ],
+            "repeat": false,
+            "skippable": false,
+            "wait": false
+          },
+          "moveSpeed": 4,
+          "moveType": 0,
+          "priorityType": 0,
+          "stepAnime": false,
+          "through": true,
+          "trigger": 0,
+          "walkAnime": true
+        }
+      ],
+      "x": 10,
+      "y": 4
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ]
 }
