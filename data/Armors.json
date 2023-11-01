@@ -352,7 +352,7 @@
     "iconIndex": 1152,
     "name": "Poor Light Armor",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Body_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 1\n Item Common Thread: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Body_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 1\n Item Thread ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Light] Basically just tough cloth.",
     "params": [
       0,
@@ -386,7 +386,7 @@
     "iconIndex": 1153,
     "name": "Common Light Armor",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Body_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 2\n Item Common Thread: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Body_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 2\n Item Thread ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Light] A vest made of tanned hide.",
     "params": [
       0,
@@ -420,7 +420,7 @@
     "iconIndex": 1154,
     "name": "Uncommon Light Armor",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Body_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Hide: 2\n Item Uncommon Thread: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Body_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★☆☆☆: 2\n Item Thread ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Light] A vest made of leather\nhardened with glue.",
     "params": [
       0,
@@ -454,7 +454,7 @@
     "iconIndex": 1155,
     "name": "Rare Light Armor",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Body_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Hide: 2\n Item Rare Thread: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Body_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★☆☆: 2\n Item Thread ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Light] Armor made of layered hide.\nFunctional, and stylish!",
     "params": [
       0,
@@ -488,7 +488,7 @@
     "iconIndex": 1156,
     "name": "Unique Light Armor",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Body_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Hide: 2\n Item Unique Thread: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Body_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★☆: 2\n Item Thread ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Light] You're not sure what all the belts are\nfor, but they sure do look cool.",
     "params": [
       0,
@@ -522,7 +522,7 @@
     "iconIndex": 1157,
     "name": "Legendary Light Armor",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Body_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 2\n Item Legendary Thread: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Body_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 2\n Item Thread ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Light] The leather in this armor is as hard as\nsteel, and it is still very flexible.",
     "params": [
       0,
@@ -556,7 +556,7 @@
     "iconIndex": 1158,
     "name": "Mythical Light Armor",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Body_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 4\n Item Legendary Thread: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Body_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 4\n Item Thread ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Light] Whoever made this was highly skilled. You\ncan't even see where they stitched it together.",
     "params": [
       0,
@@ -590,7 +590,7 @@
     "iconIndex": 1159,
     "name": "Eldritch Light Armor",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 6\n Item Legendary Thread: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 6\n Item Thread ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Light] Light armor forged by the gods themselves.",
     "params": [
       0,
@@ -1300,7 +1300,7 @@
     "iconIndex": 1184,
     "name": "Poor Light Boots",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Feet_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 1\n Item Common Thread: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Feet_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 1\n Item Thread ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Light] Basically just tough cloth.",
     "params": [
       0,
@@ -1334,7 +1334,7 @@
     "iconIndex": 1185,
     "name": "Common Light Boots",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Feet_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 2\n Item Common Thread: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Feet_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 2\n Item Thread ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Light] Boots made of tanned hide.",
     "params": [
       0,
@@ -1368,7 +1368,7 @@
     "iconIndex": 1186,
     "name": "Uncommon Light Boots",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Feet_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Hide: 2\n Item Uncommon Thread: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Feet_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★☆☆☆: 2\n Item Thread ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Light] Boots made of leather\nhardened with glue.",
     "params": [
       0,
@@ -1402,7 +1402,7 @@
     "iconIndex": 1187,
     "name": "Rare Light Boots",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Feet_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Hide: 2\n Item Rare Thread: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Feet_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★☆☆: 2\n Item Thread ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Light] Boots made of layered hide.\nFunctional, and stylish!",
     "params": [
       0,
@@ -1436,7 +1436,7 @@
     "iconIndex": 1188,
     "name": "Unique Light Boots",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Feet_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Hide: 2\n Item Unique Thread: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Feet_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★☆: 2\n Item Thread ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Light] You're not sure what all the buckles are\nfor, but they sure do look cool.",
     "params": [
       0,
@@ -1470,7 +1470,7 @@
     "iconIndex": 1189,
     "name": "Legendary Light Boots",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Feet_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 2\n Item Legendary Thread: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Feet_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 2\n Item Thread ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Light] The leather in these boots are as hard as\nsteel, and they are still very flexible.",
     "params": [
       0,
@@ -1504,7 +1504,7 @@
     "iconIndex": 1190,
     "name": "Mythical Light Boots",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Feet_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 4\n Item Legendary Thread: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Feet_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 4\n Item Thread ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Light] Whoever made these was highly skilled. You\ncan't even see where they stitched them together.",
     "params": [
       0,
@@ -1538,7 +1538,7 @@
     "iconIndex": 1191,
     "name": "Eldritch Light Boots",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 6\n Item Legendary Thread: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 6\n Item Thread ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Light] Light boots forged by the gods themselves.",
     "params": [
       0,
@@ -2248,7 +2248,7 @@
     "iconIndex": 1216,
     "name": "Poor Light Disguise",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Head_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 1\n Item Common Thread: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Head_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 1\n Item Thread ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Light] Basically just tough cloth.",
     "params": [
       0,
@@ -2282,7 +2282,7 @@
     "iconIndex": 1217,
     "name": "Common Light Disguise",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Head_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 2\n Item Common Thread: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Head_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 2\n Item Thread ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Light] Disguise made of tanned hide.",
     "params": [
       0,
@@ -2316,7 +2316,7 @@
     "iconIndex": 1218,
     "name": "Uncommon Light Disguise",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Head_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Hide: 2\n Item Uncommon Thread: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Head_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★☆☆☆: 2\n Item Thread ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Light] Disguise made of leather\nhardened with glue.",
     "params": [
       0,
@@ -2350,7 +2350,7 @@
     "iconIndex": 1219,
     "name": "Rare Light Disguise",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Head_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Hide: 2\n Item Rare Thread: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Head_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★☆☆: 2\n Item Thread ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Light] Disguise made of layered hide.\nFunctional, and stylish!",
     "params": [
       0,
@@ -2384,7 +2384,7 @@
     "iconIndex": 1220,
     "name": "Unique Light Disguise",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Head_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Hide: 2\n Item Unique Thread: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Head_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★☆: 2\n Item Thread ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Light] You're not sure what all the vents are\nfor, but it sure does feel cool.",
     "params": [
       0,
@@ -2418,7 +2418,7 @@
     "iconIndex": 1221,
     "name": "Legendary Light Disguise",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Head_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 2\n Item Legendary Thread: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Head_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 2\n Item Thread ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Light] The leather in this disguise is as hard as\nsteel, and is are still very light.",
     "params": [
       0,
@@ -2452,7 +2452,7 @@
     "iconIndex": 1222,
     "name": "Mythical Light Disguise",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Head_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 4\n Item Legendary Thread: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Head_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 4\n Item Thread ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Light] Whoever made this was highly skilled. You\ncan't even see where they stitched it together.",
     "params": [
       0,
@@ -2486,7 +2486,7 @@
     "iconIndex": 1223,
     "name": "Eldritch Light Disguise",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 6\n Item Legendary Thread: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 6\n Item Thread ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Light] Eerie mask forged by the gods themselves.",
     "params": [
       0,
@@ -3196,7 +3196,7 @@
     "iconIndex": 1248,
     "name": "Poor Light Grips",
     "price": 100,
-    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Hands_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 1\n Item Common Thread: 1\n Gold: 50\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 26>\n<Shop Picture Name: Equip_Hands_Light_01>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_01>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 1\n Item Thread ★☆☆☆☆: 1\n Gold: 50\n</Crafting Ingredients>",
     "description": "[Light] Basically just tough cloth.",
     "params": [
       0,
@@ -3230,7 +3230,7 @@
     "iconIndex": 1249,
     "name": "Common Light Grips",
     "price": 100,
-    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Hands_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Common Hide: 2\n Item Common Thread: 2\n Gold: 100\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 27>\n<Shop Picture Name: Equip_Hands_Light_02>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_02>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★☆☆☆☆: 2\n Item Thread ★☆☆☆☆: 2\n Gold: 100\n</Crafting Ingredients>",
     "description": "[Light] Grips made of tanned hide.",
     "params": [
       0,
@@ -3264,7 +3264,7 @@
     "iconIndex": 1250,
     "name": "Uncommon Light Grips",
     "price": 200,
-    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Hands_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Uncommon Hide: 2\n Item Uncommon Thread: 2\n Gold: 200\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 28>\n<Shop Picture Name: Equip_Hands_Light_03>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_03>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★☆☆☆: 2\n Item Thread ★★☆☆☆: 2\n Gold: 200\n</Crafting Ingredients>",
     "description": "[Light] Grips made of leather\nhardened with glue.",
     "params": [
       0,
@@ -3298,7 +3298,7 @@
     "iconIndex": 1251,
     "name": "Rare Light Grips",
     "price": 550,
-    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Hands_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Rare Hide: 2\n Item Rare Thread: 2\n Gold: 400\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 29>\n<Shop Picture Name: Equip_Hands_Light_04>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_04>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★☆☆: 2\n Item Thread ★★★☆☆: 2\n Gold: 400\n</Crafting Ingredients>",
     "description": "[Light] Grips made of layered hide.\nFunctional, and stylish!",
     "params": [
       0,
@@ -3332,7 +3332,7 @@
     "iconIndex": 1252,
     "name": "Unique Light Grips",
     "price": 980,
-    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Hands_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Unique Hide: 2\n Item Unique Thread: 2\n Gold: 600\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 30>\n<Shop Picture Name: Equip_Hands_Light_05>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_05>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★☆: 2\n Item Thread ★★★★☆: 2\n Gold: 600\n</Crafting Ingredients>",
     "description": "[Light] You're not sure what all the vents are\nfor, but it sure does feel cool.",
     "params": [
       0,
@@ -3366,7 +3366,7 @@
     "iconIndex": 1253,
     "name": "Legendary Light Grips",
     "price": 1560,
-    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Hands_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 2\n Item Legendary Thread: 2\n Gold: 800\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 31>\n<Shop Picture Name: Equip_Hands_Light_06>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_06>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 2\n Item Thread ★★★★★: 2\n Gold: 800\n</Crafting Ingredients>",
     "description": "[Light] The leather in these grips are as hard as\nsteel, and they are still very light.",
     "params": [
       0,
@@ -3400,7 +3400,7 @@
     "iconIndex": 1254,
     "name": "Mythical Light Grips",
     "price": 1560,
-    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Hands_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 4\n Item Legendary Thread: 4\n Gold: 1000\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 32>\n<Shop Picture Name: Equip_Hands_Light_07>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_07>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 4\n Item Thread ★★★★★: 4\n Gold: 1000\n</Crafting Ingredients>",
     "description": "[Light] Whoever made these was highly skilled. You\ncan't even see where they stitched them together.",
     "params": [
       0,
@@ -3434,7 +3434,7 @@
     "iconIndex": 1255,
     "name": "Eldritch Light Grips",
     "price": 1560,
-    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Legendary Hide: 6\n Item Legendary Thread: 6\n Gold: 1500\n</Crafting Ingredients>",
+    "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Light_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Light_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Hide ★★★★★: 6\n Item Thread ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
     "description": "[Light] Light grips forged by the gods themselves.",
     "params": [
       0,
