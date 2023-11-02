@@ -13,9 +13,9 @@
    1. Create the file ./.git/hooks/pre-commit with the following contents:
 ````
 #!/usr/bin/env node
-# Creator: contentdeleted
-# Source: https://forums.rpgmakerweb.com/index.php?threads/automatically-pretty-json-files-for-clean-git-commit-diffs-using-git-hooks.108122/post-1310607
-# Script modified to restrict changes to .json files only
+// Creator: contentdeleted
+// Source: https://forums.rpgmakerweb.com/index.php?threads/automatically-pretty-json-files-for-clean-git-commit-diffs-using-git-hooks.108122/post-1310607
+// Script modified to restrict changes to .json files only
 
 const data_directory = "data"
 let command = '';
