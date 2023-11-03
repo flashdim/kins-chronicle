@@ -286,7 +286,7 @@
     "name": "Eldritch Clothing",
     "price": 1560,
     "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Body_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Body_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
-    "description": "[Clothing] Clothing forged by the gods themselves.",
+    "description": "[Clothing] Clothing tailored by the gods themselves.",
     "params": [
       0,
       0,
@@ -1234,7 +1234,7 @@
     "name": "Eldritch Shoes",
     "price": 1560,
     "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Feet_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Feet_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
-    "description": "[Clothing] Shoes forged by the gods themselves.",
+    "description": "[Clothing] Shoes cobbled by the gods themselves.",
     "params": [
       0,
       0,
@@ -2182,7 +2182,7 @@
     "name": "Eldritch Hood",
     "price": 1560,
     "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Head_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Head_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
-    "description": "[Clothing] Hood forged by the gods themselves.",
+    "description": "[Clothing] Hood tailored by the gods themselves.",
     "params": [
       0,
       0,
@@ -3130,7 +3130,7 @@
     "name": "Eldritch Gloves",
     "price": 1560,
     "note": "<Crafting Show Switch: 33>\n<Shop Picture Name: Equip_Hands_Cloth_08>\n<Shop Picture Alignment: Left>\n<Shop Picture Max Width: 164>\n<Crafting Picture: Equip_Hands_Cloth_08>\n<Crafting Animation: 2, 37, 286>\n<Crafting Ingredients>\n Item Cloth ★★★★★: 6\n Item Feather ★★★★★: 6\n Gold: 1500\n</Crafting Ingredients>",
-    "description": "[Clothing] Gloves forged by the gods themselves.",
+    "description": "[Clothing] Gloves tailored by the gods themselves.",
     "params": [
       0,
       0,
